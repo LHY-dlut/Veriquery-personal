@@ -1,0 +1,1150 @@
+{
+  "LM75B": [
+    {
+      "chunk_id": "25567d75_p1_c0",
+      "text": "1. General description The LM75B is a temperature-to-digital converter using an on-chip band gap temperature sensor and Sigma-Delta A-to-D conversion technique with an overtemperature detection output.",
+      "metadata": {
+        "char_end": 201,
+        "char_start": 0,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 1,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p1_c1",
+      "text": "The LM75B contains a number of data registers: Configuration register (Conf) to store the device settings such as device operation mode, OS operation mode, OS polarity and OS fault queue as described in <u>Section 7 “Functional description”</u>; temperature register (Temp) to store the digital temp reading, and set-point registers (Tos and Thyst) to store programmable overtemperature shutdown and hysteresis limits, that can be communicated by a controller via the 2-wire serial I<sup>2</sup>C-bus interface.",
+      "metadata": {
+        "char_end": 713,
+        "char_start": 201,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 1,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p1_c2",
+      "text": "The device also includes an open-drain output (OS) which becomes active when the temperature exceeds the programmed limits. There are three selectable logic address pins so that eight devices can be connected on the same bus without address conflict. The LM75B can be configured for different operation conditions. It can be set in normal mode to periodically monitor the ambient temperature, or in shutdown mode to minimize power consumption.",
+      "metadata": {
+        "char_end": 1157,
+        "char_start": 713,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 1,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p1_c3",
+      "text": "The OS output operates in either of two selectable modes: OS comparator mode or OS interrupt mode. Its active state can be selected as either HIGH or LOW. The fault queue that defines the number of consecutive faults in order to activate the OS output is programmable as well as the set-point limits. The temperature register always stores an 11-bit two’s complement data giving a temperature resolution of 0.125 C.",
+      "metadata": {
+        "char_end": 1574,
+        "char_start": 1157,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 1,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p1_c4",
+      "text": "This high temperature resolution is particularly useful in applications of measuring precisely the thermal drift or runaway. When the LM75B is accessed the conversion in process is not interrupted (that is, the I<sup>2</sup>C-bus section is totally independent of the Sigma-Delta converter section) and accessing the LM75B continuously without waiting at least one conversion time between communications will not prevent the device from updating the Temp register with a new conversion result.",
+      "metadata": {
+        "char_end": 2068,
+        "char_start": 1574,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 1,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p1_c5",
+      "text": "The new conversion result will be available immediately after the Temp register is updated. The LM75B powers up in the normal operation mode with the OS in comparator mode, temperature threshold of 80 C and hysteresis of 75 C, so that it can be used as a stand-alone thermostat with those pre-defined temperature set points. 2.",
+      "metadata": {
+        "char_end": 2398,
+        "char_start": 2068,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 1,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p1_c6",
+      "text": "2. Features and benefits Pin-for-pin replacement for industry standard LM75 and LM75A and offers improved temperature resolution of 0.125 C and specification of a single part over power supply range from 2.8 V to 5.5 V  I<sup>2</sup>C-bus interface with up to 8 devices on the same bus  Power supply range from 2.8 V to 5.5 V  Temperatures range from -55 °C to $+ 1 2 5 ^ { \\circ } \\mathrm { C }$",
+      "metadata": {
+        "char_end": 2796,
+        "char_start": 2395,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 1,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_c10",
+      "text": "Subsequent reads of the temperature register will be correct. 7.4.2 Configuration register The Configuration register (Conf) is a write/read register and contains an 8-bit non-complement data byte that is used to configure the device for different operation conditions. <u>Table 8</u> shows the bit assignments of this register.",
+      "metadata": {
+        "char_end": 1587,
+        "char_start": 1258,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_c11",
+      "text": "<u>Table 8</u> shows the bit assignments of this register. 【表格】 B7 | B6 | B5 | B4 | B3 | B2 | B[1:0] 0 | 0 | 0 | 0 | 0 | 0 | pointer value B1 | B0 | Selected register 0 | 0 | Temperature register (Temp) 0 | 1 | Configuration register (Conf) 1 | 0 | Hysteresis register (Thyst) 1 | 1 | Overtemperature shutdown register (Tos) Bit | Symbol | Access | Value | Description B[7:5] | reserved | R/W | 000* | reserved for manufacturer's use; should be kept as zeroes for normal operation B[4:3] | OS_F_QUE[1:0] | R/W | | OS fault queue programming B[4:3] | OS_F_QUE[1:0] | R/W | 00* | queue value = 1 B[4:3] | OS_F_QUE[1:0] | R/W | 01 | queue value = 2 B[4:3] | OS_F_QUE[1:0] | R/W | 10 | queue value = 4 B[4:3] | OS_F_QUE[1:0] | R/W | 11 | queue value = 6",
+      "metadata": {
+        "char_end": 2278,
+        "char_start": 1528,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_c7",
+      "text": "7.4.1 Pointer register The Pointer register contains an 8-bit data byte, of which the two LSB bits represent the pointer value of the other four registers, and the other 6 MSB bits are equal to 0, as shown in <u>Table 6</u> and <u>Table 7</u>. The Pointer register is not accessible to the user, but is used to select the data register for write/read operation by including the pointer data byte in the bus command.",
+      "metadata": {
+        "char_end": 415,
+        "char_start": 0,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_c8",
+      "text": "Because the Pointer value is latched into the Pointer register when the bus command (which includes the pointer byte) is executed, a read from the LM75B may or may not include the pointer byte in the statement. To read again a register that has been recently read and the pointer has been preset, the pointer byte does not have to be included. To read a register that is different from the one that has been recently read, the pointer byte must be included.",
+      "metadata": {
+        "char_end": 873,
+        "char_start": 415,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_c9",
+      "text": "However, a write to the LM75B must always include the pointer byte in the statement. The bus communication protocols are described in <u>Section 7.10</u>. At power-up, the Pointer value is equal to 00 and the Temp register is selected; users can then read the Temp data without specifying the pointer byte. However, the first temperature reading will be incorrect and must be ignored. Subsequent reads of the temperature register will be correct.",
+      "metadata": {
+        "char_end": 1320,
+        "char_start": 873,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl10",
+      "text": "0 | 0 | Temperature register (Temp)",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 2 第 2 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl11",
+      "text": "0 | 1 | Configuration register (Conf)",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 2 第 3 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl12",
+      "text": "1 | 0 | Hysteresis register (Thyst)",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 2 第 4 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl13",
+      "text": "1 | 1 | Overtemperature shutdown register (Tos)",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 2 第 5 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl14",
+      "text": "Bit | Symbol | Access | Value | Description",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 3 第 1 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl15",
+      "text": "B[7:5] | reserved | R/W | 000* | reserved for manufacturer's use; should be kept as zeroes for normal operation",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 3 第 2 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl16",
+      "text": "B[4:3] | OS_F_QUE[1:0] | R/W |  | OS fault queue programming",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 3 第 3 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl17",
+      "text": "B[4:3] | OS_F_QUE[1:0] | R/W | 00* | queue value = 1",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 3 第 4 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl18",
+      "text": "B[4:3] | OS_F_QUE[1:0] | R/W | 01 | queue value = 2",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 3 第 5 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl19",
+      "text": "B[4:3] | OS_F_QUE[1:0] | R/W | 10 | queue value = 4",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 3 第 6 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl20",
+      "text": "B[4:3] | OS_F_QUE[1:0] | R/W | 11 | queue value = 6",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 3 第 7 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl7",
+      "text": "B7 | B6 | B5 | B4 | B3 | B2 | B[1:0]",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 1 第 1 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl8",
+      "text": "0 | 0 | 0 | 0 | 0 | 0 | pointer value",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 1 第 2 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p2_tbl9",
+      "text": "B1 | B0 | Selected register",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 2,
+        "section": "表 2 第 1 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_c12",
+      "text": "7.4.3 Temperature register The Temperature register (Temp) holds the digital result of temperature measurement or monitor at the end of each analog-to-digital conversion. This register is read-only and contains two 8-bit data bytes consisting of one Most Significant Byte (MSByte) and one Least Significant Byte (LSByte). However, only 11 bits of those two bytes are used to store the Temp data in two’s complement format with the resolution of 0.125 C.",
+      "metadata": {
+        "char_end": 454,
+        "char_start": 0,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_c13",
+      "text": "<u>Table 9</u> shows the bit arrangement of the Temp data in the data bytes. When reading register Temp, all 16 bits of the two data bytes (MSByte and LSByte) are provided to the bus and must be all collected by the controller to complete the bus operation. However, only the 11 most significant bits should be used, and the 5 least significant bits of the LSByte are zero and should be ignored. One of the ways to calculate the Temp value in $^ \\circ \\complement$ from the 11-bit Temp data is: 1.",
+      "metadata": {
+        "char_end": 952,
+        "char_start": 454,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_c14",
+      "text": "If the Temp data MSByte bit $\\mathsf { D } \\mathsf { 1 0 } = 0$ , then the temperature is positive and Temp value (C) = +(Temp data) $\\times 0 . 1 2 5 ^ { \\circ } \\mathrm { C }$ 2. If the Temp data MSByte bit $\\mathsf { D } 1 0 = 1$ , then the temperature is negative and Temp value (C) = (two’s complement of Temp data) $\\times 0 . 1 2 5 ^ { \\circ } \\mathrm { C }$ Examples of the Temp data and value are shown in <u>Table 10</u>.",
+      "metadata": {
+        "char_end": 1387,
+        "char_start": 952,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_c15",
+      "text": "1 2 5 ^ { \\circ } \\mathrm { C }$ Examples of the Temp data and value are shown in <u>Table 10</u>. 【表格】 Bit | Symbol | Access | Value | Description B2 | OS_POL | R/W | | OS polarity selection B2 | OS_POL | R/W | 0* | OS active LOW B2 | OS_POL | R/W | 1 | OS active HIGH B1 | OS_COMP_INT | R/W | | OS operation mode selection B1 | OS_COMP_INT | R/W | 0* | OS comparator B1 | OS_COMP_INT | R/W | 1 | OS interrupt B0 | SHUTDOWN | R/W | | device operation mode selection B0 | SHUTDOWN | R/W | 0* | normal B0 | SHUTDOWN | R/W | 1 | shutdown MSByte [跨8列合并] | | | | | | | | LSByte [跨8列合并] | | | | | | | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 D10 | D9 | D8 | D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0 | X | X | X | X | X 11-bit binary (two's complement) | Hexadecimal value | Decimal value | Value 011 1111 1000 | 3F8 | 1016 | +127.000 °C 011 1111 0111 | 3F7 | 1015 | +126.875 °C 011 1111 0001 | 3F1 | 1009 | +126.125 °C 011 1110 1000 | 3E8 | 1000 | +125.000 °C 000 1100 1000 | 0C8 | 200 | +25.000 °C 000 0000 0001 | 001 | 1 | +0.125 °C",
+      "metadata": {
+        "char_end": 2336,
+        "char_start": 1288,
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl26",
+      "text": "Bit | Symbol | Access | Value | Description",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 1 第 1 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl27",
+      "text": "B2 | OS_POL | R/W |  | OS polarity selection",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 1 第 2 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl28",
+      "text": "B2 | OS_POL | R/W | 0* | OS active LOW",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 1 第 3 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl29",
+      "text": "B2 | OS_POL | R/W | 1 | OS active HIGH",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 1 第 4 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl30",
+      "text": "B1 | OS_COMP_INT | R/W |  | OS operation mode selection",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 1 第 5 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl31",
+      "text": "B1 | OS_COMP_INT | R/W | 0* | OS comparator",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 1 第 6 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl32",
+      "text": "B1 | OS_COMP_INT | R/W | 1 | OS interrupt",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 1 第 7 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl33",
+      "text": "B0 | SHUTDOWN | R/W |  | device operation mode selection",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 1 第 8 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl34",
+      "text": "B0 | SHUTDOWN | R/W | 0* | normal",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 1 第 9 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl35",
+      "text": "B0 | SHUTDOWN | R/W | 1 | shutdown",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 1 第 10 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl36",
+      "text": "MSByte [跨8列合并] |  |  |  |  |  |  |  | LSByte [跨8列合并] |  |  |  |  |  |  |",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 2 第 1 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl37",
+      "text": "7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 2 第 2 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl38",
+      "text": "D10 | D9 | D8 | D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0 | X | X | X | X | X",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 2 第 3 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl39",
+      "text": "11-bit binary (two's complement) | Hexadecimal value | Decimal value | Value",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 3 第 1 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl40",
+      "text": "011 1111 1000 | 3F8 | 1016 | +127.000 °C",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 3 第 2 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl41",
+      "text": "011 1111 0111 | 3F7 | 1015 | +126.875 °C",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 3 第 3 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl42",
+      "text": "011 1111 0001 | 3F1 | 1009 | +126.125 °C",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 3 第 4 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl43",
+      "text": "011 1110 1000 | 3E8 | 1000 | +125.000 °C",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 3 第 5 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl44",
+      "text": "000 1100 1000 | 0C8 | 200 | +25.000 °C",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 3 第 6 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "25567d75_p3_tbl45",
+      "text": "000 0000 0001 | 001 | 1 | +0.125 °C",
+      "metadata": {
+        "document_id": "25567d75",
+        "filename": "LM75B.pdf",
+        "page": 3,
+        "section": "表 3 第 7 行",
+        "source": "table_text"
+      }
+    }
+  ],
+  "MAX30205": [
+    {
+      "chunk_id": "a7bc38d8_p1_c0",
+      "text": "General Description The MAX30205 temperature sensor accurately measures temperature and provide an overtemperature alarm/ interrupt/shutdown output. This device converts the temperature measurements to digital form using a highresolution, sigma-delta, analog-to-digital converter (ADC). Accuracy meets clinical thermometry specification of the ASTM E1112 when soldered on the final PCB. Communication is through an I<sup>2</sup>C-compatible, 2-wire serial interface.",
+      "metadata": {
+        "char_end": 466,
+        "char_start": 0,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 1,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p1_c1",
+      "text": "Communication is through an I<sup>2</sup>C-compatible, 2-wire serial interface. The I<sup>2</sup>C serial interface accepts standard write byte, read byte, send byte, and receive byte commands to read the temperature data and configure the behavior of the open-drain overtemperature shutdown output. The MAX30205 features three address select lines with a total of 32 available addresses.",
+      "metadata": {
+        "char_end": 775,
+        "char_start": 386,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 1,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p1_c2",
+      "text": "The MAX30205 features three address select lines with a total of 32 available addresses. The sensor has a 2.7V to 3.3V supply voltage range, low 600µA supply current, and a lockup-protected I<sup>2</sup>C-compatible interface that make it ideal for wearable fitness and medical applications. This device is available in an 8-pin TDFN package and operates over the 0NC to +50NC temperature range.",
+      "metadata": {
+        "char_end": 1082,
+        "char_start": 686,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 1,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p1_c3",
+      "text": "Applications ● Fitness ● Medical Benefits and Features ● High Accuracy and Low-Voltage Operation Aids Designers in Meeting Error and Power Budgets • 0.1°C Accuracy (37°C to 39°C) • 16-Bit (0.00390625°C) Temperature Resolution • 2.7V to 3.3V Supply Voltage Range One-Shot and Shutdown Modes Help Reduce Power Usage ● 600μA (typ) Operating Supply Current ● Digital Functions Make Integration Easier into Any System • Selectable Timeout Prevents Bus Lockup • Separate Open-Drain OS Output Operates as Interrupt or Comparator/Thermostat Output <strong><u>Ordering Information</u></strong> appears at end of data sheet.",
+      "metadata": {
+        "char_end": 1697,
+        "char_start": 1082,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 1,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p1_c4",
+      "text": "Typical Application Circuit",
+      "metadata": {
+        "char_end": 1725,
+        "char_start": 1698,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 1,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_c10",
+      "text": "Typical values are $V_{DD} = 3.0V, \\quad T_A = +25^{\\circ}C.$ (Note 3) 【表格】 PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS Operating Supply Voltage | $V_{DD}$ | | 2.7 | 3.0 | 3.3 | V Input High Voltage | $V_{IH}$ | | $V_{DD} \\times 0.7$ [跨3列合并] | | | V Input Low Voltage | $V_{IL}$ | | $V_{DD} \\times 0.3$ [跨3列合并] | | | V PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS Thermometer Error (Note 5) | $T_{ERR}$ | 0°C to +15°C | -0.5 | | +0.5 | °C Thermometer Error (Note 5) | $T_{ERR}$ | +15°C to +35.8°C | -0.3 | | +0.3 | °C Thermometer Error (Note 5) | $T_{ERR}$ | +35.8°C to +37°C | -0.2 | | +0.2 | °C Thermometer Error (Note 5) | $T_{ERR}$ | +37°C to +39°C | -0.1 | | +0.1 | °C Thermometer Error (Note 5) | $T_{ERR}$ | +39°C to +41°C | -0.2 | | +0.2 | °C Thermometer Error (Note 5) | $T_{ERR}$ | +41°C to +45°C | -0.3 | | +0.3 | °C Thermometer Error (Note 5) | $T_{ERR}$ | +45°C to +50°C | -0.5 | | +0.5 | °C ADC Repeatability | $T_{repeat}$ | 1 Sigma | | 0.009 | | °C Temperature Data Resolution | | | | 16 | | Bits Conversion Time | | | | 44 | 50 | ms First Conversion Completed | | Data ready after POR | | | 50 | ms",
+      "metadata": {
+        "char_end": 3113,
+        "char_start": 1971,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_c5",
+      "text": "Absolute Maximum Ratings (All voltages relative to GND.) Voltage Range on V<sub>DD</sub>, SDA, SCL, A0, A1 ............-0.3V to +4V Voltage Range on A2, OS ........................ -0.3V to (V<sub>DD</sub> + 0.3V) Input Current at Any Pin .. .....+5mA Package Input Current ...+20mA Continuous Power Dissipation $( \\mathsf{T}_{\\mathsf{A}} = + 70^{\\circ}\\mathsf{C} )$ TDFN (derate 24.4mW/NC above +70°C)...............1951.2mW ESD Protection (All Pins, Human Body Model) (Note 1) ...",
+      "metadata": {
+        "char_end": 482,
+        "char_start": 0,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_c6",
+      "text": "±4000V Operating Temperature Range...............................0NC to +50°C Junction Temperature... ... +50°C Storage Temperature Range.... .......... -10NC to +50°C Lead Temperature (soldering, 10s) ............. ............... +300°C Soldering Temperature (reflow) . ....+260°C Note 1: Human Body Model, 100pF discharged through a 1.5kI resistor. Stresses beyond those listed under “Absolute Maximum Ratings” may cause permanent damage to the device.",
+      "metadata": {
+        "char_end": 938,
+        "char_start": 482,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_c7",
+      "text": "These are stress ratings only, and functional operation of the device at these or any other conditions beyond those indicated in the operational sections of the specifications is not implied. Exposure to absolute maximum rating conditions for extended periods may affect device reliability.",
+      "metadata": {
+        "char_end": 1229,
+        "char_start": 938,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_c8",
+      "text": "Exposure to absolute maximum rating conditions for extended periods may affect device reliability. Package Thermal Characteristics (Note 2) TDFN Junction-to-Ambient Thermal Resistance (θ<sub>JA</sub>) ..........41°C/W Junction-to-Case Thermal Resistance (θ<sub>JC</sub>) .................8°C/W Note 2: Package thermal resistances were obtained using the method described in JEDEC specification JESD51-7, using a four-layer board.",
+      "metadata": {
+        "char_end": 1560,
+        "char_start": 1130,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_c9",
+      "text": "For detailed information on package thermal considerations, refer to [**www.maximintegrated.com/thermal-tutorial**.](http://www.maximintegrated.com/thermal-tutorial) Recommended Operating Conditions (T<sub>A</sub> = 0°C to +50°C, unless otherwise noted.) (Notes 3, 4) Electrical Characteristics (V<sub>DD</sub> = 2.7V to 3.3V, $\\mathsf{T}_{\\mathsf{A}} = 0^{\\circ} \\mathsf{C}$ to +50°C, unless otherwise noted.",
+      "metadata": {
+        "char_end": 1970,
+        "char_start": 1560,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl10",
+      "text": "Thermometer Error (Note 5) | $T_{ERR}$ | 0°C to +15°C | -0.5 |  | +0.5 | °C",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 2 第 2 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl11",
+      "text": "Thermometer Error (Note 5) | $T_{ERR}$ | +15°C to +35.8°C | -0.3 |  | +0.3 | °C",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 2 第 3 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl12",
+      "text": "Thermometer Error (Note 5) | $T_{ERR}$ | +35.8°C to +37°C | -0.2 |  | +0.2 | °C",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 2 第 4 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl13",
+      "text": "Thermometer Error (Note 5) | $T_{ERR}$ | +37°C to +39°C | -0.1 |  | +0.1 | °C",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 2 第 5 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl14",
+      "text": "Thermometer Error (Note 5) | $T_{ERR}$ | +39°C to +41°C | -0.2 |  | +0.2 | °C",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 2 第 6 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl15",
+      "text": "Thermometer Error (Note 5) | $T_{ERR}$ | +41°C to +45°C | -0.3 |  | +0.3 | °C",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 2 第 7 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl16",
+      "text": "Thermometer Error (Note 5) | $T_{ERR}$ | +45°C to +50°C | -0.5 |  | +0.5 | °C",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 2 第 8 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl17",
+      "text": "ADC Repeatability | $T_{repeat}$ | 1 Sigma |  | 0.009 |  | °C",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 2 第 9 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl18",
+      "text": "Temperature Data Resolution |  |  |  | 16 |  | Bits",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 2 第 10 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl19",
+      "text": "Conversion Time |  |  |  | 44 | 50 | ms",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 2 第 11 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl20",
+      "text": "First Conversion Completed |  | Data ready after POR |  |  | 50 | ms",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 2 第 12 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl5",
+      "text": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 1 第 1 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl6",
+      "text": "Operating Supply Voltage | $V_{DD}$ |  | 2.7 | 3.0 | 3.3 | V",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 1 第 2 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl7",
+      "text": "Input High Voltage | $V_{IH}$ |  | $V_{DD} \\times 0.7$ [跨3列合并] |  |  | V",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 1 第 3 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl8",
+      "text": "Input Low Voltage | $V_{IL}$ |  | $V_{DD} \\times 0.3$ [跨3列合并] |  |  | V",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 1 第 4 行",
+        "source": "table_text",
+        "table_header": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p2_tbl9",
+      "text": "PARAMETER | SYMBOL | CONDITIONS | MIN | TYP | MAX | UNITS",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 2,
+        "section": "表 2 第 1 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p3_c11",
+      "text": "Perform a read operation by issuing the slave address byte (write), pointer byte, repeat START, another slave address byte (read), and then reading the data byte. After 2 data bytes the pointer register auto increments and, if pointing to a valid address, additional data can be read. See <u>Figure 4</u>. Temperature Registers Temperature data is stored in the temperature, <sup>T</sup>OS set point, and <sup>T</sup>HYST set point registers.",
+      "metadata": {
+        "char_end": 442,
+        "char_start": 0,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 3,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p3_c12",
+      "text": "The temperature data format is 16 bits, two’s complement, and the register is read out in 2 bytes: an upper byte and a lower byte. Bits D[15:0] contains the temperature data, with the LSB representing 0.00390625NC and the MSB representing the sign bit; see <u>Table 3</u>. The MSB is transmitted first.",
+      "metadata": {
+        "char_end": 745,
+        "char_start": 442,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 3,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p3_c13",
+      "text": "The MSB is transmitted first. 【表格】 UPPER BYTE [跨8列合并] | | | | | | | | LOWER BYTE [跨8列合并] | | | | | | | D15 | D14 | D13 | D12 | D11 | D10 | D9 | D8 | D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0 S | MSB 64°C | 32°C | 16°C | 8°C | 4°C | 2°C | 1°C | 0.5°C | 0.25°C | 0.125°C | 0.0625°C | 0.03125°C | 0.015625°C | 0.0078125°C | 0.00390625°C S | $2^6$ | $2^5$ | $2^4$ | $2^3$ | $2^2$ | $2^1$ | $2^0$ | $2^{-1}$ | $2^{-2}$ | $2^{-3}$ | $2^{-4}$ | $2^{-5}$ | $2^{-6}$ | $2^{-7}$ | $2^{-8}$",
+      "metadata": {
+        "char_end": 1191,
+        "char_start": 715,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 3,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p3_tbl27",
+      "text": "UPPER BYTE [跨8列合并] |  |  |  |  |  |  |  | LOWER BYTE [跨8列合并] |  |  |  |  |  |  |",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 3,
+        "section": "表 1 第 1 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p3_tbl28",
+      "text": "D15 | D14 | D13 | D12 | D11 | D10 | D9 | D8 | D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 3,
+        "section": "表 1 第 2 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p3_tbl29",
+      "text": "S | MSB 64°C | 32°C | 16°C | 8°C | 4°C | 2°C | 1°C | 0.5°C | 0.25°C | 0.125°C | 0.0625°C | 0.03125°C | 0.015625°C | 0.0078125°C | 0.00390625°C",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 3,
+        "section": "表 1 第 3 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p3_tbl30",
+      "text": "S | $2^6$ | $2^5$ | $2^4$ | $2^3$ | $2^2$ | $2^1$ | $2^0$ | $2^{-1}$ | $2^{-2}$ | $2^{-3}$ | $2^{-4}$ | $2^{-5}$ | $2^{-6}$ | $2^{-7}$ | $2^{-8}$",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 3,
+        "section": "表 1 第 4 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_c14",
+      "text": "Configuration Register The configuration register contains 8 bits of data and initiates single conversions (ONE-SHOT), enables bus timeout, controls shutdown, sets the fault queue, sets the data format, selects OS polarity, and determines whether the OS output functions in comparator or interrupt mode. See <u>Table 5</u>. Shutdown Set bit D0 to 1 to place the device in shutdown mode and reduce supply current to 3.5µA or less.",
+      "metadata": {
+        "char_end": 429,
+        "char_start": 0,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_c15",
+      "text": "If bit D0 is set to 1 when a temperature conversion is taking place, the device completes the conversion and then shuts down. In interrupt mode, entering shutdown resets the OS output. While in shutdown, the I<sup>2</sup>C interface remains active and all registers remain accessible to the master. Setting D0 to 0 takes the device out of shutdown and starts a new conversion. The results of this conversion are available to read after the max conversion time.",
+      "metadata": {
+        "char_end": 890,
+        "char_start": 429,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_c16",
+      "text": "The results of this conversion are available to read after the max conversion time. COMPARATOR/INTERRUPT Mode Set bit D1, the COMPARATOR/INTERRUPT bit to 0 to operate OS in comparator mode. In comparator mode, OS is asserted when the temperature rises above the <sup>T</sup>OS value. OS is deasserted when the temperature drops below the <sup>T</sup>HYST value. See <u>Figure 2</u>. Set bit D1 to 1 to operate OS in interrupt mode. In interrupt mode, exceeding <sup>T</sup>OS also asserts OS.",
+      "metadata": {
+        "char_end": 1299,
+        "char_start": 806,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_c17",
+      "text": "In interrupt mode, exceeding <sup>T</sup>OS also asserts OS. OS remains asserted until a read operation is performed on any of the registers. Once OS has asserted due to crossing above <sup>T</sup>OS and is then reset, it is asserted again only when the temperature drops below <sup>T</sup>HYST. The output then remains asserted until it is reset by a read. It is then asserted again if the temperature rises above <sup>T</sup>OS, and so on. Putting the MAX30205 into shutdown mode also resets OS.",
+      "metadata": {
+        "char_end": 1736,
+        "char_start": 1238,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_c18",
+      "text": "Putting the MAX30205 into shutdown mode also resets OS. Note that if the mode is changed while OS is active, an OS reset may be required before it begins to behave normally. OS Polarity Set bit D2, the OS POLARITY bit, to 0 to force the OS output polarity to active low. Set bit D2 to 1 to set the OS output polarity to active high. OS is an open-drain output under all conditions and requires a pullup resistor to output a high voltage. See <u>Figure 2</u>.",
+      "metadata": {
+        "char_end": 2139,
+        "char_start": 1680,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_c19",
+      "text": "See <u>Figure 2</u>. Fault Queue Bits D4 and D3, the fault queue bits, determine the number of faults necessary to trigger an OS condition. See <u>Table 6</u>. The number of faults set in the queue must occur consecutively to trip the OS output. The fault queue prevents OS false tripping in noisy environments.",
+      "metadata": {
+        "char_end": 2430,
+        "char_start": 2118,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_c20",
+      "text": "The fault queue prevents OS false tripping in noisy environments. 【表格】 TEMPERATURE (°C) | NORMAL FORMAT [跨2列合并] | | EXTENDED FORMAT [跨2列合并] | TEMPERATURE (°C) | BINARY | Hex | BINARY | Hex +64 | 0100 0000 0000 0000 | 4000h | 0000 0000 0000 0000 | 0000h +25 | 0001 1001 0000 0000 | 1900h | 1101 1001 0000 0000 | D900h +0.5 | 0000 0000 1000 0000 | 0080h | 1100 0000 1000 0000 | C080h 0 | 0000 0000 0000 0000 | 0000h | 1100 0000 0000 0000 | C000h D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0 ONE-SHOT | $\\overline{\\text{TIMEOUT}}$ | DATA FORMAT | FAULT QUEUE [1] | FAULT QUEUE [0] | OS POLARITY | $\\overline{\\text{COMPARATOR/}}$ INTERRUPT | SHUTDOWN",
+      "metadata": {
+        "char_end": 3004,
+        "char_start": 2364,
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "source": "pdf"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_tbl34",
+      "text": "TEMPERATURE (°C) | NORMAL FORMAT [跨2列合并] |  | EXTENDED FORMAT [跨2列合并] |",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "section": "表 1 第 1 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_tbl35",
+      "text": "TEMPERATURE (°C) | BINARY | Hex | BINARY | Hex",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "section": "表 1 第 2 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_tbl36",
+      "text": "+64 | 0100 0000 0000 0000 | 4000h | 0000 0000 0000 0000 | 0000h",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "section": "表 1 第 3 行",
+        "source": "table_text",
+        "table_header": "TEMPERATURE (°C) | BINARY | Hex | BINARY | Hex"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_tbl37",
+      "text": "+25 | 0001 1001 0000 0000 | 1900h | 1101 1001 0000 0000 | D900h",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "section": "表 1 第 4 行",
+        "source": "table_text",
+        "table_header": "TEMPERATURE (°C) | BINARY | Hex | BINARY | Hex"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_tbl38",
+      "text": "+0.5 | 0000 0000 1000 0000 | 0080h | 1100 0000 1000 0000 | C080h",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "section": "表 1 第 5 行",
+        "source": "table_text",
+        "table_header": "TEMPERATURE (°C) | BINARY | Hex | BINARY | Hex"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_tbl39",
+      "text": "0 | 0000 0000 0000 0000 | 0000h | 1100 0000 0000 0000 | C000h",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "section": "表 1 第 6 行",
+        "source": "table_text",
+        "table_header": "TEMPERATURE (°C) | BINARY | Hex | BINARY | Hex"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_tbl40",
+      "text": "D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "section": "表 2 第 1 行",
+        "source": "table_text"
+      }
+    },
+    {
+      "chunk_id": "a7bc38d8_p4_tbl41",
+      "text": "ONE-SHOT | $\\overline{\\text{TIMEOUT}}$ | DATA FORMAT | FAULT QUEUE [1] | FAULT QUEUE [0] | OS POLARITY | $\\overline{\\text{COMPARATOR/}}$ INTERRUPT | SHUTDOWN",
+      "metadata": {
+        "document_id": "a7bc38d8",
+        "filename": "MAX30205.pdf",
+        "page": 4,
+        "section": "表 2 第 2 行",
+        "source": "table_text"
+      }
+    }
+  ]
+}

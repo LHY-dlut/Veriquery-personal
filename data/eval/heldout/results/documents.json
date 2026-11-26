@@ -1,0 +1,54 @@
+{
+  "LM75B": {
+    "document_id": "25567d75",
+    "filename": "LM75B.pdf",
+    "status": "ready",
+    "page_count": 3,
+    "file_size": 36103,
+    "upload_time": "2026-11-26T16:12:49.592493",
+    "error_message": "",
+    "warnings": [
+      "visual_pipeline_skipped"
+    ],
+    "chunk_count": 50,
+    "table_count": 6,
+    "circuit_count": 0,
+    "image_count": 0,
+    "processed_time": "2026-11-26T16:16:55.419810",
+    "progress": 100,
+    "stage": "completed",
+    "stage_detail": "正在嵌入第 7/7 批",
+    "parser": "mineru",
+    "parser_tier": "advanced",
+    "verified_table_rows": 0,
+    "ingestion_seconds": 246.031,
+    "longest_status_request_seconds": 0.752,
+    "status_poll_timeouts": 0
+  },
+  "MAX30205": {
+    "document_id": "a7bc38d8",
+    "filename": "MAX30205.pdf",
+    "status": "ready",
+    "page_count": 4,
+    "file_size": 278115,
+    "upload_time": "2026-11-26T16:18:04.846575",
+    "error_message": "",
+    "warnings": [
+      "visual_pipeline_skipped"
+    ],
+    "chunk_count": 49,
+    "table_count": 5,
+    "circuit_count": 0,
+    "image_count": 2,
+    "processed_time": "2026-11-26T16:23:51.546602",
+    "progress": 100,
+    "stage": "completed",
+    "stage_detail": "正在嵌入第 7/7 批",
+    "parser": "mineru",
+    "parser_tier": "advanced",
+    "verified_table_rows": 0,
+    "ingestion_seconds": 347.093,
+    "longest_status_request_seconds": 0.608,
+    "status_poll_timeouts": 0
+  }
+}

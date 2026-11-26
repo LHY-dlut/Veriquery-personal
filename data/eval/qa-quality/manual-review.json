@@ -1,0 +1,362 @@
+{
+  "rubric": "Fully correct covers the requested field, value, unit and material conditions. A materially misleading additional label or omitted required fact is partial. Unsupported specificity on a negative question fails. g063 uses separately documented manufacturer truth.",
+  "groups": {
+    "provisional-current": {
+      "before": {
+        "fail": 4,
+        "partial": 5,
+        "pass": 10
+      },
+      "after": {
+        "pass": 15,
+        "partial": 3,
+        "fail": 1
+      }
+    },
+    "exact-advanced": {
+      "before": {
+        "pass": 11,
+        "partial": 1,
+        "fail": 2
+      },
+      "after": {
+        "pass": 11,
+        "fail": 2,
+        "partial": 1
+      }
+    }
+  },
+  "questions": [
+    {
+      "id": "g002",
+      "corpus": "provisional-current",
+      "before": "fail",
+      "after": "pass",
+      "mode": "verified_excerpt",
+      "activated": true,
+      "reason": "Maximum offset voltage was confused with drift; exact 25 µV maximum now cited."
+    },
+    {
+      "id": "g007",
+      "corpus": "provisional-current",
+      "before": "partial",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Before omits the temperature interval for 0.1 °C; after says −20–50 °C for 0.1 and −55–150 °C for 0.3."
+    },
+    {
+      "id": "g008",
+      "corpus": "provisional-current",
+      "before": "fail",
+      "after": "pass",
+      "mode": "verified_excerpt",
+      "activated": true,
+      "reason": "Decline became the 16-bit converter statement with citation."
+    },
+    {
+      "id": "g010",
+      "corpus": "provisional-current",
+      "before": "fail",
+      "after": "pass",
+      "mode": "verified_excerpt",
+      "activated": true,
+      "reason": "Decline became the complete source enumeration of all eight SPS options."
+    },
+    {
+      "id": "g015",
+      "corpus": "provisional-current",
+      "before": "pass",
+      "after": "partial",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Before pairs 80 MHz with G=100 and 45 MHz with G=1; after only gives 80 MHz."
+    },
+    {
+      "id": "g017",
+      "corpus": "provisional-current",
+      "before": "partial",
+      "after": "fail",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Before includes correct 1.7–5.5 V but also passes temperature ranges as supply voltage; after declines."
+    },
+    {
+      "id": "g021",
+      "corpus": "provisional-current",
+      "before": "pass",
+      "after": "pass",
+      "mode": "verified_excerpt",
+      "activated": true,
+      "reason": "Auto-zeroing, 25 µV maximum and near-zero drift are supported; verified excerpt is shorter."
+    },
+    {
+      "id": "g025",
+      "corpus": "provisional-current",
+      "before": "pass",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Both appropriately decline the Wi-Fi transmit power question."
+    },
+    {
+      "id": "g026",
+      "corpus": "provisional-current",
+      "before": "pass",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Both single and dual supply ranges correct."
+    },
+    {
+      "id": "g027",
+      "corpus": "provisional-current",
+      "before": "pass",
+      "after": "partial",
+      "mode": "generated",
+      "activated": false,
+      "reason": "After gives the correct range but confuses supply voltage with rail-to-rail output swing in the label."
+    },
+    {
+      "id": "g031",
+      "corpus": "provisional-current",
+      "before": "partial",
+      "after": "partial",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Identifies current and power monitoring but omits or confuses the shunt drop and bus voltage roles."
+    },
+    {
+      "id": "g033",
+      "corpus": "provisional-current",
+      "before": "partial",
+      "after": "pass",
+      "mode": "generated",
+      "activated": true,
+      "reason": "Before includes an unlabeled 18 V alongside the correct ranges; after quotes each device’s actual supply range with its own citation."
+    },
+    {
+      "id": "g052",
+      "corpus": "provisional-current",
+      "before": "pass",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "2 MHz gain bandwidth."
+    },
+    {
+      "id": "g053",
+      "corpus": "provisional-current",
+      "before": "pass",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "510 µA maximum quiescent current."
+    },
+    {
+      "id": "g054",
+      "corpus": "provisional-current",
+      "before": "partial",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Before gives the correct drift but adds conflicting claims about offset voltage; after isolates 0.03 µV/°C."
+    },
+    {
+      "id": "g055",
+      "corpus": "provisional-current",
+      "before": "pass",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "8.8 nV/√Hz."
+    },
+    {
+      "id": "g056",
+      "corpus": "provisional-current",
+      "before": "pass",
+      "after": "pass",
+      "mode": "verified_excerpt",
+      "activated": true,
+      "reason": "Both give 0.0078 °C, now shown as a clear literal quote."
+    },
+    {
+      "id": "g057",
+      "corpus": "provisional-current",
+      "before": "fail",
+      "after": "pass",
+      "mode": "verified_excerpt",
+      "activated": true,
+      "reason": "Temperature resolution was substituted for bit width; now correctly quotes 16-bit temperature result."
+    },
+    {
+      "id": "g089",
+      "corpus": "provisional-current",
+      "before": "pass",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "PSRR 142 dB and CMRR 146 dB."
+    },
+    {
+      "id": "g039",
+      "corpus": "exact-advanced",
+      "before": "pass",
+      "after": "pass",
+      "mode": "verified_excerpt",
+      "activated": true,
+      "reason": "10-bit ADC resolution."
+    },
+    {
+      "id": "g040",
+      "corpus": "exact-advanced",
+      "before": "pass",
+      "after": "fail",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Correct 8 single-ended inputs before, unsupported refusal after; verified excerpt path was not activated."
+    },
+    {
+      "id": "g041",
+      "corpus": "exact-advanced",
+      "before": "pass",
+      "after": "pass",
+      "mode": "verified_excerpt",
+      "activated": true,
+      "reason": "18-bit delta-sigma ADC."
+    },
+    {
+      "id": "g042",
+      "corpus": "exact-advanced",
+      "before": "pass",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "2.048 V on-board reference."
+    },
+    {
+      "id": "g045",
+      "corpus": "exact-advanced",
+      "before": "partial",
+      "after": "partial",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Correct 32K × 8 / 256-Kbit, but both introduce misleading package and measurement labels."
+    },
+    {
+      "id": "g046",
+      "corpus": "exact-advanced",
+      "before": "pass",
+      "after": "pass",
+      "mode": "verified_excerpt",
+      "activated": true,
+      "reason": "Both give 64 bytes. Final answer quotes the 64-byte Page Write Buffer directly."
+    },
+    {
+      "id": "g063",
+      "corpus": "exact-advanced",
+      "before": "pass",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "2.5–5.5 V with source, passes against exact manufacturer PDF; original benchmark key says 1.7–5.5 V."
+    },
+    {
+      "id": "g067",
+      "corpus": "exact-advanced",
+      "before": "pass",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Differential input range ±2.048 V."
+    },
+    {
+      "id": "g081",
+      "corpus": "exact-advanced",
+      "before": "pass",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Both cite MCP3008 10-bit and MCP3421 18-bit separately."
+    },
+    {
+      "id": "g086",
+      "corpus": "exact-advanced",
+      "before": "fail",
+      "after": "fail",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Both refuse the multi-feature question despite relevant snippets."
+    },
+    {
+      "id": "g090",
+      "corpus": "exact-advanced",
+      "before": "pass",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "SOT-23-6 package."
+    },
+    {
+      "id": "g092",
+      "corpus": "exact-advanced",
+      "before": "pass",
+      "after": "pass",
+      "mode": "generated",
+      "activated": false,
+      "reason": "Yes, MCP3008 supports single-ended mode, with eight inputs given."
+    },
+    {
+      "id": "g096",
+      "corpus": "exact-advanced",
+      "before": "pass",
+      "after": "pass",
+      "mode": "verified_abstention",
+      "activated": true,
+      "reason": "Both decline the unsupported altitude question. After uses a direct no-evidence check."
+    },
+    {
+      "id": "g098",
+      "corpus": "exact-advanced",
+      "before": "fail",
+      "after": "pass",
+      "mode": "verified_abstention",
+      "activated": true,
+      "reason": "Before asserts a literal 0 CPU core count not stated by the datasheet. After declines."
+    }
+  ],
+  "overall": {
+    "before": {
+      "fail": 6,
+      "partial": 6,
+      "pass": 21
+    },
+    "after": {
+      "pass": 26,
+      "partial": 4,
+      "fail": 3
+    }
+  },
+  "triggered": {
+    "before": {
+      "fail": 5,
+      "pass": 6,
+      "partial": 1
+    },
+    "after": {
+      "pass": 12
+    }
+  },
+  "routes_after": {
+    "verified_excerpt": 9,
+    "generated": 22,
+    "verified_abstention": 2
+  },
+  "gold_conflict": {
+    "id": "g063",
+    "published": "1.7–5.5 V",
+    "manufacturer": "2.5–5.5 V",
+    "complete_against_original_key_before": 20,
+    "complete_against_original_key_after": 25
+  }
+}

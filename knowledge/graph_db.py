@@ -21,7 +21,7 @@ import sqlite3
 import logging
 from pathlib import Path
 from typing import Dict
-from core.sqlite_utils import get_safe_connection, check_database_health, repair_corrupted_database
+from core.sqlite_utils import SQLiteCorruptedError, get_safe_connection, check_database_health, repair_corrupted_database
 
 logger = logging.getLogger(__name__)
 
@@ -85,9 +85,7 @@ class KnowledgeGraphDB:
             if repair_corrupted_database(self.db_path):
                 logger.info(f"✅ 知识图谱数据库已修复: {self.db_path}")
             else:
-                logger.error(f"❌ 知识图谱数据库无法修复，将删除重建: {self.db_path}")
-                from core.sqlite_utils import safe_delete_database
-                safe_delete_database(self.db_path)
+                raise SQLiteCorruptedError(f"Knowledge graph requires maintenance: {self.db_path}")
 
         with self._get_connection() as conn:
             self._create_chips_table(conn)

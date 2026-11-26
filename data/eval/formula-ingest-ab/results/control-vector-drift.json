@@ -1,0 +1,324 @@
+[
+  {
+    "part": "MCP4725",
+    "source": "pdf",
+    "text_start": "12-Bit Digital-to-Analog Converter with EEPROM Memory Features •",
+    "cosine": 0.9999999999994902,
+    "max_abs_delta": 1.0058283805847168e-07
+  },
+  {
+    "part": "MCP4725",
+    "source": "pdf",
+    "text_start": "Interface: - Eight Available Addresses - Standard (100 kbps), Fa",
+    "cosine": 0.9999999999989782,
+    "max_abs_delta": 1.4156103134155273e-07
+  },
+  {
+    "part": "MCP4725",
+    "source": "pdf",
+    "text_start": "Its on-board precision output amplifier allows it to achieve rai",
+    "cosine": 0.9999999999991112,
+    "max_abs_delta": 1.5459954738616943e-07
+  },
+  {
+    "part": "MCP4725",
+    "source": "pdf",
+    "text_start": "The MCP4725 has an external A0 address bit selection pin. This A",
+    "cosine": 0.999999999999367,
+    "max_abs_delta": 1.30385160446167e-07
+  },
+  {
+    "part": "MCP4725",
+    "source": "pdf",
+    "text_start": "The MCP4725 is an ideal DAC device where design simplicity and s",
+    "cosine": 0.9999999999995828,
+    "max_abs_delta": 9.313225746154785e-08
+  },
+  {
+    "part": "MCP4725",
+    "source": "pdf",
+    "text_start": "This feature is very useful when the DAC device is used as a sup",
+    "cosine": 0.9999999999992688,
+    "max_abs_delta": 1.1920928955078125e-07
+  },
+  {
+    "part": "MCP4725",
+    "source": "pdf",
+    "text_start": "a Acquisition Systems General Description The MCP4725 is a low-p",
+    "cosine": 0.9999999999995732,
+    "max_abs_delta": 1.150183379650116e-07
+  },
+  {
+    "part": "TPS63020",
+    "source": "pdf",
+    "text_start": "6.5 Electrical Characteristics over recommended free-air tempera",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "pdf",
+    "text_start": "M}$ | TPS63021 output voltage [跨2列合并] | | PS/SYNC = $V_{IN}$ | 3",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "pdf",
+    "text_start": "VINA | $I_{OUT}=0 mA, V_{EN}=V_{IN}=V_{INA}=3.6 V,$ $V_{OUT}=3.3",
+    "cosine": 0.9999999999999998,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "pdf",
+    "text_start": "der voltage lockout threshold [跨2列合并] | | $V_{INA}$ voltage decr",
+    "cosine": 0.9999999999999998,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "pdf",
+    "text_start": "e [跨2列合并] | | $V_{OUT}=3.3 V, I_{PGL}=10 μA$ | | 0.04 | 0.4 | V ",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "pdf",
+    "text_start": "ut voltage for start-up [跨2列合并] | | 0°C ≤ $T_A$ ≤ 85°C | 1.5 | 1",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "pdf",
+    "text_start": "| 2600 | kHz | Frequency range for synchronization [跨2列合并] | | |",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$I_S$ | Shutdown current [跨2列合并] |  | $V_{EN}=0 V, V_{IN}=V_{INA",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$I_q$ | Quiescent current | VIN and VINA | $I_{OUT}=0 mA, V_{EN}",
+    "cosine": 0.9999999999999998,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$I_q$ | Quiescent current | VOUT | $I_{OUT}=0 mA, V_{EN}=V_{IN}=",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$I_{SW}$ | Average switch current limit [跨2列合并] |  | $V_{IN}=V_{",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$V_{FB\\_PS}$ | TPS63020 feedback voltage / TPS63021 output volta",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$V_{FB\\_PWM}$ | TPS63020 feedback voltage [跨2列合并] |  | PS/SYNC =",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$V_{FB\\_PWM}$ | TPS63021 output voltage [跨2列合并] |  | PS/SYNC = $",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$V_{IH}$ | EN, PS/SYNC input high voltage [跨2列合并] |  |  | 1.2 | ",
+    "cosine": 1.0000000000000002,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$V_{IL}$ | EN, PS/SYNC input low voltage [跨2列合并] |  |  |  |  | 0",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$V_{IN}$ | Input voltage [跨2列合并] |  |  | 1.8 |  | 5.5 | V",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$V_{IN}$ | Minimum input voltage for start-up [跨2列合并] |  |  | 1.",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$V_{IN}$ | Minimum input voltage for start-up [跨2列合并] |  | 0°C ≤",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$V_{OUT}$ | Duty cycle in step down conversion [跨2列合并] |  |  | 2",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "$V_{OUT}$ | TPS63020 output voltage [跨2列合并] |  |  | 1.2 |  | 5.5",
+    "cosine": 1.0000000000000002,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "CONTROL STAGE [跨8列合并] |  |  |  |  |  |  |",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "DC/DC STAGE [跨8列合并] |  |  |  |  |  |  |",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "PARAMETER [跨3列合并] |  |  | TEST CONDITIONS | MIN | TYP | MAX | UN",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "UVLO | Under voltage lockout hysteresis [跨2列合并] |  |  |  | 200 |",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "UVLO | Under voltage lockout threshold [跨2列合并] |  | $V_{INA}$ vo",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "f | Oscillator frequency [跨2列合并] |  |  | 2200 | 2400 | 2600 | kH",
+    "cosine": 0.9999999999999998,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "| EN, PS/SYNC input current [跨2列合并] |  | Clamped to GND or VINA ",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "| Frequency range for synchronization [跨2列合并] |  |  | 2200 | 240",
+    "cosine": 0.9999999999999999,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "| High side switch on resistance [跨2列合并] |  | $V_{IN}=V_{INA}=3.",
+    "cosine": 0.9999999999999998,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "| Low side switch on resistance [跨2列合并] |  | $V_{IN}=V_{INA}=3.6",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "| Maximum line regulation [跨2列合并] |  |  |  | 0.5% |  |",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "| Maximum load regulation [跨2列合并] |  |  |  | 0.5% |  |",
+    "cosine": 0.9999999999999998,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "| Output overvoltage protection [跨2列合并] |  |  | 5.5 |  | 7 | V",
+    "cosine": 1.0000000000000002,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "| Overtemperature hysteresis [跨2列合并] |  |  |  | 20 |  | °C",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "| Overtemperature protection [跨2列合并] |  |  |  | 140 |  | °C",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "| PG output leakage current [跨2列合并] |  |  |  | 0.01 | 0.1 | μA",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "| PG output low voltage [跨2列合并] |  | $V_{OUT}=3.3 V, I_{PGL}=10 ",
+    "cosine": 0.9999999999999998,
+    "max_abs_delta": 0.0
+  },
+  {
+    "part": "TPS63020",
+    "source": "table_text",
+    "text_start": "| TPS63021 FB input impedance [跨2列合并] |  | $V_{EN}=HIGH$ |  | 1 ",
+    "cosine": 1.0,
+    "max_abs_delta": 0.0
+  }
+]

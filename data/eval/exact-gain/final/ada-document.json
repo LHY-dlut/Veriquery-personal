@@ -1,0 +1,26 @@
+{
+  "document_id": "93981b40",
+  "filename": "ADA4625-1.pdf",
+  "status": "ready",
+  "page_count": 2,
+  "file_size": 120380,
+  "upload_time": "2026-11-26T15:35:49.872036",
+  "error_message": "",
+  "warnings": [
+    "visual_pipeline_skipped"
+  ],
+  "chunk_count": 81,
+  "table_count": 2,
+  "circuit_count": 0,
+  "image_count": 0,
+  "processed_time": "2026-11-26T15:41:17.318170",
+  "progress": 100,
+  "stage": "completed",
+  "stage_detail": "正在嵌入第 14/14 批",
+  "parser": "mineru",
+  "parser_tier": "advanced",
+  "verified_table_rows": 0,
+  "ingestion_seconds": 327.631,
+  "longest_status_request_seconds": 0.634,
+  "status_poll_timeouts": 0
+}

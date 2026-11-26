@@ -1,0 +1,57 @@
+            24AA256/24LC256/24FC256
+              256-Kbit I2C Serial EEPROM
+
+
+Device Selection Table
+
+                         Maximum Clock      Temperature
+ Part Number   VCC Range                                                   Available Packages
+                                Frequency         Ranges
+ 24AA256         1.7V-5.5V         400 kHz(1)                        I, E       CS, MF, MS, P, SN, SM, MNY, ST
+ 24LC256         2.5V-5.5V         400 kHz                          I, E       MF, MS, P, SN, SM, MNY, ST
+ 24FC256         1.7V-5.5V         1 MHz(2)                          I, E       MF, MS, P, OT, SN, SM, MNY, ST
+ Note 1:  100 kHz for VCC < 2.5V.
+       2:  400 kHz for VCC < 2.5V.
+
+Features                                 Packages
+
+• Single Supply with Operation Down to 1.7V for                  •  8-Ball CSP, 8-Lead DFN, 8-Lead MSOP,
+  24AA256 and 24FC256 Devices, 2.5V for                   8-Lead PDIP, 8-Lead SOIC, 8-Lead SOIJ,
+  24LC256 Devices                                       8-Lead TDFN, 8-Lead TSSOP and
+• Low-Power CMOS Technology:                           5-Lead SOT-23
+   - Write current: 3 mA, maximum                     Description
+   - Standby current: 1 µA maximum (I-temp.)
+                                                 The Microchip Technology Inc. 24XX256(1) is a 32K x 8• Two-Wire Serial Interface, I2C Compatible
+                                                                (256-Kbit)   Serial   Electrically   Erasable  PROM
+• Cascadable up to Eight Devices                                                (EEPROM), capable of operation across a broad volt-
+• Schmitt Trigger Inputs for Noise Suppression             age range (1.7V to 5.5V). It has been developed for
+• Output Slope Control to Eliminate Ground Bounce          advanced, low-power applications such as personal
+• 100 kHz, 400 kHz and 1 MHz Compatibility                communications or data acquisition. This device also
+                                                    has a page write capability of up to 64 bytes of data.• Page Write Time: 5 ms, maximum
+                                                           This device is capable of both random and sequential
+• Self-Timed Erase/Write Cycle                                                        reads up to the 256K boundary. Functional address
+• 64-Byte Page Write Buffer                                      lines allow up to eight devices on the same bus, for up
+• Hardware Write-Protect                                        to 2 Mbit address space.
+• ESD Protection >4000V
+• More than One Million Erase/Write Cycles                  Note 1: 24XX256 is used in this document as a
+                                                                        generic    part   number     for    the• Data Retention >200 years
+                                                            24AA256/24LC256/24FC256 devices.
+• Factory Programming Available
+• RoHS Compliant
+• Temperature Ranges:
+   -  Industrial (I):        -40C to +85C
+   - Extended (E):       -40C to +125C
+• Automotive AEC-Q100 Qualified
+
+Package Types
+
+        CSP            DFN/TDFN           MSOP/PDIP (1)       SOIC/SOIJ/TSSOP         SOT-23
+        VCC A1 A0                        A0  1         8  VCC    A0   11        88  VCC   A0   1      8   VCC  SCL   1      5  WP
+         1   2   3                        A1  2         7 WP    A1   22        77  WP   A1   2      7  WP                                                                                             VSS   2  WP     4   5     A2                        A2  3         6  SCL   A2   33        66  SCL   A2   3      6  SCL                                                                                                                        24XX256         6   7  8                                                                              SDA   3      4   VCC                        VSS  4                                        5 SDA   VSS   44         24XX256    55  SDA  VSS   4       24XX256  5  SDA
+      SDA SCL VSS
+     Note  1:   Pins A0 and A1 are no connects for the MSOP package only.
+
+
+
+
+ 1998-2022 Microchip Technology Inc. and its subsidiaries                                                      DS20001203Y-page 1

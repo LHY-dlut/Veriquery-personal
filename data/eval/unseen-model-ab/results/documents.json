@@ -1,0 +1,54 @@
+{
+  "MCP4725": {
+    "document_id": "af8720d1",
+    "filename": "MCP4725.pdf",
+    "status": "ready",
+    "page_count": 2,
+    "file_size": 237362,
+    "upload_time": "2026-11-26T19:30:44.908106",
+    "error_message": "",
+    "warnings": [
+      "visual_pipeline_skipped"
+    ],
+    "chunk_count": 11,
+    "table_count": 0,
+    "circuit_count": 0,
+    "image_count": 1,
+    "processed_time": "2026-11-26T19:33:59.355747",
+    "progress": 100,
+    "stage": "completed",
+    "stage_detail": "正在嵌入第 2/2 批",
+    "parser": "mineru",
+    "parser_tier": "advanced",
+    "verified_table_rows": 0,
+    "ingestion_seconds": 194.605,
+    "longest_status_request_seconds": 0.871,
+    "status_poll_timeouts": 0
+  },
+  "TPS63020": {
+    "document_id": "8d25c8f1",
+    "filename": "TPS63020.pdf",
+    "status": "ready",
+    "page_count": 2,
+    "file_size": 60105,
+    "upload_time": "2026-11-26T19:33:59.509109",
+    "error_message": "",
+    "warnings": [
+      "visual_pipeline_skipped"
+    ],
+    "chunk_count": 53,
+    "table_count": 3,
+    "circuit_count": 0,
+    "image_count": 0,
+    "processed_time": "2026-11-26T19:38:03.812061",
+    "progress": 100,
+    "stage": "completed",
+    "stage_detail": "正在嵌入第 9/9 批",
+    "parser": "mineru",
+    "parser_tier": "advanced",
+    "verified_table_rows": 0,
+    "ingestion_seconds": 244.461,
+    "longest_status_request_seconds": 0.262,
+    "status_poll_timeouts": 0
+  }
+}

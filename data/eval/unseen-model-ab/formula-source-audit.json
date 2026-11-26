@@ -1,0 +1,491 @@
+{
+  "coordinate_system": "PyMuPDF original PDF coordinates in points, top-left origin; span x/y denote text baselines. Both original pages are 612 × 792 pt and page 2 of their corresponding extract.",
+  "extraction": "Physical text-span origins, font size and in TPS63020 the vector fraction bar. Transcriptions checked against the layout.",
+  "equations": [
+    {
+      "part": "MCP4725",
+      "original_sha256": "dfb2e61548e5f4d8010d20e51e9a07c99a8d3f8b20f95112b55e4613298f2fe1",
+      "original_page": 15,
+      "sample_page": 2,
+      "equation": "4-1",
+      "formula_box_pt": [
+        95,
+        241,
+        281,
+        270
+      ],
+      "transcription": "LSB_ideal = V_REF / 2^n = (V_full_scale - V_zero_scale) / (2^n - 1).",
+      "layout_evidence": "The REF term is above the first fraction bar. In both denominators n is raised and smaller than 2. The minus-one is on the baseline of only the second denominator. The same page defines V_REF=V_DD and n=12.",
+      "spans": [
+        {
+          "text": "LSB",
+          "x": 98.7,
+          "y": 255.18,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "Ideal",
+          "x": 115.08,
+          "y": 258.06,
+          "font_pt": 6.96,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "V",
+          "x": 146.82,
+          "y": 247.62,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "REF",
+          "x": 152.7,
+          "y": 250.56,
+          "font_pt": 6.96,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "2",
+          "x": 152.52,
+          "y": 264.72,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "n",
+          "x": 157.38,
+          "y": 259.56,
+          "font_pt": 6.96,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "------------",
+          "x": 146.82,
+          "y": 254.52,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "V",
+          "x": 181.62,
+          "y": 248.28,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "Full",
+          "x": 187.5,
+          "y": 251.22,
+          "font_pt": 6.96,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "Scale",
+          "x": 205.33,
+          "y": 251.22,
+          "font_pt": 6.96,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "V",
+          "x": 231.6,
+          "y": 248.28,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "Zero",
+          "x": 237.42,
+          "y": 251.22,
+          "font_pt": 6.96,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "Scale",
+          "x": 256.81,
+          "y": 251.22,
+          "font_pt": 6.96,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "–",
+          "x": 224.82,
+          "y": 248.28,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPSMT"
+        },
+        {
+          "text": "",
+          "x": 178.02,
+          "y": 248.28,
+          "font_pt": 9.0,
+          "font": "SymbolMT"
+        },
+        {
+          "text": "",
+          "x": 274.74,
+          "y": 248.28,
+          "font_pt": 9.0,
+          "font": "SymbolMT"
+        },
+        {
+          "text": "2",
+          "x": 216.96,
+          "y": 265.38,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "n",
+          "x": 221.82,
+          "y": 260.22,
+          "font_pt": 6.96,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "1",
+          "x": 234.3,
+          "y": 265.38,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "–",
+          "x": 227.52,
+          "y": 265.38,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPSMT"
+        },
+        {
+          "text": "------------------------------------------------------------------",
+          "x": 178.02,
+          "y": 255.18,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "=",
+          "x": 167.28,
+          "y": 255.18,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "=",
+          "x": 136.08,
+          "y": 255.18,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        }
+      ]
+    },
+    {
+      "part": "MCP4725",
+      "original_sha256": "dfb2e61548e5f4d8010d20e51e9a07c99a8d3f8b20f95112b55e4613298f2fe1",
+      "original_page": 15,
+      "sample_page": 2,
+      "equation": "4-2",
+      "formula_box_pt": [
+        139,
+        490,
+        237,
+        516
+      ],
+      "transcription": "INL = (V_OUT - V_ideal) / LSB. V_ideal = Code × LSB.",
+      "layout_evidence": "OUT is left of the minus sign. The Ideal term is to its right. LSB is below the fraction bar; the definition below the equation explicitly gives Code*LSB.",
+      "spans": [
+        {
+          "text": "INL",
+          "x": 143.34,
+          "y": 505.26,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "V",
+          "x": 177.24,
+          "y": 498.36,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "OUT",
+          "x": 183.06,
+          "y": 501.3,
+          "font_pt": 6.96,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "V",
+          "x": 207.12,
+          "y": 498.36,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "Ideal",
+          "x": 212.94,
+          "y": 501.3,
+          "font_pt": 6.96,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "–",
+          "x": 200.4,
+          "y": 498.36,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPSMT"
+        },
+        {
+          "text": "",
+          "x": 173.64,
+          "y": 498.36,
+          "font_pt": 9.0,
+          "font": "SymbolMT"
+        },
+        {
+          "text": "",
+          "x": 230.1,
+          "y": 498.36,
+          "font_pt": 9.0,
+          "font": "SymbolMT"
+        },
+        {
+          "text": "LSB",
+          "x": 195.36,
+          "y": 511.8,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "---------------------------------------",
+          "x": 173.64,
+          "y": 505.26,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "=",
+          "x": 162.9,
+          "y": 505.26,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        }
+      ],
+      "definition_box_pt": [
+        88,
+        532,
+        212,
+        545
+      ]
+    },
+    {
+      "part": "MCP4725",
+      "original_sha256": "dfb2e61548e5f4d8010d20e51e9a07c99a8d3f8b20f95112b55e4613298f2fe1",
+      "original_page": 15,
+      "sample_page": 2,
+      "equation": "4-3",
+      "formula_box_pt": [
+        393,
+        464,
+        486,
+        491
+      ],
+      "transcription": "DNL = (ΔV_OUT - LSB) / LSB.",
+      "layout_evidence": "The SymbolMT glyph U+F044 denotes capital delta. The numerator contains the measured adjacent-output difference followed by minus LSB. A second LSB lies below the fraction bar.",
+      "spans": [
+        {
+          "text": "DNL",
+          "x": 397.38,
+          "y": 480.54,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "",
+          "x": 431.16,
+          "y": 473.7,
+          "font_pt": 9.0,
+          "font": "SymbolMT"
+        },
+        {
+          "text": "V",
+          "x": 437.16,
+          "y": 473.7,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "OUT",
+          "x": 442.98,
+          "y": 476.58,
+          "font_pt": 6.96,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "LSB",
+          "x": 467.04,
+          "y": 473.7,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "–",
+          "x": 460.32,
+          "y": 473.7,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPSMT"
+        },
+        {
+          "text": "LSB",
+          "x": 449.1,
+          "y": 487.08,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "----------------------------------",
+          "x": 431.16,
+          "y": 480.54,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        },
+        {
+          "text": "=",
+          "x": 420.42,
+          "y": 480.54,
+          "font_pt": 9.0,
+          "font": "TimesNewRomanPS-ItalicMT"
+        }
+      ]
+    },
+    {
+      "part": "TPS63020",
+      "original_sha256": "d117773bb7370fd79377bc70ce987eec3469ea5979547a09df52fca5f95b2e69",
+      "original_page": 15,
+      "sample_page": 2,
+      "equation": "3",
+      "formula_box_pt": [
+        74,
+        590,
+        190,
+        623
+      ],
+      "transcription": "R1 = R2 × (V_OUT / V_FB - 1). V_FB = 500 mV nominal.",
+      "layout_evidence": "The fraction bar ends before minus 1. The OUT subscript is attached to the numerator V. The FB subscript is attached to the denominator V. Section 8.2.3 specifies 500 mV nominal.",
+      "spans": [
+        {
+          "text": "OUT",
+          "x": 145.56,
+          "y": 603.81,
+          "font_pt": 7.5,
+          "font": "ArialMT"
+        },
+        {
+          "text": "FB",
+          "x": 148.66,
+          "y": 618.37,
+          "font_pt": 7.5,
+          "font": "ArialMT"
+        },
+        {
+          "text": "V",
+          "x": 139.66,
+          "y": 601.22,
+          "font_pt": 10.0,
+          "font": "ArialMT"
+        },
+        {
+          "text": "R1",
+          "x": 77.82,
+          "y": 607.9,
+          "font_pt": 10.0,
+          "font": "ArialMT"
+        },
+        {
+          "text": "=",
+          "x": 96.25,
+          "y": 607.9,
+          "font_pt": 10.0,
+          "font": "ArialMT"
+        },
+        {
+          "text": "R2 ×",
+          "x": 107.66,
+          "y": 607.9,
+          "font_pt": 10.0,
+          "font": "ArialMT"
+        },
+        {
+          "text": "- 1",
+          "x": 168.03,
+          "y": 607.9,
+          "font_pt": 10.0,
+          "font": "ArialMT"
+        },
+        {
+          "text": "V",
+          "x": 142.97,
+          "y": 615.78,
+          "font_pt": 10.0,
+          "font": "ArialMT"
+        },
+        {
+          "text": "æ",
+          "x": 133.28,
+          "y": 600.65,
+          "font_pt": 10.0,
+          "font": "Symbol"
+        },
+        {
+          "text": "ö",
+          "x": 179.34,
+          "y": 600.65,
+          "font_pt": 10.0,
+          "font": "Symbol"
+        },
+        {
+          "text": "ç",
+          "x": 133.28,
+          "y": 609.65,
+          "font_pt": 10.0,
+          "font": "Symbol"
+        },
+        {
+          "text": "÷",
+          "x": 179.34,
+          "y": 609.65,
+          "font_pt": 10.0,
+          "font": "Symbol"
+        },
+        {
+          "text": "è",
+          "x": 133.28,
+          "y": 618.59,
+          "font_pt": 10.0,
+          "font": "Symbol"
+        },
+        {
+          "text": "ø",
+          "x": 179.34,
+          "y": 618.59,
+          "font_pt": 10.0,
+          "font": "Symbol"
+        }
+      ],
+      "fraction_bar_line_pt": [
+        138.66,
+        605.4,
+        163.34,
+        605.4
+      ],
+      "vfb_definition_box_pt": [
+        109,
+        641,
+        169,
+        655
+      ]
+    }
+  ]
+}

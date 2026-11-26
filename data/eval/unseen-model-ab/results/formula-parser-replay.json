@@ -1,0 +1,543 @@
+{
+  "tier": "advanced",
+  "status": "success",
+  "pdf_sha256": "4b7569044b45ced85d30aec986419265375016ae20bf94b994d123ee4d9c58cd",
+  "pages": [
+    {
+      "part": "MCP4725",
+      "original_page": 15,
+      "blocks": [
+        {
+          "type": "header",
+          "bbox": [
+            0.736,
+            0.032,
+            0.899,
+            0.059
+          ],
+          "content": "MCP4725"
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.128,
+            0.086,
+            0.34,
+            0.104
+          ],
+          "content": "4.0 TERMINOLOGY"
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.128,
+            0.12,
+            0.287,
+            0.136
+          ],
+          "content": "4.1 Resolution"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.127,
+            0.144,
+            0.489,
+            0.199
+          ],
+          "content": "The resolution is the number of DAC output states that divide the full scale range. For the 12-bit DAC, the resolution is $2 ^ { 1 2 }$ or the DAC code ranges from 0 to 4095."
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.128,
+            0.214,
+            0.229,
+            0.23
+          ],
+          "content": "4.2 LSB"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.127,
+            0.238,
+            0.486,
+            0.267
+          ],
+          "content": "The least significant bit or the ideal voltage difference between two successive codes."
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.129,
+            0.281,
+            0.251,
+            0.295
+          ],
+          "content": "EQUATION 4-1:"
+        },
+        {
+          "type": "equation",
+          "bbox": [
+            0.157,
+            0.301,
+            0.457,
+            0.337
+          ],
+          "content": "L S B _ {I d e a l} = \\frac {V _ {R E F}}{2 ^ {n}} = \\frac {(V _ {F u l l S c a l e} - V _ {Z e r o S c a l e})}{2 ^ {n} - 1}"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.137,
+            0.341,
+            0.188,
+            0.354
+          ],
+          "content": "Where:"
+        },
+        {
+          "type": "equation",
+          "bbox": [
+            0.143,
+            0.362,
+            0.466,
+            0.436
+          ],
+          "content": "\\begin{array}{r c l} V _ {R E F} & = & \\text {The reference voltage} = V _ {D D} \\text {in the} \\\\ & & \\text {MCP4725. This V_{REF} is the ideal} \\\\ & & \\text {full scale voltage range} \\\\ n & = & \\text {The number of digital input bits.} \\\\ & & (n = 1 2 \\text {for MCP4725}) \\end{array}"
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.127,
+            0.456,
+            0.436,
+            0.491
+          ],
+          "content": "4.3 Integral Nonlinearity (INL) or Relative Accuracy"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.127,
+            0.498,
+            0.488,
+            0.581
+          ],
+          "content": "INL error is the maximum deviation between an actual code transition point and its corresponding ideal transition point (straight line). Figure 2-5 shows the INL curve of the MCP4725. The end-point method is used for the calculation. The INL error at a given input DAC code is calculated as:"
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.129,
+            0.596,
+            0.251,
+            0.61
+          ],
+          "content": "EQUATION 4-2:"
+        },
+        {
+          "type": "equation",
+          "bbox": [
+            0.23,
+            0.617,
+            0.384,
+            0.648
+          ],
+          "content": "I N L = \\frac {\\left(V _ {O U T} - V _ {I d e a l}\\right)}{L S B}"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.137,
+            0.65,
+            0.189,
+            0.662
+          ],
+          "content": "Where:"
+        },
+        {
+          "type": "equation",
+          "bbox": [
+            0.145,
+            0.67,
+            0.454,
+            0.716
+          ],
+          "content": "\\begin{array}{r c l} \\mathrm{V} _ {\\text {Ideal}} & = & \\text {Code*LSB} \\\\ \\mathrm{V} _ {\\text {OUT}} & = & \\text {The output voltage measured at} \\\\ & & \\text {the given input code} \\end{array}"
+        },
+        {
+          "type": "chart",
+          "bbox": [
+            0.543,
+            0.094,
+            0.898,
+            0.378
+          ],
+          "content": "| DAC Input Code | Ideal Transfer Function (LSB) | Actual Transfer Function (LSB) |\n| --- | --- | --- |\n| 001 | ~0.9 | ~0.7 |\n| 010 | ~1.9 | ~1.6 |\n| 011 | ~2.9 | ~3.4 |\n| 100 | ~4.0 | ~4.1 |\n| 101 | ~5.0 | ~4.3 |\n| 110 | ~6.0 | ~5.0 |\n| 111 | ~7.0 | ~5.7 |"
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.539,
+            0.409,
+            0.862,
+            0.427
+          ],
+          "content": "4.4 Differential Nonlinearity (DNL)"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.539,
+            0.433,
+            0.899,
+            0.544
+          ],
+          "content": "Differential nonlinearity error (Figure 4-2) is the measure of step size between codes in actual transfer function. The ideal step size between codes is 1 LSB. A DNL error of zero would imply that every code is exactly 1 LSB wide. If the DNL error is less than 1 LSB, the DAC guarantees monotonic output and no missing codes. The DNL error between any two adjacent codes is calculated as follows:"
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.541,
+            0.559,
+            0.663,
+            0.573
+          ],
+          "content": "EQUATION 4-3:"
+        },
+        {
+          "type": "equation",
+          "bbox": [
+            0.646,
+            0.587,
+            0.792,
+            0.617
+          ],
+          "content": "D N L = \\frac {\\Delta V _ {O U T} - L S B}{L S B}"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.551,
+            0.62,
+            0.602,
+            0.632
+          ],
+          "content": "Where:"
+        },
+        {
+          "type": "equation",
+          "bbox": [
+            0.555,
+            0.64,
+            0.868,
+            0.684
+          ],
+          "content": "\\begin{array}{r l r} \\Delta V _ {\\text {OUT}} & = & \\text {The measured DAC output} \\\\ & & \\text {voltage difference between two} \\\\ & & \\text {adjacent input codes.} \\end{array}"
+        },
+        {
+          "type": "footer",
+          "bbox": [
+            0.129,
+            0.949,
+            0.432,
+            0.963
+          ],
+          "content": " 2007-2022 Microchip Technology Inc. and its subsidiaries"
+        },
+        {
+          "type": "footer",
+          "bbox": [
+            0.776,
+            0.949,
+            0.898,
+            0.963
+          ],
+          "content": "DS20002039E-page 15"
+        }
+      ],
+      "body_text": "4.0 TERMINOLOGY\n\n4.1 Resolution\n\nThe resolution is the number of DAC output states that divide the full scale range. For the 12-bit DAC, the resolution is $2 ^ { 1 2 }$ or the DAC code ranges from 0 to 4095.\n\n4.2 LSB\n\nThe least significant bit or the ideal voltage difference between two successive codes.\n\nEQUATION 4-1:\n\nWhere:\n\n4.3 Integral Nonlinearity (INL) or Relative Accuracy\n\nINL error is the maximum deviation between an actual code transition point and its corresponding ideal transition point (straight line). Figure 2-5 shows the INL curve of the MCP4725. The end-point method is used for the calculation. The INL error at a given input DAC code is calculated as:\n\nEQUATION 4-2:\n\nWhere:\n\n4.4 Differential Nonlinearity (DNL)\n\nDifferential nonlinearity error (Figure 4-2) is the measure of step size between codes in actual transfer function. The ideal step size between codes is 1 LSB. A DNL error of zero would imply that every code is exactly 1 LSB wide. If the DNL error is less than 1 LSB, the DAC guarantees monotonic output and no missing codes. The DNL error between any two adjacent codes is calculated as follows:\n\nEQUATION 4-3:\n\nWhere:",
+      "full_text": "MCP4725\n\n4.0 TERMINOLOGY\n\n4.1 Resolution\n\nThe resolution is the number of DAC output states that divide the full scale range. For the 12-bit DAC, the resolution is $2 ^ { 1 2 }$ or the DAC code ranges from 0 to 4095.\n\n4.2 LSB\n\nThe least significant bit or the ideal voltage difference between two successive codes.\n\nEQUATION 4-1:\n\nL S B _ {I d e a l} = \\frac {V _ {R E F}}{2 ^ {n}} = \\frac {(V _ {F u l l S c a l e} - V _ {Z e r o S c a l e})}{2 ^ {n} - 1}\n\nWhere:\n\n\\begin{array}{r c l} V _ {R E F} & = & \\text {The reference voltage} = V _ {D D} \\text {in the} \\\\ & & \\text {MCP4725. This V_{REF} is the ideal} \\\\ & & \\text {full scale voltage range} \\\\ n & = & \\text {The number of digital input bits.} \\\\ & & (n = 1 2 \\text {for MCP4725}) \\end{array}\n\n4.3 Integral Nonlinearity (INL) or Relative Accuracy\n\nINL error is the maximum deviation between an actual code transition point and its corresponding ideal transition point (straight line). Figure 2-5 shows the INL curve of the MCP4725. The end-point method is used for the calculation. The INL error at a given input DAC code is calculated as:\n\nEQUATION 4-2:\n\nI N L = \\frac {\\left(V _ {O U T} - V _ {I d e a l}\\right)}{L S B}\n\nWhere:\n\n\\begin{array}{r c l} \\mathrm{V} _ {\\text {Ideal}} & = & \\text {Code*LSB} \\\\ \\mathrm{V} _ {\\text {OUT}} & = & \\text {The output voltage measured at} \\\\ & & \\text {the given input code} \\end{array}\n\n| DAC Input Code | Ideal Transfer Function (LSB) | Actual Transfer Function (LSB) |\n| --- | --- | --- |\n| 001 | ~0.9 | ~0.7 |\n| 010 | ~1.9 | ~1.6 |\n| 011 | ~2.9 | ~3.4 |\n| 100 | ~4.0 | ~4.1 |\n| 101 | ~5.0 | ~4.3 |\n| 110 | ~6.0 | ~5.0 |\n| 111 | ~7.0 | ~5.7 |\n\n4.4 Differential Nonlinearity (DNL)\n\nDifferential nonlinearity error (Figure 4-2) is the measure of step size between codes in actual transfer function. The ideal step size between codes is 1 LSB. A DNL error of zero would imply that every code is exactly 1 LSB wide. If the DNL error is less than 1 LSB, the DAC guarantees monotonic output and no missing codes. The DNL error between any two adjacent codes is calculated as follows:\n\nEQUATION 4-3:\n\nD N L = \\frac {\\Delta V _ {O U T} - L S B}{L S B}\n\nWhere:\n\n\\begin{array}{r l r} \\Delta V _ {\\text {OUT}} & = & \\text {The measured DAC output} \\\\ & & \\text {voltage difference between two} \\\\ & & \\text {adjacent input codes.} \\end{array}\n\n 2007-2022 Microchip Technology Inc. and its subsidiaries\n\nDS20002039E-page 15"
+    },
+    {
+      "part": "TPS63020",
+      "original_page": 15,
+      "blocks": [
+        {
+          "type": "header",
+          "bbox": [
+            0.087,
+            0.02,
+            0.123,
+            0.048
+          ],
+          "content": ""
+        },
+        {
+          "type": "header",
+          "bbox": [
+            0.127,
+            0.026,
+            0.177,
+            0.038
+          ],
+          "content": "TEXAS"
+        },
+        {
+          "type": "header",
+          "bbox": [
+            0.129,
+            0.039,
+            0.241,
+            0.051
+          ],
+          "content": "INSTRUMENTS"
+        },
+        {
+          "type": "header",
+          "bbox": [
+            0.085,
+            0.068,
+            0.158,
+            0.078
+          ],
+          "content": "[www.ti.com](http://www.ti.com)"
+        },
+        {
+          "type": "header",
+          "bbox": [
+            0.747,
+            0.05,
+            0.911,
+            0.064
+          ],
+          "content": "[TPS63020](http://www.ti.com/product/tps63020?qgpn=tps63020), [TPS63021](http://www.ti.com/product/tps63021?qgpn=tps63021)"
+        },
+        {
+          "type": "header",
+          "bbox": [
+            0.642,
+            0.067,
+            0.912,
+            0.078
+          ],
+          "content": "SLVS916I –JULY 2010–REVISED OCTOBER 2019"
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.474,
+            0.1,
+            0.525,
+            0.113
+          ],
+          "content": "NOTE"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.166,
+            0.114,
+            0.72,
+            0.13
+          ],
+          "content": "The calculation must be done for the minimum input voltage in boost mode."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.082,
+            0.147,
+            0.915,
+            0.19
+          ],
+          "content": "Calculating the maximum inductor current using the actual operating conditions gives the minimum saturation current of the inductor needed. It is recommended to choose an inductor with a saturation current 20% higher than the value calculated using Equation 2. Table 2 lists the possible inductors."
+        },
+        {
+          "type": "table",
+          "bbox": [
+            0.086,
+            0.219,
+            0.915,
+            0.285
+          ],
+          "content": "| INDUCTOR VALUE [μH] | SATURATION CURRENT [A] | DCR [mΩ] | PART NUMBER | MANUFACTURER | SIZE (LxWxH mm) |\n| --- | --- | --- | --- | --- | --- |\n| 1.5 | 5.1 | 15 | XFL4020-152ME | Coilcraft | 4 x 4 x 2.1 |\n| 1.5 | 5.4 | 24 | FDV0530S-H-1R5M | muRata | 5 x 5 x 3 |"
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.084,
+            0.315,
+            0.373,
+            0.331
+          ],
+          "content": "8.2.2.3 Output Capacitor Selection"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.082,
+            0.336,
+            0.914,
+            0.407
+          ],
+          "content": "For the output capacitor, it is recommended to use of small ceramic capacitors placed as close as possible to the VOUT and PGND pins of the IC. The recommended nominal output capacitors are three times 22 µF. If, for any reason, the application requires the use of large capacitors that cannot be placed close to the IC, use a smaller ceramic capacitor in parallel to the large capacitor. Place the small capacitor as close as possible to the VOUT and PGND pins of the IC."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.082,
+            0.413,
+            0.914,
+            0.457
+          ],
+          "content": "There are no additional requirements regarding minimum ESR. There is also no upper limit for the output capacitance value. Larger capacitors cause lower output voltage ripple as well as lower output voltage drop during load transients."
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.084,
+            0.469,
+            0.357,
+            0.484
+          ],
+          "content": "8.2.2.4 Input Capacitor Selection"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.082,
+            0.49,
+            0.915,
+            0.573
+          ],
+          "content": "A 10 µF input capacitor is recommended to improve line transient behavior of the regulator and EMI behavior of the total power supply circuit. An X5R or X7R ceramic capacitor placed as close as possible to the VIN and PGND pins of the IC is recommended. This capacitance can be increased without limit. If the input supply is located more than a few inches from the TPS6302x converter, additional bulk capacitance can be required in addition to the ceramic bypass capacitors. An electrolytic or tantalum capacitor with a value of $4 7 ~ \\mu \\mathsf { F }$ is a typical choice."
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.084,
+            0.587,
+            0.3,
+            0.603
+          ],
+          "content": "8.2.2.5 Bypass Capacitor"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.082,
+            0.609,
+            0.914,
+            0.653
+          ],
+          "content": "To make sure that the internal control circuits are supplied with a stable low noise supply voltage, a capacitor can be connected between VINA and GND. Using a ceramic capacitor with a value of 0.1 µF is recommended. The value of this capacitor must not be higher than 0.22 µF."
+        },
+        {
+          "type": "paragraph_title",
+          "bbox": [
+            0.084,
+            0.664,
+            0.354,
+            0.68
+          ],
+          "content": "8.2.3 Setting The Output Voltage"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.082,
+            0.685,
+            0.915,
+            0.743
+          ],
+          "content": "When the adjustable output voltage version TPS63020 is used, the output voltage is set by an external resistor divider. The resistor divider must be connected between VOUT, FB, and GND. The feedback voltage is 500 mV nominal. The low-side resistor R2 (between FB and GND) must be kept in the range of 200 kΩ. Use Equation 3 to calculate the high-side resistor R1 (between VOUT and FB)."
+        },
+        {
+          "type": "equation",
+          "bbox": [
+            0.122,
+            0.745,
+            0.303,
+            0.783
+          ],
+          "content": "R 1 = R 2 \\times \\left(\\frac {V _ {\\text {OUT}}}{V _ {\\text {FB}}} - 1\\right)"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.124,
+            0.794,
+            0.173,
+            0.806
+          ],
+          "content": "where"
+        },
+        {
+          "type": "text",
+          "bbox": [
+            0.157,
+            0.81,
+            0.912,
+            0.825
+          ],
+          "content": "(3)"
+        },
+        {
+          "type": "table",
+          "bbox": [
+            0.086,
+            0.854,
+            0.915,
+            0.926
+          ],
+          "content": "| $V_{OUT}$ | R1 | R2 |\n| --- | --- | --- |\n| 2.5 V | 750 kΩ | 180 kΩ |\n| 3.3 V | 1 MΩ | 180 kΩ |\n| 3.6 V | 1.1 MΩ | 180 kΩ |"
+        },
+        {
+          "type": "footer",
+          "bbox": [
+            0.085,
+            0.934,
+            0.38,
+            0.947
+          ],
+          "content": "Copyright © 2010–2019, Texas Instruments Incorporated"
+        },
+        {
+          "type": "footer",
+          "bbox": [
+            0.667,
+            0.934,
+            0.866,
+            0.946
+          ],
+          "content": "[Submit Documentation Feedback](http://www.go-dsp.com/forms/techdoc/doc_feedback.htm?litnum=SLVS916I&partnum=TPS63020)"
+        },
+        {
+          "type": "page_number",
+          "bbox": [
+            0.896,
+            0.934,
+            0.912,
+            0.945
+          ],
+          "content": "15"
+        },
+        {
+          "type": "footer",
+          "bbox": [
+            0.367,
+            0.952,
+            0.631,
+            0.964
+          ],
+          "content": "Product Folder Links: [TPS63020](http://www.ti.com/product/tps63020?qgpn=tps63020) [TPS63021](http://www.ti.com/product/tps63021?qgpn=tps63021)"
+        }
+      ],
+      "body_text": "NOTE\n\nThe calculation must be done for the minimum input voltage in boost mode.\n\nCalculating the maximum inductor current using the actual operating conditions gives the minimum saturation current of the inductor needed. It is recommended to choose an inductor with a saturation current 20% higher than the value calculated using Equation 2. Table 2 lists the possible inductors.\n\n8.2.2.3 Output Capacitor Selection\n\nFor the output capacitor, it is recommended to use of small ceramic capacitors placed as close as possible to the VOUT and PGND pins of the IC. The recommended nominal output capacitors are three times 22 µF. If, for any reason, the application requires the use of large capacitors that cannot be placed close to the IC, use a smaller ceramic capacitor in parallel to the large capacitor. Place the small capacitor as close as possible to the VOUT and PGND pins of the IC.\n\nThere are no additional requirements regarding minimum ESR. There is also no upper limit for the output capacitance value. Larger capacitors cause lower output voltage ripple as well as lower output voltage drop during load transients.\n\n8.2.2.4 Input Capacitor Selection\n\nA 10 µF input capacitor is recommended to improve line transient behavior of the regulator and EMI behavior of the total power supply circuit. An X5R or X7R ceramic capacitor placed as close as possible to the VIN and PGND pins of the IC is recommended. This capacitance can be increased without limit. If the input supply is located more than a few inches from the TPS6302x converter, additional bulk capacitance can be required in addition to the ceramic bypass capacitors. An electrolytic or tantalum capacitor with a value of $4 7 ~ \\mu \\mathsf { F }$ is a typical choice.\n\n8.2.2.5 Bypass Capacitor\n\nTo make sure that the internal control circuits are supplied with a stable low noise supply voltage, a capacitor can be connected between VINA and GND. Using a ceramic capacitor with a value of 0.1 µF is recommended. The value of this capacitor must not be higher than 0.22 µF.\n\n8.2.3 Setting The Output Voltage\n\nWhen the adjustable output voltage version TPS63020 is used, the output voltage is set by an external resistor divider. The resistor divider must be connected between VOUT, FB, and GND. The feedback voltage is 500 mV nominal. The low-side resistor R2 (between FB and GND) must be kept in the range of 200 kΩ. Use Equation 3 to calculate the high-side resistor R1 (between VOUT and FB).\n\nwhere\n\n(3)",
+      "full_text": "TEXAS\n\nINSTRUMENTS\n\n[www.ti.com](http://www.ti.com)\n\n[TPS63020](http://www.ti.com/product/tps63020?qgpn=tps63020), [TPS63021](http://www.ti.com/product/tps63021?qgpn=tps63021)\n\nSLVS916I –JULY 2010–REVISED OCTOBER 2019\n\nNOTE\n\nThe calculation must be done for the minimum input voltage in boost mode.\n\nCalculating the maximum inductor current using the actual operating conditions gives the minimum saturation current of the inductor needed. It is recommended to choose an inductor with a saturation current 20% higher than the value calculated using Equation 2. Table 2 lists the possible inductors.\n\n| INDUCTOR VALUE [μH] | SATURATION CURRENT [A] | DCR [mΩ] | PART NUMBER | MANUFACTURER | SIZE (LxWxH mm) |\n| --- | --- | --- | --- | --- | --- |\n| 1.5 | 5.1 | 15 | XFL4020-152ME | Coilcraft | 4 x 4 x 2.1 |\n| 1.5 | 5.4 | 24 | FDV0530S-H-1R5M | muRata | 5 x 5 x 3 |\n\n8.2.2.3 Output Capacitor Selection\n\nFor the output capacitor, it is recommended to use of small ceramic capacitors placed as close as possible to the VOUT and PGND pins of the IC. The recommended nominal output capacitors are three times 22 µF. If, for any reason, the application requires the use of large capacitors that cannot be placed close to the IC, use a smaller ceramic capacitor in parallel to the large capacitor. Place the small capacitor as close as possible to the VOUT and PGND pins of the IC.\n\nThere are no additional requirements regarding minimum ESR. There is also no upper limit for the output capacitance value. Larger capacitors cause lower output voltage ripple as well as lower output voltage drop during load transients.\n\n8.2.2.4 Input Capacitor Selection\n\nA 10 µF input capacitor is recommended to improve line transient behavior of the regulator and EMI behavior of the total power supply circuit. An X5R or X7R ceramic capacitor placed as close as possible to the VIN and PGND pins of the IC is recommended. This capacitance can be increased without limit. If the input supply is located more than a few inches from the TPS6302x converter, additional bulk capacitance can be required in addition to the ceramic bypass capacitors. An electrolytic or tantalum capacitor with a value of $4 7 ~ \\mu \\mathsf { F }$ is a typical choice.\n\n8.2.2.5 Bypass Capacitor\n\nTo make sure that the internal control circuits are supplied with a stable low noise supply voltage, a capacitor can be connected between VINA and GND. Using a ceramic capacitor with a value of 0.1 µF is recommended. The value of this capacitor must not be higher than 0.22 µF.\n\n8.2.3 Setting The Output Voltage\n\nWhen the adjustable output voltage version TPS63020 is used, the output voltage is set by an external resistor divider. The resistor divider must be connected between VOUT, FB, and GND. The feedback voltage is 500 mV nominal. The low-side resistor R2 (between FB and GND) must be kept in the range of 200 kΩ. Use Equation 3 to calculate the high-side resistor R1 (between VOUT and FB).\n\nR 1 = R 2 \\times \\left(\\frac {V _ {\\text {OUT}}}{V _ {\\text {FB}}} - 1\\right)\n\nwhere\n\n(3)\n\n| $V_{OUT}$ | R1 | R2 |\n| --- | --- | --- |\n| 2.5 V | 750 kΩ | 180 kΩ |\n| 3.3 V | 1 MΩ | 180 kΩ |\n| 3.6 V | 1.1 MΩ | 180 kΩ |\n\nCopyright © 2010–2019, Texas Instruments Incorporated\n\n[Submit Documentation Feedback](http://www.go-dsp.com/forms/techdoc/doc_feedback.htm?litnum=SLVS916I&partnum=TPS63020)\n\n15\n\nProduct Folder Links: [TPS63020](http://www.ti.com/product/tps63020?qgpn=tps63020) [TPS63021](http://www.ti.com/product/tps63021?qgpn=tps63021)"
+    }
+  ]
+}

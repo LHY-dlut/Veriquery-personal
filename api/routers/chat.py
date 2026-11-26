@@ -13,7 +13,7 @@ import time
 import json
 import uuid
 import re as _re
-from typing import AsyncGenerator, Tuple, List, Optional
+from typing import Any, AsyncGenerator, Dict, Tuple, List, Optional
 
 from fastapi import APIRouter, Depends
 from fastapi.responses import StreamingResponse
@@ -33,6 +33,7 @@ class ChatRequest(BaseModel):
     query: str = Field(..., min_length=1, max_length=2000, description="用户查询内容")
     document_ids: List[str] = Field(default_factory=list, description="选中的文档ID列表")
     session_id: Optional[str] = Field(default=None, description="会话ID，不传则自动生成")
+    trace: bool = False
 
 
 class CitationInfo(BaseModel):
@@ -52,6 +53,7 @@ class ChatResponse(BaseModel):
     citations: List[CitationInfo] = Field(default_factory=list, description="引用信息列表")
     processing_time: float = Field(default=0, description="处理时间(秒)")
     session_id: str = Field(default="", description="会话ID")
+    trace: Optional[Dict[str, Any]] = None
 
 
 class AgentResult(BaseModel):
@@ -59,6 +61,7 @@ class AgentResult(BaseModel):
 
     response: str = Field(..., description="AI响应内容")
     citations: List[CitationInfo] = Field(default_factory=list, description="引用信息列表")
+    trace: Optional[Dict[str, Any]] = None
 
 
 def _generate_session_id() -> str:
@@ -89,7 +92,42 @@ def _extract_results_from_state(result_state: AgentState) -> AgentResult:
         for c in raw_citations
     ]
 
-    return AgentResult(response=response, citations=citations)
+    trace = None
+    if (result_state.get("user_context") or {}).get("evaluation_trace"):
+        trace = {
+            "intent": result_state.get("intent"),
+            "retrieved": [
+                {
+                    "chunk_id": chunk.chunk_id,
+                    "document_id": chunk.document_id,
+                    "page": chunk.page,
+                    "text": chunk.text,
+                    "score": chunk.score,
+                    "sources": (chunk.metadata or {}).get("fusion_sources", []),
+                    "focused_row": bool((chunk.metadata or {}).get("focused_row")),
+                    "rerank_position": (chunk.metadata or {}).get("rerank_position"),
+                    "pdf_column_evidence": (chunk.metadata or {}).get("pdf_column_evidence"),
+                }
+                for chunk in result_state.get("retrieval_results") or []
+            ],
+            "context": result_state.get("evaluation_context"),
+            "condition_candidates": [
+                {"chunk_id": chunk.chunk_id, "document_id": chunk.document_id, "page": chunk.page,
+                 "text": chunk.text, "score": chunk.score}
+                for chunk in result_state.get("condition_candidates") or []
+            ],
+            "context_evidence": result_state.get("context_evidence"),
+            "model_answer": result_state.get("model_answer"),
+            "comparison_documents": result_state.get("comparison_documents"),
+            "comparison_query": result_state.get("comparison_query"),
+            "comparison_calls": result_state.get("comparison_calls"),
+            "comparison_calculation": result_state.get("comparison_calculation"),
+            "citation_repair": result_state.get("citation_repair"),
+            "citation_literal_verified": result_state.get("citation_literal_verified", False),
+            "answer_mode": result_state.get("answer_mode", "generated"),
+            "verified_excerpt": result_state.get("verified_excerpt"),
+        }
+    return AgentResult(response=response, citations=citations, trace=trace)
 
 
 def _split_into_chunks(text: str, chunk_size: int = 16) -> List[str]:
@@ -131,7 +169,8 @@ async def _execute_agent_workflow(
     query: str,
     doc_ids: List[str],
     session_id: str,
-    container: ServiceContainer
+    container: ServiceContainer,
+    trace: bool = False,
 ) -> Tuple[Optional[AgentResult], Optional[str]]:
     """Execute the Agent workflow and return results or an error message.
 
@@ -151,6 +190,8 @@ async def _execute_agent_workflow(
             return None, "系统初始化失败，请联系管理员"
 
         user_context = {"selected_document_ids": doc_ids}
+        if trace and container.settings.EVAL_TRACE_ENABLED:
+            user_context["evaluation_trace"] = True
         logger.info(f"执行Agent工作流 - session_id: {session_id}, docs: {len(doc_ids)}")
 
         result_state = await graph.ainvoke(
@@ -285,7 +326,7 @@ async def chat(request: ChatRequest, container=Depends(get_service_container)):
         logger.info(f"[session:{session_id}] 选中文档数量: {len(request.document_ids)}")
 
         result, error = await _execute_agent_workflow(
-            request.query, request.document_ids, session_id, container
+            request.query, request.document_ids, session_id, container, trace=request.trace
         )
 
         if error:
@@ -306,7 +347,8 @@ async def chat(request: ChatRequest, container=Depends(get_service_container)):
                 response="⚠️ 抱歉，系统在生成回答时遇到技术问题，请稍后重试。如问题持续存在，请联系管理员。",
                 processing_time=time.time() - start_time,
                 session_id=session_id,
-                citations=[]
+                citations=[],
+                trace=result.trace,
             )
 
         if not response_text or len(response_text.strip()) < 5:
@@ -351,7 +393,8 @@ async def chat(request: ChatRequest, container=Depends(get_service_container)):
             citations=result.citations,
             processing_time=processing_time,
             success=True,
-            session_id=session_id
+            session_id=session_id,
+            trace=result.trace,
         )
 
     except Exception as e:
@@ -397,7 +440,7 @@ async def chat_stream(request: ChatRequest, container=Depends(get_service_contai
             }) + "\n"
 
             result, error = await _execute_agent_workflow(
-                request.query, request.document_ids, session_id, container
+                request.query, request.document_ids, session_id, container, trace=request.trace
             )
 
             if error:
@@ -481,7 +524,8 @@ async def chat_stream(request: ChatRequest, container=Depends(get_service_contai
                     "citations": [c.model_dump() for c in result.citations],
                     "processing_time": processing_time,
                     "session_id": session_id,
-                    "success": True
+                    "success": True,
+                    **({"trace": result.trace} if result.trace is not None else {}),
                 }
             }) + "\n"
 

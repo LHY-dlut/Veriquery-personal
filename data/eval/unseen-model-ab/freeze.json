@@ -1,0 +1,10 @@
+{
+  "frozen_utc": "2026-11-26T11:30:13.407479+00:00",
+  "sha256": {
+    "questions.jsonl": "028b1f7d6aba60b090ade717d16986004344466fa06a8bf2bc460b7809b29ea8",
+    "sources.json": "3c9fbfa40f9101b3b97299f35beb5913bcde166e5cf5422ccecf55f734975ffe",
+    "rubric.md": "0ff6e5add6e3f3dc82febd4c8eea9ccb58a855ee3569a5f1265fe84aca8bb5be",
+    "inputs/MCP4725.pdf": "ed44bef43a0dd0d22a3267ea55f8bad1c86b21668509c9092ba4d589b100a566",
+    "inputs/TPS63020.pdf": "f0ea85235544f9d6a6f06190dcd98f82fb4b59c358345ad5f38fc9d41f279780"
+  }
+}

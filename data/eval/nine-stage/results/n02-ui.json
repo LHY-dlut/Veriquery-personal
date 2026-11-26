@@ -1,0 +1,111 @@
+{
+  "id": "n02",
+  "selected": [
+    "c06748dc"
+  ],
+  "request": {
+    "body": {
+      "query": "MCP4725 取 VDD=4.096 V，理想条件下 1 LSB 是多少 mV？写入十六进制码 0x600 时，理想输出电压是多少 V？请列出关键计算。",
+      "document_ids": [
+        "c06748dc"
+      ]
+    },
+    "route": "http://127.0.0.1:8221/api/v1/chat/stream",
+    "http_status": 200,
+    "events": [
+      {
+        "type": "start",
+        "data": {
+          "query": "MCP4725 取 VDD=4.096 V，理想条件下 1 LSB 是多少 mV？写入十六进制码 0x600 时，理想输出电压是多少 V？请列出关键计算。",
+          "session_id": "6fe6b90b-a5f0-4b"
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "当前检索结果中没有足够的证据回答",
+          "index": 0,
+          "total": 2,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "这个问题。",
+          "index": 1,
+          "total": 2,
+          "is_complete": true
+        }
+      },
+      {
+        "type": "complete",
+        "data": {
+          "response": "当前检索结果中没有足够的证据回答这个问题。",
+          "citations": [],
+          "processing_time": 6.062569856643677,
+          "session_id": "6fe6b90b-a5f0-4b",
+          "success": true
+        }
+      }
+    ]
+  },
+  "ui_history_entry": {
+    "role": "assistant",
+    "content": "当前检索结果中没有足够的证据回答这个问题。",
+    "sources": [],
+    "citations": [],
+    "message_meta": {
+      "show_citations": false,
+      "badges": [
+        "耗时 6.1s"
+      ]
+    },
+    "timestamp": "20:46:18",
+    "processing_time": 6.062569856643677
+  },
+  "rendered_html": "<div class=\"chat-message chat-message-assistant\">\n    <div class=\"chat-avatar\">🤖</div>\n    <div class=\"chat-content\">\n        <div class=\"chat-bubble chat-bubble-assistant\"><div class=\"chat-text\">当前检索结果中没有足够的证据回答这个问题。</div></div>\n\n        <div class=\"chat-meta\"><span class=\"chat-meta-badge\">耗时 6.1s</span></div>\n        <div class=\"chat-timestamp\">20:46:18</div>\n    </div>\n</div>",
+  "rendered_text": "当前检索结果中没有足够的证据回答这个问题。",
+  "schema": {
+    "properties": {
+      "query": {
+        "type": "string",
+        "maxLength": 2000,
+        "minLength": 1,
+        "title": "Query",
+        "description": "用户查询内容"
+      },
+      "document_ids": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array",
+        "title": "Document Ids",
+        "description": "选中的文档ID列表"
+      },
+      "session_id": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Session Id",
+        "description": "会话ID，不传则自动生成"
+      },
+      "trace": {
+        "type": "boolean",
+        "title": "Trace",
+        "default": false
+      }
+    },
+    "type": "object",
+    "required": [
+      "query"
+    ],
+    "title": "ChatRequest",
+    "description": "Request model for chat queries."
+  }
+}

@@ -1,0 +1,126 @@
+INFO:     Started server process [24683]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18002 (Press CTRL+C to quit)
+INFO:     127.0.0.1:44580 - "GET /v1/tiers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44590 - "POST /v1/uploads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44604 - "PUT /v1/uploads/upload_a77a08715e8668a7883402e8/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44612 - "POST /v1/uploads/upload_a77a08715e8668a7883402e8/complete HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44618 - "POST /v1/parse/jobs HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:44622 - "GET /v1/parse/jobs/job_642dffc006d087ccbe03de74 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44624 - "GET /v1/parse/jobs/job_642dffc006d087ccbe03de74 HTTP/1.1" 200 OK
+2026-11-26 10:21:15.899 +08:00 | INFO     | mineru.backend.analyze:_log_infer_performance:26 - model_list infer finished, file_suffix=pdf, pages=1, cost=1.094554s, speed=0.914 page/s
+INFO:     127.0.0.1:44628 - "GET /v1/parse/jobs/job_642dffc006d087ccbe03de74 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44636 - "GET /v1/files/file-a10112df1531b4cda0a60ae9/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44650 - "GET /v1/files/file-7f625cb9c40fa5c4959cd9b4/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44652 - "GET /v1/files/file-49055a3325df6beea79af997/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44664 - "POST /v1/uploads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44670 - "PUT /v1/uploads/upload_0de4958fb286f1b4ea121126/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44680 - "POST /v1/uploads/upload_0de4958fb286f1b4ea121126/complete HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44696 - "POST /v1/parse/jobs HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:44704 - "GET /v1/parse/jobs/job_df08212a4b1a184c814d42d3 HTTP/1.1" 200 OK
+2026-11-26 10:21:17.976 +08:00 | INFO     | mineru.backend.analysis.pdf.window:_log_processing_window_plan:105 - Hybrid processing-window run. page_count=1, window_size=64, total_windows=1
+2026-11-26 10:21:18.014 +08:00 | INFO     | mineru.backend.analysis.pdf.window:_log_processing_window:113 - Hybrid processing window 1/1: pages 1-1/1 (1 pages)
+Layout Predict:   0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:44720 - "GET /v1/parse/jobs/job_df08212a4b1a184c814d42d3 HTTP/1.1" 200 OK
+Layout Predict: 100%|██████████| 1/1 [00:00<00:00,  2.22it/s]Layout Predict: 100%|██████████| 1/1 [00:00<00:00,  2.22it/s]
+INFO:     127.0.0.1:44724 - "GET /v1/parse/jobs/job_df08212a4b1a184c814d42d3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44734 - "GET /v1/parse/jobs/job_df08212a4b1a184c814d42d3 HTTP/1.1" 200 OK
+MFR Predict:   0%|          | 0/5 [00:00<?, ?it/s]MFR Predict: 100%|██████████| 5/5 [00:01<00:00,  4.83it/s]MFR Predict: 100%|██████████| 5/5 [00:01<00:00,  4.83it/s]
+OCR-det:   0%|          | 0/15 [00:00<?, ?it/s]OCR-det:  47%|████▋     | 7/15 [00:00<00:00, 67.56it/s]OCR-det: 100%|██████████| 15/15 [00:00<00:00, 110.70it/s]
+OCR-rec Predict:   0%|          | 0/2 [00:00<?, ?it/s]OCR-rec Predict: 100%|██████████| 2/2 [00:00<00:00, 151.50it/s]
+2026-11-26 10:21:24.021 +08:00 | INFO     | mineru.backend.analyze:_log_infer_performance:26 - model_list infer finished, file_suffix=pdf, pages=1, cost=5.946806s, speed=0.168 page/s
+INFO:     127.0.0.1:46470 - "GET /v1/parse/jobs/job_df08212a4b1a184c814d42d3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46482 - "GET /v1/files/file-afb3edd3921658162f27c455/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46484 - "GET /v1/files/file-8db80f475d11e8aa4bb66e50/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46492 - "GET /v1/files/file-e6690f93cf47f5e0b5c9f239/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46500 - "POST /v1/uploads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46504 - "PUT /v1/uploads/upload_27435118a19dbc6987a85206/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46514 - "POST /v1/uploads/upload_27435118a19dbc6987a85206/complete HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46522 - "POST /v1/parse/jobs HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:46532 - "GET /v1/parse/jobs/job_ac235da3150acfc405cbf90f HTTP/1.1" 200 OK
+2026-11-26 10:21:25.914 +08:00 | INFO     | mineru.model.vlm.selector:get_vlm_engine:61 - Using llama-cpp-engine as the inference engine for VLM.
+0.00.214.472 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.00.471.783 W load_hparams: Qwen-VL models require at minimum 1024 image tokens to function correctly on grounding tasks
+0.00.471.786 W load_hparams: if you encounter problems with accuracy, try adding --image-min-tokens 1024
+0.00.471.787 W load_hparams: more info: https://github.com/ggml-org/llama.cpp/issues/16842
+
+2026-11-26 10:21:26.803 +08:00 | INFO     | mineru.model.vlm.runtime:_create_model:351 - get llama-cpp-engine predictor cost: 0.89s
+2026-11-26 10:21:26.804 +08:00 | INFO     | mineru.backend.analysis.pdf.window:_log_processing_window_plan:105 - Hybrid processing-window run. page_count=1, window_size=64, total_windows=1
+2026-11-26 10:21:26.830 +08:00 | INFO     | mineru.backend.analysis.pdf.window:_log_processing_window:113 - Hybrid processing window 1/1: pages 1-1/1 (1 pages)
+Layout Predict:   0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:46538 - "GET /v1/parse/jobs/job_ac235da3150acfc405cbf90f HTTP/1.1" 200 OK
+Layout Predict: 100%|██████████| 1/1 [00:00<00:00,  2.26it/s]Layout Predict: 100%|██████████| 1/1 [00:00<00:00,  2.26it/s]
+MFR Predict:   0%|          | 0/5 [00:00<?, ?it/s]INFO:     127.0.0.1:46554 - "GET /v1/parse/jobs/job_ac235da3150acfc405cbf90f HTTP/1.1" 200 OK
+MFR Predict: 100%|██████████| 5/5 [00:01<00:00,  4.82it/s]MFR Predict: 100%|██████████| 5/5 [00:01<00:00,  4.82it/s]
+OCR-det:   0%|          | 0/15 [00:00<?, ?it/s]OCR-det:  60%|██████    | 9/15 [00:00<00:00, 89.10it/s]OCR-det: 100%|██████████| 15/15 [00:00<00:00, 125.72it/s]
+OCR-rec Predict:   0%|          | 0/2 [00:00<?, ?it/s]OCR-rec Predict: 100%|██████████| 2/2 [00:00<00:00, 99.71it/s]
+2026-11-26 10:21:28.721 +08:00 | INFO     | mineru.backend.analyze:_log_infer_performance:26 - model_list infer finished, file_suffix=pdf, pages=1, cost=1.804883s, speed=0.554 page/s
+INFO:     127.0.0.1:46562 - "GET /v1/parse/jobs/job_ac235da3150acfc405cbf90f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46576 - "GET /v1/files/file-d5d7f054badd10a054872fb5/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46588 - "GET /v1/files/file-b6b58d16c12162fdb13d33fc/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46590 - "GET /v1/files/file-6da90bca19443f9bbdc08fff/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46598 - "POST /v1/uploads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46610 - "PUT /v1/uploads/upload_9664b89631ec511d4c2f7390/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46626 - "POST /v1/uploads/upload_9664b89631ec511d4c2f7390/complete HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46642 - "POST /v1/parse/jobs HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:46658 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+2026-11-26 10:21:30.892 +08:00 | INFO     | mineru.model.vlm.selector:get_vlm_engine:61 - Using llama-cpp-engine as the inference engine for VLM.
+2026-11-26 10:21:30.892 +08:00 | INFO     | mineru.backend.analysis.pdf.window:_log_processing_window_plan:105 - Hybrid processing-window run. page_count=1, window_size=64, total_windows=1
+2026-11-26 10:21:30.934 +08:00 | INFO     | mineru.backend.analysis.pdf.window:_log_processing_window:113 - Hybrid processing window 1/1: pages 1-1/1 (1 pages)
+Layout Predict:   0%|          | 0/1 [00:00<?, ?it/s]Layout Predict: 100%|██████████| 1/1 [00:00<00:00,  2.25it/s]Layout Predict: 100%|██████████| 1/1 [00:00<00:00,  2.25it/s]
+Two Step Extraction:   0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:46660 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50384 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50396 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50402 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34004 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34016 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60142 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36096 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56008 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59946 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48472 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59628 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49112 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38968 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39932 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54900 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36534 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57970 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50572 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58232 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33698 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34484 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34012 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48568 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45346 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57512 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35554 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41626 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58034 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55308 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53854 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46144 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41970 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49228 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56020 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44810 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41810 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42074 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44386 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52050 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52054 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32794 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40042 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52864 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+Two Step Extraction: 100%|██████████| 1/1 [06:32<00:00, 392.39s/it]Two Step Extraction: 100%|██████████| 1/1 [06:32<00:00, 392.39s/it]
+MFR Predict:   0%|          | 0/5 [00:00<?, ?it/s]MFR Predict: 100%|██████████| 5/5 [00:01<00:00,  4.65it/s]MFR Predict: 100%|██████████| 5/5 [00:01<00:00,  4.65it/s]
+OCR-det:   0%|          | 0/19 [00:00<?, ?it/s]OCR-det:  58%|█████▊    | 11/19 [00:00<00:00, 90.48it/s]OCR-det: 100%|██████████| 19/19 [00:00<00:00, 123.00it/s]
+OCR-rec Predict:   0%|          | 0/2 [00:00<?, ?it/s]OCR-rec Predict: 100%|██████████| 2/2 [00:00<00:00, 121.59it/s]
+2026-11-26 10:28:05.338 +08:00 | INFO     | mineru.backend.analyze:_log_infer_performance:26 - model_list infer finished, file_suffix=pdf, pages=1, cost=394.313240s, speed=0.003 page/s
+INFO:     127.0.0.1:35320 - "GET /v1/parse/jobs/job_d849c4f0608d60d5576639bd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35634 - "GET /v1/files/file-e52e0b52910f7a907a3c99f1/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35646 - "GET /v1/files/file-c299623e793e8e98f1cb0e6f/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35658 - "GET /v1/files/file-9ef16324c44b52a360a16959/content HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24683]

@@ -1,0 +1,325 @@
+{
+  "id": "n04",
+  "selected": [
+    "c06748dc"
+  ],
+  "request": {
+    "body": {
+      "query": "MCP4725 在 VDD=4.096 V、输入码为十进制 1000 时，实测 VOUT=998.5 mV。按规格书定义，理想输出是多少 mV，有符号 INL 是多少 LSB？",
+      "document_ids": [
+        "c06748dc"
+      ]
+    },
+    "route": "http://127.0.0.1:8221/api/v1/chat/stream",
+    "http_status": 200,
+    "events": [
+      {
+        "type": "start",
+        "data": {
+          "query": "MCP4725 在 VDD=4.096 V、输入码为十进制 1000 时，实测 VOUT=998.5 mV。按规格书定义，理想输出是多少 mV，有符号 INL 是多少 LSB？",
+          "session_id": "f5165601-9196-4d"
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "1.  理想输出 ($V_{id",
+          "index": 0,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "eal}$)：\n根据资料 [1]",
+          "index": 1,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": " 和 [2] 中的 EQUATI",
+          "index": 2,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "ON 4-1：\n$$V_{ide",
+          "index": 3,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "al} = \\frac{V_{F",
+          "index": 4,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "ULL\\_SCALE} - V_",
+          "index": 5,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "{ZERO\\_SCALE}}{2",
+          "index": 6,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "^n - 1}$$\n其中 $n=",
+          "index": 7,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "12$。\n资料 [3] 提到该器",
+          "index": 8,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "件的满量程电压范围（$V_{FU",
+          "index": 9,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "LL\\_SCALE}$）为 $4.",
+          "index": 10,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "096\\text{ V}$（即 ",
+          "index": 11,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "$4096\\text{ mV}$",
+          "index": 12,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "），零刻度电压为 $0\\text",
+          "index": 13,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "{ V}$。\n代入公式计算：\n",
+          "index": 14,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "$$V_{ideal} = \\f",
+          "index": 15,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "rac{4096 - 0}{2^",
+          "index": 16,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "{12} - 1} = \\fra",
+          "index": 17,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "c{4096}{4095} \\a",
+          "index": 18,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "pprox 1.0000\\tex",
+          "index": 19,
+          "total": 21,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "t{ V}$$\n转换为毫伏：",
+          "index": 20,
+          "total": 21,
+          "is_complete": true
+        }
+      },
+      {
+        "type": "complete",
+        "data": {
+          "response": "1.  理想输出 ($V_{ideal}$)：\n根据资料 [1] 和 [2] 中的 EQUATION 4-1：\n$$V_{ideal} = \\frac{V_{FULL\\_SCALE} - V_{ZERO\\_SCALE}}{2^n - 1}$$\n其中 $n=12$。\n资料 [3] 提到该器件的满量程电压范围（$V_{FULL\\_SCALE}$）为 $4.096\\text{ V}$（即 $4096\\text{ mV}$），零刻度电压为 $0\\text{ V}$。\n代入公式计算：\n$$V_{ideal} = \\frac{4096 - 0}{2^{12} - 1} = \\frac{4096}{4095} \\approx 1.0000\\text{ V}$$\n转换为毫伏：",
+          "citations": [
+            {
+              "file": "MCP4725.pdf",
+              "page": 2,
+              "text_snippet": "4.2 LSB\n\nThe least significant bit or the ideal voltage difference between two successive codes.\n\nEQUATION 4-1:\n\nL S B _ {I d e a l} = \\frac {V _ {R E F}}{2 ^ {n}} = \\frac {(V _ {F u l l S c a l e} - V _ {Z e r o S c a l e})}{2 ^ {n} - 1}\n\nWhere:\n\n\\begin{array}{r c l} V _ {R E F} & = & \\text {The reference voltage} = V _ {D D} \\text {in the} \\\\ & & \\text {MCP4725. This V_{REF} is the ideal} \\\\ & & \\text {full scale voltage range} \\\\ n & = & \\text {The number of digital input bits.} \\\\ & & (n = 1 2 \\text {for MCP4725}) \\end{array}",
+              "section": ""
+            },
+            {
+              "file": "MCP4725.pdf",
+              "page": 2,
+              "text_snippet": "4.3 Integral Nonlinearity (INL) or Relative Accuracy\n\nINL error is the maximum deviation between an actual code transition point and its corresponding ideal transition point (straight line). Figure 2-5 shows the INL curve of the MCP4725. The end-point method is used for the calculation. The INL error at a given input DAC code is calculated as:\n\nEQUATION 4-2:\n\nI N L = \\frac {\\left(V _ {O U T} - V _ {I d e a l}\\right)}{L S B}\n\nWhere:\n\n\\begin{array}{r c l} \\mathrm{V} _ {\\text {Ideal}} & = & \\text {Code*LSB} \\\\ \\mathrm{V} _ {\\text {OUT}} & = & \\text {The output voltage measured at} \\\\ & & \\text {the given input code} \\end{array}",
+              "section": ""
+            },
+            {
+              "file": "MCP4725.pdf",
+              "page": 1,
+              "text_snippet": "a Acquisition Systems General Description The MCP4725 is a low-power, high accuracy, single channel, 12-bit buffered voltage output Digital-to-Analog Converter (DAC) with nonvolatile memory (EEPROM).",
+              "section": ""
+            }
+          ],
+          "processing_time": 5.411109685897827,
+          "session_id": "f5165601-9196-4d",
+          "success": true
+        }
+      }
+    ]
+  },
+  "ui_history_entry": {
+    "role": "assistant",
+    "content": "1.  理想输出 ($V_{ideal}$)：\n根据资料 [1] 和 [2] 中的 EQUATION 4-1：\n$$V_{ideal} = \\frac{V_{FULL\\_SCALE} - V_{ZERO\\_SCALE}}{2^n - 1}$$\n其中 $n=12$。\n资料 [3] 提到该器件的满量程电压范围（$V_{FULL\\_SCALE}$）为 $4.096\\text{ V}$（即 $4096\\text{ mV}$），零刻度电压为 $0\\text{ V}$。\n代入公式计算：\n$$V_{ideal} = \\frac{4096 - 0}{2^{12} - 1} = \\frac{4096}{4095} \\approx 1.0000\\text{ V}$$\n转换为毫伏：",
+    "sources": [
+      "MCP4725.pdf",
+      "MCP4725.pdf",
+      "MCP4725.pdf"
+    ],
+    "citations": [
+      {
+        "file": "MCP4725.pdf",
+        "page": 2,
+        "text_snippet": "4.2 LSB\n\nThe least significant bit or the ideal voltage difference between two successive codes.\n\nEQUATION 4-1:\n\nL S B _ {I d e a l} = \\frac {V _ {R E F}}{2 ^ {n}} = \\frac {(V _ {F u l l S c a l e} - V _ {Z e r o S c a l e})}{2 ^ {n} - 1}\n\nWhere:\n\n\\begin{array}{r c l} V _ {R E F} & = & \\text {The reference voltage} = V _ {D D} \\text {in the} \\\\ & & \\text {MCP4725. This V_{REF} is the ideal} \\\\ & & \\text {full scale voltage range} \\\\ n & = & \\text {The number of digital input bits.} \\\\ & & (n = 1 2 \\text {for MCP4725}) \\end{array}",
+        "section": ""
+      },
+      {
+        "file": "MCP4725.pdf",
+        "page": 2,
+        "text_snippet": "4.3 Integral Nonlinearity (INL) or Relative Accuracy\n\nINL error is the maximum deviation between an actual code transition point and its corresponding ideal transition point (straight line). Figure 2-5 shows the INL curve of the MCP4725. The end-point method is used for the calculation. The INL error at a given input DAC code is calculated as:\n\nEQUATION 4-2:\n\nI N L = \\frac {\\left(V _ {O U T} - V _ {I d e a l}\\right)}{L S B}\n\nWhere:\n\n\\begin{array}{r c l} \\mathrm{V} _ {\\text {Ideal}} & = & \\text {Code*LSB} \\\\ \\mathrm{V} _ {\\text {OUT}} & = & \\text {The output voltage measured at} \\\\ & & \\text {the given input code} \\end{array}",
+        "section": ""
+      },
+      {
+        "file": "MCP4725.pdf",
+        "page": 1,
+        "text_snippet": "a Acquisition Systems General Description The MCP4725 is a low-power, high accuracy, single channel, 12-bit buffered voltage output Digital-to-Analog Converter (DAC) with nonvolatile memory (EEPROM).",
+        "section": ""
+      }
+    ],
+    "message_meta": {
+      "show_citations": true,
+      "badges": [
+        "引用 3",
+        "耗时 5.4s"
+      ]
+    },
+    "timestamp": "20:46:29",
+    "processing_time": 5.411109685897827
+  },
+  "rendered_html": "<div class=\"chat-message chat-message-assistant\">\n    <div class=\"chat-avatar\">🤖</div>\n    <div class=\"chat-content\">\n        <div class=\"chat-bubble chat-bubble-assistant\"><div class=\"chat-text\">1.  理想输出 ($V_{ideal}$)：<br>根据资料 [1] 和 [2] 中的 EQUATION 4-1：<br>$$V_{ideal} = \\frac{V_{FULL\\_SCALE} - V_{ZERO\\_SCALE}}{2^n - 1}$$<br>其中 $n=12$。<br>资料 [3] 提到该器件的满量程电压范围（$V_{FULL\\_SCALE}$）为 $4.096\\text{ V}$（即 $4096\\text{ mV}$），零刻度电压为 $0\\text{ V}$。<br>代入公式计算：<br>$$V_{ideal} = \\frac{4096 - 0}{2^{12} - 1} = \\frac{4096}{4095} \\approx 1.0000\\text{ V}$$<br>转换为毫伏：</div></div>\n        <div class=\"chat-citations\"><div class=\"chat-citations-title\">📚 信息来源</div><div class=\"chat-citation-item\">📄 MCP4725.pdf · 第 2 页 <a href=\"http://127.0.0.1:8221/api/v1/documents/c06748dc/pages/2/image\" target=\"_blank\" rel=\"noopener\">📷 查看截图</a></div><div class=\"chat-citation-item\">📄 MCP4725.pdf · 第 1 页 <a href=\"http://127.0.0.1:8221/api/v1/documents/c06748dc/pages/1/image\" target=\"_blank\" rel=\"noopener\">📷 查看截图</a></div></div>\n        <div class=\"chat-meta\"><span class=\"chat-meta-badge\">引用 3</span><span class=\"chat-meta-badge\">耗时 5.4s</span></div>\n        <div class=\"chat-timestamp\">20:46:29</div>\n    </div>\n</div>",
+  "rendered_text": "1.  理想输出 ($V_{ideal}$)：\n根据资料 [1] 和 [2] 中的 EQUATION 4-1：\n$$V_{ideal} = \\frac{V_{FULL\\_SCALE} - V_{ZERO\\_SCALE}}{2^n - 1}$$\n其中 $n=12$。\n资料 [3] 提到该器件的满量程电压范围（$V_{FULL\\_SCALE}$）为 $4.096\\text{ V}$（即 $4096\\text{ mV}$），零刻度电压为 $0\\text{ V}$。\n代入公式计算：\n$$V_{ideal} = \\frac{4096 - 0}{2^{12} - 1} = \\frac{4096}{4095} \\approx 1.0000\\text{ V}$$\n转换为毫伏：",
+  "schema": {
+    "properties": {
+      "query": {
+        "type": "string",
+        "maxLength": 2000,
+        "minLength": 1,
+        "title": "Query",
+        "description": "用户查询内容"
+      },
+      "document_ids": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array",
+        "title": "Document Ids",
+        "description": "选中的文档ID列表"
+      },
+      "session_id": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Session Id",
+        "description": "会话ID，不传则自动生成"
+      },
+      "trace": {
+        "type": "boolean",
+        "title": "Trace",
+        "default": false
+      }
+    },
+    "type": "object",
+    "required": [
+      "query"
+    ],
+    "title": "ChatRequest",
+    "description": "Request model for chat queries."
+  }
+}

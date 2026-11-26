@@ -1,5 +1,7 @@
 # MinerU 的输入输出契约与首个修复验收
 
+以下记录对应移除 Resolver 之前的代码。当前流程保存原表列位与合并标记，问答依据正文和原表生成。运行方式见 [AutoDL 部署手册](AUTODL_SETUP.md)。
+
 本次在 AutoDL 上只读核对部署配置和保存的 OPA211、ADS1115、BSO301SP 产物。把两份诊断样本的真实 HTML 重放给当前 `table_struct.py`，复现了数值列错误。本次未重跑 MinerU，也未变更应用源码。
 
 ## 实际档位

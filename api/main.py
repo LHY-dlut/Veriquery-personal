@@ -70,7 +70,7 @@ async def lifespan(app: FastAPI):
         settings.validate_config()
 
         try:
-            from core.sqlite_utils import check_database_health, repair_corrupted_database, safe_delete_database
+            from core.sqlite_utils import check_database_health, repair_corrupted_database
 
             db_paths_to_check = [
                 getattr(settings, 'table_db_path', './data/tables.db'),
@@ -83,8 +83,7 @@ async def lifespan(app: FastAPI):
                     if repair_corrupted_database(db_path):
                         logger.info(f"Database auto-repaired: {db_path}")
                     else:
-                        logger.error(f"Database unrepairable, deleted: {db_path}")
-                        safe_delete_database(db_path)
+                        logger.error("SQLite source preserved; maintenance required: %s", db_path)
             logger.info("Database health checks completed")
         except Exception as e:
             logger.warning(f"Database health check skipped: {e}")

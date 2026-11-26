@@ -1,0 +1,391 @@
+{
+  "repository": "https://github.com/palginpav/datasheet-rag",
+  "revision": "885cbb4dacb633cc703cecad450c6be35a7b3668",
+  "golden_sha256": "39c58037becce0c5af9e183292c3b8ec2ea197ed9ae61e13f73c2baf3d4e4546",
+  "manifest_sha256": "b61376313f266d8acee0c0f99ed8154a6ed7454498c45f5e745c46d4887c5ff3",
+  "question_count": 100,
+  "answerable": 91,
+  "categories": {
+    "spec-lookup": 40,
+    "conditions": 14,
+    "mcu": 16,
+    "comparison": 10,
+    "cross-section": 6,
+    "unanswerable": 9,
+    "pinout": 5
+  },
+  "pdfs": [
+    {
+      "sha256": "37280f68ad38b83241cacfc3f470dcb9b2e787586beca22520f37d1c03a006db",
+      "filename": "24LC256.pdf",
+      "parts": [
+        "24LC256"
+      ],
+      "urls": [
+        "https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/24AA256-24LC256-24FC256-256K-I2C-Serial-EEPROM-DS20001203.pdf"
+      ]
+    },
+    {
+      "sha256": "5fe00cf9509daba7ca311cd0a461debc563dd57598c5de3bf9c31903dc2238da",
+      "filename": "ADS1115.pdf",
+      "parts": [
+        "ADS1115"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/ads1115.pdf"
+      ]
+    },
+    {
+      "sha256": "487bfd27103d0bacbe3c5136b7613045230ad38354e9f20a0f879c70dba90909",
+      "filename": "ADS131M04.pdf",
+      "parts": [
+        "ADS131M04"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/ads131m04.pdf"
+      ]
+    },
+    {
+      "sha256": "d3f22dfcf3a096b1f131302153a4c4ebdb39ba18f7a114b0554c8ae11c3abc3f",
+      "filename": "INA226.pdf",
+      "parts": [
+        "INA226"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/ina226.pdf"
+      ]
+    },
+    {
+      "sha256": "4fd8415a20d932fdc1de5be99e1aa5d2af1546f05c0a785a047ff93420364348",
+      "filename": "LD1117.pdf",
+      "parts": [
+        "LD1117"
+      ],
+      "urls": [
+        "https://www.st.com/resource/en/datasheet/ld1117.pdf"
+      ]
+    },
+    {
+      "sha256": "c4cd25b7f4de7b1c98f117c47de28ae5e596a84fc54b1f6d24f9f5adde6fe8ae",
+      "filename": "LM2596.pdf",
+      "parts": [
+        "LM2596"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/lm2596.pdf"
+      ]
+    },
+    {
+      "sha256": "e7e6a64dc4ccb54db367a1412228abe4fdd34b43945740cb9967468843db2da0",
+      "filename": "LM4040.pdf",
+      "parts": [
+        "LM4040"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/lm4040.pdf"
+      ]
+    },
+    {
+      "sha256": "b0a93950c14a02d1849f7aa37d0a795be01bb44fb8f54af99925b06af39cdde3",
+      "filename": "LM75B.pdf",
+      "parts": [
+        "LM75B"
+      ],
+      "urls": [
+        "https://www.nxp.com/docs/en/data-sheet/LM75B.pdf"
+      ]
+    },
+    {
+      "sha256": "26a503d76279cc10e40cfc36e80bb87fd33d0de80093d1bdcc4dc29435b10f72",
+      "filename": "MCP3008.pdf",
+      "parts": [
+        "MCP3008"
+      ],
+      "urls": [
+        "https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP3004-MCP3008-Data-Sheet-DS20001295.pdf"
+      ]
+    },
+    {
+      "sha256": "5249b67ed71256bcd6588a665a4e854955d3f2b17e7e57d8beb0ae7436d668ff",
+      "filename": "MCP3421.pdf",
+      "parts": [
+        "MCP3421"
+      ],
+      "urls": [
+        "https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/22003e.pdf"
+      ]
+    },
+    {
+      "sha256": "dfb2e61548e5f4d8010d20e51e9a07c99a8d3f8b20f95112b55e4613298f2fe1",
+      "filename": "MCP4725.pdf",
+      "parts": [
+        "MCP4725"
+      ],
+      "urls": [
+        "https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP4725-Data-Sheet-20002039E.pdf"
+      ]
+    },
+    {
+      "sha256": "5b0e0efe173d5fdaf72c31e697591b0b1cacbd440ec6ba95d742fd587c7aff33",
+      "filename": "MCP9700.pdf",
+      "parts": [
+        "MCP9700"
+      ],
+      "urls": [
+        "https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf"
+      ]
+    },
+    {
+      "sha256": "0e837564aa0bc5e6b3f78bd95e3fa45b0bf7c8554989e4f76d9d86b3c876079d",
+      "filename": "MF10.pdf",
+      "parts": [
+        "MF10"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/mf10-n.pdf"
+      ]
+    },
+    {
+      "sha256": "53a9ed65395cba10a4f7e88e05dfa81bd63ba8e9efc4897f41079dc09ae48613",
+      "filename": "NCP1117.pdf",
+      "parts": [
+        "NCP1117"
+      ],
+      "urls": [
+        "https://www.onsemi.com/pdf/datasheet/ncp1117-d.pdf"
+      ]
+    },
+    {
+      "sha256": "44772d833141cc80cb95180202d2970038b7542e379b5cc852b4961c59233f20",
+      "filename": "OPA188.pdf",
+      "parts": [
+        "OPA188"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/opa188.pdf"
+      ]
+    },
+    {
+      "sha256": "91579dba067c071742d056acdd2f5ea3c5baa7a5efa19a32ddfd6a6facc08bcf",
+      "filename": "OPA211.pdf",
+      "parts": [
+        "OPA211"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/opa211.pdf"
+      ]
+    },
+    {
+      "sha256": "4c18dc2598c4bef739f07a882eedb03e0b1cfb0f49a5761c2ce6eac257599d36",
+      "filename": "OPA2188.pdf",
+      "parts": [
+        "OPA2188"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/opa2188.pdf"
+      ]
+    },
+    {
+      "sha256": "18a0d8ccab88006bad777d75dfa9df41b562cf772969c1001ef734d5d6f956c5",
+      "filename": "OPA2591.pdf",
+      "parts": [
+        "OPA2591"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/opa2591.pdf"
+      ]
+    },
+    {
+      "sha256": "e9dcbc00080cba1e45a0e2c8485fe0cbced11f4811e335b897862410861834db",
+      "filename": "OPA2993.pdf",
+      "parts": [
+        "OPA2993"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/opa2993.pdf"
+      ]
+    },
+    {
+      "sha256": "cee51afeffc843d408eb7af93621885efb10ff1b4a1d27ecfe91b2162d1e8345",
+      "filename": "OPA620.pdf",
+      "parts": [
+        "OPA620"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/opa620.pdf"
+      ]
+    },
+    {
+      "sha256": "eed5016c9f658e49079830e21bdea65bd9a49f9c3bd5a98ac61752cc29000d57",
+      "filename": "REF5025.pdf",
+      "parts": [
+        "REF5025"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/ref50.pdf"
+      ]
+    },
+    {
+      "sha256": "e98fc0c59168c035d7958111924dae7e21e46ab45bdfd6400aef048299d6d716",
+      "filename": "SN65HVD230.pdf",
+      "parts": [
+        "SN65HVD230"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/sn65hvd230.pdf"
+      ]
+    },
+    {
+      "sha256": "e0e000fcd9746f67e0cad13466176f826163b53f03852c1e7963c2b4f347288b",
+      "filename": "SN75176B.pdf",
+      "parts": [
+        "SN75176B"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/sn75176b.pdf"
+      ]
+    },
+    {
+      "sha256": "896fc5601df00779e650ff8e9d52ac8f800ce14d404d19f976383ae205053f47",
+      "filename": "STM32C031C4.pdf",
+      "parts": [
+        "STM32C031C4"
+      ],
+      "urls": [
+        "https://www.st.com/resource/en/datasheet/stm32c031c4.pdf"
+      ]
+    },
+    {
+      "sha256": "a523bb3c04adf0e97ae44cdc29ecc75bd557e95b28376399a5ffb11d0e89dc08",
+      "filename": "STM32C5A3ZG.pdf",
+      "parts": [
+        "STM32C5A3ZG"
+      ],
+      "urls": [
+        "https://www.st.com/resource/en/datasheet/stm32c5a3zg.pdf"
+      ]
+    },
+    {
+      "sha256": "b01391f094699aeb6a4d952b587c06d13a81a0d300161342efa0534f6695ef08",
+      "filename": "STM32F072RB.pdf",
+      "parts": [
+        "STM32F072RB"
+      ],
+      "urls": [
+        "https://www.st.com/resource/en/datasheet/stm32f072rb.pdf"
+      ]
+    },
+    {
+      "sha256": "1e54ce18e6c34c5b4a78986f26e245e143748c721009fc9af5953795c30686bc",
+      "filename": "STM32F103RB.pdf",
+      "parts": [
+        "STM32F103RB"
+      ],
+      "urls": [
+        "https://www.st.com/resource/en/datasheet/stm32f103rb.pdf"
+      ]
+    },
+    {
+      "sha256": "a83ee1377da65257fe5e7d09a2da8027ecff1bce0594a2176b18cddca47fa7cc",
+      "filename": "STM32G071C8.pdf",
+      "parts": [
+        "STM32G071C8"
+      ],
+      "urls": [
+        "https://www.st.com/resource/en/datasheet/stm32g071c8.pdf"
+      ]
+    },
+    {
+      "sha256": "b018e20dbe34b63a43e49365518b186ef0e0e8e899deeabc1c9f53a3a10c1add",
+      "filename": "STM32G474RE.pdf",
+      "parts": [
+        "STM32G474RE"
+      ],
+      "urls": [
+        "https://www.st.com/resource/en/datasheet/stm32g474re.pdf"
+      ]
+    },
+    {
+      "sha256": "f6e620179006c8c4d497b477ba065edc89c6dd9ac24d9debb3362910651f42ee",
+      "filename": "STM32H743ZI.pdf",
+      "parts": [
+        "STM32H743ZI"
+      ],
+      "urls": [
+        "https://www.st.com/resource/en/datasheet/stm32h743zi.pdf"
+      ]
+    },
+    {
+      "sha256": "a45a857e3aa75ac166dd532c76d76d5dd8377b9c5bf6f15c03c9cf85aeec0f65",
+      "filename": "STM32L476RG.pdf",
+      "parts": [
+        "STM32L476RG"
+      ],
+      "urls": [
+        "https://www.st.com/resource/en/datasheet/stm32l476rg.pdf"
+      ]
+    },
+    {
+      "sha256": "c8d27b57c6cd2018d5a38d65fcc030f7cd47f2221232e26b05dc8671095693ca",
+      "filename": "THVD1450.pdf",
+      "parts": [
+        "THVD1450"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/thvd1450.pdf"
+      ]
+    },
+    {
+      "sha256": "6637cd500dda3c1c951ce29bed7fe909f11f9a3bef64b096dbb486827add9f11",
+      "filename": "TJA1051.pdf",
+      "parts": [
+        "TJA1051"
+      ],
+      "urls": [
+        "https://www.nxp.com/docs/en/data-sheet/TJA1051.pdf"
+      ]
+    },
+    {
+      "sha256": "45292def526e6083ec0a246e8119638b216e3c783aa12f73ac606abdb38d5f65",
+      "filename": "TLV886.pdf",
+      "parts": [
+        "TLV886"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/tlv886.pdf"
+      ]
+    },
+    {
+      "sha256": "081a6fcbc3e8d46adb9a26455357891aae4bae71bf791cff97dba278bdaf7e31",
+      "filename": "TLV9061.pdf",
+      "parts": [
+        "TLV9061",
+        "TLV9062"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/tlv9061.pdf",
+        "https://www.ti.com/lit/ds/symlink/tlv9062.pdf"
+      ]
+    },
+    {
+      "sha256": "f8da020789b98d7b8e1e5adca40287da45655296c64461037f8fc1dee1945d6b",
+      "filename": "TMP117.pdf",
+      "parts": [
+        "TMP117"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/tmp117.pdf"
+      ]
+    },
+    {
+      "sha256": "d117773bb7370fd79377bc70ce987eec3469ea5979547a09df52fca5f95b2e69",
+      "filename": "TPS63020.pdf",
+      "parts": [
+        "TPS63020"
+      ],
+      "urls": [
+        "https://www.ti.com/lit/ds/symlink/tps63020.pdf"
+      ]
+    }
+  ]
+}

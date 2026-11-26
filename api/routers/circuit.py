@@ -104,7 +104,6 @@ async def get_image_by_path(image_path: str):
         full_path = _resolve_image_path(image_path, settings)
         return FileResponse(
             path=str(full_path),
-            media_type="image/png",
             filename=full_path.name
         )
     except FileNotFoundError as e:
@@ -138,8 +137,7 @@ async def get_circuit_image(circuit_id: str, container=Depends(get_service_conta
         full_path = _resolve_image_path(image_path, settings)
         return FileResponse(
             path=str(full_path),
-            media_type="image/png",
-            filename=f"circuit_{circuit_id}.png"
+            filename=f"circuit_{circuit_id}{full_path.suffix}"
         )
     except HTTPException:
         raise
@@ -786,34 +784,24 @@ def _fix_image_path(image_path: str, metadata: dict) -> str:
 
 
 def _resolve_image_path(image_path: str, settings) -> Path:
-    """Resolve an image path by trying multiple base directories.
-
-    Args:
-        image_path: Relative or absolute path (may be URL-encoded).
-        settings: Settings object providing BASE_DIR and DATA_DIR.
-
-    Returns:
-        Resolved absolute Path.
-
-    Raises:
-        FileNotFoundError: If the image file cannot be found.
-    """
+    """Serve generated images from the configured image directories only."""
     if not image_path:
-        raise FileNotFoundError("图像路径为空")
-
-    decoded_path = urllib.parse.unquote(image_path)
-
-    paths_to_try = [
-        Path(decoded_path),
-        Path(settings.BASE_DIR) / decoded_path,
-        Path(settings.DATA_DIR) / decoded_path,
-    ]
-
-    for full_path in paths_to_try:
-        if full_path.exists():
-            return full_path
-
-    raise FileNotFoundError(f"图像文件不存在: {image_path}")
+        raise FileNotFoundError("图像不可用")
+    requested = Path(urllib.parse.unquote(image_path))
+    roots = (settings.IMAGE_DIR.resolve(), (settings.DATA_DIR / "circuit_images").resolve())
+    candidates = (
+        requested, settings.BASE_DIR / requested, settings.DATA_DIR / requested,
+        *(root / requested for root in roots),
+    )
+    for candidate in candidates:
+        try:
+            path = candidate.resolve(strict=True)
+        except (OSError, RuntimeError):
+            continue
+        if (path.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}
+                and any(path.is_relative_to(root) for root in roots) and path.is_file()):
+            return path
+    raise FileNotFoundError("图像不可用")
 
 
 def _enhance_search_query(query: str) -> str:

@@ -1,0 +1,179 @@
+{
+  "tier": "basic",
+  "original_capture_sha256": "a3b526135b3620b9f42329e14c7df3c68527ce30581c066499a121177780fa3e",
+  "original_pdf_pages": [
+    1,
+    5,
+    6
+  ],
+  "elapsed_seconds": 13.698,
+  "page_tables": [
+    {
+      "page_idx": 0,
+      "tables": [
+        {
+          "bbox": [
+            0.513,
+            0.529,
+            0.906,
+            0.601
+          ],
+          "content": "<table><tbody><tr><td>PART NUMBER</td><td>PACKAGE(<sup>1</sup>)</td><td>PACKAGE SIZE(<sup>2</sup>)</td></tr><tr><td rowspan=\"3\">ADS111x</td><td>RUG (X2QFN, 10)</td><td>1.50mm × 2.00mm</td></tr><tr><td>DYN (SOT, 10)</td><td>2.90mm × 2.80mm</td></tr><tr><td>DGS (VSSOP, 10)</td><td>3.00mm × 4.90mm</td></tr></tbody></table>",
+          "captions": [
+            {
+              "bbox": [
+                0.626,
+                0.515,
+                0.794,
+                0.529
+              ],
+              "content": "Package Information"
+            }
+          ],
+          "footnotes": [
+            {
+              "bbox": [
+                0.511,
+                0.609,
+                0.771,
+                0.623
+              ],
+              "content": "(1) For more information, see Section 14."
+            },
+            {
+              "bbox": [
+                0.511,
+                0.622,
+                0.882,
+                0.646
+              ],
+              "content": "(2) The package size (length × width) is a nominal value and includes pins, where applicable."
+            }
+          ]
+        },
+        {
+          "bbox": [
+            0.512,
+            0.661,
+            0.907,
+            0.732
+          ],
+          "content": "| PART NUMBER | INPUT CHANNELS | FEATURES(<sup>1</sup>) |\n| --- | --- | --- |\n| ADS1113 | 1 DE (1 SE) | - |\n| ADS1114 | 1 DE (1 SE) | PGA, comparator |\n| ADS1115 | 2 DE (4 SE) | PGA, comparator |",
+          "captions": [
+            {
+              "bbox": [
+                0.634,
+                0.648,
+                0.788,
+                0.661
+              ],
+              "content": "Device Information"
+            }
+          ],
+          "footnotes": []
+        }
+      ]
+    },
+    {
+      "page_idx": 1,
+      "tables": [
+        {
+          "bbox": [
+            0.09,
+            0.15,
+            0.908,
+            0.898
+          ],
+          "content": "<table><tbody><tr><td colspan=\"2\">PARAMETER</td><td>TEST CONDITIONS</td><td>MIN TYP MAX</td><td>UNIT</td></tr><tr><td colspan=\"5\">ANALOG INPUT</td></tr><tr><td rowspan=\"4\"></td><td rowspan=\"4\">Common-mode input impedance</td><td>FSR = ±6.144V(<sup>1</sup>)</td><td>10</td><td rowspan=\"4\">MΩ</td></tr><tr><td>FSR = ±4.096V(<sup>1</sup>), FSR = ±2.048V</td><td>6</td></tr><tr><td>FSR = ±1.024V</td><td>3</td></tr><tr><td>FSR = ±0.512V, FSR = ±0.256V</td><td>100</td></tr><tr><td rowspan=\"5\"></td><td rowspan=\"5\">Differential input impedance</td><td>FSR = ±6.144V(<sup>1</sup>)</td><td>22</td><td rowspan=\"4\">MΩ</td></tr><tr><td>FSR = ±4.096V(<sup>1</sup>)</td><td>15</td></tr><tr><td>FSR = ±2.048V</td><td>4.9</td></tr><tr><td>FSR = ±1.024V</td><td>2.4</td></tr><tr><td>FSR = ±0.512V, ±0.256V</td><td>710</td><td>kΩ</td></tr><tr><td colspan=\"5\">SYSTEM PERFORMANCE</td></tr><tr><td></td><td>Resolution (no missing codes)</td><td></td><td>16</td><td>Bits</td></tr><tr><td>DR</td><td>Data rate</td><td></td><td>8, 16, 32, 64, 128, 250, 475, 860</td><td>SPS</td></tr><tr><td></td><td>Data rate variation</td><td>All data rates</td><td>-10% 10%</td><td></td></tr><tr><td></td><td>Output noise</td><td></td><td>See Noise Performance section</td><td></td></tr><tr><td>INL</td><td>Integral nonlinearity</td><td>DR = 8SPS, FSR = ±2.048V(<sup>2</sup>)</td><td>1</td><td>LSB</td></tr><tr><td rowspan=\"2\"></td><td rowspan=\"2\">Offset error</td><td>FSR = ±2.048V, differential inputs</td><td>-3 ±1 3</td><td rowspan=\"2\">LSB</td></tr><tr><td>FSR = ±2.048V, single-ended inputs</td><td>±3</td></tr><tr><td></td><td>Offset drift over temperature</td><td>FSR = ±2.048V</td><td>0.005</td><td>LSB/°C</td></tr><tr><td></td><td>Long-term Offset drift</td><td>FSR = ±2.048V, T<sub>A</sub> = 125°C, 1000 hours</td><td>±1</td><td>LSB</td></tr><tr><td></td><td>Offset power-supply rejection</td><td>FSR = ±2.048V, DC supply variation</td><td>1</td><td>LSB/V</td></tr><tr><td></td><td>Offset channel match</td><td>Match between any two inputs</td><td>3</td><td>LSB</td></tr><tr><td></td><td>Gain error(<sup>3</sup>)</td><td>FSR = ±2.048V, T<sub>A</sub> = 25°C</td><td>0.01% 0.15%</td><td></td></tr><tr><td rowspan=\"3\"></td><td rowspan=\"3\">Gain drift over temperature(<sup>3</sup>)</td><td>FSR = ±0.256V</td><td>7</td><td rowspan=\"3\">ppm/°C</td></tr><tr><td>FSR = ±2.048V</td><td>5 40</td></tr><tr><td>FSR = ±6.144V(<sup>1</sup>)</td><td>5</td></tr><tr><td></td><td>Long-term gain drift(<sup>3</sup>)</td><td>FSR = ±2.048V, T<sub>A</sub> = 125°C, 1000 hours</td><td>±0.05%</td><td></td></tr><tr><td></td><td>Gain power-supply rejection</td><td></td><td>80</td><td>ppm/V</td></tr><tr><td></td><td>Gain match(<sup>3</sup>)</td><td>Match between any two gains</td><td>0.02% 0.1%</td><td></td></tr><tr><td></td><td>Gain channel match</td><td>Match between any two inputs</td><td>0.05% 0.1%</td><td></td></tr><tr><td rowspan=\"5\">CMRR</td><td rowspan=\"5\">Common-mode rejection ratio</td><td>At DC, FSR = ±0.256V</td><td>105</td><td rowspan=\"5\">dB</td></tr><tr><td>At DC, FSR = ±2.048V</td><td>100</td></tr><tr><td>At DC, FSR = ±6.144V(<sup>1</sup>)</td><td>90</td></tr><tr><td>f<sub>CM</sub> = 60Hz, DR = 8SPS</td><td>105</td></tr><tr><td>f<sub>CM</sub> = 50Hz, DR = 8SPS</td><td>105</td></tr><tr><td colspan=\"5\">DIGITAL INPUT/OUTPUT</td></tr><tr><td>V<sub>IH</sub></td><td>High-level input voltage</td><td></td><td>0.7 VDD 5.5</td><td>V</td></tr><tr><td>V<sub>IL</sub></td><td>Low-level input voltage</td><td></td><td>GND 0.3 VDD</td><td>V</td></tr><tr><td>V<sub>OL</sub></td><td>Low-level output voltage</td><td>I<sub>OL</sub> = 3mA</td><td>GND 0.15 0.4</td><td>V</td></tr><tr><td></td><td>Input leakage current</td><td>GND &lt; V<sub>DIG</sub> &lt; VDD</td><td>-10 10</td><td>µA</td></tr></tbody></table>",
+          "captions": [
+            {
+              "bbox": [
+                0.088,
+                0.123,
+                0.884,
+                0.151
+              ],
+              "content": "at $\\mathrm{VDD} = 3.3\\mathrm{V},$ data $\\mathsf { r a t e } = 8 \\mathsf { S P S } .$ , and full-scale input voltage range (FSR) = ±2.048V (unless otherwise noted); maximum and minimum specifications apply from $\\mathrm{T}_{\\mathrm{A}}=-40^{\\circ} \\mathrm{C} \\mathrm{~t} o+125^{\\circ} \\mathrm{C};$ typical specifications are at $\\mathsf { T } _ { \\mathsf { A } } = 2 5 ^ { \\circ } \\mathsf { C }$"
+            }
+          ],
+          "footnotes": []
+        }
+      ]
+    },
+    {
+      "page_idx": 2,
+      "tables": [
+        {
+          "bbox": [
+            0.091,
+            0.138,
+            0.907,
+            0.299
+          ],
+          "content": "<table><tbody><tr><td colspan=\"2\">PARAMETER</td><td colspan=\"2\">TEST CONDITIONS</td><td>MIN TYP MAX</td><td>UNIT</td></tr><tr><td colspan=\"6\">POWER-SUPPLY</td></tr><tr><td rowspan=\"4\">I<sub>VDD</sub></td><td rowspan=\"4\">Supply current</td><td rowspan=\"2\">Power-down</td><td>T<sub>A</sub> = 25°C</td><td>0.5 2</td><td rowspan=\"4\">µA</td></tr><tr><td></td><td>5</td></tr><tr><td rowspan=\"2\">Operating</td><td>T<sub>A</sub> = 25°C</td><td>150 200</td></tr><tr><td></td><td>300</td></tr><tr><td rowspan=\"3\">P<sub>D</sub></td><td rowspan=\"3\">Power dissipation</td><td colspan=\"2\">VDD = 5.0V</td><td>0.9</td><td rowspan=\"3\">mW</td></tr><tr><td colspan=\"2\">VDD = 3.3 V</td><td>0.5</td></tr><tr><td colspan=\"2\">VDD = 2.0V</td><td>0.3</td></tr></tbody></table>",
+          "captions": [
+            {
+              "bbox": [
+                0.089,
+                0.111,
+                0.884,
+                0.14
+              ],
+              "content": "at VDD = 3.3V, data rate = 8SPS, and full-scale input voltage range $(FSR)=\\pm2.048V$ (unless otherwise noted); maximum and minimum specifications apply from $\\mathrm{T}_{\\mathrm{A}}=-40^{\\circ} \\mathrm{C} \\mathrm{~t} o+125^{\\circ} \\mathrm{C};$ typical specifications are at $\\mathsf { T } _ { \\mathsf { A } } = 2 5 ^ { \\circ } \\mathsf { C }$"
+            }
+          ],
+          "footnotes": [
+            {
+              "bbox": [
+                0.089,
+                0.307,
+                0.895,
+                0.332
+              ],
+              "content": "(1) This parameter expresses the full-scale range of the ADC scaling. No more than VDD + 0.3V must be applied to the analog inputs of the device. See Table 7-1 for more information."
+            },
+            {
+              "bbox": [
+                0.09,
+                0.331,
+                0.342,
+                0.344
+              ],
+              "content": "(2) Best-fit INL; covers 99% of full-scale"
+            },
+            {
+              "bbox": [
+                0.089,
+                0.344,
+                0.477,
+                0.357
+              ],
+              "content": "(3) Includes all errors from onboard PGA and voltage reference"
+            }
+          ]
+        },
+        {
+          "bbox": [
+            0.091,
+            0.401,
+            0.907,
+            0.644
+          ],
+          "content": "<table><tbody><tr><td rowspan=\"2\" colspan=\"2\"></td><td>FAST MODE</td><td>HIGH-SPEED MODE</td><td rowspan=\"2\">UNIT</td></tr><tr><td>MIN MAX</td><td>MIN MAX</td></tr><tr><td>f<sub>SCL</sub></td><td>SCL clock frequency</td><td>0.01 0.4</td><td>0.01 3.4</td><td>MHz</td></tr><tr><td>t<sub>BUF</sub></td><td>Bus free time between START and STOP condition</td><td>600</td><td>160</td><td>ns</td></tr><tr><td>t<sub>HDSTA</sub></td><td>Hold time after repeated START condition. After this period, the first clock is generated.</td><td>600</td><td>160</td><td>ns</td></tr><tr><td>t<sub>SUSTA</sub></td><td>Setup time for a repeated START condition</td><td>600</td><td>160</td><td>ns</td></tr><tr><td>t<sub>SUSTO</sub></td><td>Setup time for STOP condition</td><td>600</td><td>160</td><td>ns</td></tr><tr><td>t<sub>HDDAT</sub></td><td>Data hold time</td><td>0</td><td>0</td><td>ns</td></tr><tr><td>t<sub>SUDAT</sub></td><td>Data setup time</td><td>100</td><td>10</td><td>ns</td></tr><tr><td>t<sub>LOW</sub></td><td>Low period of the SCL clock pin</td><td>1300</td><td>160</td><td>ns</td></tr><tr><td>t<sub>HIGH</sub></td><td>High period for the SCL clock pin</td><td>600</td><td>60</td><td>ns</td></tr><tr><td>t<sub>F</sub></td><td>Fall time for both SDA and SCL signals(<sup>1</sup>)</td><td>300</td><td>160</td><td>ns</td></tr><tr><td>t<sub>R</sub></td><td>Rise time for both SDA and SCL signals(<sup>1</sup>)</td><td>300</td><td>160</td><td>ns</td></tr></tbody></table>",
+          "captions": [],
+          "footnotes": [
+            {
+              "bbox": [
+                0.089,
+                0.653,
+                0.702,
+                0.667
+              ],
+              "content": "(1) For high-speed mode maximum values, the capacitive load on the bus line must not exceed 400pF."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

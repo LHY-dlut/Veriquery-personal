@@ -1,0 +1,66 @@
+{
+  "scoring": {
+    "fully_correct": "All requested facts, units and conditions, with supporting citations and no conflicting claims.",
+    "correct_refusal": "Declines the unsupported requested field without inventing the requested mode or length.",
+    "retrieved_complete": "All required source facts occur in returned candidates. For h11 this includes the stress-rating caveat.",
+    "model_input_complete": "All required facts appear in actual model inputs, counted across calls. Joint availability is flagged separately.",
+    "gold_core_correct": "The requested core conclusions are correct. Citation defects or unsupported extra claims are scored separately."
+  },
+  "cases": [
+    {
+      "id": "h01", "plain": "partial", "current": "partial", "retrieved_complete": true, "model_input_complete": true,
+      "gold_core_correct": false, "gold_fully_correct": false,
+      "chunks": ["25567d75_p1_c3"], "note": "The input includes 11-bit two's complement and 0.125 °C. Both API replies and the gold-context reply omit two's complement."
+    },
+    {
+      "id": "h02", "plain": "partial", "current": "partial", "retrieved_complete": true, "model_input_complete": false,
+      "gold_core_correct": true, "gold_fully_correct": false,
+      "chunks": ["25567d75_p2_tbl19", "25567d75_p1_c3"], "note": "Rank 1 has queue value 4. Rank 10 defines the consecutive faults but does not reach the model input. The gold-context reply gives both facts and adds out-of-range citation [4]."
+    },
+    {
+      "id": "h03", "plain": "incorrect", "current": "incorrect", "retrieved_complete": true, "model_input_complete": true,
+      "gold_core_correct": true, "gold_fully_correct": true,
+      "chunks": ["25567d75_p3_c13"], "note": "Rank 1 and both contexts distinguish all 16 bus bits from the 11 MSBs. Both API replies direct the controller to read 11 bits. The gold-context reply preserves both values."
+    },
+    {
+      "id": "h04", "plain": "partial", "current": "incorrect", "retrieved_complete": true, "model_input_complete": true,
+      "gold_core_correct": true, "gold_fully_correct": true,
+      "chunks": ["a7bc38d8_p2_tbl13", "a7bc38d8_p2_tbl15", "a7bc38d8_p2_c10"], "note": "Same model context. Plain outputs the two numeric magnitudes in brackets without answer units. Current assigns 38 °C to a band outside the queried temperature and uses 0.2 °C. The gold-context reply includes both correct values with units."
+    },
+    {
+      "id": "h05", "plain": "correct", "current": "correct", "retrieved_complete": true, "model_input_complete": true,
+      "gold_core_correct": false, "gold_fully_correct": false,
+      "chunks": ["a7bc38d8_p4_c15"], "note": "Both API replies preserve conversion completion and I2C access. The gold-context reply changes 'finishes before shutdown' to 'ends immediately'."
+    },
+    {
+      "id": "h06", "plain": "incorrect", "current": "partial", "retrieved_complete": true, "model_input_complete": true,
+      "gold_core_correct": true, "gold_fully_correct": true,
+      "chunks": ["a7bc38d8_p3_c12"], "note": "The input identifies MSB-first transmission and the sign bit. Plain treats the low byte as the sign. Current gives the requested facts and adds the reversed two's-complement sign convention. The gold-context response gives the requested facts without that error."
+    },
+    {
+      "id": "h07", "plain": "incorrect", "current": "incorrect", "retrieved_complete": true, "model_input_complete": true,
+      "current_joint_input": false, "gold_core_correct": true, "gold_fully_correct": true,
+      "chunks": ["25567d75_p1_c6", "a7bc38d8_p1_c2", "a7bc38d8_p2_c10"], "note": "Plain has both supply ranges in one call but returns only citation labels. Current sends the ranges to separate calls and gives no usable 5 V verdict. The gold-context reply cites both ranges and gives the correct verdict."
+    },
+    {
+      "id": "h08", "plain": "incorrect", "current": "incorrect", "retrieved_complete": false, "model_input_complete": false,
+      "current_joint_input": false, "gold_core_correct": false, "gold_fully_correct": false,
+      "chunks": ["25567d75_p1_c3", "a7bc38d8_p1_c3"], "note": "Plain misses MAX30205's step in returned candidates and drops the LM75B step before generation. Current loses the explicit LM75B step, and a numeric occurrence in an example table is insufficient. The manual context gives both values, but the model reverses their ordering and says 31.25 instead of 32."
+    },
+    {
+      "id": "h09", "plain": "correct_refusal", "current": "correct_refusal", "retrieved_complete": null, "model_input_complete": null,
+      "gold_core_correct": null, "gold_fully_correct": null,
+      "chunks": ["25567d75_p1_c6"], "note": "Both decline to give an SPI mode. Both use misleading labels around the source I2C description."
+    },
+    {
+      "id": "h10", "plain": "correct_refusal", "current": "correct_refusal", "retrieved_complete": null, "model_input_complete": null,
+      "gold_core_correct": null, "gold_fully_correct": null,
+      "chunks": ["a7bc38d8_p1_c1", "a7bc38d8_p1_c2"], "note": "Both report that the source provides no USB cable length. The current response ends with a stray numeric marker, without an asserted length."
+    },
+    {
+      "id": "h11", "plain": "incorrect", "current": "partial", "retrieved_complete": false, "model_input_complete": false,
+      "gold_core_correct": true, "gold_fully_correct": false,
+      "chunks": ["a7bc38d8_p1_c2", "a7bc38d8_p2_c5", "a7bc38d8_p2_c7"], "note": "The operating range reaches the model. Both stages retrieve the +4 V limit at rank 9 but omit it from the model context. The stress-rating caveat is indexed but not retrieved. The gold-context reply gets the meaning and 3.8 V verdict right, omits citations, and speculates about an unevidenced overvoltage protection state."
+    }
+  ]
+}

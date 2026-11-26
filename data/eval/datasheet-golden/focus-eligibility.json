@@ -1,0 +1,23 @@
+[
+  {
+    "id": "g064",
+    "question": "What is the maximum data rate of the SN65HVD230 CAN transceiver?",
+    "parts": [
+      "SN65HVD230"
+    ]
+  },
+  {
+    "id": "g065",
+    "question": "What is the maximum data rate of the THVD1450?",
+    "parts": [
+      "THVD1450"
+    ]
+  },
+  {
+    "id": "g066",
+    "question": "What standby current can the THVD1450 achieve?",
+    "parts": [
+      "THVD1450"
+    ]
+  }
+]

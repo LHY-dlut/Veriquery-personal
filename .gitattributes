@@ -19,3 +19,6 @@
 *.ico binary
 *.pdf binary
 *.zip binary
+
+# Archived traces and frozen inputs retain the exact bytes used in the experiment.
+data/eval/** -text

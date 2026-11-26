@@ -1,0 +1,1804 @@
+{
+  "planned_trials": 48,
+  "successful_scored_trials": 48,
+  "controls_sha256": "7ca3fe2425987318f7527c43fa243c4dcdeb76a69ea4e59cec0d51978099742b",
+  "generation": {
+    "temperature": 0.1,
+    "top_p": 0.9,
+    "max_tokens": 256,
+    "stream": false
+  },
+  "distinct_verified_prompts": 8,
+  "arms": {
+    "current": {
+      "requested_uid": "qwen3.5",
+      "returned_uid": "qwen3.5",
+      "deployment": {
+        "accelerators": [
+          "0"
+        ],
+        "context_length": 262144,
+        "model_engine": "Transformers",
+        "model_family": "qwen3.5",
+        "model_format": "pytorch",
+        "model_id": "Qwen/Qwen3.5-0.8B",
+        "model_name": "qwen3.5",
+        "model_path": null,
+        "model_revision": null,
+        "model_size_in_billions": "0_8",
+        "packages": {
+          "torch": "2.8.0+cu128",
+          "transformers": "5.24.1",
+          "xinference": "4.2.0"
+        },
+        "quantization": "none",
+        "requested_context_length": 4096,
+        "uid": "qwen3.5"
+      },
+      "llm_client_sha256": "eb27d8fb9131d424eb91904912ff827c55eec9db3268d7b0596a885826357ddc",
+      "inputs_sha256": {
+        "current.jsonl": "62fc9cc131a91d038a947402a598f55789731a3bc340dec613a9cbb7d4836680",
+        "current-scores.json": "a1feac3614fbf86bd983919397d1703ec0090da6eae86b1bb1fd5e171ac3dbb6",
+        "manifest.json": "8a2314fada9c4b46095bf7faf45b8d5a5d77c0ccc7c18728d376958ab2a4d2a9"
+      },
+      "overall": {
+        "n": 24,
+        "passes": {
+          "semantic": 17,
+          "strict": 11,
+          "raw_semantic": 17,
+          "raw_strict": 11
+        },
+        "finish_reasons": {
+          "stop": 24
+        },
+        "scores_by_finish_reason": {
+          "stop": {
+            "n": 24,
+            "semantic": 17,
+            "strict": 11
+          }
+        },
+        "tokens": {
+          "prompt_tokens": {
+            "count": 24,
+            "sum": 16011,
+            "min": 174,
+            "median": 343.5,
+            "mean": 667.125,
+            "max": 1833
+          },
+          "completion_tokens": {
+            "count": 24,
+            "sum": 3609,
+            "min": 49,
+            "median": 147.0,
+            "mean": 150.375,
+            "max": 247
+          },
+          "total_tokens": {
+            "count": 24,
+            "sum": 19620,
+            "min": 262,
+            "median": 493.5,
+            "mean": 817.5,
+            "max": 2063
+          }
+        },
+        "elapsed_seconds": {
+          "count": 24,
+          "sum": 78.21,
+          "min": 1.327,
+          "median": 3.193,
+          "mean": 3.259,
+          "max": 5.098
+        },
+        "empty_raw_answer": 0,
+        "empty_cleaned_answer": 0,
+        "cleaning_changed_text": 24,
+        "cleaning_changed_text_ids": [
+          "h03-original-r1",
+          "h03-original-r2",
+          "h03-original-r3",
+          "h03-short-r1",
+          "h03-short-r2",
+          "h03-short-r3",
+          "h04-original-r1",
+          "h04-original-r2",
+          "h04-original-r3",
+          "h04-short-r1",
+          "h04-short-r2",
+          "h04-short-r3",
+          "h05-original-r1",
+          "h05-original-r2",
+          "h05-original-r3",
+          "h05-short-r1",
+          "h05-short-r2",
+          "h05-short-r3",
+          "h07-original-r1",
+          "h07-original-r2",
+          "h07-original-r3",
+          "h07-short-r1",
+          "h07-short-r2",
+          "h07-short-r3"
+        ],
+        "cleaning_changed_semantic": [],
+        "cleaning_changed_strict": []
+      },
+      "by_context": {
+        "original": {
+          "n": 12,
+          "passes": {
+            "semantic": 8,
+            "strict": 3,
+            "raw_semantic": 8,
+            "raw_strict": 3
+          },
+          "finish_reasons": {
+            "stop": 12
+          },
+          "scores_by_finish_reason": {
+            "stop": {
+              "n": 12,
+              "semantic": 8,
+              "strict": 3
+            }
+          },
+          "tokens": {
+            "prompt_tokens": {
+              "count": 12,
+              "sum": 13416,
+              "min": 430,
+              "median": 1104.5,
+              "mean": 1118,
+              "max": 1833
+            },
+            "completion_tokens": {
+              "count": 12,
+              "sum": 2036,
+              "min": 64,
+              "median": 156.5,
+              "mean": 169.667,
+              "max": 247
+            },
+            "total_tokens": {
+              "count": 12,
+              "sum": 15452,
+              "min": 545,
+              "median": 1280.5,
+              "mean": 1287.667,
+              "max": 2063
+            }
+          },
+          "elapsed_seconds": {
+            "count": 12,
+            "sum": 44.112,
+            "min": 1.648,
+            "median": 3.3715,
+            "mean": 3.676,
+            "max": 5.098
+          },
+          "empty_raw_answer": 0,
+          "empty_cleaned_answer": 0,
+          "cleaning_changed_text": 12,
+          "cleaning_changed_text_ids": [
+            "h03-original-r1",
+            "h03-original-r2",
+            "h03-original-r3",
+            "h04-original-r1",
+            "h04-original-r2",
+            "h04-original-r3",
+            "h05-original-r1",
+            "h05-original-r2",
+            "h05-original-r3",
+            "h07-original-r1",
+            "h07-original-r2",
+            "h07-original-r3"
+          ],
+          "cleaning_changed_semantic": [],
+          "cleaning_changed_strict": []
+        },
+        "short": {
+          "n": 12,
+          "passes": {
+            "semantic": 9,
+            "strict": 8,
+            "raw_semantic": 9,
+            "raw_strict": 8
+          },
+          "finish_reasons": {
+            "stop": 12
+          },
+          "scores_by_finish_reason": {
+            "stop": {
+              "n": 12,
+              "semantic": 9,
+              "strict": 8
+            }
+          },
+          "tokens": {
+            "prompt_tokens": {
+              "count": 12,
+              "sum": 2595,
+              "min": 174,
+              "median": 217.0,
+              "mean": 216.25,
+              "max": 257
+            },
+            "completion_tokens": {
+              "count": 12,
+              "sum": 1573,
+              "min": 49,
+              "median": 131.5,
+              "mean": 131.083,
+              "max": 195
+            },
+            "total_tokens": {
+              "count": 12,
+              "sum": 4168,
+              "min": 262,
+              "median": 337.5,
+              "mean": 347.333,
+              "max": 442
+            }
+          },
+          "elapsed_seconds": {
+            "count": 12,
+            "sum": 34.098,
+            "min": 1.327,
+            "median": 2.8525,
+            "mean": 2.841,
+            "max": 4.034
+          },
+          "empty_raw_answer": 0,
+          "empty_cleaned_answer": 0,
+          "cleaning_changed_text": 12,
+          "cleaning_changed_text_ids": [
+            "h03-short-r1",
+            "h03-short-r2",
+            "h03-short-r3",
+            "h04-short-r1",
+            "h04-short-r2",
+            "h04-short-r3",
+            "h05-short-r1",
+            "h05-short-r2",
+            "h05-short-r3",
+            "h07-short-r1",
+            "h07-short-r2",
+            "h07-short-r3"
+          ],
+          "cleaning_changed_semantic": [],
+          "cleaning_changed_strict": []
+        }
+      },
+      "by_case": {
+        "h03": {
+          "original": {
+            "n": 3,
+            "passes": {
+              "semantic": 0,
+              "strict": 0,
+              "raw_semantic": 0,
+              "raw_strict": 0
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 0,
+                "strict": 0
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 3180,
+                "min": 1060,
+                "median": 1060,
+                "mean": 1060,
+                "max": 1060
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 491,
+                "min": 105,
+                "median": 153,
+                "mean": 163.667,
+                "max": 233
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 3671,
+                "min": 1165,
+                "median": 1213,
+                "mean": 1223.667,
+                "max": 1293
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 10.975999999999999,
+              "min": 2.932,
+              "median": 3.283,
+              "mean": 3.659,
+              "max": 4.761
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h03-original-r1",
+              "h03-original-r2",
+              "h03-original-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "ec7974a6bb53821735ccbdf6f185928f44c11d2c616683cc92c4597ca188c3a7",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h03-original-r1",
+              "h03-original-r2",
+              "h03-original-r3"
+            ]
+          },
+          "short": {
+            "n": 3,
+            "passes": {
+              "semantic": 2,
+              "strict": 2,
+              "raw_semantic": 2,
+              "raw_strict": 2
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 2,
+                "strict": 2
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 621,
+                "min": 207,
+                "median": 207,
+                "mean": 207,
+                "max": 207
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 375,
+                "min": 83,
+                "median": 123,
+                "mean": 125,
+                "max": 169
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 996,
+                "min": 290,
+                "median": 330,
+                "mean": 332,
+                "max": 376
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 8.159,
+              "min": 1.967,
+              "median": 2.684,
+              "mean": 2.72,
+              "max": 3.508
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h03-short-r1",
+              "h03-short-r2",
+              "h03-short-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "41e712c8b436d310c89104d36bb5c2c087492c3aeeb106c043b0aae189b74ec7",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": false,
+            "strict_consistent": false,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h03-short-r1",
+              "h03-short-r2",
+              "h03-short-r3"
+            ]
+          }
+        },
+        "h04": {
+          "original": {
+            "n": 3,
+            "passes": {
+              "semantic": 2,
+              "strict": 0,
+              "raw_semantic": 2,
+              "raw_strict": 0
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 2,
+                "strict": 0
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 5499,
+                "min": 1833,
+                "median": 1833,
+                "mean": 1833,
+                "max": 1833
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 454,
+                "min": 64,
+                "median": 160,
+                "mean": 151.333,
+                "max": 230
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 5953,
+                "min": 1897,
+                "median": 1993,
+                "mean": 1984.333,
+                "max": 2063
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 9.913,
+              "min": 1.648,
+              "median": 3.449,
+              "mean": 3.304,
+              "max": 4.816
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h04-original-r1",
+              "h04-original-r2",
+              "h04-original-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "eb89de2f00198ac792fec67081b89b480781d84b9c4ea8f9bdf1bacf195a6b76",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": false,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h04-original-r1",
+              "h04-original-r2",
+              "h04-original-r3"
+            ]
+          },
+          "short": {
+            "n": 3,
+            "passes": {
+              "semantic": 3,
+              "strict": 3,
+              "raw_semantic": 3,
+              "raw_strict": 3
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 3,
+                "strict": 3
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 771,
+                "min": 257,
+                "median": 257,
+                "mean": 257,
+                "max": 257
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 448,
+                "min": 125,
+                "median": 138,
+                "mean": 149.333,
+                "max": 185
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 1219,
+                "min": 382,
+                "median": 395,
+                "mean": 406.333,
+                "max": 442
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 9.604,
+              "min": 2.702,
+              "median": 3.003,
+              "mean": 3.201,
+              "max": 3.899
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h04-short-r1",
+              "h04-short-r2",
+              "h04-short-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "42dc81ed286b1e8042f8498eaa8eb26f3641e7062b3703003ac5dd5ecfcbb7a3",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h04-short-r1",
+              "h04-short-r2",
+              "h04-short-r3"
+            ]
+          }
+        },
+        "h05": {
+          "original": {
+            "n": 3,
+            "passes": {
+              "semantic": 3,
+              "strict": 2,
+              "raw_semantic": 3,
+              "raw_strict": 2
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 3,
+                "strict": 2
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 3447,
+                "min": 1149,
+                "median": 1149,
+                "mean": 1149,
+                "max": 1149
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 485,
+                "min": 119,
+                "median": 150,
+                "mean": 161.667,
+                "max": 216
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 3932,
+                "min": 1268,
+                "median": 1299,
+                "mean": 1310.667,
+                "max": 1365
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 10.501000000000001,
+              "min": 2.656,
+              "median": 3.294,
+              "mean": 3.5,
+              "max": 4.551
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h05-original-r1",
+              "h05-original-r2",
+              "h05-original-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "ff1022a421f9b2e5ead651fffdde886134fa9dd2228f2d81929e929bf8dc6fa4",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": false,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h05-original-r1",
+              "h05-original-r2",
+              "h05-original-r3"
+            ]
+          },
+          "short": {
+            "n": 3,
+            "passes": {
+              "semantic": 3,
+              "strict": 3,
+              "raw_semantic": 3,
+              "raw_strict": 3
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 3,
+                "strict": 3
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 681,
+                "min": 227,
+                "median": 227,
+                "mean": 227,
+                "max": 227
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 357,
+                "min": 49,
+                "median": 113,
+                "mean": 119,
+                "max": 195
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 1038,
+                "min": 276,
+                "median": 340,
+                "mean": 346,
+                "max": 422
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 7.872999999999999,
+              "min": 1.327,
+              "median": 2.512,
+              "mean": 2.624,
+              "max": 4.034
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h05-short-r1",
+              "h05-short-r2",
+              "h05-short-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "a300a0a56f86d65b059b1dc1d93ed79c2ba0915ee6a078d3c9e53f55f8fbe470",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h05-short-r1",
+              "h05-short-r2",
+              "h05-short-r3"
+            ]
+          }
+        },
+        "h07": {
+          "original": {
+            "n": 3,
+            "passes": {
+              "semantic": 3,
+              "strict": 1,
+              "raw_semantic": 3,
+              "raw_strict": 1
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 3,
+                "strict": 1
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 1290,
+                "min": 430,
+                "median": 430,
+                "mean": 430,
+                "max": 430
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 606,
+                "min": 115,
+                "median": 244,
+                "mean": 202,
+                "max": 247
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 1896,
+                "min": 545,
+                "median": 674,
+                "mean": 632,
+                "max": 677
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 12.722,
+              "min": 2.577,
+              "median": 5.047,
+              "mean": 4.241,
+              "max": 5.098
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h07-original-r1",
+              "h07-original-r2",
+              "h07-original-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "69e5ba72834d4a33b37969388ec24a6ed935dac66539b7acd5ee796f5a9baaf9",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": false,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h07-original-r1",
+              "h07-original-r2",
+              "h07-original-r3"
+            ]
+          },
+          "short": {
+            "n": 3,
+            "passes": {
+              "semantic": 1,
+              "strict": 0,
+              "raw_semantic": 1,
+              "raw_strict": 0
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 1,
+                "strict": 0
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 522,
+                "min": 174,
+                "median": 174,
+                "mean": 174,
+                "max": 174
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 393,
+                "min": 88,
+                "median": 144,
+                "mean": 131,
+                "max": 161
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 915,
+                "min": 262,
+                "median": 318,
+                "mean": 305,
+                "max": 335
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 8.462,
+              "min": 2.021,
+              "median": 3.103,
+              "mean": 2.821,
+              "max": 3.338
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h07-short-r1",
+              "h07-short-r2",
+              "h07-short-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "deb90d0eee878dfa205bbe0cef7dfa24ebb0812b98f8f6ff3019acb5db2cbe61",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": false,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h07-short-r1",
+              "h07-short-r2",
+              "h07-short-r3"
+            ]
+          }
+        }
+      }
+    },
+    "stronger": {
+      "requested_uid": "qwen3.5-4b-eval",
+      "returned_uid": "qwen3.5-4b-eval",
+      "deployment": {
+        "accelerators": [
+          "0"
+        ],
+        "context_length": 262144,
+        "model_engine": "Transformers",
+        "model_family": "qwen3.5",
+        "model_format": "pytorch",
+        "model_id": "Qwen/Qwen3.5-4B",
+        "model_name": "qwen3.5",
+        "model_path": null,
+        "model_revision": null,
+        "model_size_in_billions": 4,
+        "packages": {
+          "torch": "2.8.0+cu128",
+          "transformers": "5.24.1",
+          "xinference": "4.2.0"
+        },
+        "quantization": "none",
+        "requested_context_length": 4096,
+        "uid": "qwen3.5-4b-eval"
+      },
+      "llm_client_sha256": "eb27d8fb9131d424eb91904912ff827c55eec9db3268d7b0596a885826357ddc",
+      "inputs_sha256": {
+        "stronger.jsonl": "6eb30221e465357baf62490973a279c84f23b7fcce1e92719fa6b9e7c6043d5c",
+        "stronger-scores.json": "a3d478e11592a05bcf7ed291a4374a962ea23f47b443550b43dc7f228f3d876d",
+        "manifest.json": "b0ec2f388ed7ea071b02169b8ffb108943fc23289c446be01d6d53559292c763"
+      },
+      "overall": {
+        "n": 24,
+        "passes": {
+          "semantic": 18,
+          "strict": 15,
+          "raw_semantic": 18,
+          "raw_strict": 15
+        },
+        "finish_reasons": {
+          "stop": 24
+        },
+        "scores_by_finish_reason": {
+          "stop": {
+            "n": 24,
+            "semantic": 18,
+            "strict": 15
+          }
+        },
+        "tokens": {
+          "prompt_tokens": {
+            "count": 24,
+            "sum": 16011,
+            "min": 174,
+            "median": 343.5,
+            "mean": 667.125,
+            "max": 1833
+          },
+          "completion_tokens": {
+            "count": 24,
+            "sum": 2492,
+            "min": 35,
+            "median": 82.5,
+            "mean": 103.833,
+            "max": 256
+          },
+          "total_tokens": {
+            "count": 24,
+            "sum": 18503,
+            "min": 242,
+            "median": 432.5,
+            "mean": 770.958,
+            "max": 2089
+          }
+        },
+        "elapsed_seconds": {
+          "count": 24,
+          "sum": 75.822,
+          "min": 1.306,
+          "median": 2.6215,
+          "mean": 3.159,
+          "max": 7.219
+        },
+        "empty_raw_answer": 0,
+        "empty_cleaned_answer": 0,
+        "cleaning_changed_text": 24,
+        "cleaning_changed_text_ids": [
+          "h03-original-r1",
+          "h03-original-r2",
+          "h03-original-r3",
+          "h03-short-r1",
+          "h03-short-r2",
+          "h03-short-r3",
+          "h04-original-r1",
+          "h04-original-r2",
+          "h04-original-r3",
+          "h04-short-r1",
+          "h04-short-r2",
+          "h04-short-r3",
+          "h05-original-r1",
+          "h05-original-r2",
+          "h05-original-r3",
+          "h05-short-r1",
+          "h05-short-r2",
+          "h05-short-r3",
+          "h07-original-r1",
+          "h07-original-r2",
+          "h07-original-r3",
+          "h07-short-r1",
+          "h07-short-r2",
+          "h07-short-r3"
+        ],
+        "cleaning_changed_semantic": [],
+        "cleaning_changed_strict": []
+      },
+      "by_context": {
+        "original": {
+          "n": 12,
+          "passes": {
+            "semantic": 9,
+            "strict": 6,
+            "raw_semantic": 9,
+            "raw_strict": 6
+          },
+          "finish_reasons": {
+            "stop": 12
+          },
+          "scores_by_finish_reason": {
+            "stop": {
+              "n": 12,
+              "semantic": 9,
+              "strict": 6
+            }
+          },
+          "tokens": {
+            "prompt_tokens": {
+              "count": 12,
+              "sum": 13416,
+              "min": 430,
+              "median": 1104.5,
+              "mean": 1118,
+              "max": 1833
+            },
+            "completion_tokens": {
+              "count": 12,
+              "sum": 1595,
+              "min": 78,
+              "median": 89.5,
+              "mean": 132.917,
+              "max": 256
+            },
+            "total_tokens": {
+              "count": 12,
+              "sum": 15011,
+              "min": 526,
+              "median": 1186.5,
+              "mean": 1250.917,
+              "max": 2089
+            }
+          },
+          "elapsed_seconds": {
+            "count": 12,
+            "sum": 47.53,
+            "min": 2.523,
+            "median": 2.9255,
+            "mean": 3.961,
+            "max": 7.219
+          },
+          "empty_raw_answer": 0,
+          "empty_cleaned_answer": 0,
+          "cleaning_changed_text": 12,
+          "cleaning_changed_text_ids": [
+            "h03-original-r1",
+            "h03-original-r2",
+            "h03-original-r3",
+            "h04-original-r1",
+            "h04-original-r2",
+            "h04-original-r3",
+            "h05-original-r1",
+            "h05-original-r2",
+            "h05-original-r3",
+            "h07-original-r1",
+            "h07-original-r2",
+            "h07-original-r3"
+          ],
+          "cleaning_changed_semantic": [],
+          "cleaning_changed_strict": []
+        },
+        "short": {
+          "n": 12,
+          "passes": {
+            "semantic": 9,
+            "strict": 9,
+            "raw_semantic": 9,
+            "raw_strict": 9
+          },
+          "finish_reasons": {
+            "stop": 12
+          },
+          "scores_by_finish_reason": {
+            "stop": {
+              "n": 12,
+              "semantic": 9,
+              "strict": 9
+            }
+          },
+          "tokens": {
+            "prompt_tokens": {
+              "count": 12,
+              "sum": 2595,
+              "min": 174,
+              "median": 217.0,
+              "mean": 216.25,
+              "max": 257
+            },
+            "completion_tokens": {
+              "count": 12,
+              "sum": 897,
+              "min": 35,
+              "median": 73.0,
+              "mean": 74.75,
+              "max": 135
+            },
+            "total_tokens": {
+              "count": 12,
+              "sum": 3492,
+              "min": 242,
+              "median": 288.5,
+              "mean": 291,
+              "max": 339
+            }
+          },
+          "elapsed_seconds": {
+            "count": 12,
+            "sum": 28.292,
+            "min": 1.306,
+            "median": 2.299,
+            "mean": 2.358,
+            "max": 3.878
+          },
+          "empty_raw_answer": 0,
+          "empty_cleaned_answer": 0,
+          "cleaning_changed_text": 12,
+          "cleaning_changed_text_ids": [
+            "h03-short-r1",
+            "h03-short-r2",
+            "h03-short-r3",
+            "h04-short-r1",
+            "h04-short-r2",
+            "h04-short-r3",
+            "h05-short-r1",
+            "h05-short-r2",
+            "h05-short-r3",
+            "h07-short-r1",
+            "h07-short-r2",
+            "h07-short-r3"
+          ],
+          "cleaning_changed_semantic": [],
+          "cleaning_changed_strict": []
+        }
+      },
+      "by_case": {
+        "h03": {
+          "original": {
+            "n": 3,
+            "passes": {
+              "semantic": 3,
+              "strict": 3,
+              "raw_semantic": 3,
+              "raw_strict": 3
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 3,
+                "strict": 3
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 3180,
+                "min": 1060,
+                "median": 1060,
+                "mean": 1060,
+                "max": 1060
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 238,
+                "min": 78,
+                "median": 79,
+                "mean": 79.333,
+                "max": 81
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 3418,
+                "min": 1138,
+                "median": 1139,
+                "mean": 1139.333,
+                "max": 1141
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 8.117,
+              "min": 2.523,
+              "median": 2.605,
+              "mean": 2.706,
+              "max": 2.989
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h03-original-r1",
+              "h03-original-r2",
+              "h03-original-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "ec7974a6bb53821735ccbdf6f185928f44c11d2c616683cc92c4597ca188c3a7",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h03-original-r1",
+              "h03-original-r2",
+              "h03-original-r3"
+            ]
+          },
+          "short": {
+            "n": 3,
+            "passes": {
+              "semantic": 3,
+              "strict": 3,
+              "raw_semantic": 3,
+              "raw_strict": 3
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 3,
+                "strict": 3
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 621,
+                "min": 207,
+                "median": 207,
+                "mean": 207,
+                "max": 207
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 105,
+                "min": 35,
+                "median": 35,
+                "mean": 35,
+                "max": 35
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 726,
+                "min": 242,
+                "median": 242,
+                "mean": 242,
+                "max": 242
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 3.9699999999999998,
+              "min": 1.306,
+              "median": 1.327,
+              "mean": 1.323,
+              "max": 1.337
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h03-short-r1",
+              "h03-short-r2",
+              "h03-short-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "41e712c8b436d310c89104d36bb5c2c087492c3aeeb106c043b0aae189b74ec7",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 2,
+            "sample_ids": [
+              "h03-short-r1",
+              "h03-short-r2",
+              "h03-short-r3"
+            ]
+          }
+        },
+        "h04": {
+          "original": {
+            "n": 3,
+            "passes": {
+              "semantic": 0,
+              "strict": 0,
+              "raw_semantic": 0,
+              "raw_strict": 0
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 0,
+                "strict": 0
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 5499,
+                "min": 1833,
+                "median": 1833,
+                "mean": 1833,
+                "max": 1833
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 768,
+                "min": 256,
+                "median": 256,
+                "mean": 256,
+                "max": 256
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 6267,
+                "min": 2089,
+                "median": 2089,
+                "mean": 2089,
+                "max": 2089
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 21.515,
+              "min": 7.098,
+              "median": 7.198,
+              "mean": 7.172,
+              "max": 7.219
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h04-original-r1",
+              "h04-original-r2",
+              "h04-original-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "eb89de2f00198ac792fec67081b89b480781d84b9c4ea8f9bdf1bacf195a6b76",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h04-original-r1",
+              "h04-original-r2",
+              "h04-original-r3"
+            ]
+          },
+          "short": {
+            "n": 3,
+            "passes": {
+              "semantic": 0,
+              "strict": 0,
+              "raw_semantic": 0,
+              "raw_strict": 0
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 0,
+                "strict": 0
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 771,
+                "min": 257,
+                "median": 257,
+                "mean": 257,
+                "max": 257
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 246,
+                "min": 82,
+                "median": 82,
+                "mean": 82,
+                "max": 82
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 1017,
+                "min": 339,
+                "median": 339,
+                "mean": 339,
+                "max": 339
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 7.715999999999999,
+              "min": 2.534,
+              "median": 2.584,
+              "mean": 2.572,
+              "max": 2.598
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h04-short-r1",
+              "h04-short-r2",
+              "h04-short-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "42dc81ed286b1e8042f8498eaa8eb26f3641e7062b3703003ac5dd5ecfcbb7a3",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 1,
+            "sample_ids": [
+              "h04-short-r1",
+              "h04-short-r2",
+              "h04-short-r3"
+            ]
+          }
+        },
+        "h05": {
+          "original": {
+            "n": 3,
+            "passes": {
+              "semantic": 3,
+              "strict": 0,
+              "raw_semantic": 3,
+              "raw_strict": 0
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 3,
+                "strict": 0
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 3447,
+                "min": 1149,
+                "median": 1149,
+                "mean": 1149,
+                "max": 1149
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 249,
+                "min": 83,
+                "median": 83,
+                "mean": 83,
+                "max": 83
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 3696,
+                "min": 1232,
+                "median": 1232,
+                "mean": 1232,
+                "max": 1232
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 7.901,
+              "min": 2.608,
+              "median": 2.635,
+              "mean": 2.634,
+              "max": 2.658
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h05-original-r1",
+              "h05-original-r2",
+              "h05-original-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "ff1022a421f9b2e5ead651fffdde886134fa9dd2228f2d81929e929bf8dc6fa4",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 1,
+            "sample_ids": [
+              "h05-original-r1",
+              "h05-original-r2",
+              "h05-original-r3"
+            ]
+          },
+          "short": {
+            "n": 3,
+            "passes": {
+              "semantic": 3,
+              "strict": 3,
+              "raw_semantic": 3,
+              "raw_strict": 3
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 3,
+                "strict": 3
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 681,
+                "min": 227,
+                "median": 227,
+                "mean": 227,
+                "max": 227
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 170,
+                "min": 49,
+                "median": 57,
+                "mean": 56.667,
+                "max": 64
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 851,
+                "min": 276,
+                "median": 284,
+                "mean": 283.667,
+                "max": 291
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 5.7,
+              "min": 1.705,
+              "median": 1.931,
+              "mean": 1.9,
+              "max": 2.064
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h05-short-r1",
+              "h05-short-r2",
+              "h05-short-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "a300a0a56f86d65b059b1dc1d93ed79c2ba0915ee6a078d3c9e53f55f8fbe470",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h05-short-r1",
+              "h05-short-r2",
+              "h05-short-r3"
+            ]
+          }
+        },
+        "h07": {
+          "original": {
+            "n": 3,
+            "passes": {
+              "semantic": 3,
+              "strict": 3,
+              "raw_semantic": 3,
+              "raw_strict": 3
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 3,
+                "strict": 3
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 1290,
+                "min": 430,
+                "median": 430,
+                "mean": 430,
+                "max": 430
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 340,
+                "min": 96,
+                "median": 108,
+                "mean": 113.333,
+                "max": 136
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 1630,
+                "min": 526,
+                "median": 538,
+                "mean": 543.333,
+                "max": 566
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 9.997,
+              "min": 2.862,
+              "median": 3.153,
+              "mean": 3.332,
+              "max": 3.982
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h07-original-r1",
+              "h07-original-r2",
+              "h07-original-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "69e5ba72834d4a33b37969388ec24a6ed935dac66539b7acd5ee796f5a9baaf9",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h07-original-r1",
+              "h07-original-r2",
+              "h07-original-r3"
+            ]
+          },
+          "short": {
+            "n": 3,
+            "passes": {
+              "semantic": 3,
+              "strict": 3,
+              "raw_semantic": 3,
+              "raw_strict": 3
+            },
+            "finish_reasons": {
+              "stop": 3
+            },
+            "scores_by_finish_reason": {
+              "stop": {
+                "n": 3,
+                "semantic": 3,
+                "strict": 3
+              }
+            },
+            "tokens": {
+              "prompt_tokens": {
+                "count": 3,
+                "sum": 522,
+                "min": 174,
+                "median": 174,
+                "mean": 174,
+                "max": 174
+              },
+              "completion_tokens": {
+                "count": 3,
+                "sum": 376,
+                "min": 112,
+                "median": 129,
+                "mean": 125.333,
+                "max": 135
+              },
+              "total_tokens": {
+                "count": 3,
+                "sum": 898,
+                "min": 286,
+                "median": 303,
+                "mean": 299.333,
+                "max": 309
+              }
+            },
+            "elapsed_seconds": {
+              "count": 3,
+              "sum": 10.906,
+              "min": 3.245,
+              "median": 3.783,
+              "mean": 3.635,
+              "max": 3.878
+            },
+            "empty_raw_answer": 0,
+            "empty_cleaned_answer": 0,
+            "cleaning_changed_text": 3,
+            "cleaning_changed_text_ids": [
+              "h07-short-r1",
+              "h07-short-r2",
+              "h07-short-r3"
+            ],
+            "cleaning_changed_semantic": [],
+            "cleaning_changed_strict": [],
+            "prompt_sha256": "deb90d0eee878dfa205bbe0cef7dfa24ebb0812b98f8f6ff3019acb5db2cbe61",
+            "repetitions": [
+              1,
+              2,
+              3
+            ],
+            "semantic_consistent": true,
+            "strict_consistent": true,
+            "cleaned_answer_variants": 3,
+            "sample_ids": [
+              "h07-short-r1",
+              "h07-short-r2",
+              "h07-short-r3"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "stronger_minus_current_passes": {
+    "original": {
+      "semantic": 1,
+      "strict": 3,
+      "raw_semantic": 1,
+      "raw_strict": 3
+    },
+    "short": {
+      "semantic": 0,
+      "strict": 1,
+      "raw_semantic": 0,
+      "raw_strict": 1
+    }
+  }
+}

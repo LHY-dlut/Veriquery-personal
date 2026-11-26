@@ -1,0 +1,24 @@
+{
+  "ads1115": {
+    "url": "https://www.ti.com/lit/ds/symlink/ads1115.pdf",
+    "full_pages": 57,
+    "pages": [
+      1,
+      5,
+      6
+    ],
+    "original_sha256": "eefff4d412ce2dcd7e659f47238edc9b2fa02e5971f2625af730502033701834",
+    "fixture_sha256": "ca8b3fa49f87d33e08489a6d3e0fba5d71ccda17d36bec0cbd50187376cb6d19"
+  },
+  "bso301sp": {
+    "url": "https://media.digikey.com/pdf/Data%20Sheets/Infineon%20PDFs/BSO301SP_170702.pdf",
+    "full_pages": 8,
+    "pages": [
+      1,
+      2,
+      3
+    ],
+    "original_sha256": "324787aef786522116946135434485fcb7be52653707bf8283b049a0e6e41637",
+    "fixture_sha256": "31ddef50421f304402e9dfd9f1553f27f3800bb9ddb15714da1fd60a68dc1532"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "OPA211": {
+    "document_id": "3e721399",
+    "filename": "OPA211.pdf",
+    "status": "ready",
+    "page_count": 2,
+    "file_size": 79233,
+    "upload_time": "2026-11-26T14:54:26.043152",
+    "error_message": "",
+    "warnings": [
+      "visual_pipeline_skipped"
+    ],
+    "chunk_count": 43,
+    "table_count": 2,
+    "circuit_count": 0,
+    "image_count": 0,
+    "processed_time": "2026-11-26T14:58:31.029155",
+    "progress": 100,
+    "stage": "completed",
+    "stage_detail": "正在嵌入第 6/6 批",
+    "parser": "mineru",
+    "parser_tier": "advanced",
+    "verified_table_rows": 0,
+    "ingestion_seconds": 245.324,
+    "longest_status_request_seconds": 0.689,
+    "status_poll_timeouts": 0
+  },
+  "TMP117": {
+    "document_id": "6bfe5d92",
+    "filename": "TMP117.pdf",
+    "status": "ready",
+    "page_count": 2,
+    "file_size": 186399,
+    "upload_time": "2026-11-26T14:58:31.366899",
+    "error_message": "",
+    "warnings": [
+      "visual_pipeline_skipped"
+    ],
+    "chunk_count": 51,
+    "table_count": 2,
+    "circuit_count": 0,
+    "image_count": 0,
+    "processed_time": "2026-11-26T15:04:45.359578",
+    "progress": 100,
+    "stage": "completed",
+    "stage_detail": "正在嵌入第 9/9 批",
+    "parser": "mineru",
+    "parser_tier": "advanced",
+    "verified_table_rows": 0,
+    "ingestion_seconds": 374.105,
+    "longest_status_request_seconds": 0.285,
+    "status_poll_timeouts": 0
+  }
+}

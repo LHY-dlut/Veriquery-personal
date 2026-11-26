@@ -1,0 +1,13 @@
+{
+  "source_url": "https://www.analog.com/media/en/technical-documentation/data-sheets/ADA4625-1-4625-2.pdf",
+  "original_pdf_sha256": "0c66f7753c2daf7e5c71f561d158ca91745f57fe6ed817564f420cfb0b4c3fd6",
+  "sample_pdf_sha256": "d9890ee1719a5df9160425f4b9ee9351739243987355cc2ffd943bd0c23db687",
+  "original_pages": [
+    4,
+    6
+  ],
+  "original_text": {
+    "4": "Gain Bandwidth Product\nGBP\nAV = 100\n18\nMHz\nUnity-Gain Crossover\nUGC\nAV = 1\n12.4\nMHz\n−3 dB Bandwidth\n−3 dB\nAV = 1\n16\nMHz\nPhase Margin\nΦΜ\nADA4625-1\n88\nDegrees\nADA46",
+    "6": "Gain Bandwidth Product\nGBP\nAV = 100\n16\nMHz\nUnity-Gain Crossover\nUGC\nAV = 1\n11.2\nMHz\n−3 dB Bandwidth\n−3 dB\nAV = 1\n16\nMHz\nPhase Margin\nΦM\nADA4625-1\n86\nDegrees\nADA46"
+  }
+}

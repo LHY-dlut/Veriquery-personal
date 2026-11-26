@@ -10,6 +10,8 @@
 
 `Veriquery-personal` 的环境配置、启动命令和验收步骤集中在 [AutoDL 部署手册](docs/AUTODL_SETUP.md)。下方的公开版说明用于了解项目功能。
 
+文档问答使用 Qwen3.5-0.8B。每次改动的评测分母、原文和逐题结果见[项目证据台账](docs/PROJECT_EVIDENCE_LEDGER.md)。从[九层溯源报告](docs/QA_NINE_STAGE_TRACE.md)可查同一次请求在哪一层丢失证据或给出错误答案，修复进展见 [GitHub Issues](https://github.com/LHY-dlut/Veriquery-personal/issues)。
+
 <p align="center">
   <a href="README.md"><img src="https://img.shields.io/badge/Docs-English-blue.svg" alt="English"></a>
 </p>

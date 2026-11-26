@@ -19,13 +19,19 @@ AgentState 字段在各节点间的流转:
     ↓ pinout_node: 读取 query, document_ids → 写入 extracted_data, citations, final_response
 """
 
+import asyncio
 import logging
 import re
+from decimal import Decimal
+from itertools import zip_longest
 from typing import Dict, List, Any, Optional, Tuple
 
 from core.config import get_settings
-from retrieval.hybrid_retriever import HybridRetriever
 from knowledge.pinout_library import CommonPinoutLibrary
+from retrieval.evidence_coverage import (
+    clauses, comparable_temperature_steps, quantity_anchors, temperature_step_passages, temperature_step_query,
+)
+from retrieval.verified_passages import condition_search_terms, find_condition_excerpt, find_verified_excerpt
 
 logger = logging.getLogger(__name__)
 
@@ -97,38 +103,7 @@ def _chip_in_results(chip_name: str, results) -> bool:
 
 
 class TextAnalysisNodes:
-    """RAG流程核心节点集，封装"检索→清洗→生成"完整链路。"""
-
-    CHIP_NAME_PATTERN = re.compile(
-        r'(?:^|(?<=[\s,，。.；;：:（(]))('
-        r'\d{2}[A-Z]{2,}\d+[A-Z0-9-]*'
-        r'|[A-Z]{2,}\d+[A-Z0-9.-]*'
-        r'|SN\d+[A-Z]+\d*'
-        r'|NE\d+[A-Z0-9.-]*'
-        r'|LM\d+[A-Z0-9.-]*'
-        r'|CD\d+[A-Z0-9.-]*'
-        r'|STM32[A-Z0-9.-]+'
-        r'|STM8[A-Z0-9.-]*'
-        r'|ATmega\d+[A-Z0-9.-]*'
-        r'|ATtiny\d+[A-Z0-9.-]*'
-        r'|AT89[A-Z0-9.-]*'
-        r'|ESP32[A-Z0-9.-]*'
-        r'|ESP8266[A-Z0-9.-]*'
-        r'|CH340[A-Z0-9.-]*'
-        r'|GD32[A-Z0-9.-]*'
-        r'|HT32[A-Z0-9.-]*'
-        r'|MSP430[A-Z0-9.-]*'
-        r'|PIC\d+[A-Z0-9.-]*'
-        r'|XC6206[A-Z0-9.-]*'
-        r'|AMS1117[A-Z0-9.-]*'
-        r'|ULN2003[A-Z0-9.-]*'
-        r'|ULN2004[A-Z0-9.-]*'
-        r'|TPS\d+[A-Z0-9.-]*'
-        r'|CAT811[A-Z0-9.-]*'
-        r'|W25Q\d+[A-Z0-9.-]*'
-        r')(?=[\s,，。.；;：:）)\u4e00-\u9fff]|$)',
-        re.IGNORECASE
-    )
+    """文本问答节点，负责混合检索与证据生成。"""
 
     TECH_KEYWORDS = ['VCC', 'VDD', 'VS', '±', 'Supply voltage', 'Electrical Characteristics', 'Recommended Operating', 'Absolute Maximum']
 
@@ -139,91 +114,19 @@ class TextAnalysisNodes:
         r'Operating\s+Voltage[:\s]*[±]?\d+\.?\d*\s*[Vv]?.{0,100}'
     ]
 
-    LATEX_INDICATORS = [
-        r'\\begin{tabular}', r'\\end{tabular}',
-        r'\\begin{table}', r'\\end{table}',
-        r'\\hline', r'\\vline',
-        r'\\cmidrule', r'\\toprule', r'\\bottomrule',
-        r'\\multicolumn', r'\\multirow',
-        r'\\text{', r'\\tag{', r'\\hspace',
-        r'\\cmbox', r'\\vspace', r'\\hskip',
-        r'\\tabular', r'\\begin', r'\\end',
-        r'\&nbsp;', r'\&gt;', r'\&lt;',
-        r'\\#', r'\\%', r'\\$',
-        r'\\xspace', r'\\cmboxrule',
-        r'rowspan={', r'num_rows', r'normalized_value',
-        r'\tabs{}', r'\&',
-    ]
-
-    TECH_PATTERNS = [
-        r'VCC[±+-]?\s*[=：]\s*[±]?\d+\.?\d*\s*[Vv]?',
-        r'VDD[±+-]?\s*[=：]\s*[±]?\d+\.?\d*\s*[Vv]?',
-        r'VS[±+-]?\s*[=：]\s*[±]?\d+\.?\d*\s*[Vv]?',
-        r'Supply\s+voltage[:\s]*[±]?\d+\.?\d*\s*[Vv]?',
-        r'Operating\s+voltage[:\s]*[±]?\d+\.?\d*\s*[Vv]?',
-        r'Electrical\s+Characteristics',
-        r'Recommended\s+Operating\s+Conditions',
-        r'Absolute\s+Maximum\s+Ratings',
-        r'\bMIN\b.*\bMAX\b.*\bUNIT\b',
-        r'\bPARAMETER\b.*\bTEST\s+CONDITIONS\b',
-        r'\b\d+\.?\d*\s*V\b.*\b\d+\.?\d*\s*V\b'
-    ]
-
-    PACKAGE_SECTION_INDICATORS = [
-        'seating plane', 'pin 1 id area',
-        'package dimensions', 'mechanical data', 'package information',
-        'outline', 'drawing', 'dimensions (mm)', 'inches', 'millimeters',
-        'package drawing', 'mechanical drawing'
-    ]
-
-    PACKAGE_EXIT_INDICATORS = [
-        'electrical characteristics', 'recommended operating conditions', 'absolute maximum ratings'
-    ]
-
-    AXIS_LABELS = ['VDIFF (V)', 'VIN (V)', 'VOUT+ (V)', 'VOUTt (V)', 'VOUT- (V)', 'Figure 7-2', 'Figure 7-', 'Figure 8-']
-
-    CHART_TITLES = ['Differential Output Voltage vs Input Voltage', 'Positive Output Voltage Node vs Input Voltage', 'Output Voltage']
-
-    def __init__(self, settings=None):
-        """初始化文本分析节点，重型组件延迟加载。"""
+    def __init__(self, settings=None, retriever=None):
         self.settings = settings or get_settings()
-        self.retriever = None
-        self._table_store = None
+        self._retriever = retriever
         self._llm_client = None
-
         self._compiled_param_patterns = [re.compile(p, re.IGNORECASE) for p in self.PARAM_PATTERNS]
         self._number_unit_pattern = re.compile(r'±?\d+\.?\d*\s*[VvAaµuMmKkWw]?')
 
-        self._compiled_tech_patterns = [re.compile(p, re.IGNORECASE) for p in self.TECH_PATTERNS]
-        self._voltage_pattern = re.compile(r'[±]?\d+\.?\d*\s*V\b')
-        self._current_pattern = re.compile(r'[±]?\d+\.?\d*\s*[µunm]?A\b')
-        self._resistance_pattern = re.compile(r'\d+\.?\d*\s*[kM]?Ω?\b')
-        self._frequency_pattern = re.compile(r'\d+\.?\d*\s*[kMGT]?Hz\b')
-        self._temp_pattern = re.compile(r'[±]?\d+\.?\d*\s*°?C\b')
-        # 布局码(如 "A001")必须整体匹配;旧正则 [A-Z]\d{3}\s* 会命中型号内部,
-        # 把 BSO301SP→BSSP、NE5532→N2,导致检索侧二次清洗时型号再次被毁
-        self._layout_code_pattern = re.compile(r'(?<![A-Za-z0-9])[A-Z]\d{3}(?![A-Za-z0-9])')
-
-        self._init_retriever()
-        logger.info("TextAnalysisNodes initialized")
-
-    def _init_retriever(self):
-        """初始化混合检索器，失败时优雅降级。"""
-        try:
-            self.retriever = HybridRetriever(settings=self.settings)
-        except Exception as e:
-            logger.warning(f"Failed to initialize retriever: {e}")
-
     @property
-    def table_store(self):
-        """延迟初始化TableStore，首次访问时创建。"""
-        if self._table_store is None:
-            try:
-                from retrieval.table_store import TableStore
-                self._table_store = TableStore()
-            except Exception as e:
-                logger.warning(f"Failed to initialize table_store: {e}")
-        return self._table_store
+    def retriever(self):
+        if self._retriever is None:
+            from retrieval.hybrid_retriever import HybridRetriever
+            self._retriever = HybridRetriever(settings=self.settings)
+        return self._retriever
 
     @property
     def llm_client(self):
@@ -236,534 +139,173 @@ class TextAnalysisNodes:
                 logger.warning(f"Failed to initialize llm_client: {e}")
         return self._llm_client
 
-    def _extract_chip_name(self, query: str) -> Optional[str]:
-        """从用户查询中提取芯片型号，返回大写型号或None。"""
-        match = self.CHIP_NAME_PATTERN.search(query)
-        if match:
-            return match.group(1).upper()
-        return None
-
-    def _extract_keywords(self, query: str) -> List[str]:
-        """从查询中提取关键词，支持中英文混合。"""
-        keywords = []
-        chip_name = self._extract_chip_name(query)
-        if chip_name:
-            keywords.append(chip_name.lower())
-
-        param_keywords = [
-            'voltage', '电压', 'vcc', 'vdd', 'vs', 'supply',
-            'current', '电流', 'power', '功耗',
-            'temperature', '温度', 'operating', '工作',
-            'frequency', '频率', 'bandwidth', '带宽',
-            'supply voltage', '供电电压', '工作电压',
-            'operating voltage', '电源电压', '电压范围'
-        ]
-        query_lower = query.lower()
-        for kw in param_keywords:
-            if kw in query_lower:
-                keywords.append(kw)
-
-        return list(set(keywords))
-
     _TRANSCRIPTION_PATTERN = re.compile(
         r'原文|逐行|逐条|转录|抄写|照抄|逐字|原文照录|完整列出|全部列出|完整转录'
     )
-
-    _PARAM_QUERY_MARKERS = (
-        '最大值', '最小值', '上限', '下限', '范围', '典型值', '额定值', '是多少',
-        '多大', '多少', '参数值', '规格',
+    _COMPARISON = re.compile(
+        r"\b(?:compare|comparison|contrast|differ(?:ence|s)?|versus|vs)\b|比较|对比|区别|异同",
+        re.IGNORECASE,
     )
+    _PART_NUMBER = re.compile(r"\b(?:[A-Z]{2,}\d[A-Z0-9-]*|\d{2}[A-Z]{2,}\d[A-Z0-9-]*)\b", re.I)
+    _OPERATING_SUPPLY = re.compile(
+        r"wide supply range|(?:single or dual )?supplies can be used in the range",
+        re.IGNORECASE,
+    )
+    _SUPPLY_SPAN = re.compile(r"\b\d+(?:\.\d+)?\s*V\s*(?:to|[-–])\s*(\d+(?:\.\d+)?)\s*V\b", re.I)
+    _RANGE_LITERAL = r"\d+(?:\.\d+)?\s*V\s*(?:to|[-–])\s*\d+(?:\.\d+)?\s*V\b"
+    _LABELED_SUPPLY_RANGE = re.compile(
+        rf"\b(?:power\s+)?supply(?:\s+voltage)?\s+range\s*(?:(?:from|of|is)\s+|:\s*)?{_RANGE_LITERAL}"
+        rf"|(?<![\d.+\-−±]){_RANGE_LITERAL}\s+(?:operating\s+)?supply(?:\s+voltage)?\s+range\b",
+        re.I,
+    )
+    _ADC_RESOLUTION_SPAN = re.compile(r"\b\d{1,2}[- ]bit\s+(?:resolution|(?:ΔΣ|SAR)\s+ADC)\b", re.I)
 
-    def _is_param_query(self, query: str) -> bool:
-        """判断是否为"查某个参数数值"类问题(需要精确选值,不能用泛泛描述)。
+    _PAGE_QUERY = re.compile(r"(?:第\s*(\d+)\s*页|\bpage\s+(\d+)\b)", re.IGNORECASE)
+    _COVER_QUERY_MARKERS = ("首页", "封面", "文档标题", "文档名", "文档编号", "文件编号",
+                           "document title", "cover page", "first page")
 
-        中英文都要识别:golden 评测的英文题(gain bandwidth 等)曾因
-        只认中文标记而绕过 Resolver,走回 LLM 自由生成。
-        """
-        q = query or ''
-        if any(zh in q for zh in self._PARAM_QUERY_MARKERS):
-            return True
-        if any(zh in q for zh in self._PARAM_KEYWORD_MAP):
-            return True
-        try:
-            from core.param_resolver import looks_like_param_query
-            return looks_like_param_query(q)
-        except Exception:
-            return False
-
-    _COVER_QUERY_MARKERS = ("首页", "封面", "标题", "文档名", "文档编号", "文件编号",
-                           "首页标题", "document title", "cover page")
-
-    def _is_cover_query(self, query: str) -> bool:
-        """判断是否为"首页/封面标题"类元信息问题。
-
-        这类问题的答案在文档第 1 页正文里，而元信息查询没有参数词桥接，
-        混合检索召回的往往是表格行或曲线页，导致模型答"未找到"。
-        """
-        q = (query or "").lower()
-        return any(m in q for m in self._COVER_QUERY_MARKERS)
-
-    def _find_first_page_text(self, results: List[Any]) -> str:
-        """取第 1 页页首正文（首页标题所在处）。
-
-        两点讲究：
-          1) 优先非表格行 chunk —— MinerU 对多栏 PDF 的表格块存在字符交错
-             （如 "J-TuNecrtmioanl - re ssoilsdtearnincge"），取到它会把
-             乱码当成标题答出去；
-          2) 只取开头 —— 标题位于页首，取前几百字符即可，避免正文噪音。
-        """
-        best = ""
-        best_start = None
-        for r in results[:30]:
-            page = getattr(r, "page", None)
-            if page is None and isinstance(r, dict):
-                page = r.get("page")
-            if str(page) != "1":
-                continue
-            meta = getattr(r, "metadata", None) or {}
-            # 表格行不含标题，且多栏表格有字符交错，直接排除
-            if meta.get("source") in ("table_text", "param_record"):
-                continue
-            text = getattr(r, "text", None) if hasattr(r, "text") else None
-            if text is None and isinstance(r, dict):
-                text = r.get("content", "")
-            if not text:
-                continue
-            # 标题在页首：取字符起始位置最靠前的块，而非最长的块
-            char_start = meta.get("char_start")
-            if best_start is None or (char_start is not None and char_start < best_start):
-                best = text
-                best_start = char_start if char_start is not None else -1
-        return best[:400]
-
-    async def _top_param_record_nominee(self, query: str, results: List[Any],
-                                        document_ids: List[str], min_score: float):
-        """语义提名：纯向量检索找与查询最相关且达标的 param_record。
-
-        分数信号选型（实测）：bge-reranker-v2-m3 对文档格式极度敏感
-        （竖线表格行 0.26 vs 自然语言串 0.98）、器件名+疑问句式系统性
-        压分——rerank 分数不可比、不稳定，不能作为提名置信信号。
-        改用 bge-m3 纯向量相似度（0-1 稳定可比）：Settling 行 0.558
-        正确高于封装垃圾行 0.515。
-
-        主检索的每文档限额会把 param_record 行截在结果外
-        （_is_param_query=False 时不放宽），因此提名独立走向量检索。
-        """
-        from core.param_resolver import ParamEvidence
-        from ingestion.table_struct import ParamRecord
-        from retrieval.embeddings import EmbeddingManager
-
-        vs = getattr(getattr(self, "retriever", None), "vector_store", None)
-        if vs is None or not document_ids:
-            return None, 0.0
-
-        em = EmbeddingManager(self.settings)
-        qv = em.embed_query(query)
-        filt = {"source": "param_record"}
-        filt["document_id"] = (document_ids[0] if len(document_ids) == 1
-                               else {"$in": [str(d) for d in document_ids]})
-        res = await vs.search(qv, top_k=10, filter_dict=filt)
-        for cand in res:
-            meta = getattr(cand, "metadata", None) or {}
-            try:
-                rec = ParamRecord.from_metadata(meta)
-            except Exception:
-                continue
-            if not rec.valid:
-                continue
-            score = float(getattr(cand, "score", 0) or 0)
-            if score >= min_score:
-                return ParamEvidence.from_record(rec, score=score), score
-            break  # 向量降序，最高分不达标即止
-        return None, 0.0
-
-    async def _try_param_resolution(self, query: str, results: List[Any],
-                              document_ids: Optional[List[str]] = None
-                              ) -> Tuple[Optional[str], List[Dict]]:
-        """参数类问题走确定性选值，**完整保留选值状态**。
-
-        返回 (rendered_answer, citations)：citations 由选值证据
-        （evidence/alternatives）构造，使"引用来源"与答案实际依据
-        一致（此前 citations 一直是检索 top2，与 Resolver 答案脱节）。
-        返回 None 仅表示"不是参数问题 / 文档没有结构化参数记录"，
-        此时才允许回退普通 RAG-LLM。
-
-        返回 None 仅表示"不是参数问题 / 文档没有结构化参数记录"，
-        此时才允许回退普通 RAG-LLM。
-
-        重要：not_found / missing_value / condition_conflict / ambiguous
-        都是**结论**，必须原样呈现；把它们折叠成 None 再交给 LLM，
-        等于让 LLM 在没有校验的情况下重新猜一个数值（本轮要消除的行为）。
-        """
-        # ── 语义兜底提名候选：先于门控计算。别名 miss 的查询门控为
-        # False，但检索分数命中的参数记录（rerank 分数是厂商无关的语义
-        # 信号）可作为身份提名放行——语义兜底路径的入口。
-        fb_on = bool(getattr(self.settings, "PARAM_SEMANTIC_FALLBACK_ENABLED", True))
-        fb_min_score = float(getattr(self.settings, "PARAM_SEMANTIC_FALLBACK_MIN_SCORE", 0.5))
-        fb_nominee_ev, fb_nominee_score = None, 0.0
-        if fb_on:
-            fb_nominee_ev, fb_nominee_score = await self._top_param_record_nominee(
-                query, results, document_ids, fb_min_score
-            )
-
-        if not self._is_param_query(query):
-            if not fb_on or fb_nominee_ev is None:
-                return None, []
-            logger.info(
-                f"门控放行（语义提名 {fb_nominee_ev.param or fb_nominee_ev.symbol} "
-                f"score={fb_nominee_score:.2f}）: {query[:50]}"
-            )
-
-        try:
-            from core.param_resolver import (
-                ParamEvidence, parse_param_query, select_value, select_values_multi,
-                query_has_param_signal,
-            )
-            from ingestion.table_struct import ParamRecord
-        except Exception as e:
-            logger.debug(f"param_resolver 不可用: {e}")
-            return None, []
-
-        # 证据必须来自**确定性全集**：同一参数的多个工况行靠语义检索 top-N
-        # 可能只召回一条，会让条件匹配误判冲突/选错工况。
-        raw_metas: List[Any] = []
-        store = getattr(getattr(self, "retriever", None), "vector_store", None)
-        if store is not None and document_ids:
-            try:
-                where = {"$and": [
-                    {"document_id": {"$in": list(document_ids)}},
-                    {"source": "param_record"},
-                ]}
-                for row in store.fetch_by_metadata(where, limit=2000):
-                    raw_metas.append(row.get("metadata") or {})
-                logger.info(f"参数证据全集: {len(raw_metas)} 条（按文档直取）")
-            except Exception as e:
-                logger.warning(f"按文档直取参数记录失败，回退检索结果: {e}")
-        if not raw_metas:
-            for r in results[:40]:
-                meta = getattr(r, "metadata", None) or {}
-                if meta.get("source") == "param_record":
-                    raw_metas.append(meta)
-
-        evidences: List[ParamEvidence] = []
-        total = invalid = 0
-        for meta in raw_metas:
-            total += 1
-            try:
-                rec = ParamRecord.from_metadata(meta)
-            except Exception as e:
-                logger.debug(f"参数记录反序列化失败: {e}")
-                invalid += 1
-                continue
-            if not rec.valid:
-                invalid += 1
-                continue
-            evidences.append(ParamEvidence.from_record(rec))
-
-        if total and not evidences:
-            return ("该文档的参数记录为旧版结构（缺少原始条件/原始行），"
-                    "无法核验条件，请重建索引后再查询。"), []
-
-        if not evidences:
-            return None, []
-
-        pq = parse_param_query(query)
-
-        # 守卫：解析不出参数词、查询也没有任何参数词信号（如"封装是什么/
-        # 版本号/价格"）→ 不是参数语义查询，回退 LLM 从 context 作答。
-        # 否则 Resolver 会在无信号状态下靠符号撞表乱配出文不对题的结论。
-        # 例外：存在高分参数记录提名时放行（语义兜底路径）。
-        if not pq.param_keys and not query_has_param_signal(query):
-            if not fb_on or fb_nominee_ev is None:
-                logger.info(f"无参数信号查询，回退 LLM: {query[:50]}")
-                return None, []
-            logger.info(
-                f"无受控别名但有高分参数记录提名 "
-                f"({fb_nominee_ev.param or fb_nominee_ev.symbol}, "
-                f"score={fb_nominee_score:.2f})，走语义兜底"
-            )
-        # 多参数题（"上升时间和下降时间分别是多少"）：逐参数独立选值拼接，
-        # 否则身份选择只出一个组、其余参数被静默丢弃（实测 Fall time 丢失）
-        multi = select_values_multi(pq, evidences)
-        if multi is not None:
-            rendered, sels = multi
-            logger.info(f"多参数题逐参数选值: {pq.matched_zh} → {len(sels)} 段")
-            citations: List[Dict] = []
-            for s in sels:
-                citations.extend(self._param_evidence_citations(s, results))
-            return rendered, citations
-        sel = select_value(pq, evidences)
-
-        # ── 语义兜底：受控别名未命中（unsupported/not_found）且有提名 ──
-        if sel.status in ("unsupported_parameter", "not_found") and fb_on and fb_nominee_ev is not None:
-            logger.info(
-                f"语义兜底提名: {fb_nominee_ev.param or fb_nominee_ev.symbol} "
-                f"(score={fb_nominee_score:.2f})"
-            )
-            sel2 = select_value(pq, [fb_nominee_ev], skip_identity=True)
-            if sel2.status in ("ok", "ambiguous", "missing_value", "condition_conflict"):
-                rendered = (
-                    "根据语义匹配，您询问的可能是以下参数（未经受控别名确认，"
-                    "若不是请指明参数全名）：\n" + sel2.render()
-                )
-                citations = self._param_evidence_citations(sel2, results)
-                return rendered, citations
-        logger.info(
-            f"参数确定性选值: status={sel.status}, value={sel.value}, "
-            f"records={len(evidences)}, invalid={invalid}"
-        )
-        citations = self._param_evidence_citations(sel, results)
-        return sel.render(), citations
-
-    def _param_evidence_citations(self, sel: Any, results: List[Any]) -> List[Dict]:
-        """用选值证据（evidence/alternatives）构造 citations。
-
-        此前 citations 一直取检索 top2，Resolver 答案明明是〔第X页 表Y
-        第Z行〕的参数记录，引用却指向无关行——引用与答案脱节。这里让
-        引用逐条对应证据行：file 借同页检索结果的 filename，snippet 用
-        raw_row（完整行原文），section 标注表号行号。
-        """
-        evs: List[Any] = []
-        if getattr(sel, "evidence", None) is not None:
-            evs.append(sel.evidence)
-        for alt in getattr(sel, "alternatives", None) or []:
-            if alt is not sel.evidence:
-                evs.append(alt)
-
-        default_file = ""
-        for r in results[:5]:
-            fname = getattr(r, "filename", "") or ""
-            if fname:
-                default_file = fname
-                break
-
-        out: List[Dict] = []
-        seen = set()
-        for ev in evs[:4]:
-            key = (ev.page, ev.table_id, ev.row_index)
-            if key in seen:
-                continue
-            seen.add(key)
-            fname = default_file
-            for r in results[:20]:
-                if getattr(r, "page", None) == ev.page and getattr(r, "filename", ""):
-                    fname = r.filename
-                    break
-            snippet = (getattr(ev, "raw_row", "") or getattr(ev, "source_text", "") or "")[:200]
-            section = f"表{ev.table_id} 第{ev.row_index}行" if ev.table_id else ""
-            out.append({
-                "file": fname or "未知文档",
-                "page": ev.page or 1,
-                "text_snippet": snippet,
-                "section": section,
-            })
-        return out
-
+    def _requested_page(self, query: str) -> Optional[int]:
+        match = self._PAGE_QUERY.search(query)
+        if match:
+            return int(match[1] or match[2]) or None
+        if any(marker in query.lower() for marker in self._COVER_QUERY_MARKERS):
+            return 1
+        return None
 
     def _is_transcription_request(self, query: str) -> bool:
         """判断是否为"逐行/原文转录"类请求(需要放宽长度限制并保留原文)。"""
         return bool(self._TRANSCRIPTION_PATTERN.search(query or ""))
 
-    # 常见参数中英文映射:用于在检索结果中定位与问题直接相关的行,
-    # 并把该行前置到 context 开头(0.8B 对 context 开头的内容遵循最好)
+    # 向关键词检索补充规格书中的英文术语，同时保留原问题和工况。
     _PARAM_KEYWORD_MAP = {
-        '连续漏电流': ['continuous drain current'],
-        '漏电流': ['drain current'],
-        'P沟道': ['p channel', 'p-channel'],
-        'N沟道': ['n channel', 'n-channel'],
-        '工作温度': ['operating', 'storage temperature'],
-        '存储温度': ['storage temperature'],
-        '温度': ['temperature'],
-        '供电电压': ['supply voltage', 'gate source voltage', 'v gs'],
-        '电压': ['voltage'],
-        '导通电阻': ['ds(on)', 'r ds(on)', 'on-state resistance', 'on resistance'],
-        '功耗': ['power dissipation'],
-        '击穿电压': ['breakdown voltage'],
-        '输入电容': ['input capacitance'],
-        '输出电容': ['output capacitance'],
-        '开启延时': ['turn-on delay'],
-        '上升时间': ['rise time'],
-        '热阻': ['thermal resistance'],
-        '雪崩能量': ['avalanche energy'],
-        '阈值电压': ['threshold voltage', 'gate threshold'],
-        '封装': ['package'],
+        "连续漏电流": "continuous drain current",
+        "漏电流": "drain current",
+        "P沟道": "p channel",
+        "N沟道": "n channel",
+        "工作温度": "operating temperature",
+        "存储温度": "storage temperature",
+        "供电电压": "supply voltage",
+        "分流电压": "shunt voltage",
+        "总线电压": "bus voltage",
+        "导通电阻": "on-state resistance",
+        "电源电流": "supply current",
+        "静态电流": "quiescent current",
+        "关断电流": "shutdown current",
+        "采样率": "data rate",
+        "分辨率": "resolution",
+        "增益带宽积": "gain bandwidth product",
+        "功耗": "power dissipation",
+        "击穿电压": "breakdown voltage",
+        "输入电容": "input capacitance",
+        "输出电容": "output capacitance",
+        "开启延时": "turn-on delay",
+        "上升时间": "rise time",
+        "热阻": "thermal resistance",
+        "雪崩能量": "avalanche energy",
+        "阈值电压": "threshold voltage",
+        "封装": "package",
     }
 
-    def _locate_param_snippets(self, query: str, results: List[Any]) -> List[str]:
-        """在检索结果中定位与参数问题直接相关的文本片段。
-
-        扁平化参数表里参数名与数值在同一句中(fitz 提取保序),而
-        表格提取的列边界会把数值切碎。这里直接在扁平文本上定位参数
-        关键词,取其前后窗口,供调用方前置到 context 开头。
-
-        Returns:
-            最多 3 个带页码标注的片段字符串。
-        """
-        query_lower = (query or "").lower()
-        patterns = []
-        for zh, ens in self._PARAM_KEYWORD_MAP.items():
-            if zh in query_lower:
-                patterns.extend(ens)
-        if not patterns:
-            # 英文查询:取查询中的长英文词直接匹配
-            patterns = re.findall(r'[a-z][a-z\s-]{5,}', query_lower)[:3]
-        if not patterns:
-            return []
-
-        snippets = []
-        # 先按"命中参数名的长度"排序:参数表行(含具体数值)优先于
-        # 首页产品摘要(只是复述特性,不含该参数的具体数值)
-        scored = []
-        for rank, result in enumerate(results[:30]):
-            text = getattr(result, "text", None) if hasattr(result, "text") else None
-            if text is None and isinstance(result, dict):
-                text = result.get("content", "")
-            if not text:
-                continue
-            text_lower = text.lower()
-            best_len = 0
-            for pat in patterns:
-                idx = text_lower.find(pat)
-                if idx >= 0:
-                    best_len = max(best_len, len(pat))
-            scored.append((best_len, -rank, result, text, text_lower))
-        scored.sort(key=lambda x: (-x[0], -x[1]))
-
-        for best_len, _, result, text, text_lower in scored:
-            if best_len == 0:
-                continue
-            page = getattr(result, "page", "?")
-            for pat in patterns:
-                idx = text_lower.find(pat)
-                if idx >= 0:
-                    # 取参数所在的整行(表格行即完整参数),避免把数值截在窗口外
-                    line_start = text.rfind("\n", 0, idx) + 1
-                    line_end = text.find("\n", idx)
-                    if line_end == -1:
-                        line_end = len(text)
-                    line = text[line_start:line_end].strip()
-                    if len(line) < 30:
-                        start = max(0, idx - 60)
-                        end = min(len(text), idx + 240)
-                        line = text[start:end].strip()
-                    snippets.append(f"(第{page}页) {line}")
-                    break
-            if len(snippets) >= 3:
-                break
-        return snippets
-
-    _ABSENT_TABLE_KEYWORDS = ("订购", "包装", "订货", "ordering", "packaging", "tape and reel")
-
-    def _detect_absent_content(self, query: str, results: List[Any]) -> Optional[str]:
-        """问题明确指向订购/包装表、但召回内容里根本没有 → 明确告知未找到。
-
-        逐行转录订购表这类问题若把不相关的参数页喂给模型，模型会编造出
-        看似合理的表格内容。此处做确定性拦截,避免幻觉。
-        """
-        query_lower = (query or "").lower()
-        if not any(kw in query_lower for kw in self._ABSENT_TABLE_KEYWORDS):
-            return None
-
-        blob = []
-        for result in results:
-            text = getattr(result, "text", None) if hasattr(result, "text") else None
-            if text is None and isinstance(result, dict):
-                text = result.get("content", "")
-            if text:
-                blob.append(text)
-        blob_lower = " ".join(blob).lower()
-
-        if any(kw in blob_lower for kw in self._ABSENT_TABLE_KEYWORDS):
-            return None
-        # 措辞不能强于证据:仅凭"当前召回结果里没有"不能断言整份文档没有该内容
-        return "文档中未找到相关内容：当前检索结果中未找到可核验的订购/包装信息。"
-
     async def text_retrieval_node(self, state: Dict[str, Any]) -> Dict[str, Any]:
-        """文本检索节点：执行混合检索并提取引用。
+        """Use the same persisted stores as ingestion and preserve the original query."""
+        query = state.get("query", "")
+        document_ids = list(dict.fromkeys(state.get("user_context", {}).get("selected_document_ids") or []))
+        if not query:
+            return {**state, "retrieval_results": [], "citations": []}
 
-        工作流位置: intent_router → text_retrieval(本节点) → response_generation
-        """
-        try:
-            query = state.get("query", "")
-            document_ids = [str(d) for d in state.get("user_context", {}).get("selected_document_ids", [])]
+        aliases = [
+            alias for term, alias in self._PARAM_KEYWORD_MAP.items() if term in query
+        ]
+        page = self._requested_page(query)
+        filters = {"exclude_source": "param_record"}
+        if page is not None:
+            filters["page"] = page
 
-            logger.info(f"执行文本检索: query='{query}', docs={len(document_ids)}")
+        if (getattr(self.settings, "RAG_BALANCED_COMPARISON", True)
+                and 2 <= len(document_ids) <= 8 and self._COMPARISON.search(query)
+                and not self._is_transcription_request(query)):
+            joint = getattr(self.settings, "RAG_JOINT_COMPARISON", True)
+            topic = self._PART_NUMBER.sub("", query)
+            topic = re.sub(r"^\s*(?:compare|contrast)\s+(?:the\s+)?", "", topic, flags=re.I)
+            topic = re.sub(r"\bof\s+(?:the\s+)?(?:and|versus|vs\.?)\s+(?:the\s+)?", "of the ", topic, flags=re.I)
+            topic = re.sub(r"(?:\s+(?:of|the|and|vs\.?|versus|between))+[\s?.!]*$", "", topic, flags=re.I)
+            topic = " ".join(topic.split()).strip(" ?.,") or query
+            supply = (re.search(r"\bsupply voltage\b|供电电压|电源电压", topic, re.I)
+                      and not re.search(r"\babsolute\b|绝对", query, re.I))
+            if joint:
+                supply = bool((supply or re.search(r"(?:供电|电源)(?:电压)?范围|\bsupply ranges?\b", topic, re.I))
+                              and not re.search(r"\babsolute\b|绝对", query, re.I))
+            step = joint and temperature_step_query(topic)
+            if supply:
+                topic = "operating supply voltage range single supply dual supply"
+            elif step:
+                topic = "temperature resolution temperature step LSB size"
+            lexical_topic = " ".join([topic, *dict.fromkeys(aliases)])
+            gate = asyncio.Semaphore(2)
 
-            retrieval_results = []
-            citations = []
-
-            chip_name = self._extract_chip_name(query)
-            keywords = self._extract_keywords(query)
-            logger.info(f"提取芯片型号: {chip_name}, 关键词: {keywords}")
-
-            if self.retriever and query:
-                try:
-                    enhanced_query = query
-                    if chip_name:
-                        param_keywords = [kw for kw in keywords if kw != chip_name.lower()]
-                        # 中文参数词映射到规格书里的英文表格行(如 漏电流 -> drain current),
-                        # 否则中文查询无法命中英文表格行,只能靠默认的供电电压兜底
-                        en_terms = []
-                        for zh, ens in self._PARAM_KEYWORD_MAP.items():
-                            if zh in query:
-                                en_terms.extend(ens[:2])
-                        param_keywords = param_keywords + en_terms
-                        if param_keywords:
-                            enhanced_query = f"{chip_name} {' '.join(param_keywords[:4])}"
-                        else:
-                            # 无受控关键词时保留原句：原句语义完整（用户写的
-                            # 问句优于虚构兜底词）——'Settling time of OPA211'
-                            # 曾被换成 'supply voltage operating voltage'，
-                            # 目标行分数跌到 0.006、语义提名无从触发
-                            enhanced_query = query
-
-                    # 取更多候选:表格行 chunk 在混合检索里常排在 top5 之外,
-                    # 候选不够就找不到目标参数行,模型只能瞎猜或拒答
-                    # 封面/首页标题类问题:直接按第 1 页检索,不靠排序运气
-                    _is_cover = self._is_cover_query(query)
-                    retrieve_filters = {"page": 1} if _is_cover else None
-                    # 参数类查询放宽每文档限额:默认 5 条会提前截断同文档的参数表行；
-                    # 首页类问题同样需要放宽,否则 5 条会被参数块占满,正文标题回不来
-                    _is_param_q = self._is_param_query(query)
-                    results = await self.retriever.retrieve(
-                        enhanced_query, top_k=30, document_ids=document_ids,
-                        filters=retrieve_filters,
-                        max_per_doc=30 if (_is_param_q or _is_cover) else None,
+            async def retrieve_one(document_id):
+                async with gate:
+                    hits = await self.retriever.retrieve(
+                        topic, top_k=6, document_ids=[document_id],
+                        filters=filters, max_per_doc=6, lexical_query=lexical_topic,
                     )
+                if supply:
+                    for hit in hits:
+                        if joint and (match := self._LABELED_SUPPLY_RANGE.search(hit.text)):
+                            hit.metadata["comparison_excerpt"] = match[0]
+                        elif match := self._OPERATING_SUPPLY.search(hit.text):
+                            hit.metadata["comparison_excerpt"] = hit.text[match.start():match.start() + 155]
+                    hits.sort(key=lambda hit: not hit.metadata.get("comparison_excerpt"))
+                elif step:
+                    terms = "temperature resolution step LSB"
+                    try:
+                        extra = await self.retriever.retrieve_lexical(
+                            terms, 8, {**filters, "document_ids": [document_id]},
+                        )
+                    except Exception:
+                        logger.warning("Temperature step lexical lookup failed", exc_info=True)
+                        extra = []
+                    seen = {hit.chunk_id for hit in hits}
+                    hits.extend(hit for hit in extra if hit.chunk_id not in seen)
+                    for hit, passage, *_ in temperature_step_passages(hits):
+                        hit.metadata.setdefault("comparison_excerpt", passage)
+                    hits.sort(key=lambda hit: not hit.metadata.get("comparison_excerpt"))
+                return hits if joint else hits[:2]
 
-                    if chip_name and results:
-                        filtered_results = []
-                        for r in results:
-                            text_lower = r.text.lower() if hasattr(r, 'text') and r.text else ""
-                            filename_lower = (r.filename or "").lower()
-                            if chip_name.lower() in text_lower or chip_name.lower() in filename_lower:
-                                filtered_results.append(r)
+            per_document = await asyncio.gather(*(retrieve_one(doc_id) for doc_id in document_ids))
+            results = [item for group in zip_longest(*per_document) for item in group if item is not None]
+            return {**state, "retrieval_results": results, "comparison_documents": document_ids,
+                    "comparison_query": topic, "comparison_supply": bool(supply), "citations": []}
 
-                        if filtered_results:
-                            results = filtered_results
-                            logger.info(f"按芯片型号 {chip_name} 过滤后剩余 {len(results)} 条结果")
-                        else:
-                            logger.warning(f"按芯片型号 {chip_name} 过滤后无结果，保留原始检索结果")
-
-                    retrieval_results = results
-                    citations = self._extract_citations(results)
-                    logger.info(f"检索到 {len(results)} 个结果, {len(citations)} 个引用")
-                except Exception as e:
-                    logger.warning(f"检索失败: {e}")
-
-            return {
-                **state,
-                "retrieval_results": retrieval_results,
-                "citations": citations
-            }
-        except Exception as e:
-            logger.error(f"文本检索节点失败: {e}")
-            return {
-                **state,
-                "error": str(e),
-                "retrieval_results": [],
-                "citations": []
-            }
+        results = await self.retriever.retrieve(
+            query,
+            top_k=12,
+            document_ids=document_ids,
+            filters=filters,
+            max_per_doc=12,
+            lexical_query=" ".join([query, *dict.fromkeys(aliases)]),
+            focus_tables=bool(getattr(self.settings, "RAG_FOCUS_TABLE_EVIDENCE", True)
+                              and len(set(document_ids)) == 1
+                              and not self._is_transcription_request(query)),
+        )
+        if page == 1:
+            # PDF 缩略页、表格和正文都可能命中首页，按正文位置优先取页首。
+            results.sort(key=lambda result: (
+                (result.metadata or {}).get("source") != "pdf", result.char_start
+            ))
+        lexical_evidence = []
+        if (getattr(self.settings, "RAG_CONDITION_EVIDENCE", True) and len(document_ids) == 1
+                and page is None and not self._is_transcription_request(query)):
+            if terms := condition_search_terms(
+                query, exact_gain=getattr(self.settings, "RAG_EXACT_GAIN_EVIDENCE", True),
+            ):
+                try:
+                    lexical_evidence = await self.retriever.retrieve_lexical(
+                        terms, 12, {**filters, "document_ids": document_ids},
+                    )
+                except Exception:
+                    logger.warning("Conditional evidence lookup failed", exc_info=True)
+        return {**state, "retrieval_results": results, "condition_candidates": lexical_evidence, "citations": []}
 
     def _extract_citations(self, results: List[Any]) -> List[Dict]:
         """从检索结果中提取最相关的引用，最多2个。
@@ -831,512 +373,412 @@ class TextAnalysisNodes:
 
         return citations
 
-    async def response_generation_node(self, state: Dict[str, Any]) -> Dict[str, Any]:
-        """响应生成节点：基于检索结果生成最终答案。
+    _CITATION_MARKER = re.compile(r"\[(\d{1,3})\]")
+    _NO_EVIDENCE = "当前检索结果中没有足够的证据回答这个问题。"
+    _REFUSAL = re.compile(
+        r"^(?:当前检索结果中没有足够的证据|文档中未找到相关内容|"
+        r"(?:the )?(?:provided |retrieved )?(?:document|sources?|context|evidence) "
+        r"(?:does not|do not|is insufficient|are insufficient)|"
+        r"(?:there is )?insufficient (?:evidence|information))",
+        re.IGNORECASE,
+    )
 
-        工作流位置: text_retrieval → response_generation(本节点) → END
-        生成策略: 无结果→提示信息; 有结果→表格优先→LLM生成→兜底错误提示
-        """
-        try:
-            query = state.get("query", "")
-            retrieval_results = state.get("retrieval_results", [])
-            document_ids = [str(d) for d in state.get("user_context", {}).get("selected_document_ids", [])]
+    def _build_evidence_context(
+        self, query: str, results: List[Any], comparison: bool = False, joint: bool = False,
+    ) -> Tuple[str, List[Dict]]:
+        """Number the exact snippets that reach the model, in retrieval order."""
+        transcription = self._is_transcription_request(query)
+        budget = 8000 if transcription else 4200
+        excerpt_limit = 3600 if transcription else (500 if comparison else 1400)
+        snippets, citations = [], []
+        seen = set()
+        doc_counts = {}
+        docs = {result.document_id for result in results} if joint else set()
+        per_doc_limit = max(1, 8 // len(docs)) if docs else 0
 
-            logger.debug(f"生成响应: query='{query}', results={len(retrieval_results)}")
+        focused_rows = [
+            result for result in results if (result.metadata or {}).get("focused_row")
+        ] if not transcription else []
+        if focused_rows:
+            # These are complete table rows with the requested conditions.
+            # Extra excerpts often contain competing modes or nearby rows.
+            results = focused_rows[:3]
 
-            citations = state.get("citations", [])
-            if not retrieval_results:
-                response = "抱歉，在文档中未找到相关信息。请尝试重新表述您的问题。"
-            else:
-                # 参数类问题：先用结构化证据做确定性选值（条件感知），
-                # 选不出或非参数题再走 LLM 生成
-                resolved, resolved_cites = await self._try_param_resolution(query, retrieval_results, document_ids)
-                if resolved:
-                    response = resolved
-                    # 引用与答案对齐：Resolver 命中时用选值证据替代检索 top2，
-                    # 否则 UI 的"引用来源"与答案依据〔第X页 表Y 第Z行〕脱节
-                    if resolved_cites:
-                        citations = resolved_cites
-                else:
-                    response = await self._generate_text_response_optimized(query, retrieval_results, document_ids)
+        if joint and docs:
+            excerpt_limit = min(excerpt_limit, max(200, budget // len(docs) - 100))
 
-            return {
-                **state,
-                "final_response": response,
-                "citations": citations,
-            }
-        except Exception as e:
-            logger.error(f"响应生成节点失败: {e}")
-            return {
-                **state,
-                "error": str(e),
-                "final_response": f"生成响应时发生错误: {str(e)}"
-            }
+        for result in results:
+            metadata = result.metadata or {}
+            if (metadata.get("source") == "param_record"
+                    or joint and doc_counts.get(result.document_id, 0) >= min(per_doc_limit, 2)):
+                continue
+            content = (result.text or "").strip()
+            if not content:
+                continue
+            excerpt = metadata.get("comparison_excerpt")
+            key = (result.document_id, result.page, " ".join((excerpt if joint and excerpt else content).split()))
+            if key in seen:
+                continue
 
-    async def _generate_text_response_optimized(self, query: str, results: List[Any], document_ids: List[str] = None) -> str:
-        """内容类型感知的答案生成: 表格优先→LLM文字生成→兜底错误提示。
+            filename = result.filename or "未知文档"
+            section = metadata.get("section") or metadata.get("table_title") or ""
+            label = f"[{len(citations) + 1}] {filename} 第{result.page}页"
+            if section:
+                label += f" {section}"
+            column_header = metadata.get("table_header")
+            if excerpt:
+                content = excerpt
+            model_text = metadata.get("focused_text") or content
+            if column_header and model_text == content:
+                label += f"\n表头 | {column_header}"
 
-        策略:
-          1) 判断检索结果内容类型(表格/文字)
-          2) 有表格 → _extract_from_tables() 精确提取
-          3) 有文字 → 清洗噪音 → LLM生成答案
-          4) 全部失败 → 返回错误提示
-        """
-        if not results:
-            return "抱歉，在文档中未找到相关信息。"
+            limit = min(budget - len(label) - 3, excerpt_limit)
+            if limit <= 0:
+                break
+            if len(model_text) > limit:
+                # Whole-table candidates can be large. Prefer intact lines and
+                # let later candidates provide rows past this excerpt.
+                excerpt = model_text[:limit]
+                if "\n" in excerpt:
+                    excerpt = excerpt.rsplit("\n", 1)[0]
+                elif metadata.get("source") == "table_text":
+                    continue
+                model_text = excerpt.rstrip() + "…"
+                content = model_text
 
-        has_table_content = False
-        has_text_content = False
+            entry = f"{label}\n{model_text}"
+            if joint and len(docs) > 1 and doc_counts.get(result.document_id, 0) and budget < 500:
+                continue
+            snippets.append(entry)
+            citations.append({
+                "file": filename,
+                "page": result.page,
+                "text_snippet": f"{column_header}\n{content}" if column_header else content,
+                "section": section,
+                "document_id": result.document_id,
+                "chunk_id": result.chunk_id,
+                "focused_row": bool(metadata.get("focused_row")),
+                "citation_literal": metadata.get("citation_literal"),
+            })
+            seen.add(key)
+            doc_counts[result.document_id] = doc_counts.get(result.document_id, 0) + 1
+            budget -= len(entry) + 2
+            if len(citations) >= (10 if transcription else 8) or budget < 120:
+                break
 
-        for result in results[:5]:
-            if hasattr(result, 'source'):
-                source = result.source
-            else:
-                source = result.get("source", "")
+        return "\n\n".join(snippets), citations
 
-            if source == "table":
-                has_table_content = True
-            else:
-                has_text_content = True
+    async def _prioritize_context(self, query, results):
+        parts = clauses(query)
+        if len(parts) < 2 or not results or any((item.metadata or {}).get("focused_row") for item in results):
+            return results
+        pinned = {results[0].chunk_id: results[0]}
+        missing = quantity_anchors(query) - quantity_anchors(results[0].text)
+        for hit in results[1:]:
+            if anchors := missing & quantity_anchors(hit.text):
+                pinned.setdefault(hit.chunk_id, hit)
+                missing -= anchors
+                if len(pinned) >= 3 or not missing:
+                    break
+        ranks = await asyncio.gather(*(self.retriever.rank_passages(part, results) for part in parts[-2:]))
+        for rank in ranks:
+            if rank:
+                pinned.setdefault(rank[0].chunk_id, rank[0])
+        groups = {}
+        for hit in results:
+            if hit.chunk_id in pinned:
+                continue
+            source = (hit.metadata or {}).get("source") or hit.source
+            table = source in {"table", "table_text"} or hit.text.count(" | ") >= 4
+            groups.setdefault((hit.document_id, hit.page, table), []).append(hit)
+        diversified = [hit for group in zip_longest(*groups.values()) for hit in group if hit is not None]
+        return [*pinned.values(), *diversified]
 
-        logger.debug(f"检索结果分析: 表格内容={has_table_content}, 文字内容={has_text_content}")
+    def _supply_comparison_calculation(self, query, results, evidence):
+        """Add an interval check only for one explicit voltage and consistent ranges."""
+        targets = {value for value, unit in quantity_anchors(query) if unit == "v"}
+        if len(targets) != 1 or len({item["document_id"] for item in evidence}) != 2:
+            return None
+        target = next(iter(targets))
+        observed = {}
+        for hit in results:
+            for match in self._LABELED_SUPPLY_RANGE.finditer(hit.text):
+                values = sorted(value for value, unit in quantity_anchors(match[0]) if unit == "v")
+                if len(values) == 2:
+                    observed.setdefault(hit.document_id, set()).add(tuple(values))
 
-        if has_table_content and self.table_store and document_ids:
-            try:
-                table_answer = await self._extract_from_tables(query, document_ids)
-                if table_answer:
-                    logger.debug("✅ 从表格中成功提取答案")
-                    return table_answer
-            except Exception as e:
-                logger.warning(f"表格提取失败: {e}")
-
-        if has_text_content:
-            # 明确的"该内容不存在"判定:问题指向订购/包装等表格,但召回内容里
-            # 根本没有这些字样 → 直接告知未找到,避免模型用别的页面凑答案
-            absent_hint = self._detect_absent_content(query, results)
-            if absent_hint:
-                logger.info("命中缺失内容判定: %s", absent_hint)
-                return absent_hint
-
-            regex_answer = self._extract_params_by_regex(query, results[:5])
-            if regex_answer:
-                logger.debug("✅ 通过正则精确提取参数答案")
-                return regex_answer
-
-            transcription = self._is_transcription_request(query)
-            param_query = self._is_param_query(query)
-
-            # 参数类查询:只保留表格行 chunk(source=table_text)。
-            # 混入正文/产品摘要会干扰 0.8B 的选值(同一参数在多处出现时
-            # 模型会挑到宣传页里的那个数),造成同一问题答案来回变化。
-            context_results = results
-            if param_query and not transcription:
-                table_rows = [
-                    r for r in results
-                    if (getattr(r, "metadata", None) or {}).get("source") == "table_text"
-                ]
-                if table_rows:
-                    context_results = table_rows
-                    logger.info(f"参数类查询: 仅保留 {len(table_rows)} 条表格行作为上下文")
-
-            # 注:曾尝试把封面类问题的上下文限定为"第 1 页前 3 条",
-            # 实测反而退化(标题块被切掉 → 模型答"未找到"),故保留混合 context,
-            # 改由"页首 chunk 注入 context 头部"来引导模型。
-
-            cleaned_contexts = []
-            for i, result in enumerate(context_results[:12]):
-                if hasattr(result, 'text'):
-                    content = result.text
-                else:
-                    content = result.get("content", "")
-
-                logger.debug(f"检索结果 {i+1}: 原始内容长度={len(content)}, 内容={content[:200] if content else 'EMPTY'}")
-
-                if content:
-                    # 转录类请求要原样输出,不再做图表噪音清洗(清洗会丢原文行)
-                    cleaned = content if transcription else self._clean_chart_noise(content)
-                    logger.debug(f"检索结果 {i+1}: 清理后长度={len(cleaned)}, 清理后内容={cleaned[:200] if cleaned else 'EMPTY'}")
-
-                    if cleaned and len(cleaned) > 20:
-                        cleaned_contexts.append(cleaned)
-                        logger.debug(f"检索结果 {len(cleaned_contexts)}: Page {result.page}, Score={result.score:.3f}, Text={cleaned[:150]}...")
-                    else:
-                        logger.warning(f"检索结果 {i+1}: 清理后内容过短或为空，跳过")
-                else:
-                    logger.warning(f"检索结果 {i+1}: 原始内容为空，跳过")
-
-            logger.debug(f"总共有 {len(cleaned_contexts)} 个有效上下文")
-
-            if cleaned_contexts:
-                # 转录类问题需要更宽的上下文,否则表格会被截断
-                context_limit = 6 if transcription else 3
-                combined_context = "\n\n".join(cleaned_contexts[:context_limit])
-                logger.debug(f"合并上下文长度: {len(combined_context)} 字符 (limit={context_limit})")
-
-                # 首页/封面标题类问题:把第 1 页正文注入 context 头部,
-                # 否则检索召回的表格行/曲线页里没有标题,模型只会答"未找到"
-                if self._is_cover_query(query):
-                    cover_text = self._find_first_page_text(results)
-                    if cover_text:
-                        combined_context = (
-                            "【文档第 1 页内容(标题通常在此)】\n"
-                            + cover_text
-                            + "\n\n【其他资料】\n" + combined_context
-                        )
-                        logger.debug("已注入首页内容用于封面类问题")
-
-                # 参数类问题:把与问题直接相关的片段定位后前置到 context
-                # 开头——0.8B 对 context 开头内容的遵循最好,而扁平化参数表
-                # 里参数名与数值恰好保存在同一句中
-                if not transcription:
-                    # 必须用过滤后的 context_results:用原始 results 会把正文/
-                    # 产品摘要里的同名字段又捞回来前置,抵消掉"只用表格行"的效果
-                    param_snippets = self._locate_param_snippets(query, context_results)
-                    if param_snippets:
-                        combined_context = (
-                            "【与问题直接相关的关键片段】\n"
-                            + "\n".join(param_snippets)
-                            + "\n\n【资料】\n" + combined_context
-                        )
-                        logger.debug(f"前置了 {len(param_snippets)} 个参数关键片段")
-
-                try:
-                    llm_client = self.llm_client
-                    if llm_client:
-                        answer = llm_client.generate_answer(
-                            query=query,
-                            context=combined_context,
-                            max_new_tokens=1024 if transcription else 256,
-                            temperature=0.3,
-                            transcription=transcription,
-                        )
-                        logger.debug(f"✅ LLM从文字中提取答案: {answer[:100]}...")
-                        # 只要求非空短下限（>=2 字符）：中文参数型答案天然短
-                        # （实测"P 沟道"=4 字符被旧阈值 len>5 误杀，正确答案
-                        # 变成"LLM生成答案失败"）。垃圾防护由 _clean_answer
-                        # 的清理/去重/短片段过滤承担，且 llm_client 内部已有
-                        # <5 触发的一次降温重试。
-                        if answer and len(answer.strip()) >= 2:
-                            return answer
-                        else:
-                            logger.warning(f"⚠️ LLM答案为空或过短: {answer}")
-                except Exception as e:
-                    logger.warning(f"LLM生成答案失败: {e}")
-                    raise e
-
-        return "抱歉，LLM生成答案失败，请检查系统配置。"
-
-    async def _extract_from_tables(self, query: str, document_ids: List[str]) -> Optional[str]:
-        """从结构化表格中提取答案，精确匹配无幻觉风险。
-
-        匹配策略: 获取表格→拼接行文本→关键词匹配→查找数值+单位行→格式化返回。
-        与LLM生成互补: 表格精确但覆盖面窄，LLM灵活但可能幻觉。
-        """
-        try:
-            tables = self.table_store.get_tables_by_documents(document_ids, limit=50)
-            if not tables:
+        checks = []
+        for number, item in enumerate(evidence, 1):
+            doc_id = item["document_id"]
+            if (any(check["document_id"] == doc_id for check in checks)
+                    or not self._LABELED_SUPPLY_RANGE.search(item["text_snippet"])):
+                continue
+            if len(observed.get(doc_id, ())) != 1:
                 return None
+            lower, upper = next(iter(observed[doc_id]))
+            checks.append({"document_id": doc_id, "file": item["file"], "minimum": str(lower),
+                           "maximum": str(upper), "within": lower <= target <= upper, "citation": number})
+        if len(checks) == 2:
+            return {"operation": "range_check", "voltage": str(target), "checks": checks}
+        return None
 
-            query_lower = query.lower()
-            keywords = self._extract_keywords(query)
-            chip_name = self._extract_chip_name(query)
-
-            if not keywords:
-                keywords = ['voltage', 'supply', 'operating', 'vcc', 'vdd']
-
-            for table in tables[:10]:
-                table_text = ""
-                for row in table.data:
-                    row_text = " ".join(str(cell) for cell in row if cell)
-                    table_text += row_text + " "
-
-                table_text_lower = table_text.lower()
-                table_filename = getattr(table, 'filename', '') or ''
-
-                if chip_name:
-                    if chip_name.lower() not in table_text_lower and chip_name.lower() not in table_filename.lower():
-                        continue
-
-                has_keyword = any(kw in table_text_lower for kw in keywords)
-                if not has_keyword:
-                    continue
-
-                for row in table.data:
-                    row_str = " | ".join(str(cell) for cell in row if cell)
-                    row_lower = row_str.lower()
-
-                    if chip_name and chip_name.lower() not in row_lower:
-                        if not any(kw in row_lower for kw in keywords):
-                            continue
-
-                    if re.search(r'[±]?\d+\.?\d*\s*[Vv]', row_str) or \
-                       re.search(r'[±]?\d+\.?\d*\s*[AaµuMm]', row_str) or \
-                       re.search(r'[±]?\d+\.?\d*\s*°?[Cc]', row_str):
-                        source_info = f"（来源：{table_filename}）" if table_filename else ""
-                        return f"根据文档第{table.page}页的表格数据{source_info}：{row_str}"
-
+    def _verified_ratio(self, state, results):
+        operands = comparable_temperature_steps(state["query"], state["comparison_documents"], results)
+        if not operands:
             return None
-        except Exception as e:
-            logger.warning(f"表格提取异常: {e}")
-            return None
+        ordered = sorted(operands, key=lambda item: item[2])
+        quotient = ordered[1][2] / ordered[0][2]
+        ratio = (str(quotient.numerator) if quotient.denominator == 1
+                 else f"约 {Decimal(quotient.numerator) / Decimal(quotient.denominator):.6g}")
+        names, lines, citations = [], [], []
+        for number, (chunk, _, _, value, unit) in enumerate(ordered, 1):
+            label = chunk.filename or chunk.document_id
+            names.append(label.removesuffix(".pdf"))
+            lines.append(f"{names[-1]} 温度步长为 {value} {unit}/LSB [{number}]")
+            citations.append({"file": label, "page": chunk.page, "text_snippet": chunk.text,
+                              "document_id": chunk.document_id, "chunk_id": chunk.chunk_id})
+        summary = (f"两者步长相同 [1] [2]" if quotient == 1
+                   else f"{names[0]} 的步长更小，{names[1]} 的步长是它的 {ratio} 倍 [1] [2]")
+        answer = {**state, "final_response": "\n".join([*lines, summary]), "citations": citations}
+        if state.get("user_context", {}).get("evaluation_trace"):
+            answer.update(answer_mode="verified_ratio", context_evidence=citations,
+                          comparison_calculation={"ratio": str(quotient),
+                                                  "operands": [item[1] for item in ordered]})
+        return answer
 
-    def _extract_params_by_regex(self, query: str, results: List[Any]) -> Optional[str]:
-        """基于正则从检索结果中精确提取技术参数，避免LLM幻觉。
+    async def response_generation_node(self, state: Dict[str, Any]) -> Dict[str, Any]:
+        """Generate from numbered evidence and return only referenced sources."""
+        query = state.get("query", "")
+        comparison = set(state.get("comparison_documents") or [])
+        joint = bool(comparison and getattr(self.settings, "RAG_JOINT_COMPARISON", True))
+        if comparison and not joint:
+            return await self._generate_by_document(state)
+        results = state.get("retrieval_results") or []
+        if joint and (ratio := self._verified_ratio(state, results)):
+            return ratio
+        user_context = state.get("user_context") or {}
+        trace = bool(user_context.get("evaluation_trace"))
+        transcription = self._is_transcription_request(query)
+        selected_documents = set(user_context.get("selected_document_ids") or [])
+        if (len(selected_documents) == 1
+                and not state.get("comparison_subquery") and not transcription):
+            proof = None
+            mode = "verified_conditions"
+            if getattr(self.settings, "RAG_CONDITION_EVIDENCE", True):
+                candidates = [*results, *(state.get("condition_candidates") or [])]
+                proof = find_condition_excerpt(
+                    query, (chunk for chunk in candidates if chunk.document_id in selected_documents),
+                    exact_gain=getattr(self.settings, "RAG_EXACT_GAIN_EVIDENCE", True),
+                )
+                if proof and proof.rule == "gain_bandwidth_at_gain":
+                    mode = "verified_gain"
+            if proof is None and getattr(self.settings, "RAG_VERIFIED_PASSAGES", True):
+                proof = find_verified_excerpt(query, results)
+                mode = "verified_excerpt"
+            if proof:
+                selected = {**state, "final_response": self._NO_EVIDENCE, "citations": []}
+                if proof.chunk is not None:
+                    chunk = proof.chunk
+                    meta = chunk.metadata or {}
+                    citation = {
+                        "file": chunk.filename or "未知文档", "page": chunk.page,
+                        "section": meta.get("section") or meta.get("table_title") or "",
+                        "text_snippet": chunk.text,
+                        "document_id": chunk.document_id, "chunk_id": chunk.chunk_id,
+                    }
+                    selected.update(final_response=f"规格书证据：{proof.excerpt} [1]", citations=[citation])
+                if trace:
+                    selected.update(
+                        evaluation_context=None, context_evidence=selected["citations"],
+                        answer_mode=mode if proof.chunk is not None else "verified_abstention",
+                        verified_excerpt={"rule": proof.rule, "text": proof.excerpt},
+                    )
+                    if proof.reason:
+                        selected["verified_excerpt"]["reason"] = proof.reason
+                return selected
 
-        策略:
-          1) 识别查询意图(电压/电流/温度等)
-          2) 从检索结果中定位 Absolute Maximum / Recommended Operating 段落
-          3) 用正则精确提取对应参数值
-          4) 格式化返回，确保数值与文档一致
-        """
-        chip_name = self._extract_chip_name(query)
-        query_lower = query.lower()
-
-        param_intent = None
-        if any(kw in query_lower for kw in ['电压', 'voltage', 'vcc', 'vdd', '供电', '电源']):
-            param_intent = 'voltage'
-        elif any(kw in query_lower for kw in ['电流', 'current']):
-            param_intent = 'current'
-        elif any(kw in query_lower for kw in ['温度', 'temperature']):
-            param_intent = 'temperature'
-        elif any(kw in query_lower for kw in ['功耗', 'power']):
-            param_intent = 'power'
-
-        if not param_intent:
-            return None
-
-        all_text = ""
-        for r in results[:5]:
-            text = r.text if hasattr(r, 'text') else r.get('content', '')
-            if text:
-                all_text += text + "\n"
-
-        if not all_text:
-            return None
-
-        sections = {}
-        abs_max_match = re.search(
-            r'(Absolute\s+Maximum\s+Ratings.*?)(?=(?:Recommended\s+Operating|Electrical\s+Characteristics|Thermal\s+Information|$))',
-            all_text, re.IGNORECASE | re.DOTALL,
+        if (getattr(self.settings, "RAG_EVIDENCE_COVERAGE", False) and not joint and not transcription
+                and not state.get("comparison_subquery") and self._requested_page(query) is None):
+            results = await self._prioritize_context(query, results)
+        context, evidence = self._build_evidence_context(
+            query, results, comparison=joint or bool(state.get("comparison_subquery")), joint=joint,
         )
-        if abs_max_match:
-            sections['absolute_max'] = abs_max_match.group(1)
+        if joint and state.get("comparison_supply"):
+            calculation = self._supply_comparison_calculation(query, results, evidence)
+            if calculation:
+                voltage = calculation["voltage"]
+                summary = "\n".join(
+                    f"{item['file']}：{voltage} V "
+                    f"{'在工作范围内，可用' if item['within'] else '超出工作范围，不可用'} [{item['citation']}]"
+                    for item in calculation["checks"]
+                )
+                context += f"\n\n【程序按工作范围核对】\n{summary}"
+                state = {**state, "comparison_calculation": calculation}
+        if trace:
+            state = {**state, "evaluation_context": context, "context_evidence": evidence}
+            if joint:
+                state["answer_mode"] = "joint_comparison"
+        if not evidence:
+            return {**state, "final_response": self._NO_EVIDENCE, "citations": []}
 
-        rec_op_match = re.search(
-            r'(Recommended\s+Operating\s+Conditions.*?)(?=(?:Electrical\s+Characteristics|Thermal\s+Information|5\.4|$))',
-            all_text, re.IGNORECASE | re.DOTALL,
+        try:
+            answer = await asyncio.to_thread(
+                self.llm_client.generate_answer,
+                query=query,
+                context=context,
+                max_new_tokens=1024 if transcription else 256,
+                temperature=0.1,
+                transcription=transcription,
+                comparison=bool(state.get("comparison_subquery")),
+                joint_comparison=joint,
+            )
+        except Exception as exc:
+            logger.exception("Evidence-based answer generation failed")
+            return {**state, "error": str(exc), "final_response": "LLM生成答案失败", "citations": []}
+
+        answer = (answer or "").strip()
+        if trace:
+            state["model_answer"] = answer
+        draft = answer
+        required_docs = {item["document_id"] for item in evidence} if joint else None
+        answer, references = self._checked_citations(answer, evidence, required_docs)
+        if self._REFUSAL.match(answer):
+            return {**state, "final_response": self._NO_EVIDENCE, "citations": []}
+        if (not references and answer and self._CITATION_MARKER.sub("", answer).strip()
+                and not transcription and getattr(self.settings, "RAG_CITATION_REPAIR", True)):
+            try:
+                repaired = await asyncio.to_thread(
+                    self.llm_client.repair_citations, query, context, answer
+                )
+                if trace:
+                    state["citation_repair"] = (repaired or "").strip()
+                answer, references = self._checked_citations((repaired or "").strip(), evidence, required_docs)
+            except Exception:
+                logger.warning("Citation repair failed", exc_info=True)
+            if not references and len(evidence) == 1 and evidence[0]["citation_literal"]:
+                literal = evidence[0]["citation_literal"]
+                if self._matches_supply_literal_answer(query, draft, literal):
+                    answer, references = f"{draft} [1]", [1]
+                    if trace:
+                        state["citation_literal_verified"] = True
+        if not references or self._REFUSAL.match(answer):
+            return {**state, "final_response": self._NO_EVIDENCE, "citations": []}
+
+        citation_order = {number: index for index, number in enumerate(references, 1)}
+        answer = self._CITATION_MARKER.sub(
+            lambda match: f"[{citation_order[int(match[1])]}]", answer
         )
-        if rec_op_match:
-            sections['recommended'] = rec_op_match.group(1)
+        return {
+            **state,
+            "final_response": answer,
+            "citations": [evidence[n - 1] for n in references],
+        }
 
-        if not sections:
-            return None
+    async def _generate_by_document(self, state):
+        """Generate each comparison claim against just its device's evidence."""
+        topic = state["comparison_query"]
+        question = (f"What is this device's {topic}?" if not state.get("comparison_supply")
+                    else "What is this device's operating supply voltage range for single and dual supplies?")
+        outputs, citations, contexts, evidence, calls = [], [], [], [], []
+        trace = bool(state.get("user_context", {}).get("evaluation_trace"))
+        for doc_id in state["comparison_documents"]:
+            hits = [r for r in state["retrieval_results"] if r.document_id == doc_id]
+            result = await self.response_generation_node({
+                **state, "query": question,
+                "retrieval_results": hits, "comparison_documents": [], "comparison_subquery": True,
+            })
+            label = (hits[0].filename or doc_id) if hits else doc_id
+            if extract := self._comparison_quote(result, state.get("comparison_supply"), topic):
+                source, passage = extract
+                result["final_response"] = f"规格书原文：{passage} [1]"
+                result["citations"] = [source]
+                result["comparison_quote"] = passage
+            offset = len(citations)
+            answer = self._CITATION_MARKER.sub(
+                lambda match: f"[{offset + int(match[1])}]", result["final_response"]
+            )
+            outputs.append(f"【{label}】\n{answer}")
+            citations.extend(result.get("citations") or [])
+            if trace:
+                contexts.append(f"【{label}】\n{result.get('evaluation_context', '')}")
+                evidence.extend(result.get("context_evidence") or [])
+                calls.append({"document_id": doc_id, "query": result["query"],
+                              "context": result.get("evaluation_context"), "draft": result.get("model_answer"),
+                              "citation_repair": result.get("citation_repair"),
+                              "comparison_quote": result.get("comparison_quote"),
+                              "final_response": result["final_response"]})
+        result = {**state, "final_response": "\n\n".join(outputs) if citations else self._NO_EVIDENCE,
+                  "citations": citations}
+        if trace:
+            result.update(evaluation_context="\n\n".join(contexts), context_evidence=evidence,
+                          comparison_calls=calls)
+        return result
 
-        parts = []
+    def _comparison_quote(self, result, supply, topic):
+        """Return a literal evidence excerpt when a supported field is missed."""
+        for item in result.get("context_evidence") or result.get("citations") or []:
+            text = item["text_snippet"]
+            if supply and (start := self._OPERATING_SUPPLY.match(text)):
+                if span := self._SUPPLY_SPAN.search(text, start.end()):
+                    expected = re.sub(r"\s+", "", span[0]).casefold()
+                    actual = re.sub(r"\s+", "", result["final_response"]).casefold()
+                    # A correct upper bound alone cannot validate a range when
+                    # the model changes the lower bound's sign or its units.
+                    if not result.get("citations") or not re.search(
+                        rf"(?<![\d.+±\-−]){re.escape(expected)}", actual
+                    ):
+                        return item, text[:span.end()]
+                    if (getattr(self.settings, "RAG_VERIFIED_PASSAGES", True)
+                            and re.search(r"\d+(?:\.\d+)?v(?![a-z])", actual.replace(expected, "", 1))):
+                        return item, text[:span.end()]
+            elif "resolution" in topic.casefold() and not result.get("citations"):
+                if span := self._ADC_RESOLUTION_SPAN.search(text):
+                    return item, span[0]
+        return None
 
-        if param_intent == 'voltage':
-            if 'recommended' in sections:
-                sec = sections['recommended']
-                vcc_plus = re.search(r'VCC\+\s+Supply\s+voltage\s+([\d.]+)\s+([\d.]+)\s+V', sec, re.IGNORECASE)
-                vcc_minus = re.search(r'VCC[–-]\s+Supply\s+voltage\s+([–\-][\d.]+)\s+([–\-][\d.]+)\s+V', sec, re.IGNORECASE)
-                if vcc_plus:
-                    parts.append(f"推荐工作电压: VCC+ 为 {vcc_plus.group(1)}~{vcc_plus.group(2)}V")
-                if vcc_minus:
-                    parts.append(f"VCC- 为 {vcc_minus.group(1)}~{vcc_minus.group(2)}V")
+    def _matches_supply_literal_answer(self, query, answer, literal):
+        """Accept only the bare range or a simple statement of that exact range."""
+        match = self._PART_NUMBER.search(query)
+        if not match:
+            return False
+        part = re.escape(match[0])
+        answer = answer.strip().rstrip("。.")
+        answer = re.sub(
+            rf"^(?:the\s+)?{part}\s+operates\s+over\s+a\s+supply\s+voltage\s+range\s+of\s+",
+            "", answer, flags=re.I,
+        )
+        answer = re.sub(rf"^{part}\s*的(?:电源|供电)电压范围(?:是|为)\s*", "", answer, flags=re.I)
 
-            if 'absolute_max' in sections:
-                sec = sections['absolute_max']
-                vcc_plus_max = re.search(r'VCC\+\s+0\s+([\+\-]?[\d.]+)\s+V', sec, re.IGNORECASE)
-                vcc_minus_max = re.search(r'VCC[–-]\s+([–\-][\d.]+)\s+0\s+V', sec, re.IGNORECASE)
-                input_v = re.search(r'Input\s+voltage.*?(?:\)\s*)?([–\-][\d.]+)\s+([\+\-]?[\d.]+)\s+V', sec, re.IGNORECASE)
-                if vcc_plus_max:
-                    parts.append(f"绝对最大电压: VCC+ 为 {vcc_plus_max.group(1)}V")
-                if vcc_minus_max:
-                    parts.append(f"VCC- 为 {vcc_minus_max.group(1)}V")
-                if input_v:
-                    parts.append(f"输入电压范围为 {input_v.group(1)}~{input_v.group(2)}V")
+        def normalize(text):
+            return re.sub(r"\s+|\bto\b|[–−至]", lambda m: "" if m[0].isspace() else "-", text, flags=re.I).casefold()
 
-        elif param_intent == 'temperature':
-            if 'absolute_max' in sections:
-                sec = sections['absolute_max']
-                tj = re.search(r'(?:Operating\s+virtual-junction|TJ)\s+temperature\s+([\+\-]?[\d.]+)\s*°C', sec, re.IGNORECASE)
-                tstg = re.search(r'(?:Storage\s+temperature|Tstg)\s+range\s+([–\-][\d.]+)\s+([\+\-]?[\d.]+)\s*°C', sec, re.IGNORECASE)
-                if tj:
-                    parts.append(f"最高工作结温: {tj.group(1)}°C")
-                if tstg:
-                    parts.append(f"存储温度范围: {tstg.group(1)}~{tstg.group(2)}°C")
-            if 'recommended' in sections:
-                sec = sections['recommended']
-                ta = re.search(r'(?:Operating\s+free-air\s+temperature|TA)\s+.*?\s+([–\-]?[\d.]+)\s+([\+\-]?[\d.]+)\s*°C', sec, re.IGNORECASE)
-                if ta:
-                    parts.append(f"推荐工作环境温度: {ta.group(1)}~{ta.group(2)}°C")
+        return normalize(answer) == normalize(literal)
 
-        elif param_intent == 'current':
-            if 'absolute_max' in sections:
-                sec = sections['absolute_max']
-                ic = re.search(r'Input\s+current[^)]*?\)\s+([–\-]?[\d.]+)\s+([\+\-]?[\d.]+)\s+mA', sec, re.IGNORECASE)
-                if ic:
-                    parts.append(f"输入电流范围: {ic.group(1)}~{ic.group(2)}mA")
-
-        if not parts:
-            return None
-
-        prefix = chip_name if chip_name else "该器件"
-        intent_label = {'voltage': '电压', 'current': '电流', 'temperature': '温度', 'power': '功耗'}.get(param_intent, param_intent)
-        return f"{prefix}的{intent_label}参数：{'; '.join(parts)}。"
-
-    def _clean_chart_noise(self, text: str) -> str:
-        """清理PDF解析噪音，保留技术参数信息。
-
-        多级过滤策略(按优先级):
-          1) LaTeX表格检测 → 跳过
-          2) 技术参数保留 → 直接保留(最高优先级)
-          3) 数值+单位检测 → 保留电压/电流/电阻/频率/温度行
-          4) 图表区域检测 → 跳过数据行(最多20行后自动退出)
-          5) 封装尺寸过滤 → 跳过机械尺寸章节
-          6) 高密度数字行过滤 → 跳过图表数据点
-          7) 布局代码过滤 → 移除参考编号
-        """
-        lines = text.split('\n')
-        cleaned_lines = []
-
-        in_chart_area = False
-        chart_line_count = 0
-        in_package_section = False
-        in_latex_table = False
-        in_table_data = False
-        table_data_count = 0
-
-        for line in lines:
-            line_stripped = line.strip()
-
-            if not line_stripped:
-                if chart_line_count > 0 and chart_line_count < 10:
-                    in_chart_area = False
-                chart_line_count = 0
-                continue
-
-            # 第一级: LaTeX表格过滤
-            if any(indicator in line_stripped for indicator in self.LATEX_INDICATORS):
-                in_latex_table = True
-                continue
-
-            if in_latex_table:
-                if r'\\end{tabular}' in line_stripped or r'\\end{table}' in line_stripped:
-                    in_latex_table = False
-                continue
-
-            # 第二级: 技术参数保留(最高优先级)
-            is_tech_line = any(pattern.search(line_stripped) for pattern in self._compiled_tech_patterns)
-
-            if is_tech_line:
-                in_chart_area = False
-                chart_line_count = 0
-                in_package_section = False
-                in_latex_table = False
-                in_table_data = False
-                table_data_count = 0
-                cleaned_lines.append(line_stripped)
-                continue
-
-            # 第三级: 数值+单位检测
-            words = line_stripped.split()
-            if len(words) >= 3:
-                has_voltage = bool(self._voltage_pattern.search(line_stripped))
-                has_current = bool(self._current_pattern.search(line_stripped))
-                has_resistance = bool(self._resistance_pattern.search(line_stripped))
-                has_frequency = bool(self._frequency_pattern.search(line_stripped))
-                has_temp = bool(self._temp_pattern.search(line_stripped))
-
-                if (has_voltage or has_current or has_resistance or has_frequency or has_temp):
-                    digit_count = sum(1 for w in words if re.search(r'\d', w))
-                    if digit_count >= 5 and len(line_stripped) > 200:
-                        in_table_data = True
-                        table_data_count += 1
-                        if table_data_count <= 5:
-                            cleaned_lines.append(line_stripped)
-                        continue
-
-            if in_table_data:
-                table_data_count += 1
-                if table_data_count > 10:
-                    in_table_data = False
-                    table_data_count = 0
-                continue
-
-            # 第四级: 带描述的电压值保留
-            if self._voltage_pattern.search(line_stripped) and not re.search(r'^[±\d\s.]+$', line_stripped):
-                if re.search(r'[A-Za-z]{2,}', line_stripped):
-                    in_chart_area = False
-                    chart_line_count = 0
-                    in_package_section = False
-                    in_latex_table = False
-                    in_table_data = False
-                    table_data_count = 0
-                    cleaned_lines.append(line_stripped)
-                    continue
-
-            # 第五级: 封装尺寸章节过滤
-            line_lower = line_stripped.lower()
-            if any(kw.lower() in line_lower for kw in self.PACKAGE_SECTION_INDICATORS):
-                in_package_section = True
-                continue
-
-            if in_package_section:
-                if any(kw.lower() in line_lower for kw in self.PACKAGE_EXIT_INDICATORS):
-                    in_package_section = False
-                else:
-                    continue
-
-            # 第六级: 高密度数字行过滤
-            words = line_stripped.split()
-            if len(words) >= 5:
-                digit_count = sum(1 for w in words if w.replace('±', '').replace('+', '').replace('-', '').replace('.', '').isdigit())
-                if digit_count / len(words) > 0.6:
-                    in_chart_area = True
-                    chart_line_count += 1
-                    continue
-
-            # 第七级: 图表区域检测
-            if '(V)' in line_stripped and line_stripped.endswith('(V)') and not re.search(r'[A-Za-z]{3,}', line_stripped):
-                in_chart_area = True
-                chart_line_count += 1
-                continue
-
-            if any(label in line_stripped for label in self.AXIS_LABELS):
-                in_chart_area = True
-                chart_line_count += 1
-                continue
-
-            if len(line_stripped) == 4 and line_stripped[0].isupper() and line_stripped[1:].isdigit():
-                in_chart_area = True
-                chart_line_count += 1
-                continue
-
-            if 'Figure' in line_stripped and any(char.isdigit() for char in line_stripped):
-                in_chart_area = True
-                chart_line_count = 0
-                continue
-
-            if any(title in line_stripped for title in self.CHART_TITLES):
-                in_chart_area = True
-                chart_line_count = 0
-                continue
-
-            if in_chart_area:
-                chart_line_count += 1
-                if chart_line_count > 20:
-                    in_chart_area = False
-                    chart_line_count = 0
-                continue
-
-            # 第八级: 布局代码过滤
-            cleaned_line = self._layout_code_pattern.sub('', line_stripped)
-
-            if cleaned_line.strip():
-                cleaned_lines.append(cleaned_line)
-
-        return '\n'.join(cleaned_lines).strip()
+    def _checked_citations(self, answer, evidence, required_docs=None):
+        """Check that each citation refers to an existing evidence passage."""
+        if len(evidence) == 1 and evidence[0]["focused_row"] and "[1]" in answer:
+            lines = answer.splitlines()
+            prose = self._CITATION_MARKER.sub("", "\n".join(lines))
+            last = self._CITATION_MARKER.fullmatch(lines[-1].strip()) if lines else None
+            if last and int(last[1]) > 1:
+                literal = re.compile(rf"(?<![\w.]){re.escape(last[1])}(?![\d.])")
+                if literal.search(prose) and literal.search(evidence[0]["text_snippet"]):
+                    # Preserve the valid citation and remove a duplicated
+                    # value such as a trailing "[200]", not an unsupported claim.
+                    answer = "\n".join(lines[:-1]).strip()
+        references = list(dict.fromkeys(int(n) for n in self._CITATION_MARKER.findall(answer)))
+        prose = self._CITATION_MARKER.sub("", answer).strip()
+        if required_docs:
+            prose = re.sub(
+                r"\b[A-Z0-9_.-]+\s*\.?\s*pdf\b\s*(?:第\s*\d+\s*页|page\s+\d+)?",
+                "", prose, flags=re.I,
+            )
+        if (not references or any(n < 1 or n > len(evidence) for n in references)
+                or not any(char.isalnum() for char in prose)):
+            return answer, []
+        if required_docs and {evidence[n - 1]["document_id"] for n in references} != required_docs:
+            return answer, []
+        return answer, references
 
 
 class UnifiedAgentNodes:
@@ -1409,11 +851,11 @@ class UnifiedAgentNodes:
         re.compile(r'(\d+)\s+([A-Z][A-Z0-9_]{1,20})\s+(?:VDD|VSS|IO|电源|GND)', re.IGNORECASE | re.MULTILINE),
     ]
 
-    def __init__(self, settings=None):
+    def __init__(self, settings=None, retriever=None):
         """初始化统一Agent节点集合，组合意图路由和文本分析能力。"""
         self.settings = settings or get_settings()
         self.intent_router = IntentRouterNode()
-        self.text_nodes = TextAnalysisNodes(settings)
+        self.text_nodes = TextAnalysisNodes(self.settings, retriever=retriever)
         logger.info("UnifiedAgentNodes initialized")
 
     @property
@@ -1984,6 +1426,6 @@ class UnifiedAgentNodes:
         return None
 
 
-def create_unified_agent_nodes(settings=None) -> UnifiedAgentNodes:
+def create_unified_agent_nodes(settings=None, retriever=None) -> UnifiedAgentNodes:
     """创建统一Agent节点集合实例的工厂函数。"""
-    return UnifiedAgentNodes(settings)
+    return UnifiedAgentNodes(settings, retriever=retriever)

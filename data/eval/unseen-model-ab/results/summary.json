@@ -1,0 +1,1414 @@
+{
+  "planned_chat_requests": 72,
+  "successful_scored_chat_requests": 72,
+  "questions_sha256": "028b1f7d6aba60b090ade717d16986004344466fa06a8bf2bc460b7809b29ea8",
+  "indexes": {
+    "bm25_sha256": "c726865f00e9839b14ffaed3ef1657e688daa23822b06298706628f1c51c1e3f",
+    "chroma_chunks_sha256": "43b9a66dd01763a6fb3a8b1801d529e65621f75a71499c830f7a20927c1a69e1",
+    "table_rows_sha256": "8c53452ce9e4619114e5556ec56d907a23ba0769838a04f188cc6d7ce4aac87b"
+  },
+  "arms": {
+    "current": {
+      "uid": "qwen3.5",
+      "backend_model": {
+        "accelerators": [
+          "0"
+        ],
+        "context_length": 262144,
+        "model_engine": "Transformers",
+        "model_family": "qwen3.5",
+        "model_format": "pytorch",
+        "model_name": "qwen3.5",
+        "model_size_in_billions": "0_8",
+        "quantization": "none"
+      },
+      "successful_chat_requests": 36,
+      "business_retries_before_scored_success": 0,
+      "model_calls_succeeded_in_scored_attempts": 44,
+      "model_calls_failed_in_scored_attempts": 0,
+      "tap_calls_outside_scored_attempts": 0,
+      "successful_model_calls_per_sample": {
+        "2": 8,
+        "1": 28
+      },
+      "answer_modes": {
+        "generated": 30,
+        "joint_comparison": 6
+      },
+      "no_model_call_samples": [],
+      "citation_repair_samples": [
+        "n01-r1",
+        "n09-r1",
+        "n01-r2",
+        "n09-r2",
+        "n10-r2",
+        "n01-r3",
+        "n09-r3",
+        "n10-r3"
+      ],
+      "chat_seconds_p50": 5.24,
+      "chat_seconds_p95": 6.5275,
+      "model_tokens_per_successful_call": {
+        "prompt_tokens": {
+          "observed_calls": 44,
+          "total": 52552,
+          "median": 1037.0
+        },
+        "completion_tokens": {
+          "observed_calls": 44,
+          "total": 8402,
+          "median": 256.0
+        },
+        "total_tokens": {
+          "observed_calls": 44,
+          "total": 60954,
+          "median": 1276.5
+        }
+      },
+      "finish_reasons": {
+        "stop": 44
+      },
+      "calls_with_completion_tokens_at_or_above_requested_cap": 23,
+      "cap_samples": [
+        "n02-r1",
+        "n03-r1",
+        "n04-r1",
+        "n05-r1",
+        "n06-r1",
+        "n07-r1",
+        "n09-r1",
+        "n10-r1",
+        "n11-r1",
+        "n02-r2",
+        "n03-r2",
+        "n04-r2",
+        "n05-r2",
+        "n06-r2",
+        "n07-r2",
+        "n08-r2",
+        "n10-r2",
+        "n10-r2",
+        "n11-r2",
+        "n03-r3",
+        "n06-r3",
+        "n07-r3",
+        "n09-r3"
+      ],
+      "strict_failure_stage_counts": {
+        "generation": 3,
+        "citation_repair": 3,
+        "formula_missing_in_index": 9,
+        "context_assembly": 9,
+        "operand_unit": 1,
+        "at_token_cap": 7,
+        "generation_incomplete": 6,
+        "wrong_operands_and_direction": 1,
+        "wrong_denominator_and_arithmetic": 1,
+        "wrong_field_and_units": 1,
+        "wrong_denominator_and_units": 1,
+        "generation_field": 1,
+        "output_cleaning": 2,
+        "parsed_formula_missing": 3,
+        "generation_operation": 3,
+        "retrieval": 3,
+        "context_selection": 3,
+        "field_or_unit": 3,
+        "区间判断": 2,
+        "引用修复": 5,
+        "上下文组装": 3,
+        "字段角色": 3,
+        "运算": 1,
+        "typed_rating_confusion": 3
+      }
+    },
+    "stronger": {
+      "uid": "qwen3.5-4b-eval",
+      "backend_model": {
+        "accelerators": [
+          "0"
+        ],
+        "context_length": 262144,
+        "model_engine": "Transformers",
+        "model_family": "qwen3.5",
+        "model_format": "pytorch",
+        "model_name": "qwen3.5",
+        "model_size_in_billions": 4,
+        "quantization": "none"
+      },
+      "successful_chat_requests": 36,
+      "business_retries_before_scored_success": 0,
+      "model_calls_succeeded_in_scored_attempts": 39,
+      "model_calls_failed_in_scored_attempts": 0,
+      "tap_calls_outside_scored_attempts": 0,
+      "successful_model_calls_per_sample": {
+        "1": 33,
+        "2": 3
+      },
+      "answer_modes": {
+        "generated": 30,
+        "joint_comparison": 6
+      },
+      "no_model_call_samples": [],
+      "citation_repair_samples": [
+        "n10-r1",
+        "n10-r2",
+        "n10-r3"
+      ],
+      "chat_seconds_p50": 7.0835,
+      "chat_seconds_p95": 11.8695,
+      "model_tokens_per_successful_call": {
+        "prompt_tokens": {
+          "observed_calls": 39,
+          "total": 47879,
+          "median": 1037
+        },
+        "completion_tokens": {
+          "observed_calls": 39,
+          "total": 7581,
+          "median": 255
+        },
+        "total_tokens": {
+          "observed_calls": 39,
+          "total": 55460,
+          "median": 1278
+        }
+      },
+      "finish_reasons": {
+        "stop": 39
+      },
+      "calls_with_completion_tokens_at_or_above_requested_cap": 19,
+      "cap_samples": [
+        "n02-r1",
+        "n03-r1",
+        "n04-r1",
+        "n06-r1",
+        "n10-r1",
+        "n10-r1",
+        "n02-r2",
+        "n03-r2",
+        "n06-r2",
+        "n07-r2",
+        "n08-r2",
+        "n10-r2",
+        "n02-r3",
+        "n03-r3",
+        "n04-r3",
+        "n06-r3",
+        "n08-r3",
+        "n09-r3",
+        "n10-r3"
+      ],
+      "strict_failure_stage_counts": {
+        "formula_missing_in_index": 9,
+        "context_assembly": 9,
+        "grounded_abstention": 5,
+        "at_token_cap": 8,
+        "generation_incomplete": 2,
+        "wrong_missing_operand": 2,
+        "extra_unsupported": 1,
+        "parsed_formula_missing": 3,
+        "generation_operation": 3,
+        "retrieval": 3,
+        "context_selection": 3,
+        "field_or_unit": 3,
+        "上下文组装": 3,
+        "运算": 2,
+        "引用修复": 1,
+        "引用": 1,
+        "器件行归属": 1,
+        "typed_rating_confusion": 1,
+        "refusal_postprocessing": 3
+      }
+    }
+  },
+  "paired_alignment": {
+    "first_model_prompt": {
+      "pair_counts": {
+        "matched": 36
+      },
+      "by_pair": {
+        "n01-r1": "matched",
+        "n02-r1": "matched",
+        "n03-r1": "matched",
+        "n04-r1": "matched",
+        "n05-r1": "matched",
+        "n06-r1": "matched",
+        "n07-r1": "matched",
+        "n08-r1": "matched",
+        "n09-r1": "matched",
+        "n10-r1": "matched",
+        "n11-r1": "matched",
+        "n12-r1": "matched",
+        "n01-r2": "matched",
+        "n02-r2": "matched",
+        "n03-r2": "matched",
+        "n04-r2": "matched",
+        "n05-r2": "matched",
+        "n06-r2": "matched",
+        "n07-r2": "matched",
+        "n08-r2": "matched",
+        "n09-r2": "matched",
+        "n10-r2": "matched",
+        "n11-r2": "matched",
+        "n12-r2": "matched",
+        "n01-r3": "matched",
+        "n02-r3": "matched",
+        "n03-r3": "matched",
+        "n04-r3": "matched",
+        "n05-r3": "matched",
+        "n06-r3": "matched",
+        "n07-r3": "matched",
+        "n08-r3": "matched",
+        "n09-r3": "matched",
+        "n10-r3": "matched",
+        "n11-r3": "matched",
+        "n12-r3": "matched"
+      }
+    },
+    "model_context": {
+      "pair_counts": {
+        "matched": 36
+      },
+      "by_pair": {
+        "n01-r1": "matched",
+        "n02-r1": "matched",
+        "n03-r1": "matched",
+        "n04-r1": "matched",
+        "n05-r1": "matched",
+        "n06-r1": "matched",
+        "n07-r1": "matched",
+        "n08-r1": "matched",
+        "n09-r1": "matched",
+        "n10-r1": "matched",
+        "n11-r1": "matched",
+        "n12-r1": "matched",
+        "n01-r2": "matched",
+        "n02-r2": "matched",
+        "n03-r2": "matched",
+        "n04-r2": "matched",
+        "n05-r2": "matched",
+        "n06-r2": "matched",
+        "n07-r2": "matched",
+        "n08-r2": "matched",
+        "n09-r2": "matched",
+        "n10-r2": "matched",
+        "n11-r2": "matched",
+        "n12-r2": "matched",
+        "n01-r3": "matched",
+        "n02-r3": "matched",
+        "n03-r3": "matched",
+        "n04-r3": "matched",
+        "n05-r3": "matched",
+        "n06-r3": "matched",
+        "n07-r3": "matched",
+        "n08-r3": "matched",
+        "n09-r3": "matched",
+        "n10-r3": "matched",
+        "n11-r3": "matched",
+        "n12-r3": "matched"
+      }
+    }
+  },
+  "groups": {
+    "overall": {
+      "semantic": {
+        "denominator": 36,
+        "current_pass": 5,
+        "stronger_pass": 15,
+        "net_change": 10,
+        "pair_counts": {
+          "both_pass": 2,
+          "fail_to_pass": 13,
+          "pass_to_fail": 3,
+          "both_fail": 18
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n01-r1",
+            "n05-r1",
+            "n09-r1",
+            "n01-r2",
+            "n05-r2",
+            "n06-r2",
+            "n09-r2",
+            "n10-r2",
+            "n11-r2",
+            "n01-r3",
+            "n06-r3",
+            "n09-r3",
+            "n11-r3"
+          ],
+          "both_fail": [
+            "n02-r1",
+            "n03-r1",
+            "n04-r1",
+            "n07-r1",
+            "n08-r1",
+            "n10-r1",
+            "n11-r1",
+            "n02-r2",
+            "n03-r2",
+            "n04-r2",
+            "n07-r2",
+            "n08-r2",
+            "n02-r3",
+            "n03-r3",
+            "n04-r3",
+            "n07-r3",
+            "n08-r3",
+            "n10-r3"
+          ],
+          "both_pass": [
+            "n06-r1",
+            "n05-r3"
+          ],
+          "pass_to_fail": [
+            "n12-r1",
+            "n12-r2",
+            "n12-r3"
+          ]
+        }
+      },
+      "strict": {
+        "denominator": 36,
+        "current_pass": 4,
+        "stronger_pass": 13,
+        "net_change": 9,
+        "pair_counts": {
+          "both_pass": 1,
+          "fail_to_pass": 12,
+          "pass_to_fail": 3,
+          "both_fail": 20
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n01-r1",
+            "n09-r1",
+            "n01-r2",
+            "n05-r2",
+            "n06-r2",
+            "n09-r2",
+            "n11-r2",
+            "n01-r3",
+            "n05-r3",
+            "n06-r3",
+            "n09-r3",
+            "n11-r3"
+          ],
+          "both_fail": [
+            "n02-r1",
+            "n03-r1",
+            "n04-r1",
+            "n05-r1",
+            "n07-r1",
+            "n08-r1",
+            "n10-r1",
+            "n11-r1",
+            "n02-r2",
+            "n03-r2",
+            "n04-r2",
+            "n07-r2",
+            "n08-r2",
+            "n10-r2",
+            "n02-r3",
+            "n03-r3",
+            "n04-r3",
+            "n07-r3",
+            "n08-r3",
+            "n10-r3"
+          ],
+          "both_pass": [
+            "n06-r1"
+          ],
+          "pass_to_fail": [
+            "n12-r1",
+            "n12-r2",
+            "n12-r3"
+          ]
+        }
+      }
+    },
+    "answerable": {
+      "semantic": {
+        "denominator": 30,
+        "current_pass": 2,
+        "stronger_pass": 13,
+        "net_change": 11,
+        "pair_counts": {
+          "both_pass": 2,
+          "fail_to_pass": 11,
+          "pass_to_fail": 0,
+          "both_fail": 17
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n01-r1",
+            "n05-r1",
+            "n09-r1",
+            "n01-r2",
+            "n05-r2",
+            "n06-r2",
+            "n09-r2",
+            "n10-r2",
+            "n01-r3",
+            "n06-r3",
+            "n09-r3"
+          ],
+          "both_fail": [
+            "n02-r1",
+            "n03-r1",
+            "n04-r1",
+            "n07-r1",
+            "n08-r1",
+            "n10-r1",
+            "n02-r2",
+            "n03-r2",
+            "n04-r2",
+            "n07-r2",
+            "n08-r2",
+            "n02-r3",
+            "n03-r3",
+            "n04-r3",
+            "n07-r3",
+            "n08-r3",
+            "n10-r3"
+          ],
+          "both_pass": [
+            "n06-r1",
+            "n05-r3"
+          ],
+          "pass_to_fail": []
+        }
+      },
+      "strict": {
+        "denominator": 30,
+        "current_pass": 1,
+        "stronger_pass": 11,
+        "net_change": 10,
+        "pair_counts": {
+          "both_pass": 1,
+          "fail_to_pass": 10,
+          "pass_to_fail": 0,
+          "both_fail": 19
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n01-r1",
+            "n09-r1",
+            "n01-r2",
+            "n05-r2",
+            "n06-r2",
+            "n09-r2",
+            "n01-r3",
+            "n05-r3",
+            "n06-r3",
+            "n09-r3"
+          ],
+          "both_fail": [
+            "n02-r1",
+            "n03-r1",
+            "n04-r1",
+            "n05-r1",
+            "n07-r1",
+            "n08-r1",
+            "n10-r1",
+            "n02-r2",
+            "n03-r2",
+            "n04-r2",
+            "n07-r2",
+            "n08-r2",
+            "n10-r2",
+            "n02-r3",
+            "n03-r3",
+            "n04-r3",
+            "n07-r3",
+            "n08-r3",
+            "n10-r3"
+          ],
+          "both_pass": [
+            "n06-r1"
+          ],
+          "pass_to_fail": []
+        }
+      }
+    },
+    "arithmetic": {
+      "semantic": {
+        "denominator": 18,
+        "current_pass": 1,
+        "stronger_pass": 4,
+        "net_change": 3,
+        "pair_counts": {
+          "both_pass": 1,
+          "fail_to_pass": 3,
+          "pass_to_fail": 0,
+          "both_fail": 14
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n02-r1",
+            "n03-r1",
+            "n04-r1",
+            "n07-r1",
+            "n10-r1",
+            "n02-r2",
+            "n03-r2",
+            "n04-r2",
+            "n07-r2",
+            "n02-r3",
+            "n03-r3",
+            "n04-r3",
+            "n07-r3",
+            "n10-r3"
+          ],
+          "both_pass": [
+            "n06-r1"
+          ],
+          "fail_to_pass": [
+            "n06-r2",
+            "n10-r2",
+            "n06-r3"
+          ],
+          "pass_to_fail": []
+        }
+      },
+      "strict": {
+        "denominator": 18,
+        "current_pass": 1,
+        "stronger_pass": 3,
+        "net_change": 2,
+        "pair_counts": {
+          "both_pass": 1,
+          "fail_to_pass": 2,
+          "pass_to_fail": 0,
+          "both_fail": 15
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n02-r1",
+            "n03-r1",
+            "n04-r1",
+            "n07-r1",
+            "n10-r1",
+            "n02-r2",
+            "n03-r2",
+            "n04-r2",
+            "n07-r2",
+            "n10-r2",
+            "n02-r3",
+            "n03-r3",
+            "n04-r3",
+            "n07-r3",
+            "n10-r3"
+          ],
+          "both_pass": [
+            "n06-r1"
+          ],
+          "fail_to_pass": [
+            "n06-r2",
+            "n06-r3"
+          ],
+          "pass_to_fail": []
+        }
+      }
+    },
+    "unanswerable": {
+      "semantic": {
+        "denominator": 6,
+        "current_pass": 3,
+        "stronger_pass": 2,
+        "net_change": -1,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 2,
+          "pass_to_fail": 3,
+          "both_fail": 1
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n11-r1"
+          ],
+          "pass_to_fail": [
+            "n12-r1",
+            "n12-r2",
+            "n12-r3"
+          ],
+          "fail_to_pass": [
+            "n11-r2",
+            "n11-r3"
+          ],
+          "both_pass": []
+        }
+      },
+      "strict": {
+        "denominator": 6,
+        "current_pass": 3,
+        "stronger_pass": 2,
+        "net_change": -1,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 2,
+          "pass_to_fail": 3,
+          "both_fail": 1
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n11-r1"
+          ],
+          "pass_to_fail": [
+            "n12-r1",
+            "n12-r2",
+            "n12-r3"
+          ],
+          "fail_to_pass": [
+            "n11-r2",
+            "n11-r3"
+          ],
+          "both_pass": []
+        }
+      }
+    },
+    "cross_device": {
+      "semantic": {
+        "denominator": 6,
+        "current_pass": 0,
+        "stronger_pass": 4,
+        "net_change": 4,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 4,
+          "pass_to_fail": 0,
+          "both_fail": 2
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n09-r1",
+            "n09-r2",
+            "n10-r2",
+            "n09-r3"
+          ],
+          "both_fail": [
+            "n10-r1",
+            "n10-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": []
+        }
+      },
+      "strict": {
+        "denominator": 6,
+        "current_pass": 0,
+        "stronger_pass": 3,
+        "net_change": 3,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 3,
+          "pass_to_fail": 0,
+          "both_fail": 3
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n09-r1",
+            "n09-r2",
+            "n09-r3"
+          ],
+          "both_fail": [
+            "n10-r1",
+            "n10-r2",
+            "n10-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": []
+        }
+      }
+    },
+    "matched_first_model_prompt": {
+      "semantic": {
+        "denominator": 36,
+        "current_pass": 5,
+        "stronger_pass": 15,
+        "net_change": 10,
+        "pair_counts": {
+          "both_pass": 2,
+          "fail_to_pass": 13,
+          "pass_to_fail": 3,
+          "both_fail": 18
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n01-r1",
+            "n05-r1",
+            "n09-r1",
+            "n01-r2",
+            "n05-r2",
+            "n06-r2",
+            "n09-r2",
+            "n10-r2",
+            "n11-r2",
+            "n01-r3",
+            "n06-r3",
+            "n09-r3",
+            "n11-r3"
+          ],
+          "both_fail": [
+            "n02-r1",
+            "n03-r1",
+            "n04-r1",
+            "n07-r1",
+            "n08-r1",
+            "n10-r1",
+            "n11-r1",
+            "n02-r2",
+            "n03-r2",
+            "n04-r2",
+            "n07-r2",
+            "n08-r2",
+            "n02-r3",
+            "n03-r3",
+            "n04-r3",
+            "n07-r3",
+            "n08-r3",
+            "n10-r3"
+          ],
+          "both_pass": [
+            "n06-r1",
+            "n05-r3"
+          ],
+          "pass_to_fail": [
+            "n12-r1",
+            "n12-r2",
+            "n12-r3"
+          ]
+        }
+      },
+      "strict": {
+        "denominator": 36,
+        "current_pass": 4,
+        "stronger_pass": 13,
+        "net_change": 9,
+        "pair_counts": {
+          "both_pass": 1,
+          "fail_to_pass": 12,
+          "pass_to_fail": 3,
+          "both_fail": 20
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n01-r1",
+            "n09-r1",
+            "n01-r2",
+            "n05-r2",
+            "n06-r2",
+            "n09-r2",
+            "n11-r2",
+            "n01-r3",
+            "n05-r3",
+            "n06-r3",
+            "n09-r3",
+            "n11-r3"
+          ],
+          "both_fail": [
+            "n02-r1",
+            "n03-r1",
+            "n04-r1",
+            "n05-r1",
+            "n07-r1",
+            "n08-r1",
+            "n10-r1",
+            "n11-r1",
+            "n02-r2",
+            "n03-r2",
+            "n04-r2",
+            "n07-r2",
+            "n08-r2",
+            "n10-r2",
+            "n02-r3",
+            "n03-r3",
+            "n04-r3",
+            "n07-r3",
+            "n08-r3",
+            "n10-r3"
+          ],
+          "both_pass": [
+            "n06-r1"
+          ],
+          "pass_to_fail": [
+            "n12-r1",
+            "n12-r2",
+            "n12-r3"
+          ]
+        }
+      }
+    }
+  },
+  "by_question": {
+    "n01": {
+      "semantic": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 3,
+        "net_change": 3,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 3,
+          "pass_to_fail": 0,
+          "both_fail": 0
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n01-r1",
+            "n01-r2",
+            "n01-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "both_fail": []
+        }
+      },
+      "strict": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 3,
+        "net_change": 3,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 3,
+          "pass_to_fail": 0,
+          "both_fail": 0
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n01-r1",
+            "n01-r2",
+            "n01-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "both_fail": []
+        }
+      }
+    },
+    "n02": {
+      "semantic": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 0,
+        "net_change": 0,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 0,
+          "both_fail": 3
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n02-r1",
+            "n02-r2",
+            "n02-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "fail_to_pass": []
+        }
+      },
+      "strict": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 0,
+        "net_change": 0,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 0,
+          "both_fail": 3
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n02-r1",
+            "n02-r2",
+            "n02-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "fail_to_pass": []
+        }
+      }
+    },
+    "n03": {
+      "semantic": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 0,
+        "net_change": 0,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 0,
+          "both_fail": 3
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n03-r1",
+            "n03-r2",
+            "n03-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "fail_to_pass": []
+        }
+      },
+      "strict": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 0,
+        "net_change": 0,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 0,
+          "both_fail": 3
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n03-r1",
+            "n03-r2",
+            "n03-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "fail_to_pass": []
+        }
+      }
+    },
+    "n04": {
+      "semantic": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 0,
+        "net_change": 0,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 0,
+          "both_fail": 3
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n04-r1",
+            "n04-r2",
+            "n04-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "fail_to_pass": []
+        }
+      },
+      "strict": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 0,
+        "net_change": 0,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 0,
+          "both_fail": 3
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n04-r1",
+            "n04-r2",
+            "n04-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "fail_to_pass": []
+        }
+      }
+    },
+    "n05": {
+      "semantic": {
+        "denominator": 3,
+        "current_pass": 1,
+        "stronger_pass": 3,
+        "net_change": 2,
+        "pair_counts": {
+          "both_pass": 1,
+          "fail_to_pass": 2,
+          "pass_to_fail": 0,
+          "both_fail": 0
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n05-r1",
+            "n05-r2"
+          ],
+          "both_pass": [
+            "n05-r3"
+          ],
+          "pass_to_fail": [],
+          "both_fail": []
+        }
+      },
+      "strict": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 2,
+        "net_change": 2,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 2,
+          "pass_to_fail": 0,
+          "both_fail": 1
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n05-r1"
+          ],
+          "fail_to_pass": [
+            "n05-r2",
+            "n05-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": []
+        }
+      }
+    },
+    "n06": {
+      "semantic": {
+        "denominator": 3,
+        "current_pass": 1,
+        "stronger_pass": 3,
+        "net_change": 2,
+        "pair_counts": {
+          "both_pass": 1,
+          "fail_to_pass": 2,
+          "pass_to_fail": 0,
+          "both_fail": 0
+        },
+        "pair_sample_ids": {
+          "both_pass": [
+            "n06-r1"
+          ],
+          "fail_to_pass": [
+            "n06-r2",
+            "n06-r3"
+          ],
+          "pass_to_fail": [],
+          "both_fail": []
+        }
+      },
+      "strict": {
+        "denominator": 3,
+        "current_pass": 1,
+        "stronger_pass": 3,
+        "net_change": 2,
+        "pair_counts": {
+          "both_pass": 1,
+          "fail_to_pass": 2,
+          "pass_to_fail": 0,
+          "both_fail": 0
+        },
+        "pair_sample_ids": {
+          "both_pass": [
+            "n06-r1"
+          ],
+          "fail_to_pass": [
+            "n06-r2",
+            "n06-r3"
+          ],
+          "pass_to_fail": [],
+          "both_fail": []
+        }
+      }
+    },
+    "n07": {
+      "semantic": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 0,
+        "net_change": 0,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 0,
+          "both_fail": 3
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n07-r1",
+            "n07-r2",
+            "n07-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "fail_to_pass": []
+        }
+      },
+      "strict": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 0,
+        "net_change": 0,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 0,
+          "both_fail": 3
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n07-r1",
+            "n07-r2",
+            "n07-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "fail_to_pass": []
+        }
+      }
+    },
+    "n08": {
+      "semantic": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 0,
+        "net_change": 0,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 0,
+          "both_fail": 3
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n08-r1",
+            "n08-r2",
+            "n08-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "fail_to_pass": []
+        }
+      },
+      "strict": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 0,
+        "net_change": 0,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 0,
+          "both_fail": 3
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n08-r1",
+            "n08-r2",
+            "n08-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "fail_to_pass": []
+        }
+      }
+    },
+    "n09": {
+      "semantic": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 3,
+        "net_change": 3,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 3,
+          "pass_to_fail": 0,
+          "both_fail": 0
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n09-r1",
+            "n09-r2",
+            "n09-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "both_fail": []
+        }
+      },
+      "strict": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 3,
+        "net_change": 3,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 3,
+          "pass_to_fail": 0,
+          "both_fail": 0
+        },
+        "pair_sample_ids": {
+          "fail_to_pass": [
+            "n09-r1",
+            "n09-r2",
+            "n09-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "both_fail": []
+        }
+      }
+    },
+    "n10": {
+      "semantic": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 1,
+        "net_change": 1,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 1,
+          "pass_to_fail": 0,
+          "both_fail": 2
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n10-r1",
+            "n10-r3"
+          ],
+          "fail_to_pass": [
+            "n10-r2"
+          ],
+          "both_pass": [],
+          "pass_to_fail": []
+        }
+      },
+      "strict": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 0,
+        "net_change": 0,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 0,
+          "both_fail": 3
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n10-r1",
+            "n10-r2",
+            "n10-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": [],
+          "fail_to_pass": []
+        }
+      }
+    },
+    "n11": {
+      "semantic": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 2,
+        "net_change": 2,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 2,
+          "pass_to_fail": 0,
+          "both_fail": 1
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n11-r1"
+          ],
+          "fail_to_pass": [
+            "n11-r2",
+            "n11-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": []
+        }
+      },
+      "strict": {
+        "denominator": 3,
+        "current_pass": 0,
+        "stronger_pass": 2,
+        "net_change": 2,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 2,
+          "pass_to_fail": 0,
+          "both_fail": 1
+        },
+        "pair_sample_ids": {
+          "both_fail": [
+            "n11-r1"
+          ],
+          "fail_to_pass": [
+            "n11-r2",
+            "n11-r3"
+          ],
+          "both_pass": [],
+          "pass_to_fail": []
+        }
+      }
+    },
+    "n12": {
+      "semantic": {
+        "denominator": 3,
+        "current_pass": 3,
+        "stronger_pass": 0,
+        "net_change": -3,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 3,
+          "both_fail": 0
+        },
+        "pair_sample_ids": {
+          "pass_to_fail": [
+            "n12-r1",
+            "n12-r2",
+            "n12-r3"
+          ],
+          "both_pass": [],
+          "fail_to_pass": [],
+          "both_fail": []
+        }
+      },
+      "strict": {
+        "denominator": 3,
+        "current_pass": 3,
+        "stronger_pass": 0,
+        "net_change": -3,
+        "pair_counts": {
+          "both_pass": 0,
+          "fail_to_pass": 0,
+          "pass_to_fail": 3,
+          "both_fail": 0
+        },
+        "pair_sample_ids": {
+          "pass_to_fail": [
+            "n12-r1",
+            "n12-r2",
+            "n12-r3"
+          ],
+          "both_pass": [],
+          "fail_to_pass": [],
+          "both_fail": []
+        }
+      }
+    }
+  },
+  "definitions": {
+    "unit": "One graded API response per model, question and repeat. Three repeats reuse each question.",
+    "pair_direction": "current to stronger, paired by question and repeat label (no fixed random seed).",
+    "p95": "Linear interpolation between adjacent sorted elapsed times at 0.95*(n-1).",
+    "overlap": "Arithmetic includes comparison_calculation; cross_device can overlap arithmetic.",
+    "finish_and_tokens": "Successful downstream chat completions from scored business attempts, including citation repair.",
+    "cap": "Observed completion_tokens >= request.max_tokens, counted independently of server finish_reason.",
+    "alignment": "'neither' means both sides lacked this input, distinct from matched nonempty receipt hashes."
+  }
+}

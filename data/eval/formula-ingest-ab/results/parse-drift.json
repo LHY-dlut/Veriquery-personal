@@ -1,0 +1,179 @@
+{
+  "scope": "Exact ordered control-page text and offsets, all indexed table rows/headers and SQLite grids. Embedding checks are reported separately. Document IDs, chunk IDs and DB timestamps excluded. Formula-page prose was intentionally regrouped and is outside this control.",
+  "changed": [
+    [
+      "MCP4725_original_p1",
+      "control_prose_vectors"
+    ]
+  ],
+  "pages": {
+    "MCP4725_original_p1": {
+      "control_prose": {
+        "before": 7,
+        "after": 7,
+        "equal": true,
+        "before_sha256": "10196bd819c3f0f422a3915e76708b5f0a3b38edce0fdf38477e24fbbeed568f",
+        "after_sha256": "10196bd819c3f0f422a3915e76708b5f0a3b38edce0fdf38477e24fbbeed568f",
+        "only_before": [],
+        "only_after": []
+      },
+      "control_prose_vectors": {
+        "before": 7,
+        "after": 7,
+        "equal": false,
+        "before_sha256": "1f2c264283f6b62ee6d325dc42574e710c8b3061b787feee6d9bba9c28fa8a58",
+        "after_sha256": "492aecce7b1c8a755fc1c3e49143415ce6d8c47f67b4465687ffd5ce5762f68d",
+        "only_before": [
+          "65229e933e0ef56db2bfc6485f1718d06989b6f7a24984c7e3d0cc39f2b27614",
+          "f290d50d4688646c4969f4df07e96b58bb89fb07dbd6ecb0ef7598af9f701614",
+          "37c0e2db4bca299ab0785a4d0efdd47793930db402555cfec02c869df372877e",
+          "71336d189df0627776cd0b23f5bb86b0d172cd69a2e0d6032a196ed20704451b",
+          "d4b2e19cfbdbe907e2aadb05cabec23e95a67d85554175dc8f3e74d30f1054c1",
+          "c71e162f00917a079ee70b958a319fe792cca31396bdab8b84c6b8d5dcc1c01b",
+          "48731c160d5b973269fa829aefacd3a063be9342bcd3ba06f2c47b8c6bdedc9d"
+        ],
+        "only_after": [
+          "521bf987236838ddad269c6f1400d055072c56e10e96d3f8e7b833366238b877",
+          "22e9b5b85771bd67b380790e4f427d3b8332c0a01df078ef7caa4915397eb242",
+          "06788770a2bebd95fc303ac902a95cab8c7828221998b0831bc474d763d26e5f",
+          "8966d782ed1489973c0256c7aa26a2f1397b9ca1509c17fb3b646bcfba71c13a",
+          "e844330adc169c53e64bc8f75c54be295eba026373cf251c521884ea11886e31",
+          "7cf41e804071d59a9ac81cafff20858383fc8dc6bd4c1de8ac6bca26e3732e29",
+          "1059bdfa277cb276ed8c838aa2fd0e7ad4d0bd165214b7b841f8aeb003f71eac"
+        ]
+      },
+      "index_table_rows": {
+        "before": 0,
+        "after": 0,
+        "equal": true,
+        "before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "after_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "only_before": [],
+        "only_after": []
+      },
+      "table_row_vectors": {
+        "before": 0,
+        "after": 0,
+        "equal": true,
+        "before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "after_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "only_before": [],
+        "only_after": []
+      },
+      "sqlite_tables": {
+        "before": 0,
+        "after": 0,
+        "equal": true,
+        "before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "after_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "only_before": [],
+        "only_after": []
+      }
+    },
+    "MCP4725_original_p15": {
+      "index_table_rows": {
+        "before": 0,
+        "after": 0,
+        "equal": true,
+        "before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "after_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "only_before": [],
+        "only_after": []
+      },
+      "table_row_vectors": {
+        "before": 0,
+        "after": 0,
+        "equal": true,
+        "before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "after_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "only_before": [],
+        "only_after": []
+      },
+      "sqlite_tables": {
+        "before": 0,
+        "after": 0,
+        "equal": true,
+        "before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "after_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "only_before": [],
+        "only_after": []
+      }
+    },
+    "TPS63020_original_p6": {
+      "control_prose": {
+        "before": 7,
+        "after": 7,
+        "equal": true,
+        "before_sha256": "66e42ad87ddb4e175c749e95ca4611ed8d544a17cb71f4a4dca0155836e78bb3",
+        "after_sha256": "66e42ad87ddb4e175c749e95ca4611ed8d544a17cb71f4a4dca0155836e78bb3",
+        "only_before": [],
+        "only_after": []
+      },
+      "control_prose_vectors": {
+        "before": 7,
+        "after": 7,
+        "equal": true,
+        "before_sha256": "e0849c9c685b087ff2086b340e2147639873af4161e12e325145a565f61a5261",
+        "after_sha256": "e0849c9c685b087ff2086b340e2147639873af4161e12e325145a565f61a5261",
+        "only_before": [],
+        "only_after": []
+      },
+      "index_table_rows": {
+        "before": 32,
+        "after": 32,
+        "equal": true,
+        "before_sha256": "8356bc9f7b5074891fb1923656024dc6ffe89a37a2710c882f92906a644ae30d",
+        "after_sha256": "8356bc9f7b5074891fb1923656024dc6ffe89a37a2710c882f92906a644ae30d",
+        "only_before": [],
+        "only_after": []
+      },
+      "table_row_vectors": {
+        "before": 32,
+        "after": 32,
+        "equal": true,
+        "before_sha256": "b023980551bcf105733006b871dd61f57a3cddff251458780190f37266c2fea5",
+        "after_sha256": "b023980551bcf105733006b871dd61f57a3cddff251458780190f37266c2fea5",
+        "only_before": [],
+        "only_after": []
+      },
+      "sqlite_tables": {
+        "before": 1,
+        "after": 1,
+        "equal": true,
+        "before_sha256": "42049414d395a1f9c89d8abf00435b0b893bf950fae459d70c3ed60f25424ef8",
+        "after_sha256": "42049414d395a1f9c89d8abf00435b0b893bf950fae459d70c3ed60f25424ef8",
+        "only_before": [],
+        "only_after": []
+      }
+    },
+    "TPS63020_original_p15": {
+      "index_table_rows": {
+        "before": 7,
+        "after": 7,
+        "equal": true,
+        "before_sha256": "fdd9354ecf82990506949eba8873d5b92f0f5417c02de145be5185760b24006a",
+        "after_sha256": "fdd9354ecf82990506949eba8873d5b92f0f5417c02de145be5185760b24006a",
+        "only_before": [],
+        "only_after": []
+      },
+      "table_row_vectors": {
+        "before": 7,
+        "after": 7,
+        "equal": true,
+        "before_sha256": "8897946e5df83bff60e0dea14532724db699177bca0bb5ad21d96a59a67b2206",
+        "after_sha256": "8897946e5df83bff60e0dea14532724db699177bca0bb5ad21d96a59a67b2206",
+        "only_before": [],
+        "only_after": []
+      },
+      "sqlite_tables": {
+        "before": 2,
+        "after": 2,
+        "equal": true,
+        "before_sha256": "90440c2b07a05ea2b74740f07706694efa6de8a249d0de3d81f294fc37d506b9",
+        "after_sha256": "90440c2b07a05ea2b74740f07706694efa6de8a249d0de3d81f294fc37d506b9",
+        "only_before": [],
+        "only_after": []
+      }
+    }
+  }
+}

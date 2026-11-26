@@ -1,0 +1,379 @@
+{
+  "id": "n03",
+  "selected": [
+    "c06748dc"
+  ],
+  "request": {
+    "body": {
+      "query": "For the MCP4725, VDD is 4.096 V and the measured output step between two adjacent codes is 1.25 mV. What is the signed DNL in LSB? Show how the ideal step enters the calculation.",
+      "document_ids": [
+        "c06748dc"
+      ]
+    },
+    "route": "http://127.0.0.1:8221/api/v1/chat/stream",
+    "http_status": 200,
+    "events": [
+      {
+        "type": "start",
+        "data": {
+          "query": "For the MCP4725, VDD is 4.096 V and the measured output step between two adjacent codes is 1.25 mV. What is the signed DNL in LSB? Show how the ideal step enters the calculation.",
+          "session_id": "baa280e5-b1cc-43"
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "根据提供的资料，计算 MCP47",
+          "index": 0,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "25 的 DNL 值如下：\n1.",
+          "index": 1,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": " 确定测量对象与典型值\n*   ",
+          "index": 2,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "测量对象：相邻两个相邻输入代码之",
+          "index": 3,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "间的电压差。\n*   典型值 (",
+          "index": 4,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "Typical Value)：",
+          "index": 5,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "资料 [1] 和 [2] 中明确",
+          "index": 6,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "给出，MCP4725 的 DNL",
+          "index": 7,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": " 典型值为 $\\pm 0.2$ ",
+          "index": 8,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "LSB。\n*   输入电压：",
+          "index": 9,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "$V_{DD} = 4.096 ",
+          "index": 10,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "\\text{ V}$。\n2.",
+          "index": 11,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": " 计算理想电压差 ($\\Delt",
+          "index": 12,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "a V_{OUT}$)\n根据资料",
+          "index": 13,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": " [3] 的 EQUATION ",
+          "index": 14,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "4-1，理想电压差由参考电压和位",
+          "index": 15,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "数决定：\n$$L S B_{id",
+          "index": 16,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "eal} = \\frac{V_{",
+          "index": 17,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "REF}}{2^n} = \\fr",
+          "index": 18,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "ac{V_{DD}}{2^{12",
+          "index": 19,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "}}$$\n$$L S B_{id",
+          "index": 20,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "eal} = \\frac{4.",
+          "index": 21,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "096}{4096} = 0.",
+          "index": 22,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "001 \\text{ V} = ",
+          "index": 23,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "1 \\text{ LSB}$$\n",
+          "index": 24,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "*   因此，理想电压差 $\\D",
+          "index": 25,
+          "total": 27,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "elta V_{OUT",
+          "index": 26,
+          "total": 27,
+          "is_complete": true
+        }
+      },
+      {
+        "type": "complete",
+        "data": {
+          "response": "根据提供的资料，计算 MCP4725 的 DNL 值如下：\n1. 确定测量对象与典型值\n*   测量对象：相邻两个相邻输入代码之间的电压差。\n*   典型值 (Typical Value)：资料 [1] 和 [2] 中明确给出，MCP4725 的 DNL 典型值为 $\\pm 0.2$ LSB。\n*   输入电压：$V_{DD} = 4.096 \\text{ V}$。\n2. 计算理想电压差 ($\\Delta V_{OUT}$)\n根据资料 [3] 的 EQUATION 4-1，理想电压差由参考电压和位数决定：\n$$L S B_{ideal} = \\frac{V_{REF}}{2^n} = \\frac{V_{DD}}{2^{12}}$$\n$$L S B_{ideal} = \\frac{4.096}{4096} = 0.001 \\text{ V} = 1 \\text{ LSB}$$\n*   因此，理想电压差 $\\Delta V_{OUT",
+          "citations": [
+            {
+              "file": "MCP4725.pdf",
+              "page": 1,
+              "text_snippet": "a Acquisition Systems General Description The MCP4725 is a low-power, high accuracy, single channel, 12-bit buffered voltage output Digital-to-Analog Converter (DAC) with nonvolatile memory (EEPROM).",
+              "section": ""
+            },
+            {
+              "file": "MCP4725.pdf",
+              "page": 1,
+              "text_snippet": "12-Bit Digital-to-Analog Converter with EEPROM Memory Features • 12-Bit Resolution • On-Board Nonvolatile Memory (EEPROM) • ±0.2 LSB DNL (typical) • External A0 Address Pin • Normal or Power-Down Mode • Fast Settling Time: 6 µs (typical) • External Voltage Reference $( \\mathsf { V _ { D D } } )$ • Rail-to-Rail Output • Low Power Consumption • Single-Supply Operation: 2.7V to 5.5V • I<sup>2</sup>C Interface: - Eight Available Addresses - Standard (100 kbps), Fast (400 kbps), and High-Speed (3.4 M",
+              "section": ""
+            },
+            {
+              "file": "MCP4725.pdf",
+              "page": 2,
+              "text_snippet": "4.2 LSB\n\nThe least significant bit or the ideal voltage difference between two successive codes.\n\nEQUATION 4-1:\n\nL S B _ {I d e a l} = \\frac {V _ {R E F}}{2 ^ {n}} = \\frac {(V _ {F u l l S c a l e} - V _ {Z e r o S c a l e})}{2 ^ {n} - 1}\n\nWhere:\n\n\\begin{array}{r c l} V _ {R E F} & = & \\text {The reference voltage} = V _ {D D} \\text {in the} \\\\ & & \\text {MCP4725. This V_{REF} is the ideal} \\\\ & & \\text {full scale voltage range} \\\\ n & = & \\text {The number of digital input bits.} \\\\ & & (n = 1 2 \\text {for MCP4725}) \\end{array}",
+              "section": ""
+            }
+          ],
+          "processing_time": 5.4017274379730225,
+          "session_id": "baa280e5-b1cc-43",
+          "success": true
+        }
+      }
+    ]
+  },
+  "ui_history_entry": {
+    "role": "assistant",
+    "content": "根据提供的资料，计算 MCP4725 的 DNL 值如下：\n1. 确定测量对象与典型值\n*   测量对象：相邻两个相邻输入代码之间的电压差。\n*   典型值 (Typical Value)：资料 [1] 和 [2] 中明确给出，MCP4725 的 DNL 典型值为 $\\pm 0.2$ LSB。\n*   输入电压：$V_{DD} = 4.096 \\text{ V}$。\n2. 计算理想电压差 ($\\Delta V_{OUT}$)\n根据资料 [3] 的 EQUATION 4-1，理想电压差由参考电压和位数决定：\n$$L S B_{ideal} = \\frac{V_{REF}}{2^n} = \\frac{V_{DD}}{2^{12}}$$\n$$L S B_{ideal} = \\frac{4.096}{4096} = 0.001 \\text{ V} = 1 \\text{ LSB}$$\n*   因此，理想电压差 $\\Delta V_{OUT",
+    "sources": [
+      "MCP4725.pdf",
+      "MCP4725.pdf",
+      "MCP4725.pdf"
+    ],
+    "citations": [
+      {
+        "file": "MCP4725.pdf",
+        "page": 1,
+        "text_snippet": "a Acquisition Systems General Description The MCP4725 is a low-power, high accuracy, single channel, 12-bit buffered voltage output Digital-to-Analog Converter (DAC) with nonvolatile memory (EEPROM).",
+        "section": ""
+      },
+      {
+        "file": "MCP4725.pdf",
+        "page": 1,
+        "text_snippet": "12-Bit Digital-to-Analog Converter with EEPROM Memory Features • 12-Bit Resolution • On-Board Nonvolatile Memory (EEPROM) • ±0.2 LSB DNL (typical) • External A0 Address Pin • Normal or Power-Down Mode • Fast Settling Time: 6 µs (typical) • External Voltage Reference $( \\mathsf { V _ { D D } } )$ • Rail-to-Rail Output • Low Power Consumption • Single-Supply Operation: 2.7V to 5.5V • I<sup>2</sup>C Interface: - Eight Available Addresses - Standard (100 kbps), Fast (400 kbps), and High-Speed (3.4 M",
+        "section": ""
+      },
+      {
+        "file": "MCP4725.pdf",
+        "page": 2,
+        "text_snippet": "4.2 LSB\n\nThe least significant bit or the ideal voltage difference between two successive codes.\n\nEQUATION 4-1:\n\nL S B _ {I d e a l} = \\frac {V _ {R E F}}{2 ^ {n}} = \\frac {(V _ {F u l l S c a l e} - V _ {Z e r o S c a l e})}{2 ^ {n} - 1}\n\nWhere:\n\n\\begin{array}{r c l} V _ {R E F} & = & \\text {The reference voltage} = V _ {D D} \\text {in the} \\\\ & & \\text {MCP4725. This V_{REF} is the ideal} \\\\ & & \\text {full scale voltage range} \\\\ n & = & \\text {The number of digital input bits.} \\\\ & & (n = 1 2 \\text {for MCP4725}) \\end{array}",
+        "section": ""
+      }
+    ],
+    "message_meta": {
+      "show_citations": true,
+      "badges": [
+        "引用 3",
+        "耗时 5.4s"
+      ]
+    },
+    "timestamp": "20:46:24",
+    "processing_time": 5.4017274379730225
+  },
+  "rendered_html": "<div class=\"chat-message chat-message-assistant\">\n    <div class=\"chat-avatar\">🤖</div>\n    <div class=\"chat-content\">\n        <div class=\"chat-bubble chat-bubble-assistant\"><div class=\"chat-text\">根据提供的资料，计算 MCP4725 的 DNL 值如下：<br>1. 确定测量对象与典型值<br>*   测量对象：相邻两个相邻输入代码之间的电压差。<br>*   典型值 (Typical Value)：资料 [1] 和 [2] 中明确给出，MCP4725 的 DNL 典型值为 $\\pm 0.2$ LSB。<br>*   输入电压：$V_{DD} = 4.096 \\text{ V}$。<br>2. 计算理想电压差 ($\\Delta V_{OUT}$)<br>根据资料 [3] 的 EQUATION 4-1，理想电压差由参考电压和位数决定：<br>$$L S B_{ideal} = \\frac{V_{REF}}{2^n} = \\frac{V_{DD}}{2^{12}}$$<br>$$L S B_{ideal} = \\frac{4.096}{4096} = 0.001 \\text{ V} = 1 \\text{ LSB}$$<br>*   因此，理想电压差 $\\Delta V_{OUT</div></div>\n        <div class=\"chat-citations\"><div class=\"chat-citations-title\">📚 信息来源</div><div class=\"chat-citation-item\">📄 MCP4725.pdf · 第 1 页 <a href=\"http://127.0.0.1:8221/api/v1/documents/c06748dc/pages/1/image\" target=\"_blank\" rel=\"noopener\">📷 查看截图</a></div><div class=\"chat-citation-item\">📄 MCP4725.pdf · 第 2 页 <a href=\"http://127.0.0.1:8221/api/v1/documents/c06748dc/pages/2/image\" target=\"_blank\" rel=\"noopener\">📷 查看截图</a></div></div>\n        <div class=\"chat-meta\"><span class=\"chat-meta-badge\">引用 3</span><span class=\"chat-meta-badge\">耗时 5.4s</span></div>\n        <div class=\"chat-timestamp\">20:46:24</div>\n    </div>\n</div>",
+  "rendered_text": "根据提供的资料，计算 MCP4725 的 DNL 值如下：\n1. 确定测量对象与典型值\n*   测量对象：相邻两个相邻输入代码之间的电压差。\n*   典型值 (Typical Value)：资料 [1] 和 [2] 中明确给出，MCP4725 的 DNL 典型值为 $\\pm 0.2$ LSB。\n*   输入电压：$V_{DD} = 4.096 \\text{ V}$。\n2. 计算理想电压差 ($\\Delta V_{OUT}$)\n根据资料 [3] 的 EQUATION 4-1，理想电压差由参考电压和位数决定：\n$$L S B_{ideal} = \\frac{V_{REF}}{2^n} = \\frac{V_{DD}}{2^{12}}$$\n$$L S B_{ideal} = \\frac{4.096}{4096} = 0.001 \\text{ V} = 1 \\text{ LSB}$$\n*   因此，理想电压差 $\\Delta V_{OUT",
+  "schema": {
+    "properties": {
+      "query": {
+        "type": "string",
+        "maxLength": 2000,
+        "minLength": 1,
+        "title": "Query",
+        "description": "用户查询内容"
+      },
+      "document_ids": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array",
+        "title": "Document Ids",
+        "description": "选中的文档ID列表"
+      },
+      "session_id": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Session Id",
+        "description": "会话ID，不传则自动生成"
+      },
+      "trace": {
+        "type": "boolean",
+        "title": "Trace",
+        "default": false
+      }
+    },
+    "type": "object",
+    "required": [
+      "query"
+    ],
+    "title": "ChatRequest",
+    "description": "Request model for chat queries."
+  }
+}

@@ -1,0 +1,23 @@
+ORIGINAL PAGE 1
+1•  Low offset voltage: 25 μV (maximum)              The  OPA188   operational   amplifier  uses   TI's
+proprietary auto-zeroing techniques  to provide low
+•  Zero drift: 0.03 μV/°C                                                                 offset voltage (25-μV maximum) and near zero-drift
+•  Low noise: 8.8 nV/√Hz                               over  time and  temperature.  This  miniature,  high-
+–  0.1-Hz to 10-Hz Noise: 0.25 µVPP                    precision, low-quiescent current amplifier offers high
+–  PSRR: 142 dB                                     includes  the  negative  rail.  Either  single  or  dual
+– CMRR: 146 dB                                    supplies can be used in the range from 4 V to 36 V
+•  Gain bandwidth: 2 MHz                         The single version is available in the MicroSIZE SOT-
+23-5, MSOP-8, and SO-8 packages. All versions are•  Quiescent current: 510 μA (Maximum)
+Auto-Zero Technology Provides Ultra-Low Temperature Drift
+ORIGINAL PAGE 5
+TA = –40°C to +125°C                                      ±0.03       ±0.085     μV/°C
+PSRR       Power-supply rejection ratio             VS = 4 V to 36 V, TA = –40°C to +125°C                    ±0.075         ±0.3     μV/V
+Input voltage noise density                             f = 1 kHz                                                        8.8                nV/√Hz
+(V–) + 0.5 V < VCM < (V+) – 1.5 V,                                                                                          130         146                dB
+VS = ±4 V to VS = ±18 V                                  450         510      μA
+IQ           Quiescent current (per amplifier)
+ORIGINAL PAGE 6
+TA = –40°C to +125°C                                      ±0.03       ±0.085     μV/°C
+VS = 4 V to 36 V, PSRR       Power-supply rejection ratio                                                                         0.075           0.3     μV/V
+Input voltage noise density                             f = 1 kHz                                                        8.8                nV/√Hz
+IQ           Quiescent current (per amplifier)

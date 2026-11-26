@@ -15,7 +15,7 @@ import os
 import shutil
 import logging
 from pathlib import Path
-from contextlib import contextmanager
+from contextlib import closing, contextmanager
 from typing import Optional, Generator
 from datetime import datetime
 
@@ -79,11 +79,7 @@ def get_safe_connection(db_path: str, **kwargs) -> Generator[sqlite3.Connection,
 
         if "malformed" in error_msg or "corrupt" in error_msg or "disk image" in error_msg:
             logger.error(f"Database possibly corrupted: {db_path}, error: {e}")
-
-            if repair_corrupted_database(db_path):
-                logger.info(f"Database repaired successfully: {db_path}")
-            else:
-                logger.warning(f"Database repair failed, continuing with potentially corrupted file: {db_path}")
+            raise SQLiteCorruptedError(f"Database requires maintenance: {db_path}") from e
         else:
             raise
 
@@ -112,7 +108,7 @@ def check_database_health(db_path: str) -> bool:
         return True
 
     try:
-        with sqlite3.connect(db_path) as conn:
+        with closing(sqlite3.connect(db_path)) as conn:
             cursor = conn.execute("PRAGMA integrity_check")
             result = cursor.fetchone()
 
@@ -133,8 +129,8 @@ def repair_corrupted_database(db_path: str, backup_dir: Optional[str] = None) ->
     Strategy:
         1. Back up the corrupted file for forensics.
         2. Try .iterdump() → new database (standard SQLite recovery).
-        3. If that fails (e.g. FTS virtual tables), delete the corrupted
-           file so the system can rebuild it from scratch.
+        3. Replace only after a healthy recovery and with no WAL sidecars.
+           An unsuccessful recovery preserves the source files.
 
     Args:
         db_path: Path to the corrupted database.
@@ -168,17 +164,19 @@ def repair_corrupted_database(db_path: str, backup_dir: Optional[str] = None) ->
 
         try:
             with open(sql_dump_path, "w", encoding="utf-8") as f:
-                with sqlite3.connect(db_path) as conn:
+                with closing(sqlite3.connect(db_path)) as conn:
                     for line in conn.iterdump():
                         f.write(f"{line}\n")
 
-            with sqlite3.connect(recovered_db) as new_conn:
+            with closing(sqlite3.connect(recovered_db)) as new_conn:
                 with open(sql_dump_path, "r", encoding="utf-8") as f:
                     new_conn.executescript(f.read())
+                new_conn.commit()
 
-            if check_database_health(recovered_db):
-                os.remove(db_path)
-                os.rename(recovered_db, db_path)
+            if check_database_health(recovered_db) and not any(
+                os.path.exists(f"{db_path}{suffix}") for suffix in ("-wal", "-shm")
+            ):
+                os.replace(recovered_db, db_path)
 
                 if os.path.exists(sql_dump_path):
                     os.remove(sql_dump_path)
@@ -186,7 +184,7 @@ def repair_corrupted_database(db_path: str, backup_dir: Optional[str] = None) ->
                 logger.info(f"Database repaired successfully: {db_path}")
                 return True
             else:
-                logger.warning("Recovered database still corrupted, will delete and rebuild")
+                logger.warning("SQLite recovery could not safely replace the source: %s", db_path)
                 os.remove(recovered_db)
                 if os.path.exists(sql_dump_path):
                     os.remove(sql_dump_path)
@@ -202,30 +200,8 @@ def repair_corrupted_database(db_path: str, backup_dir: Optional[str] = None) ->
                     except OSError:
                         pass
 
-            logger.warning("Falling back to forced deletion (FTS tables are not dumpable)")
-            try:
-                for ext in ("", "-wal", "-shm"):
-                    f = f"{db_path}{ext}"
-                    if os.path.exists(f):
-                        try:
-                            os.remove(f)
-                        except PermissionError:
-                            import gc
-                            gc.collect()
-                            try:
-                                os.remove(f)
-                            except PermissionError:
-                                pass
-
-                if not os.path.exists(db_path):
-                    logger.info(f"Corrupted database deleted, system will rebuild: {db_path}")
-                    return True
-                else:
-                    logger.error(f"Cannot delete database (file locked): {db_path}")
-                    return False
-            except Exception as delete_err:
-                logger.error(f"Database deletion failed: {delete_err}")
-                return False
+            logger.error("SQLite source preserved after failed recovery: %s", db_path)
+            return False
 
     except Exception as e:
         logger.error(f"Database repair process error: {e}")
@@ -279,8 +255,7 @@ def initialize_database_with_robustness(
     if not check_database_health(db_path):
         logger.warning(f"Unhealthy database detected, attempting repair: {db_path}")
         if not repair_corrupted_database(db_path):
-            logger.error(f"Database unrepairable, deleting for rebuild: {db_path}")
-            safe_delete_database(db_path)
+            raise SQLiteCorruptedError(f"Database requires maintenance: {db_path}")
 
     with get_safe_connection(db_path) as conn:
         if init_sql_callback:

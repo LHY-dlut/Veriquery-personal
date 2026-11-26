@@ -1,0 +1,115 @@
+{
+  "phase": "exact-advanced",
+  "question_sha256": "2c8725d01a49beb01fe84ad7707d4af1c5e6fb6bc15022142130ec949a16769c",
+  "documents": {
+    "24LC256": {
+      "document_id": "30b54bd5",
+      "filename": "24LC256-original-page-1.pdf",
+      "status": "ready",
+      "page_count": 1,
+      "file_size": 124960,
+      "upload_time": "2026-11-26T11:36:19.659877",
+      "error_message": "",
+      "warnings": [
+        "visual_pipeline_skipped"
+      ],
+      "chunk_count": 10,
+      "table_count": 1,
+      "circuit_count": 0,
+      "image_count": 1,
+      "processed_time": "2026-11-26T11:38:20.198977",
+      "progress": 100,
+      "stage": "completed",
+      "stage_detail": "正在嵌入第 2/2 批",
+      "parser": "mineru",
+      "parser_tier": "advanced",
+      "verified_table_rows": 0,
+      "ingestion_seconds": 122.228,
+      "longest_status_request_seconds": 9.203,
+      "status_poll_timeouts": 0
+    },
+    "MCP3008": {
+      "document_id": "524e3e5d",
+      "filename": "MCP3008-original-page-1.pdf",
+      "status": "ready",
+      "page_count": 1,
+      "file_size": 124193,
+      "upload_time": "2026-11-26T11:38:21.886788",
+      "error_message": "",
+      "warnings": [
+        "visual_pipeline_skipped"
+      ],
+      "chunk_count": 5,
+      "table_count": 0,
+      "circuit_count": 0,
+      "image_count": 3,
+      "processed_time": "2026-11-26T11:42:15.588456",
+      "progress": 100,
+      "stage": "completed",
+      "stage_detail": "正在嵌入第 1/1 批",
+      "parser": "mineru",
+      "parser_tier": "advanced",
+      "verified_table_rows": 0,
+      "ingestion_seconds": 234.348,
+      "longest_status_request_seconds": 1.121,
+      "status_poll_timeouts": 0
+    },
+    "MCP3421": {
+      "document_id": "c1c083f1",
+      "filename": "MCP3421-original-page-1.pdf",
+      "status": "ready",
+      "page_count": 1,
+      "file_size": 47794,
+      "upload_time": "2026-11-26T11:42:16.234646",
+      "error_message": "",
+      "warnings": [
+        "visual_pipeline_skipped"
+      ],
+      "chunk_count": 7,
+      "table_count": 0,
+      "circuit_count": 0,
+      "image_count": 2,
+      "processed_time": "2026-11-26T11:43:57.851614",
+      "progress": 100,
+      "stage": "completed",
+      "stage_detail": "正在嵌入第 1/1 批",
+      "parser": "mineru",
+      "parser_tier": "advanced",
+      "verified_table_rows": 0,
+      "ingestion_seconds": 101.965,
+      "longest_status_request_seconds": 0.088,
+      "status_poll_timeouts": 0
+    }
+  },
+  "provenance": {
+    "24LC256": {
+      "source_pdf": "24LC256.pdf",
+      "source_sha256": "37280f68ad38b83241cacfc3f470dcb9b2e787586beca22520f37d1c03a006db",
+      "original_pages": [
+        1
+      ],
+      "sample": "24LC256-original-page-1.pdf",
+      "sample_sha256": "f4bbc54683ebe704bc262987a3ac5858982495e641329c458ae9be9a26935135"
+    },
+    "MCP3008": {
+      "source_pdf": "MCP3008.pdf",
+      "source_sha256": "26a503d76279cc10e40cfc36e80bb87fd33d0de80093d1bdcc4dc29435b10f72",
+      "original_pages": [
+        1
+      ],
+      "sample": "MCP3008-original-page-1.pdf",
+      "sample_sha256": "8a20537346ffbf035cd3b3b9f1b3134f54c00bff10d93a0a2975c0c3f223a0e1"
+    },
+    "MCP3421": {
+      "source_pdf": "MCP3421.pdf",
+      "source_sha256": "5249b67ed71256bcd6588a665a4e854955d3f2b17e7e57d8beb0ae7436d668ff",
+      "original_pages": [
+        1
+      ],
+      "sample": "MCP3421-original-page-1.pdf",
+      "sample_sha256": "bcf330fca638cec4147bca0b50d9ce26e4d8ae306ceb4d73bb6fc95b4c2cb720"
+    }
+  },
+  "exact_pdf_source": true,
+  "scoped_pages": true
+}

@@ -1,0 +1,6 @@
+{
+  "status": "failed",
+  "error": "MinerUError: 等待 MinerU 解析任务超时（已等待 230.8s），job_id=job_933f0ed80364524a0c34d579",
+  "requested_tier": "advanced",
+  "elapsed_seconds": 225.0
+}

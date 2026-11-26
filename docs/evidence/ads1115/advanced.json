@@ -1,0 +1,65 @@
+{
+  "tier": "advanced",
+  "original_capture_sha256": "8f319a96f5a2205cbc775b159f95bdbde5f8d0ddab9824f900252aa8baecbd20",
+  "original_pdf_pages": [
+    6
+  ],
+  "elapsed_seconds": 402.011,
+  "page_tables": [
+    {
+      "page_idx": 2,
+      "tables": [
+        {
+          "bbox": [
+            0.089,
+            0.139,
+            0.91,
+            0.3
+          ],
+          "content": "<table><tr><td colspan=\"2\">PARAMETER</td><td colspan=\"2\">TEST CONDITIONS</td><td>MIN</td><td>TYP</td><td>MAX</td><td>UNIT</td></tr><tr><td colspan=\"8\">POWER-SUPPLY</td></tr><tr><td rowspan=\"4\"> $I_{VDD}$ </td><td rowspan=\"4\">Supply current</td><td rowspan=\"2\">Power-down</td><td> $T_A=25°C$ </td><td></td><td>0.5</td><td>2</td><td rowspan=\"4\">μA</td></tr><tr><td></td><td></td><td></td><td>5</td></tr><tr><td rowspan=\"2\">Operating</td><td> $T_A=25°C$ </td><td></td><td>150</td><td>200</td></tr><tr><td></td><td></td><td></td><td>300</td></tr><tr><td rowspan=\"3\"> $P_D$ </td><td rowspan=\"3\">Power dissipation</td><td colspan=\"2\">VDD=5.0V</td><td colspan=\"3\">0.9</td><td rowspan=\"3\">mW</td></tr><tr><td colspan=\"2\">VDD=3.3 V</td><td colspan=\"3\">0.5</td></tr><tr><td colspan=\"2\">VDD=2.0V</td><td colspan=\"3\">0.3</td></tr></table>",
+          "captions": [],
+          "footnotes": [
+            {
+              "bbox": [
+                0.089,
+                0.307,
+                0.895,
+                0.331
+              ],
+              "content": "(1) This parameter expresses the full-scale range of the ADC scaling. No more than VDD + 0.3V must be applied to the analog inputs of the device. See Table 7-1 for more information."
+            },
+            {
+              "bbox": [
+                0.09,
+                0.332,
+                0.34,
+                0.343
+              ],
+              "content": "(2) Best-fit INL; covers 99% of full-scale"
+            },
+            {
+              "bbox": [
+                0.09,
+                0.344,
+                0.474,
+                0.356
+              ],
+              "content": "(3) Includes all errors from onboard PGA and voltage reference"
+            }
+          ]
+        },
+        {
+          "bbox": [
+            0.089,
+            0.402,
+            0.91,
+            0.646
+          ],
+          "content": "<table><tr><td rowspan=\"2\" colspan=\"2\"></td><td colspan=\"2\">FAST MODE</td><td colspan=\"2\">HIGH-SPEED MODE</td><td rowspan=\"2\">UNIT</td></tr><tr><td>MIN</td><td>MAX</td><td>MIN</td><td>MAX</td></tr><tr><td> $f_{SCL}$ </td><td>SCL clock frequency</td><td>0.01</td><td>0.4</td><td>0.01</td><td>3.4</td><td>MHz</td></tr><tr><td> $t_{BUF}$ </td><td>Bus free time between START and STOP condition</td><td>600</td><td></td><td>160</td><td></td><td>ns</td></tr><tr><td> $t_{HDSTA}$ </td><td>Hold time after repeated START condition.After this period, the first clock is generated.</td><td>600</td><td></td><td>160</td><td></td><td>ns</td></tr><tr><td> $t_{SUSTA}$ </td><td>Setup time for a repeated START condition</td><td>600</td><td></td><td>160</td><td></td><td>ns</td></tr><tr><td> $t_{SUSTO}$ </td><td>Setup time for STOP condition</td><td>600</td><td></td><td>160</td><td></td><td>ns</td></tr><tr><td> $t_{HDDAT}$ </td><td>Data hold time</td><td>0</td><td></td><td>0</td><td></td><td>ns</td></tr><tr><td> $t_{SUDAT}$ </td><td>Data setup time</td><td>100</td><td></td><td>10</td><td></td><td>ns</td></tr><tr><td> $t_{LOW}$ </td><td>Low period of the SCL clock pin</td><td>1300</td><td></td><td>160</td><td></td><td>ns</td></tr><tr><td> $t_{HIGH}$ </td><td>High period for the SCL clock pin</td><td>600</td><td></td><td>60</td><td></td><td>ns</td></tr><tr><td> $t_F$ </td><td>Fall time for both SDA and SCL  $signals^{(1)}$ </td><td colspan=\"2\">300</td><td colspan=\"2\">160</td><td>ns</td></tr><tr><td> $t_R$ </td><td>Rise time for both SDA and SCL  $signals^{(1)}$ </td><td colspan=\"2\">300</td><td colspan=\"2\">160</td><td>ns</td></tr></table>",
+          "captions": [],
+          "footnotes": []
+        }
+      ]
+    }
+  ]
+}

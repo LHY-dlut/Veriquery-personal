@@ -1,0 +1,451 @@
+{
+  "job_id": "job_1b013f1387a1db5e5977bc9f",
+  "structured_file_id": "file-e96e97f519382d4de02af26c",
+  "structured_sha256": "087c93fb22f58959abbca2d4c0b8fba21236edf1b20c38eef7bfc176a16204ea",
+  "pages": [
+    [
+      {
+        "index": 0,
+        "type": "header",
+        "bbox": [
+          0.085,
+          0.05,
+          0.249,
+          0.064
+        ],
+        "content": "[TPS63020](http://www.ti.com/product/tps63020?qgpn=tps63020), [TPS63021](http://www.ti.com/product/tps63021?qgpn=tps63021)"
+      },
+      {
+        "index": 1,
+        "type": "header",
+        "bbox": [
+          0.085,
+          0.068,
+          0.356,
+          0.079
+        ],
+        "content": "SLVS916I –JULY 2010–REVISED OCTOBER 2019"
+      },
+      {
+        "index": 2,
+        "type": "header",
+        "bbox": [
+          0.759,
+          0.02,
+          0.794,
+          0.048
+        ],
+        "content": ""
+      },
+      {
+        "index": 3,
+        "type": "header",
+        "bbox": [
+          0.796,
+          0.026,
+          0.847,
+          0.038
+        ],
+        "content": "TEXAS"
+      },
+      {
+        "index": 4,
+        "type": "header",
+        "bbox": [
+          0.8,
+          0.039,
+          0.913,
+          0.051
+        ],
+        "content": "INSTRUMENTS"
+      },
+      {
+        "index": 5,
+        "type": "header",
+        "bbox": [
+          0.839,
+          0.068,
+          0.912,
+          0.078
+        ],
+        "content": "[www.ti.com](http://www.ti.com)"
+      },
+      {
+        "index": 6,
+        "type": "paragraph_title",
+        "bbox": [
+          0.084,
+          0.092,
+          0.345,
+          0.107
+        ],
+        "content": "6.5 Electrical Characteristics"
+      },
+      {
+        "index": 7,
+        "type": "text",
+        "bbox": [
+          0.084,
+          0.112,
+          0.913,
+          0.14
+        ],
+        "content": "over recommended free-air temperature range and over recommended input voltage range (typical at an ambient temperature range of $2 5 ^ { \\circ } \\mathsf { C } )$ (unless otherwise noted)"
+      },
+      {
+        "index": 8,
+        "type": "table",
+        "bbox": [
+          0.085,
+          0.14,
+          0.913,
+          0.693
+        ],
+        "content": "<table><tr><td colspan=\"3\">PARAMETER</td><td>TEST CONDITIONS</td><td>MIN</td><td>TYP</td><td>MAX</td><td>UNIT</td></tr><tr><td colspan=\"8\">DC/DC STAGE</td></tr><tr><td rowspan=\"3\"> $V_{IN}$ </td><td colspan=\"2\">Input voltage</td><td></td><td>1.8</td><td></td><td>5.5</td><td>V</td></tr><tr><td colspan=\"2\">Minimum input voltage for start-up</td><td>0°C ≤  $T_A$  ≤ 85°C</td><td>1.5</td><td>1.8</td><td>1.9</td><td>V</td></tr><tr><td colspan=\"2\">Minimum input voltage for start-up</td><td></td><td>1.5</td><td>1.8</td><td>2.0</td><td>V</td></tr><tr><td rowspan=\"2\"> $V_{OUT}$ </td><td colspan=\"2\">TPS63020 output voltage</td><td></td><td>1.2</td><td></td><td>5.5</td><td>V</td></tr><tr><td colspan=\"2\">Duty cycle in step down conversion</td><td></td><td>20%</td><td></td><td></td><td></td></tr><tr><td rowspan=\"2\"> $V_{FB\\_PWM}$ </td><td colspan=\"2\">TPS63020 feedback voltage</td><td rowspan=\"2\">PS/SYNC =  $V_{IN}$ </td><td>495</td><td>500</td><td>505</td><td>mV</td></tr><tr><td colspan=\"2\">TPS63021 output voltage</td><td>3.267</td><td>3.3</td><td>3.333</td><td>V</td></tr><tr><td> $V_{FB\\_PS}$ </td><td colspan=\"2\">TPS63020 feedback voltage / TPS63021 output voltage regulation in PS mode</td><td>PS/SYNC = GND; referenced to  $V_{FB\\_PWM}$ </td><td>0.6%</td><td></td><td>5%</td><td></td></tr><tr><td></td><td colspan=\"2\">Maximum line regulation</td><td></td><td></td><td>0.5%</td><td></td><td></td></tr><tr><td></td><td colspan=\"2\">Maximum load regulation</td><td></td><td></td><td>0.5%</td><td></td><td></td></tr><tr><td>f</td><td colspan=\"2\">Oscillator frequency</td><td></td><td>2200</td><td>2400</td><td>2600</td><td>kHz</td></tr><tr><td></td><td colspan=\"2\">Frequency range for synchronization</td><td></td><td>2200</td><td>2400</td><td>2600</td><td>kHz</td></tr><tr><td> $I_{SW}$ </td><td colspan=\"2\">Average switch current limit</td><td> $V_{IN}=V_{INA}=3.6 V, T_A=25°C$ </td><td>3500</td><td>4000</td><td>4500</td><td>mA</td></tr><tr><td></td><td colspan=\"2\">High side switch on resistance</td><td> $V_{IN}=V_{INA}=3.6 V$ </td><td></td><td>50</td><td></td><td>mΩ</td></tr><tr><td></td><td colspan=\"2\">Low side switch on resistance</td><td> $V_{IN}=V_{INA}=3.6 V$ </td><td></td><td>50</td><td></td><td>mΩ</td></tr><tr><td rowspan=\"2\"> $I_q$ </td><td rowspan=\"2\">Quiescent current</td><td>VIN and VINA</td><td rowspan=\"2\"> $I_{OUT}=0 mA, V_{EN}=V_{IN}=V_{INA}=3.6 V,$  $V_{OUT}=3.3 V$ </td><td></td><td>25</td><td>50</td><td>μA</td></tr><tr><td>VOUT</td><td></td><td>5</td><td>10</td><td>μA</td></tr><tr><td></td><td colspan=\"2\">TPS63021 FB input impedance</td><td> $V_{EN}=HIGH$ </td><td></td><td>1</td><td></td><td>MΩ</td></tr><tr><td> $I_S$ </td><td colspan=\"2\">Shutdown current</td><td> $V_{EN}=0 V, V_{IN}=V_{INA}=3.6 V$ </td><td></td><td>0.1</td><td>1</td><td>μA</td></tr><tr><td colspan=\"8\">CONTROL STAGE</td></tr><tr><td rowspan=\"2\">UVLO</td><td colspan=\"2\">Under voltage lockout threshold</td><td> $V_{INA}$  voltage decreasing</td><td>1.4</td><td>1.5</td><td>1.6</td><td>V</td></tr><tr><td colspan=\"2\">Under voltage lockout hysteresis</td><td></td><td></td><td>200</td><td></td><td>mV</td></tr><tr><td> $V_{IL}$ </td><td colspan=\"2\">EN, PS/SYNC input low voltage</td><td></td><td></td><td></td><td>0.4</td><td>V</td></tr><tr><td> $V_{IH}$ </td><td colspan=\"2\">EN, PS/SYNC input high voltage</td><td></td><td>1.2</td><td></td><td></td><td>V</td></tr><tr><td></td><td colspan=\"2\">EN, PS/SYNC input current</td><td>Clamped to GND or VINA</td><td></td><td>0.01</td><td>0.1</td><td>μA</td></tr><tr><td></td><td colspan=\"2\">PG output low voltage</td><td> $V_{OUT}=3.3 V, I_{PGL}=10 μA$ </td><td></td><td>0.04</td><td>0.4</td><td>V</td></tr><tr><td></td><td colspan=\"2\">PG output leakage current</td><td></td><td></td><td>0.01</td><td>0.1</td><td>μA</td></tr><tr><td></td><td colspan=\"2\">Output overvoltage protection</td><td></td><td>5.5</td><td></td><td>7</td><td>V</td></tr><tr><td></td><td colspan=\"2\">Overtemperature protection</td><td></td><td></td><td>140</td><td></td><td>°C</td></tr><tr><td></td><td colspan=\"2\">Overtemperature hysteresis</td><td></td><td></td><td>20</td><td></td><td>°C</td></tr></table>"
+      },
+      {
+        "index": 9,
+        "type": "page_number",
+        "bbox": [
+          0.087,
+          0.935,
+          0.097,
+          0.945
+        ],
+        "content": "6"
+      },
+      {
+        "index": 10,
+        "type": "footer",
+        "bbox": [
+          0.136,
+          0.934,
+          0.333,
+          0.945
+        ],
+        "content": "[Submit Documentation Feedback](http://www.go-dsp.com/forms/techdoc/doc_feedback.htm?litnum=SLVS916I&partnum=TPS63020)"
+      },
+      {
+        "index": 11,
+        "type": "footer",
+        "bbox": [
+          0.619,
+          0.935,
+          0.913,
+          0.947
+        ],
+        "content": "Copyright © 2010–2019, Texas Instruments Incorporated"
+      },
+      {
+        "index": 12,
+        "type": "footer",
+        "bbox": [
+          0.368,
+          0.952,
+          0.63,
+          0.964
+        ],
+        "content": "Product Folder Links: [TPS63020](http://www.ti.com/product/tps63020?qgpn=tps63020) [TPS63021](http://www.ti.com/product/tps63021?qgpn=tps63021)"
+      }
+    ],
+    [
+      {
+        "index": 0,
+        "type": "header",
+        "bbox": [
+          0.087,
+          0.02,
+          0.123,
+          0.048
+        ],
+        "content": ""
+      },
+      {
+        "index": 1,
+        "type": "header",
+        "bbox": [
+          0.127,
+          0.026,
+          0.177,
+          0.038
+        ],
+        "content": "TEXAS"
+      },
+      {
+        "index": 2,
+        "type": "header",
+        "bbox": [
+          0.129,
+          0.039,
+          0.241,
+          0.051
+        ],
+        "content": "INSTRUMENTS"
+      },
+      {
+        "index": 3,
+        "type": "header",
+        "bbox": [
+          0.085,
+          0.068,
+          0.158,
+          0.078
+        ],
+        "content": "[www.ti.com](http://www.ti.com)"
+      },
+      {
+        "index": 4,
+        "type": "header",
+        "bbox": [
+          0.747,
+          0.05,
+          0.911,
+          0.064
+        ],
+        "content": "[TPS63020](http://www.ti.com/product/tps63020?qgpn=tps63020), [TPS63021](http://www.ti.com/product/tps63021?qgpn=tps63021)"
+      },
+      {
+        "index": 5,
+        "type": "header",
+        "bbox": [
+          0.642,
+          0.067,
+          0.912,
+          0.078
+        ],
+        "content": "SLVS916I –JULY 2010–REVISED OCTOBER 2019"
+      },
+      {
+        "index": 6,
+        "type": "paragraph_title",
+        "bbox": [
+          0.474,
+          0.1,
+          0.525,
+          0.113
+        ],
+        "content": "NOTE"
+      },
+      {
+        "index": 7,
+        "type": "text",
+        "bbox": [
+          0.166,
+          0.114,
+          0.72,
+          0.13
+        ],
+        "content": "The calculation must be done for the minimum input voltage in boost mode."
+      },
+      {
+        "index": 8,
+        "type": "text",
+        "bbox": [
+          0.082,
+          0.147,
+          0.915,
+          0.19
+        ],
+        "content": "Calculating the maximum inductor current using the actual operating conditions gives the minimum saturation current of the inductor needed. It is recommended to choose an inductor with a saturation current 20% higher than the value calculated using Equation 2. Table 2 lists the possible inductors."
+      },
+      {
+        "index": 9,
+        "type": "table",
+        "bbox": [
+          0.086,
+          0.219,
+          0.915,
+          0.285
+        ],
+        "content": "| INDUCTOR VALUE [μH] | SATURATION CURRENT [A] | DCR [mΩ] | PART NUMBER | MANUFACTURER | SIZE (LxWxH mm) |\n| --- | --- | --- | --- | --- | --- |\n| 1.5 | 5.1 | 15 | XFL4020-152ME | Coilcraft | 4 x 4 x 2.1 |\n| 1.5 | 5.4 | 24 | FDV0530S-H-1R5M | muRata | 5 x 5 x 3 |"
+      },
+      {
+        "index": 10,
+        "type": "paragraph_title",
+        "bbox": [
+          0.084,
+          0.315,
+          0.373,
+          0.331
+        ],
+        "content": "8.2.2.3 Output Capacitor Selection"
+      },
+      {
+        "index": 11,
+        "type": "text",
+        "bbox": [
+          0.082,
+          0.336,
+          0.914,
+          0.407
+        ],
+        "content": "For the output capacitor, it is recommended to use of small ceramic capacitors placed as close as possible to the VOUT and PGND pins of the IC. The recommended nominal output capacitors are three times 22 µF. If, for any reason, the application requires the use of large capacitors that cannot be placed close to the IC, use a smaller ceramic capacitor in parallel to the large capacitor. Place the small capacitor as close as possible to the VOUT and PGND pins of the IC."
+      },
+      {
+        "index": 12,
+        "type": "text",
+        "bbox": [
+          0.082,
+          0.413,
+          0.914,
+          0.457
+        ],
+        "content": "There are no additional requirements regarding minimum ESR. There is also no upper limit for the output capacitance value. Larger capacitors cause lower output voltage ripple as well as lower output voltage drop during load transients."
+      },
+      {
+        "index": 13,
+        "type": "paragraph_title",
+        "bbox": [
+          0.084,
+          0.469,
+          0.357,
+          0.484
+        ],
+        "content": "8.2.2.4 Input Capacitor Selection"
+      },
+      {
+        "index": 14,
+        "type": "text",
+        "bbox": [
+          0.082,
+          0.49,
+          0.915,
+          0.573
+        ],
+        "content": "A 10 µF input capacitor is recommended to improve line transient behavior of the regulator and EMI behavior of the total power supply circuit. An X5R or X7R ceramic capacitor placed as close as possible to the VIN and PGND pins of the IC is recommended. This capacitance can be increased without limit. If the input supply is located more than a few inches from the TPS6302x converter, additional bulk capacitance can be required in addition to the ceramic bypass capacitors. An electrolytic or tantalum capacitor with a value of $4 7 ~ \\mu \\mathsf { F }$ is a typical choice."
+      },
+      {
+        "index": 15,
+        "type": "paragraph_title",
+        "bbox": [
+          0.084,
+          0.587,
+          0.3,
+          0.603
+        ],
+        "content": "8.2.2.5 Bypass Capacitor"
+      },
+      {
+        "index": 16,
+        "type": "text",
+        "bbox": [
+          0.082,
+          0.609,
+          0.914,
+          0.653
+        ],
+        "content": "To make sure that the internal control circuits are supplied with a stable low noise supply voltage, a capacitor can be connected between VINA and GND. Using a ceramic capacitor with a value of 0.1 µF is recommended. The value of this capacitor must not be higher than 0.22 µF."
+      },
+      {
+        "index": 17,
+        "type": "paragraph_title",
+        "bbox": [
+          0.084,
+          0.664,
+          0.354,
+          0.68
+        ],
+        "content": "8.2.3 Setting The Output Voltage"
+      },
+      {
+        "index": 18,
+        "type": "text",
+        "bbox": [
+          0.082,
+          0.685,
+          0.915,
+          0.743
+        ],
+        "content": "When the adjustable output voltage version TPS63020 is used, the output voltage is set by an external resistor divider. The resistor divider must be connected between VOUT, FB, and GND. The feedback voltage is 500 mV nominal. The low-side resistor R2 (between FB and GND) must be kept in the range of 200 kΩ. Use Equation 3 to calculate the high-side resistor R1 (between VOUT and FB)."
+      },
+      {
+        "index": 19,
+        "type": "equation",
+        "bbox": [
+          0.122,
+          0.745,
+          0.303,
+          0.783
+        ],
+        "content": "R 1 = R 2 \\times \\left(\\frac {V _ {\\text {OUT}}}{V _ {\\text {FB}}} - 1\\right)"
+      },
+      {
+        "index": 20,
+        "type": "text",
+        "bbox": [
+          0.124,
+          0.794,
+          0.173,
+          0.806
+        ],
+        "content": "where"
+      },
+      {
+        "index": 21,
+        "type": "text",
+        "bbox": [
+          0.157,
+          0.81,
+          0.912,
+          0.825
+        ],
+        "content": "(3)"
+      },
+      {
+        "index": 22,
+        "type": "table",
+        "bbox": [
+          0.086,
+          0.854,
+          0.915,
+          0.926
+        ],
+        "content": "| $V_{OUT}$ | R1 | R2 |\n| --- | --- | --- |\n| 2.5 V | 750 kΩ | 180 kΩ |\n| 3.3 V | 1 MΩ | 180 kΩ |\n| 3.6 V | 1.1 MΩ | 180 kΩ |"
+      },
+      {
+        "index": 23,
+        "type": "footer",
+        "bbox": [
+          0.085,
+          0.934,
+          0.38,
+          0.947
+        ],
+        "content": "Copyright © 2010–2019, Texas Instruments Incorporated"
+      },
+      {
+        "index": 24,
+        "type": "footer",
+        "bbox": [
+          0.667,
+          0.934,
+          0.866,
+          0.946
+        ],
+        "content": "[Submit Documentation Feedback](http://www.go-dsp.com/forms/techdoc/doc_feedback.htm?litnum=SLVS916I&partnum=TPS63020)"
+      },
+      {
+        "index": 25,
+        "type": "page_number",
+        "bbox": [
+          0.896,
+          0.934,
+          0.912,
+          0.945
+        ],
+        "content": "15"
+      },
+      {
+        "index": 26,
+        "type": "footer",
+        "bbox": [
+          0.367,
+          0.952,
+          0.631,
+          0.964
+        ],
+        "content": "Product Folder Links: [TPS63020](http://www.ti.com/product/tps63020?qgpn=tps63020) [TPS63021](http://www.ti.com/product/tps63021?qgpn=tps63021)"
+      }
+    ]
+  ]
+}

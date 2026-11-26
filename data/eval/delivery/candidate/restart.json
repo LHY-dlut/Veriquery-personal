@@ -1,0 +1,248 @@
+{
+  "document": {
+    "document_id": "904ca696",
+    "filename": "diag-ads1115.pdf",
+    "status": "ready",
+    "page_count": 3,
+    "file_size": 1113533,
+    "upload_time": "2026-11-26T10:54:28.455219",
+    "error_message": "",
+    "warnings": [
+      "visual_pipeline_skipped"
+    ],
+    "chunk_count": 91,
+    "table_count": 5,
+    "circuit_count": 0,
+    "image_count": 4,
+    "processed_time": "2026-11-26T10:54:39.610399",
+    "progress": 100,
+    "stage": "completed",
+    "stage_detail": "正在嵌入第 16/16 批",
+    "parser": "mineru",
+    "parser_tier": "standard",
+    "verified_table_rows": 22
+  },
+  "answer": {
+    "success": true,
+    "response": "根据资料 [1] 第 3 页，ADS1115 的典型工作电流（IVDD）在 TA = 25°C 时为 0.5µA。\n[1]",
+    "citations": [
+      {
+        "file": "diag-ads1115.pdf",
+        "page": 3,
+        "text_snippet": "5.5 Electrical Characteristics (continued) 5.6 Timing Requirements: $1 2 c$ <u>over operating ambient temperature range and</u> $\\mathrm{VDD} = 2.0\\mathrm{V}$ <u>to 5.5V (unless otherwise noted)</u> 【表格】 PARAMETER [跨2列合并] | | TEST CONDITIONS [跨2列合并] | | MIN TYP MAX | UNIT POWER-SUPPLY [跨6列合并] | | | | | IVDD | Supply current | Power-down | TA = 25°C | PDF verified: TYP = 0.5; MAX = 2 | µA IVDD | Supply current | Power-down | | Unverified column: 5 | µA IVDD | Supply current | Operating | TA = 25°",
+        "section": ""
+      }
+    ],
+    "processing_time": 2.925532817840576,
+    "session_id": "c68299f2-cad5-41",
+    "trace": {
+      "intent": "qa",
+      "retrieved": [
+        {
+          "chunk_id": "904ca696_p3_c15",
+          "document_id": "904ca696",
+          "page": 3,
+          "text": "5.5 Electrical Characteristics (continued) 5.6 Timing Requirements: $1 2 c$ <u>over operating ambient temperature range and</u> $\\mathrm{VDD} = 2.0\\mathrm{V}$ <u>to 5.5V (unless otherwise noted)</u> 【表格】 PARAMETER [跨2列合并] | | TEST CONDITIONS [跨2列合并] | | MIN TYP MAX | UNIT POWER-SUPPLY [跨6列合并] | | | | | IVDD | Supply current | Power-down | TA = 25°C | PDF verified: TYP = 0.5; MAX = 2 | µA IVDD | Supply current | Power-down | | Unverified column: 5 | µA IVDD | Supply current | Operating | TA = 25°",
+          "score": 0.9327046871185303,
+          "sources": [
+            "vector",
+            "bm25"
+          ],
+          "pdf_column_evidence": null
+        },
+        {
+          "chunk_id": "904ca696_p3_tbl68",
+          "document_id": "904ca696",
+          "page": 3,
+          "text": "IVDD | Supply current | Operating | TA = 25°C | PDF verified: TYP = 150; MAX = 200 | µA",
+          "score": 0.9065516591072083,
+          "sources": [
+            "vector",
+            "bm25"
+          ],
+          "pdf_column_evidence": "{\"original_cell\": \"150 200\", \"page\": 3, \"cells\": [{\"value\": \"150\", \"column\": \"TYP\", \"bbox_pt\": [440.23, 168.81, 453.58, 177.74]}, {\"value\": \"200\", \"column\": \"MAX\", \"bbox_pt\": [489.92, 168.81, 503.26, 177.74]}]}"
+        },
+        {
+          "chunk_id": "904ca696_p3_c16",
+          "document_id": "904ca696",
+          "page": 3,
+          "text": "pply current | Power-down | | Unverified column: 5 | µA IVDD | Supply current | Operating | TA = 25°C | PDF verified: TYP = 150; MAX = 200 | µA IVDD | Supply current | Operating | | Unverified column: 300 | µA PD | Power dissipation | VDD = 5.0V [跨2列合并] | | PDF verified: TYP = 0.9 | mW PD | Power dissipation | VDD = 3.3 V [跨2列合并] | | PDF verified: TYP = 0.5 | mW PD | Power dissipation | VDD = 2.0V [跨2列合并] | | PDF verified: TYP = 0.3 | mW | | FAST MODE | HIGH-SPEED MODE | UNIT | | MIN MAX | MIN M",
+          "score": 0.8342247605323792,
+          "sources": [
+            "vector",
+            "bm25"
+          ],
+          "pdf_column_evidence": null
+        },
+        {
+          "chunk_id": "904ca696_p3_tbl66",
+          "document_id": "904ca696",
+          "page": 3,
+          "text": "IVDD | Supply current | Power-down | TA = 25°C | PDF verified: TYP = 0.5; MAX = 2 | µA",
+          "score": 0.6749460101127625,
+          "sources": [
+            "vector",
+            "bm25"
+          ],
+          "pdf_column_evidence": "{\"original_cell\": \"0.5 2\", \"page\": 3, \"cells\": [{\"value\": \"0.5\", \"column\": \"TYP\", \"bbox_pt\": [442.47, 140.91, 453.59, 149.84]}, {\"value\": \"2\", \"column\": \"MAX\", \"bbox_pt\": [498.82, 140.91, 503.27, 149.84]}]}"
+        },
+        {
+          "chunk_id": "904ca696_p2_tbl37",
+          "document_id": "904ca696",
+          "page": 2,
+          "text": "| Gain error(3) | FSR = ±2.048V, TA = 25°C | Unverified column: 0.01% 0.15% |",
+          "score": 0.6075712442398071,
+          "sources": [
+            "vector",
+            "bm25"
+          ],
+          "pdf_column_evidence": null
+        },
+        {
+          "chunk_id": "904ca696_p2_c10",
+          "document_id": "904ca696",
+          "page": 2,
+          "text": " column: ±1 | LSB | Offset power-supply rejection | FSR = ±2.048V, DC supply variation | Unverified column: 1 | LSB/V | Offset channel match | Match between any two inputs | Unverified column: 3 | LSB | Gain error(3) | FSR = ±2.048V, TA = 25°C | Unverified column: 0.01% 0.15% | | Gain drift over temperature(3) | FSR = ±0.256V | PDF verified: TYP = 7 | ppm/°C | Gain drift over temperature(3) | FSR = ±2.048V | PDF verified: TYP = 5; MAX = 40 | ppm/°C | Gain drift over temperature(3) | FSR = ±6.144",
+          "score": 0.3896333575248718,
+          "sources": [
+            "vector",
+            "bm25"
+          ],
+          "pdf_column_evidence": null
+        },
+        {
+          "chunk_id": "904ca696_p1_c4",
+          "document_id": "904ca696",
+          "page": 1,
+          "text": "The ADS111x devices perform conversions at data rates of up to 860 samples per second (SPS). The PGA offers input ranges from ±256mV to ±6.144V, allowing precise large- and small-signal measurements. The ADS1115 features an input multiplexer (MUX) that allows two differential or four single-ended input measurements. Use the digital comparator in the ADS1114 and ADS1115 for undervoltage and overvoltage detection.",
+          "score": 0.38450321555137634,
+          "sources": [
+            "vector",
+            "bm25"
+          ],
+          "pdf_column_evidence": null
+        },
+        {
+          "chunk_id": "904ca696_p1_c3",
+          "document_id": "904ca696",
+          "page": 1,
+          "text": "The ADS111x devices incorporate a low-drift voltage reference and an oscillator. The ADS1114 and ADS1115 also incorporate a programmable gain amplifier (PGA) and a digital comparator. These features, along with a wide operating supply range, are useful for power- and space-constrained, sensor measurement applications. The ADS111x devices perform conversions at data rates of up to 860 samples per second (SPS).",
+          "score": 0.3035796284675598,
+          "sources": [
+            "vector",
+            "bm25"
+          ],
+          "pdf_column_evidence": null
+        },
+        {
+          "chunk_id": "904ca696_p1_c0",
+          "document_id": "904ca696",
+          "page": 1,
+          "text": "1 Features • Ultra-small packages: – X2QFN: 2mm × 1.5mm × 0.4mm – SOT: 2.9mm × 2.8mm × 0.6mm • Wide supply range: 2.0V to 5.5V Low current consumption: 150μA (continuous-conversion mode) • Programmable data rate: 8SPS to 860SPS • Single-cycle settling • Internal low-drift voltage reference • Internal oscillator • I<sup>2</sup>C interface: four pin-selectable addresses Operating temperature range: –40°C to +125°C • Family of devices: – ADS1113: one single-ended (SE) or differential (DE) input – A",
+          "score": 0.1884593516588211,
+          "sources": [
+            "vector",
+            "bm25"
+          ],
+          "pdf_column_evidence": null
+        },
+        {
+          "chunk_id": "904ca696_p1_c1",
+          "document_id": "904ca696",
+          "page": 1,
+          "text": "–40°C to +125°C • Family of devices: – ADS1113: one single-ended (SE) or differential (DE) input – ADS1114: one single-ended or differential input with comparator and PGA – ADS1115: four single-ended or two differential inputs with comparator and PGA 2 Applications • Portable instrumentation • Battery voltage and current monitoring • Temperature measurement systems • Consumer electronics • Factory automation and process control 3 Description The ADS1113, ADS1114, and ADS1115 (ADS111x) are precis",
+          "score": 0.13525381684303284,
+          "sources": [
+            "vector",
+            "bm25"
+          ],
+          "pdf_column_evidence": null
+        },
+        {
+          "chunk_id": "904ca696_p1_c2",
+          "document_id": "904ca696",
+          "page": 1,
+          "text": " automation and process control 3 Description The ADS1113, ADS1114, and ADS1115 (ADS111x) are precision, low-power, 16-bit, I<sup>2</sup>C-compatible, analog-to-digital converters (ADCs) offered in a leadless X2QFN-10, a SOT-10 package, and a VSSOP-10 package.",
+          "score": 0.10919215530157089,
+          "sources": [
+            "vector",
+            "bm25"
+          ],
+          "pdf_column_evidence": null
+        },
+        {
+          "chunk_id": "904ca696_p1_c5",
+          "document_id": "904ca696",
+          "page": 1,
+          "text": "Use the digital comparator in the ADS1114 and ADS1115 for undervoltage and overvoltage detection. 【表格】 PART NUMBER | PACKAGE(1) | PACKAGE SIZE(2) ADS111x | RUG (X2QFN, 10) | 1.50mm × 2.00mm ADS111x | DYN (SOT, 10) | 2.90mm × 2.80mm ADS111x | DGS (VSSOP, 10) | 3.00mm × 4.90mm PART NUMBER | INPUT CHANNELS | FEATURES(<sup>1</sup>) ADS1113 | 1 DE (1 SE) | - ADS1114 | 1 DE (1 SE) | PGA, comparator ADS1115 | 2 DE (4 SE) | PGA, comparator",
+          "score": 0.07247495651245117,
+          "sources": [
+            "vector",
+            "bm25"
+          ],
+          "pdf_column_evidence": null
+        }
+      ],
+      "context": "[1] diag-ads1115.pdf 第3页\n5.5 Electrical Characteristics (continued) 5.6 Timing Requirements: $1 2 c$ <u>over operating ambient temperature range and</u> $\\mathrm{VDD} = 2.0\\mathrm{V}$ <u>to 5.5V (unless otherwise noted)</u> 【表格】 PARAMETER [跨2列合并] | | TEST CONDITIONS [跨2列合并] | | MIN TYP MAX | UNIT POWER-SUPPLY [跨6列合并] | | | | | IVDD | Supply current | Power-down | TA = 25°C | PDF verified: TYP = 0.5; MAX = 2 | µA IVDD | Supply current | Power-down | | Unverified column: 5 | µA IVDD | Supply current | Operating | TA = 25°\n\n[2] diag-ads1115.pdf 第3页 表 1 第 5 行\n表头 | PARAMETER [跨2列合并] |  | TEST CONDITIONS [跨2列合并] |  | MIN TYP MAX | UNIT\nIVDD | Supply current | Operating | TA = 25°C | PDF verified: TYP = 150; MAX = 200 | µA\n\n[3] diag-ads1115.pdf 第3页\npply current | Power-down | | Unverified column: 5 | µA IVDD | Supply current | Operating | TA = 25°C | PDF verified: TYP = 150; MAX = 200 | µA IVDD | Supply current | Operating | | Unverified column: 300 | µA PD | Power dissipation | VDD = 5.0V [跨2列合并] | | PDF verified: TYP = 0.9 | mW PD | Power dissipation | VDD = 3.3 V [跨2列合并] | | PDF verified: TYP = 0.5 | mW PD | Power dissipation | VDD = 2.0V [跨2列合并] | | PDF verified: TYP = 0.3 | mW | | FAST MODE | HIGH-SPEED MODE | UNIT | | MIN MAX | MIN M\n\n[4] diag-ads1115.pdf 第3页 表 1 第 3 行\n表头 | PARAMETER [跨2列合并] |  | TEST CONDITIONS [跨2列合并] |  | MIN TYP MAX | UNIT\nIVDD | Supply current | Power-down | TA = 25°C | PDF verified: TYP = 0.5; MAX = 2 | µA\n\n[5] diag-ads1115.pdf 第2页 表 1 第 24 行\n表头 | PARAMETER [跨2列合并] |  | TEST CONDITIONS | MIN TYP MAX | UNIT\n| Gain error(3) | FSR = ±2.048V, TA = 25°C | Unverified column: 0.01% 0.15% |\n\n[6] diag-ads1115.pdf 第2页\ncolumn: ±1 | LSB | Offset power-supply rejection | FSR = ±2.048V, DC supply variation | Unverified column: 1 | LSB/V | Offset channel match | Match between any two inputs | Unverified column: 3 | LSB | Gain error(3) | FSR = ±2.048V, TA = 25°C | Unverified column: 0.01% 0.15% | | Gain drift over temperature(3) | FSR = ±0.256V | PDF verified: TYP = 7 | ppm/°C | Gain drift over temperature(3) | FSR = ±2.048V | PDF verified: TYP = 5; MAX = 40 | ppm/°C | Gain drift over temperature(3) | FSR = ±6.144\n\n[7] diag-ads1115.pdf 第1页\nThe ADS111x devices perform conversions at data rates of up to 860 samples per second (SPS). The PGA offers input ranges from ±256mV to ±6.144V, allowing precise large- and small-signal measurements. The ADS1115 features an input multiplexer (MUX) that allows two differential or four single-ended input measurements. Use the digital comparator in the ADS1114 and ADS1115 for undervoltage and overvoltage detection.\n\n[8] diag-ads1115.pdf 第1页\nThe ADS111x devices incorporate a low-drift voltage reference and an oscillator. The ADS1114 and ADS1115 also incorporate a programmable gain amplifier (PGA) and a digital comparator. These features, along with a wide operating supply range, are useful for power- and space-constrained, sensor measurement applications. The ADS111x devices perform conversions at data rates of up to 860 samples per second (SPS).",
+      "context_evidence": [
+        {
+          "file": "diag-ads1115.pdf",
+          "page": 3,
+          "text_snippet": "5.5 Electrical Characteristics (continued) 5.6 Timing Requirements: $1 2 c$ <u>over operating ambient temperature range and</u> $\\mathrm{VDD} = 2.0\\mathrm{V}$ <u>to 5.5V (unless otherwise noted)</u> 【表格】 PARAMETER [跨2列合并] | | TEST CONDITIONS [跨2列合并] | | MIN TYP MAX | UNIT POWER-SUPPLY [跨6列合并] | | | | | IVDD | Supply current | Power-down | TA = 25°C | PDF verified: TYP = 0.5; MAX = 2 | µA IVDD | Supply current | Power-down | | Unverified column: 5 | µA IVDD | Supply current | Operating | TA = 25°",
+          "section": "",
+          "document_id": "904ca696"
+        },
+        {
+          "file": "diag-ads1115.pdf",
+          "page": 3,
+          "text_snippet": "PARAMETER [跨2列合并] |  | TEST CONDITIONS [跨2列合并] |  | MIN TYP MAX | UNIT\nIVDD | Supply current | Operating | TA = 25°C | PDF verified: TYP = 150; MAX = 200 | µA",
+          "section": "表 1 第 5 行",
+          "document_id": "904ca696"
+        },
+        {
+          "file": "diag-ads1115.pdf",
+          "page": 3,
+          "text_snippet": "pply current | Power-down | | Unverified column: 5 | µA IVDD | Supply current | Operating | TA = 25°C | PDF verified: TYP = 150; MAX = 200 | µA IVDD | Supply current | Operating | | Unverified column: 300 | µA PD | Power dissipation | VDD = 5.0V [跨2列合并] | | PDF verified: TYP = 0.9 | mW PD | Power dissipation | VDD = 3.3 V [跨2列合并] | | PDF verified: TYP = 0.5 | mW PD | Power dissipation | VDD = 2.0V [跨2列合并] | | PDF verified: TYP = 0.3 | mW | | FAST MODE | HIGH-SPEED MODE | UNIT | | MIN MAX | MIN M",
+          "section": "",
+          "document_id": "904ca696"
+        },
+        {
+          "file": "diag-ads1115.pdf",
+          "page": 3,
+          "text_snippet": "PARAMETER [跨2列合并] |  | TEST CONDITIONS [跨2列合并] |  | MIN TYP MAX | UNIT\nIVDD | Supply current | Power-down | TA = 25°C | PDF verified: TYP = 0.5; MAX = 2 | µA",
+          "section": "表 1 第 3 行",
+          "document_id": "904ca696"
+        },
+        {
+          "file": "diag-ads1115.pdf",
+          "page": 2,
+          "text_snippet": "PARAMETER [跨2列合并] |  | TEST CONDITIONS | MIN TYP MAX | UNIT\n| Gain error(3) | FSR = ±2.048V, TA = 25°C | Unverified column: 0.01% 0.15% |",
+          "section": "表 1 第 24 行",
+          "document_id": "904ca696"
+        },
+        {
+          "file": "diag-ads1115.pdf",
+          "page": 2,
+          "text_snippet": "column: ±1 | LSB | Offset power-supply rejection | FSR = ±2.048V, DC supply variation | Unverified column: 1 | LSB/V | Offset channel match | Match between any two inputs | Unverified column: 3 | LSB | Gain error(3) | FSR = ±2.048V, TA = 25°C | Unverified column: 0.01% 0.15% | | Gain drift over temperature(3) | FSR = ±0.256V | PDF verified: TYP = 7 | ppm/°C | Gain drift over temperature(3) | FSR = ±2.048V | PDF verified: TYP = 5; MAX = 40 | ppm/°C | Gain drift over temperature(3) | FSR = ±6.144",
+          "section": "",
+          "document_id": "904ca696"
+        },
+        {
+          "file": "diag-ads1115.pdf",
+          "page": 1,
+          "text_snippet": "The ADS111x devices perform conversions at data rates of up to 860 samples per second (SPS). The PGA offers input ranges from ±256mV to ±6.144V, allowing precise large- and small-signal measurements. The ADS1115 features an input multiplexer (MUX) that allows two differential or four single-ended input measurements. Use the digital comparator in the ADS1114 and ADS1115 for undervoltage and overvoltage detection.",
+          "section": "",
+          "document_id": "904ca696"
+        },
+        {
+          "file": "diag-ads1115.pdf",
+          "page": 1,
+          "text_snippet": "The ADS111x devices incorporate a low-drift voltage reference and an oscillator. The ADS1114 and ADS1115 also incorporate a programmable gain amplifier (PGA) and a digital comparator. These features, along with a wide operating supply range, are useful for power- and space-constrained, sensor measurement applications. The ADS111x devices perform conversions at data rates of up to 860 samples per second (SPS).",
+          "section": "",
+          "document_id": "904ca696"
+        }
+      ],
+      "model_answer": "根据资料 [1] 第 3 页，ADS1115 的典型工作电流（IVDD）在 TA = 25°C 时为 0.5µA。\n[1]"
+    }
+  }
+}

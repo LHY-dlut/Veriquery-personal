@@ -14,6 +14,7 @@ Main components:
     - IngestionPipeline: External entry point with document type detection
 """
 
+import asyncio
 from dataclasses import dataclass, field
 import logging
 from pathlib import Path
@@ -23,6 +24,7 @@ import time
 import fitz
 import io
 import re
+import threading
 
 from core.config import get_settings
 from core.exceptions import ProcessingError
@@ -801,11 +803,7 @@ class EnhancedDocumentProcessor:
         self._pdf_parser = _PDFParser(settings, visual_indexer_provider=self._get_visual_indexer)
         self.table_extractor = DatasheetTableExtractor(settings=settings)
         self.colpali_indexer = None
-        # MinerU 分支下解析出的表格(数值完整性优于本地 Camelot/pdfplumber)
-        # 按文档键隔离:同一处理器先解析 A 再解析 B(MinerU 失败回退)时,
-        # 不能复用 A 的表格
-        self._mineru_tables_cache = None
-        self._mineru_tables_doc = None
+        self._parse_lock = threading.Lock()
 
         logger.info("增强版文档处理器初始化完成")
 
@@ -872,9 +870,7 @@ class EnhancedDocumentProcessor:
         start_time = time.time()
 
         try:
-            parsed_data = self._parse_pdf(file_path)
-
-            tables = self._extract_tables(file_path)
+            parsed_data, tables = await asyncio.to_thread(self._parse_and_extract_tables, file_path)
 
             visual_embeddings = self._create_visual_embeddings(
                 file_path, parsed_data, options, document_id=document_id
@@ -914,6 +910,16 @@ class EnhancedDocumentProcessor:
             logger.error(f"文档处理失败 {file_path.name}: {e}")
             raise ProcessingError(f"Document processing failed: {e}") from e
 
+    def _parse_and_extract_tables(self, file_path: Path):
+        # Serialize access to the shared local parser and its extraction cache
+        # inside a worker. HTTP document-status requests remain responsive.
+        with self._parse_lock:
+            parsed = self._parse_pdf(file_path)
+            tables = parsed.get("extracted_tables")
+            if tables is None:
+                tables = self._extract_tables(file_path)
+            return parsed, tables
+
     def _parse_pdf(self, file_path: Path) -> Dict[str, Any]:
         """Parse a PDF file and return structured data.
 
@@ -927,11 +933,13 @@ class EnhancedDocumentProcessor:
             Dict with document_info, pages, and image_count.
         """
         # MinerU 分支(GPU1 服务):结构化表格 + 带 bbox 裁剪图 + 版面分类。
-        # 任何失败都回退本地 PyMuPDF 链路,保证入库不中断。
+        # 只有显式允许时才回退，避免把其他解析路径误记为指定档位。
         if bool(getattr(self.settings, "USE_MINERU_PARSE", False)):
             try:
                 return self._parse_pdf_mineru(file_path)
             except Exception as e:
+                if not getattr(self.settings, "MINERU_ALLOW_LOCAL_FALLBACK", False):
+                    raise ProcessingError(f"MinerU 解析失败: {e}") from e
                 logger.warning(f"MinerU 解析失败,回退本地解析链路: {e}")
 
         try:
@@ -939,6 +947,7 @@ class EnhancedDocumentProcessor:
             parse_result = self._pdf_parser.parse(str(file_path), document_id)
             document_info = {
                 "document_id": parse_result.document_id,
+                "parser": "pymupdf",
                 "filename": parse_result.filename,
                 "page_count": parse_result.page_count,
                 "title": parse_result.metadata.get("title", ""),
@@ -979,13 +988,15 @@ class EnhancedDocumentProcessor:
         Raises:
             RuntimeError: If MinerU returns a non-success status or no pages.
         """
-        from ingestion.mineru_client import MinerUClient
+        from ingestion.mineru_client import MinerUClient, _rows_to_plain_text
+        from ingestion.spec_column_evidence import annotate_spec_columns
 
         client = MinerUClient(self.settings)
+        requested_tier = getattr(self.settings, "MINERU_TIER", "advanced")
         result = client.parse_pdf(
             str(file_path),
-            tier=getattr(self.settings, "MINERU_TIER", "flash"),
-            timeout=int(getattr(self.settings, "MINERU_TIMEOUT", 600)),
+            tier=requested_tier,
+            timeout=int(getattr(self.settings, "MINERU_TIMEOUT", 1800)),
         )
 
         status = result.get("status")
@@ -993,6 +1004,10 @@ class EnhancedDocumentProcessor:
             raise RuntimeError(
                 f"MinerU 解析未成功: status={status}, errors={result.get('errors')}"
             )
+        extensions = (result.get("structured_content") or {}).get("extensions") or {}
+        actual_tier = (extensions.get("mineru") or {}).get("tier")
+        if (actual_tier and actual_tier != requested_tier) or (requested_tier == "advanced" and not actual_tier):
+            raise RuntimeError(f"MinerU 档位无法验收: requested={requested_tier}, actual={actual_tier}")
 
         document_id = hashlib.md5(str(file_path).encode()).hexdigest()
         filename = Path(file_path).name
@@ -1036,31 +1051,26 @@ class EnhancedDocumentProcessor:
                               if int(_get(tb, "page_number", 0) or 0) == page_number]
 
             page_tables = []
-            # 结构化参数记录（条件感知选值的证据来源）
-            param_records = []
-            for _tbl in raw_tables:
-                try:
-                    from ingestion.table_struct import parse_tables, extract_param_records
-                    for _sub in parse_tables(_get(_tbl, "raw_content", "") or ""):
-                        for _rec in extract_param_records(
-                            _sub, page_number, f"T{len(param_records)+1}"
-                        ):
-                            param_records.append(_rec)
-                except Exception as _pe:
-                    logger.debug(f"参数记录抽取失败: {_pe}")
-
             for tbl in raw_tables:
                 rows = list(_get(tbl, "rows", []) or [])
                 bbox = _get(tbl, "bbox")
+                plain_text = _get(tbl, "plain_text", "") or ""
+                evidence = {}
+                if rows and getattr(self.settings, "MINERU_VERIFY_TABLE_COLUMNS", True):
+                    annotated, evidence = annotate_spec_columns(file_path, page_number, rows, bbox)
+                    if annotated != rows:
+                        rows = annotated
+                        plain_text = _rows_to_plain_text(rows)
                 page_tables.append({
                     "page": page_number,
                     "data": rows,
                     "content": _get(tbl, "raw_content", "") or "",
-                    "plain_text": _get(tbl, "plain_text", "") or "",
+                    "plain_text": plain_text,
                     "source": "mineru",
                     "row_count": len(rows),
                     "bbox": list(bbox) if bbox else None,
                     "metadata": {"parser": "mineru"},
+                    "column_evidence": evidence,
                 })
 
             text = _get(page, "text", "") or ""
@@ -1078,25 +1088,15 @@ class EnhancedDocumentProcessor:
                 metadata={
                     "page_width": _get(page, "width", 0.0),
                     "page_height": _get(page, "height", 0.0),
+                    "formula_spans": _get(page, "formula_spans", []),
                     "text_length": len(text),
                     "image_count": len(page_images),
                     "table_count": len(page_tables),
                     "parser": "mineru",
-                    # 参数记录随页面下传，切块阶段生成结构化 chunk。
-                    # chunk.text 用语义聚焦文本（向量 embedding 用）；
-                    # llm_text 存完整字段（LLM context/展示用）
-                    "param_records": [
-                        {"text": _rec.to_text(focus=True), "llm_text": _rec.to_text(),
-                         **_rec.to_metadata()} for _rec in param_records
-                    ],
                 },
             ))
             all_images.extend(page_images)
             all_tables.extend(page_tables)
-
-        # 表格提取优先复用 MinerU 结果(按文档键)
-        self._mineru_tables_cache = all_tables
-        self._mineru_tables_doc = document_id
 
         meta = result.get("meta") or {}
         logger.info(
@@ -1117,8 +1117,10 @@ class EnhancedDocumentProcessor:
                 "warnings": [],
                 "error_message": "",
                 "parser": "mineru",
+                "parser_tier": actual_tier or "",
             },
             "pages": pages,
+            "extracted_tables": all_tables,
             "image_count": len(all_images),
         }
 
@@ -1135,16 +1137,6 @@ class EnhancedDocumentProcessor:
             List of table dicts with data, page, source, confidence, dimensions, etc.
         """
         start_time = time.time()
-
-        # MinerU 表格已在解析阶段取得,其数值完整性显著优于本地 Camelot/pdfplumber
-        # 仅当属于本次文档时才复用
-        _doc_key = hashlib.md5(str(file_path).encode()).hexdigest()
-        if self._mineru_tables_cache is not None and self._mineru_tables_doc != _doc_key:
-            self._mineru_tables_cache = None
-            self._mineru_tables_doc = None
-        if self._mineru_tables_cache is not None:
-            logger.info(f"使用 MinerU 表格: {len(self._mineru_tables_cache)} 个")
-            return self._mineru_tables_cache
 
         try:
             table_results = self.table_extractor.extract(str(file_path))
@@ -1291,7 +1283,8 @@ class ProcessingResult:
     def __init__(self, status: str, page_count: int = 0,
                  table_count: int = 0, image_count: int = 0,
                  warnings: list = None, error_message: str = "",
-                 processed_pages: list = None, extracted_tables: list = None):
+                 processed_pages: list = None, extracted_tables: list = None,
+                 parser: str = "", parser_tier: str = ""):
         self.status = status
         self.page_count = page_count
         self.chunk_count = 0
@@ -1302,6 +1295,8 @@ class ProcessingResult:
         self.error_message = error_message
         self.processed_pages = processed_pages or []
         self.extracted_tables = extracted_tables or []
+        self.parser = parser
+        self.parser_tier = parser_tier
 
 
 def _build_processing_result(result: Dict[str, Any], status: str = "success",
@@ -1338,7 +1333,9 @@ def _build_processing_result(result: Dict[str, Any], status: str = "success",
         warnings=doc_info.get("warnings", []),
         error_message=doc_info.get("error_message", ""),
         processed_pages=pages,
-        extracted_tables=result.get("extracted_tables", [])
+        extracted_tables=result.get("extracted_tables", []),
+        parser=doc_info.get("parser", ""),
+        parser_tier=doc_info.get("parser_tier", ""),
     )
 
 

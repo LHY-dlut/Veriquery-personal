@@ -426,40 +426,6 @@ class ChromaDBVectorStore:
 
         return {"$and": [{k: v} for k, v in normalized_filters.items()]}
 
-    def fetch_by_metadata(self, where: Dict[str, Any], limit: int = 2000) -> List[Dict[str, Any]]:
-        """按 metadata 条件直接取记录（不走向量检索）。
-
-        参数证据需要**确定性全集**：同一参数的多个工况行若只靠语义检索
-        top-N 召回，可能只回来其中一条，导致条件匹配拿不到完整候选
-        （表现为"条件冲突"或工况张冠李戴）。
-
-        Args:
-            where: Chroma where 子句（只允许简单等值/$and 组合）。
-            limit: 最大返回条数。
-
-        Returns:
-            [{"id":..., "document":..., "metadata":...}, ...]
-        """
-        if not self.collection:
-            return []
-        try:
-            data = self.collection.get(where=where, limit=limit,
-                                       include=["metadatas", "documents"])
-        except Exception as e:
-            logger.warning("按 metadata 取记录失败: %s", e)
-            return []
-        ids = data.get("ids") or []
-        metas = data.get("metadatas") or []
-        docs = data.get("documents") or []
-        out = []
-        for i, rid in enumerate(ids):
-            out.append({
-                "id": rid,
-                "metadata": metas[i] if i < len(metas) else {},
-                "document": docs[i] if i < len(docs) else "",
-            })
-        return out
-
     async def search(
         self,
         query_embedding: List[float],
@@ -521,44 +487,6 @@ class ChromaDBVectorStore:
                     }
                     results = self.collection.query(**query_params_fallback)
 
-                    if where_clause and results['ids'] and results['ids'][0]:
-                        filter_key = None
-                        filter_values = set()
-                        if '$and' in where_clause:
-                            for cond in where_clause['$and']:
-                                for k, v in cond.items():
-                                    if k == 'document_id':
-                                        if isinstance(v, dict) and '$in' in v:
-                                            filter_values = set(v['$in'])
-                                        else:
-                                            filter_values = {v}
-                                        filter_key = k
-                        elif 'document_id' in where_clause:
-                            v = where_clause['document_id']
-                            if isinstance(v, dict) and '$in' in v:
-                                filter_values = set(v['$in'])
-                            else:
-                                filter_values = {v}
-                            filter_key = 'document_id'
-
-                        if filter_key and filter_values:
-                            filtered_ids = []
-                            filtered_docs = []
-                            filtered_metas = []
-                            filtered_dists = []
-                            for i, id_ in enumerate(results['ids'][0]):
-                                meta = results['metadatas'][0][i] or {}
-                                if meta.get(filter_key) in filter_values:
-                                    filtered_ids.append(id_)
-                                    filtered_docs.append(results['documents'][0][i])
-                                    filtered_metas.append(meta)
-                                    filtered_dists.append(results['distances'][0][i])
-                            results = {
-                                'ids': [filtered_ids],
-                                'documents': [filtered_docs],
-                                'metadatas': [filtered_metas],
-                                'distances': [filtered_dists],
-                            }
                 else:
                     raise
 
@@ -569,6 +497,13 @@ class ChromaDBVectorStore:
                     score = max(0.0, min(1.0, 1.0 - distance))
                     metadata = results['metadatas'][0][i] or {}
 
+                    if where_clause and not all(
+                        metadata.get(key) in expected["$in"] if isinstance(expected, dict)
+                        else metadata.get(key) == expected
+                        for condition in where_clause.get("$and", [where_clause])
+                        for key, expected in condition.items()
+                    ):
+                        continue
                     search_results.append(VectorSearchResult(
                         id=id_,
                         score=score,

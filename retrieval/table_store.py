@@ -65,7 +65,7 @@ from dataclasses import dataclass
 from contextlib import contextmanager
 
 from core import get_settings
-from core.sqlite_utils import get_safe_connection, check_database_health, repair_corrupted_database
+from core.sqlite_utils import SQLiteCorruptedError, get_safe_connection, check_database_health, repair_corrupted_database
 
 logger = logging.getLogger(__name__)
 
@@ -118,8 +118,8 @@ class TableStore:
         ensuring thread safety without a connection pool.
     """
 
-    _QUERY_CLEAN_PATTERN = re.compile(
-        r'[?？,，\(\)\[\]\{\}"\'\:\;\-\_\*\+\.\/\\\|\&\#\@\!\=\<\>]'
+    _QUERY_STOPWORDS = frozenset(
+        "a an and are as at be by does for from how in is it of on or the to what when which with".split()
     )
 
     def __init__(self, db_path: str = None, settings=None):
@@ -153,23 +153,12 @@ class TableStore:
             - Other errors → propagated as exceptions
         """
         try:
-            for ext in ["-wal", "-shm"]:
-                f = f"{self.db_path}{ext}"
-                if os.path.exists(f):
-                    try:
-                        os.remove(f)
-                        logger.info(f"Cleaned residual file: {f}")
-                    except Exception:
-                        pass
-
             if not check_database_health(self.db_path):
                 logger.warning(f"Database may be corrupted: {self.db_path}")
                 if repair_corrupted_database(self.db_path):
                     logger.info(f"Database repaired: {self.db_path}")
                 else:
-                    logger.error(f"Database unrepairable, will delete and recreate: {self.db_path}")
-                    from core.sqlite_utils import safe_delete_database
-                    safe_delete_database(self.db_path)
+                    raise SQLiteCorruptedError(f"Table store requires maintenance: {self.db_path}")
 
             Path(self.db_path).parent.mkdir(parents=True, exist_ok=True)
 
@@ -439,15 +428,11 @@ class TableStore:
         Returns:
             Cleaned keyword list, e.g. ["SN74HC04", "供电电压", "是多少"].
         """
-        clean_query = (query or "").strip()
-        if not clean_query:
-            return []
-
-        clean_query = self._QUERY_CLEAN_PATTERN.sub(' ', clean_query)
-        return [word for word in clean_query.split() if word.strip()]
+        words = re.findall(r"[^\W_]+", (query or "").lower())
+        return list(dict.fromkeys(word for word in words if word not in self._QUERY_STOPWORDS))[:24]
 
     def _search_by_content(self, query: str, top_k: int = 10,
-                           document_ids: List[str] = None) -> List[TableSearchResult]:
+                           document_ids: List[str] = None, page: Optional[int] = None) -> List[TableSearchResult]:
         """Dispatch table content search to FTS5 or LIKE strategy.
 
         Strategy selection based on self.fts_available:
@@ -468,9 +453,9 @@ class TableStore:
         try:
             with self._get_connection() as conn:
                 if self.fts_available:
-                    return self._search_by_content_fts(conn, query, top_k, document_ids)
+                    return self._search_by_content_fts(conn, query, top_k, document_ids, page)
                 else:
-                    return self._search_by_content_like(conn, query, top_k, document_ids)
+                    return self._search_by_content_like(conn, query, top_k, document_ids, page)
         except Exception as e:
             logger.error(f"Content search failed: {e}")
             return []
@@ -502,7 +487,7 @@ class TableStore:
                 document_ids = [str(filters["document_id"])]
 
         results = await asyncio.to_thread(
-            self._search_by_content, query, top_k, document_ids
+            self._search_by_content, query, top_k, document_ids, (filters or {}).get("page")
         )
 
         return [
@@ -547,113 +532,57 @@ class TableStore:
                 return title
         return f"Table p{result.page}"
 
-    def _search_by_content_fts(self, conn, query: str, top_k: int, document_ids: List[str] = None):
-        """FTS5 full-text search with BM25 relevance ranking.
+    @staticmethod
+    def _table_scope(document_ids, page):
+        conditions, params = [], []
+        if document_ids:
+            conditions.append("t.document_id IN (" + ",".join("?" for _ in document_ids) + ")")
+            params.extend(document_ids)
+        if page is not None:
+            conditions.append("t.page = ?")
+            params.append(page)
+        return conditions, params
 
-        SQLite FTS5 bm25() returns negative values (more negative = more
-        relevant). Results are ordered ascending by score, then abs() is
-        applied in _rows_to_results() to normalize to positive values.
-
-        Args:
-            conn: SQLite connection (passed from _search_by_content).
-            query: Search query text.
-            top_k: Maximum number of results.
-            document_ids: Optional document ID list to scope the search.
-
-        Returns:
-            List[TableSearchResult] sorted by BM25 relevance.
-        """
+    def _search_by_content_fts(self, conn, query, top_k, document_ids=None, page=None):
+        """Rank tables matching any meaningful term while enforcing document and page scope."""
         words = self._clean_query(query)
         if not words:
             return []
 
-        fts_query = " ".join(words)
+        conditions, params = self._table_scope(document_ids, page)
+        where = " AND ".join(["tables_fts MATCH ?", *conditions])
+        fts_query = " OR ".join(f'"{word}"' for word in words)
+        rows = conn.execute(
+            f"""
+            SELECT t.*, bm25(tables_fts) AS score
+            FROM tables t JOIN tables_fts f ON t.rowid = f.rowid
+            WHERE {where}
+            ORDER BY score, t.rowid
+            LIMIT ?
+            """,
+            [fts_query, *params, top_k],
+        )
+        return self._rows_to_results(rows.fetchall())
 
-        try:
-            if document_ids:
-                placeholders = ','.join('?' * len(document_ids))
-                sql = f"""
-                    SELECT t.*, bm25(tables_fts) as score
-                    FROM tables t
-                    JOIN tables_fts f ON t.rowid = f.rowid
-                    WHERE tables_fts MATCH ?
-                    AND t.document_id IN ({placeholders})
-                    ORDER BY score
-                    LIMIT ?
-                """
-                params = [fts_query] + document_ids + [top_k]
-            else:
-                sql = """
-                    SELECT t.*, bm25(tables_fts) as score
-                    FROM tables t
-                    JOIN tables_fts f ON t.rowid = f.rowid
-                    WHERE tables_fts MATCH ?
-                    ORDER BY score
-                    LIMIT ?
-                """
-                params = [fts_query, top_k]
-
-            cursor = conn.execute(sql, params)
-            return self._rows_to_results(cursor.fetchall())
-
-        except Exception as e:
-            logger.error(f"FTS search failed: {e}, query: '{fts_query}'")
-            return []
-
-    def _search_by_content_like(self, conn, query: str, top_k: int, document_ids: List[str] = None):
-        """LIKE fallback search when FTS5 is unavailable.
-
-        Uses SQL LIKE '%word%' for substring matching on the content column.
-        All results receive score=1.0 (no relevance ranking capability).
-
-        Key differences from FTS5 search:
-            - Substring matching vs. token matching (may over-match).
-            - No BM25 ranking; score is uniform 1.0.
-            - Full table scan O(n) vs. inverted index O(log n).
-            - AND logic: all keywords must appear in content.
-
-        Args:
-            conn: SQLite connection.
-            query: Search query text.
-            top_k: Maximum number of results.
-            document_ids: Optional document ID list to scope the search.
-
-        Returns:
-            List[TableSearchResult] with score=1.0 for all results.
-        """
+    def _search_by_content_like(self, conn, query, top_k, document_ids=None, page=None):
+        """Use the number of matching terms if FTS5 is unavailable."""
         words = self._clean_query(query)
         if not words:
             return []
 
-        like_query = " AND ".join([f"(content LIKE ?)" for _ in words])
-        like_params = [f"%{word}%" for word in words]
-
-        try:
-            if document_ids:
-                placeholders = ','.join('?' * len(document_ids))
-                sql = f"""
-                    SELECT t.*, 1.0 as score
-                    FROM tables t
-                    WHERE {like_query}
-                    AND t.document_id IN ({placeholders})
-                    LIMIT ?
-                """
-                params = like_params + document_ids + [top_k]
-            else:
-                sql = f"""
-                    SELECT t.*, 1.0 as score
-                    FROM tables t
-                    WHERE {like_query}
-                    LIMIT ?
-                """
-                params = like_params + [top_k]
-
-            cursor = conn.execute(sql, params)
-            return self._rows_to_results(cursor.fetchall())
-
-        except Exception as e:
-            logger.error(f"LIKE search failed: {e}, query: '{query}'")
-            return []
+        conditions, params = self._table_scope(document_ids, page)
+        scope = f"WHERE {' AND '.join(conditions)}" if conditions else ""
+        matches = " + ".join("(content LIKE ?)" for _ in words)
+        rows = conn.execute(
+            f"""
+            SELECT * FROM (
+                SELECT t.*, ({matches}) AS score FROM tables t {scope}
+            )
+            WHERE score > 0 ORDER BY score DESC LIMIT ?
+            """,
+            [*(f"%{word}%" for word in words), *params, top_k],
+        )
+        return self._rows_to_results(rows.fetchall())
 
     def _rows_to_results(self, rows) -> List[TableSearchResult]:
         """Convert SQLite Row objects to TableSearchResult domain objects.

@@ -439,6 +439,30 @@ def _extract_page_text_and_number(page) -> Tuple[str, int]:
     return text or "", int(page_number)
 
 
+def _chunk_page_text(text, formula_spans, chunk_size, overlap, settings):
+    """Apply the ordinary window to prose and keep formula passages intact and unique."""
+    if not formula_spans:
+        return _build_chunks_from_sentences(_split_sentences_with_spans(text), chunk_size, overlap, settings)
+    chunks = []
+    cursor = 0
+    # All published text offsets use the whitespace-normalized page coordinate system.
+    offset = 0
+    for start, end in [*formula_spans, (len(text), len(text))]:
+        prose = re.sub(r"\s+", " ", text[cursor:start]).strip()
+        if prose:
+            window = _build_chunks_from_sentences(_split_sentences_with_spans(prose), chunk_size, overlap, settings)
+            for item in window:
+                chunks.append({**item, "start": offset + item["start"], "end": offset + item["end"]})
+            offset += len(prose) + 1
+        if end > start:
+            formula = text[start:end]
+            length = len(re.sub(r"\s+", " ", formula).strip())
+            chunks.append({"text": formula, "start": offset, "end": offset + length, "formula": True})
+            offset += length + 1
+        cursor = end
+    return chunks
+
+
 def _build_chunks_from_pages(pages: List[Any], settings, document_id: str, filename: str) -> List[Dict[str, Any]]:
     """Convert all PDF pages into structured text chunks with IDs and metadata.
 
@@ -454,6 +478,8 @@ def _build_chunks_from_pages(pages: List[Any], settings, document_id: str, filen
     Returns:
         List of chunk dicts with id/content/metadata fields.
     """
+    from retrieval.table_evidence import is_table_header
+
     chunk_size = int(getattr(settings, "CHUNK_SIZE", 800))
     overlap = int(getattr(settings, "CHUNK_OVERLAP", 200))
 
@@ -462,8 +488,11 @@ def _build_chunks_from_pages(pages: List[Any], settings, document_id: str, filen
 
     for page in pages:
         text, page_number = _extract_page_text_and_number(page)
-        sentences = _split_sentences_with_spans(text)
-        page_chunks = _build_chunks_from_sentences(sentences, chunk_size, overlap, settings)
+        page_metadata = page.get("metadata", {}) if isinstance(page, dict) else getattr(page, "metadata", {})
+        formula_spans = (page_metadata or {}).get("formula_spans", [])
+        if isinstance(page, dict):
+            formula_spans = page.get("formula_spans") or formula_spans
+        page_chunks = _chunk_page_text(text, formula_spans, chunk_size, overlap, settings)
 
         # 表格按行单独成块:页面正文被 800 字符滑窗切开后会拆散
         # "参数名→数值"的对应关系(温度行被切成 -55 与 150 两段),
@@ -472,46 +501,32 @@ def _build_chunks_from_pages(pages: List[Any], settings, document_id: str, filen
             page_tables = page.get("tables") or []
         else:
             page_tables = getattr(page, "tables", []) or []
-        # MinerU 参数记录：独立成块，结构化字段随 chunk 入库
-        _page_meta = page.get("metadata") if isinstance(page, dict) else getattr(page, "metadata", None)
-        for _pr in ((_page_meta or {}).get("param_records") or []):
-            _ptext = _pr.get("text") or ""
-            if not _ptext.strip():
-                continue
-            # 直接整表搬运序列化结果，**不做字段白名单裁剪**：
-            # 之前手工挑字段会漏掉 raw_row/pvals/conditions_raw，
-            # 造成"本地对象正确、入库后证据丢失"的线上-本地行为分裂。
-            _pm = {k: v for k, v in _pr.items() if k != "text"}
-            _pm.update({
-                "document_id": document_id,
-                "filename": filename,
-                "page": page_number,
-                "source": "param_record",
-            })
-            # Chroma metadata 只接受简单类型，兜底清洗
-            _pm = {
-                k: (v if isinstance(v, (str, int, float, bool)) else str(v))
-                for k, v in _pm.items()
-            }
-            all_chunks.append({
-                "id": f"{document_id}_p{page_number}_pr{len(all_chunks)}",
-                "content": _ptext,
-                "metadata": _pm,
-            })
-
-
-        for _tbl in page_tables:
-            _ttxt = _tbl.get("plain_text") or _tbl.get("content") or ""
-            for _line in [x for x in str(_ttxt).split("\n") if x.strip()]:
+        for table_number, table in enumerate(page_tables, 1):
+            table_text = table.get("plain_text") or table.get("content") or ""
+            column_evidence = table.get("column_evidence") or {}
+            header = ""
+            for row_number, line in enumerate(str(table_text).splitlines(), 1):
+                if not line.strip():
+                    continue
+                metadata = {
+                    "document_id": document_id,
+                    "filename": filename,
+                    "page": page_number,
+                    "source": "table_text",
+                    "section": f"表 {table_number} 第 {row_number} 行",
+                }
+                if is_table_header(line):
+                    header = line.strip()
+                elif header:
+                    metadata["table_header"] = header
+                if row_number - 1 in column_evidence:
+                    metadata["pdf_column_evidence"] = json.dumps(
+                        column_evidence[row_number - 1], ensure_ascii=False
+                    )
                 all_chunks.append({
                     "id": f"{document_id}_p{page_number}_tbl{len(all_chunks)}",
-                    "content": _line.strip(),
-                    "metadata": {
-                        "document_id": document_id,
-                        "filename": filename,
-                        "page": page_number,
-                        "source": "table_text",
-                    },
+                    "content": line.strip(),
+                    "metadata": metadata,
                 })
 
         for chunk in page_chunks:
@@ -525,6 +540,7 @@ def _build_chunks_from_pages(pages: List[Any], settings, document_id: str, filen
                     "page": page_number,
                     "char_start": chunk["start"],
                     "char_end": chunk["end"],
+                    **({"formula": True} if chunk.get("formula") else {}),
                     "source": "pdf"
                 }
             })
@@ -731,6 +747,7 @@ async def _index_document_content(document_id: str, filename: str, result, conta
         return {
             "chunk_count": len(chunks),
             "table_count": table_count,
+            "verified_table_rows": sum("pdf_column_evidence" in item["metadata"] for item in chunks),
             "circuit_count": 0,
             "pages": pages,
             "visual_indexer": visual_indexer,
@@ -764,6 +781,9 @@ class DocumentInfo(BaseModel):
     progress: int = 0
     stage: str = ""
     stage_detail: str = ""
+    parser: str = ""
+    parser_tier: str = ""
+    verified_table_rows: int = 0
 
 
 class DocumentListResponse(BaseModel):
@@ -807,6 +827,9 @@ async def list_documents():
                 progress=doc.get("progress", 0),
                 stage=doc.get("stage", ""),
                 stage_detail=doc.get("stage_detail", ""),
+                parser=doc.get("parser", ""),
+                parser_tier=doc.get("parser_tier", ""),
+                verified_table_rows=doc.get("verified_table_rows", 0),
             )
             doc_list.append(doc_info)
 
@@ -1404,6 +1427,9 @@ async def _process_document_async(doc_id: str, filename: str, filepath: str, con
             table_count=index_stats.get("table_count", getattr(result, 'table_count', 0)),
             circuit_count=0,
             image_count=getattr(result, 'image_count', 0),
+            parser=result.parser,
+            parser_tier=result.parser_tier,
+            verified_table_rows=index_stats["verified_table_rows"],
             error_message="",
             warnings=[],
             processed_time=datetime.now().isoformat(),
@@ -1485,6 +1511,9 @@ async def get_document(document_id: str):
         progress=doc.get("progress", 0),
         stage=doc.get("stage", ""),
         stage_detail=doc.get("stage_detail", ""),
+        parser=doc.get("parser", ""),
+        parser_tier=doc.get("parser_tier", ""),
+        verified_table_rows=doc.get("verified_table_rows", 0),
     )
 
 

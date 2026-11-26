@@ -1,0 +1,108 @@
+{
+  "tables.db": {
+    "tables": {
+      "columns": [
+        "table_id",
+        "document_id",
+        "filename",
+        "page",
+        "data",
+        "header",
+        "content",
+        "row_count",
+        "column_count",
+        "source",
+        "confidence",
+        "created_at"
+      ],
+      "rows": 3
+    },
+    "tables_fts": {
+      "columns": [
+        "header",
+        "content"
+      ],
+      "rows": 3
+    },
+    "tables_fts_config": {
+      "columns": [
+        "k",
+        "v"
+      ],
+      "rows": 1
+    },
+    "tables_fts_data": {
+      "columns": [
+        "id",
+        "block"
+      ],
+      "rows": 5
+    },
+    "tables_fts_docsize": {
+      "columns": [
+        "id",
+        "sz"
+      ],
+      "rows": 3
+    },
+    "tables_fts_idx": {
+      "columns": [
+        "segid",
+        "term",
+        "pgno"
+      ],
+      "rows": 3
+    }
+  },
+  "knowledge_graph.db": {
+    "chips": {
+      "columns": [
+        "chip_id",
+        "name",
+        "full_name",
+        "family",
+        "manufacturer",
+        "supply_voltage",
+        "package",
+        "process",
+        "pin_count",
+        "description",
+        "datasheet_url",
+        "created_at",
+        "updated_at"
+      ],
+      "rows": 26
+    },
+    "parameters": {
+      "columns": [
+        "param_id",
+        "chip_id",
+        "pin_id",
+        "param_name",
+        "param_value",
+        "unit",
+        "condition",
+        "source",
+        "confidence",
+        "created_at"
+      ],
+      "rows": 302
+    },
+    "pins": {
+      "columns": [
+        "pin_id",
+        "chip_id",
+        "pin_number",
+        "pin_name",
+        "function_type",
+        "direction",
+        "alternate_functions",
+        "electrical_params",
+        "description",
+        "created_at"
+      ],
+      "rows": 84
+    }
+  },
+  "bm25_sha256": "5dfa0398ecb6d14e79cbbfc3225eb4c0a9f064d6b39821248d07d3e6c3ad244c"
+}

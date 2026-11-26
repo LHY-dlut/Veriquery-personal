@@ -1,0 +1,143 @@
+{
+  "rubric": "Pass requires the correct fact, value, unit and requested scope with no conflicting result. A missing required value or wrong refusal fails. Correct core fact with an invented operating condition or conflicting answer is partial. Citations are reviewed separately.",
+  "cases": [
+    {
+      "id": "ads-typ",
+      "baseline": "fail",
+      "candidate": "fail",
+      "notes": "2 µA is wrong in the baseline. Candidate gives the power-down TYP 0.5 µA even though the retrieved operating row shows 150 µA."
+    },
+    {
+      "id": "ads-max",
+      "baseline": "fail",
+      "candidate": "pass",
+      "notes": "Baseline gives 2 µA. Candidate gives 200 µA and cites the geometry-verified operating row."
+    },
+    {
+      "id": "ads-shutdown",
+      "baseline": "fail",
+      "candidate": "partial",
+      "notes": "Candidate gives 0.5 µA and cites the power-down row, but incorrectly extends the test supply condition to 2.0–5.5 V; the source table uses 3.3 V."
+    },
+    {
+      "id": "ads-rates",
+      "baseline": "pass",
+      "candidate": "pass",
+      "notes": "Both list all eight SPS values. Their citations point to page 1 rather than the complete enumeration on original page 5."
+    },
+    {
+      "id": "ads-rate-typ",
+      "baseline": "fail",
+      "candidate": "fail",
+      "notes": "Baseline promotes the enumerated rates to TYP; candidate gives 710 kΩ from an unrelated impedance row."
+    },
+    {
+      "id": "ads-inputs",
+      "baseline": "fail",
+      "candidate": "fail",
+      "notes": "Both give 2 single-ended; the source says 2 differential or 4 single-ended."
+    },
+    {
+      "id": "tmp-resolution",
+      "baseline": "pass",
+      "candidate": "partial",
+      "notes": "Baseline gives the equivalent 7.8125 m°C; candidate gives 0.0078°C plus an unsupported accuracy claim for the stated temperature range."
+    },
+    {
+      "id": "tmp-shutdown",
+      "baseline": "fail",
+      "candidate": "pass",
+      "notes": "Baseline gives the maximum 0.5 µA; candidate answers 0.15 µA for the requested mode."
+    },
+    {
+      "id": "tmp-hex",
+      "baseline": "fail",
+      "candidate": "fail",
+      "notes": "Correct F380 was present in both contexts. Baseline emits FFFF; candidate emits FF0."
+    },
+    {
+      "id": "ina-shunt-lsb",
+      "baseline": "partial",
+      "candidate": "pass",
+      "notes": "Baseline concludes 2.5 µV but also presents a conflicting 1.25 mV as the same measurement; candidate gives 2.5 µV."
+    },
+    {
+      "id": "ina-bus-lsb",
+      "baseline": "pass",
+      "candidate": "fail",
+      "notes": "Baseline gives 1.25 mV/LSB. Candidate only gives the 0–36 V input range even with the correct LSB row in context."
+    },
+    {
+      "id": "ina-current",
+      "baseline": "pass",
+      "candidate": "pass",
+      "notes": "Both give the nominal 330 µA from the datasheet body."
+    },
+    {
+      "id": "ina-wrong-doc",
+      "baseline": "fail",
+      "candidate": "fail",
+      "notes": "Both emit an answer from INA226 to a TMP117 question instead of refusing."
+    },
+    {
+      "id": "opa-slew",
+      "baseline": "pass",
+      "candidate": "pass",
+      "notes": "Both give 0.8 V/µs; candidate cites independently verified TYP for G=+1."
+    }
+  ],
+  "summary": {
+    "baseline": {
+      "answers": {
+        "fail": 8,
+        "pass": 5,
+        "partial": 1
+      },
+      "http_success": [
+        14,
+        14
+      ],
+      "evidence_score": {
+        "hit_at_k": 1,
+        "mrr_at_k": 0.8194,
+        "retrieval_recall_at_k": 1.0,
+        "context_recall": 1.0
+      },
+      "evidence_denominator": 12,
+      "latency_seconds": {
+        "p50": 2.779,
+        "p95_nearest_rank": 5.443
+      },
+      "verified_table_rows": 0,
+      "chunks": 334,
+      "status_poll_timeouts": 0,
+      "longest_status_request_seconds": 1.62
+    },
+    "candidate": {
+      "answers": {
+        "fail": 6,
+        "pass": 6,
+        "partial": 2
+      },
+      "http_success": [
+        14,
+        14
+      ],
+      "evidence_score": {
+        "hit_at_k": 1,
+        "mrr_at_k": 0.7778,
+        "retrieval_recall_at_k": 1.0,
+        "context_recall": 1.0
+      },
+      "evidence_denominator": 12,
+      "latency_seconds": {
+        "p50": 2.414,
+        "p95_nearest_rank": 5.448
+      },
+      "verified_table_rows": 79,
+      "chunks": 342,
+      "status_poll_timeouts": 0,
+      "longest_status_request_seconds": 0.719
+    }
+  }
+}

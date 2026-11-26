@@ -1,0 +1,277 @@
+{
+  "rubric": "Answered the requested facts with correct values, units and conditions. A materially misleading label or incomplete answer is partial; a wrong target/number or decline on answerable question fails. Declining a scoped unanswerable question without inventing the requested quantity passes.",
+  "summary": {
+    "provisional-before": {
+      "fail": 6,
+      "partial": 5,
+      "pass": 8
+    },
+    "provisional-current": {
+      "partial": 6,
+      "fail": 5,
+      "pass": 8
+    },
+    "exact-advanced": {
+      "pass": 8,
+      "fail": 6
+    },
+    "identical_provisional_contexts": 19,
+    "identical_provisional_answers": 4,
+    "focused_current": 0,
+    "focused_exact": 0,
+    "attempted_distinct_questions": 33,
+    "real_api_calls": 52
+  },
+  "provisional": [
+    {
+      "id": "g002",
+      "before": "fail",
+      "current": "partial",
+      "reason": "Before gives drift as the offset-voltage maximum. After concludes 25 µV but still presents it as a zero-drift figure.",
+      "same_context": true
+    },
+    {
+      "id": "g007",
+      "before": "partial",
+      "current": "partial",
+      "reason": "Both report the relevant accuracy magnitudes but fail to bind the first one to −20 °C to +50 °C clearly.",
+      "same_context": true
+    },
+    {
+      "id": "g008",
+      "before": "fail",
+      "current": "fail",
+      "reason": "The 16-bit fact is in the document/context; answers discuss PGA/input range or decline instead of stating it.",
+      "same_context": true
+    },
+    {
+      "id": "g010",
+      "before": "fail",
+      "current": "fail",
+      "reason": "Before declines; after says 860–860 SPS. The correct enumerated row reached context.",
+      "same_context": true
+    },
+    {
+      "id": "g015",
+      "before": "pass",
+      "current": "pass",
+      "reason": "Both correctly pair 80 MHz with G=100 and 45 MHz with G=1.",
+      "same_context": true
+    },
+    {
+      "id": "g017",
+      "before": "fail",
+      "current": "fail",
+      "reason": "Both public answers decline; model output without a valid citation must be considered separately. The source voltage limits depend on temperature.",
+      "same_context": true
+    },
+    {
+      "id": "g021",
+      "before": "partial",
+      "current": "partial",
+      "reason": "Both give auto-zeroing/25 µV maximum, but confuse offset voltage and drift in the supporting explanation.",
+      "same_context": true
+    },
+    {
+      "id": "g025",
+      "before": "pass",
+      "current": "pass",
+      "reason": "Appropriately refuses the Wi-Fi power question within the OPA211 datasheet scope.",
+      "same_context": true
+    },
+    {
+      "id": "g026",
+      "before": "pass",
+      "current": "pass",
+      "reason": "Both include the correct single- and dual-supply ranges.",
+      "same_context": true
+    },
+    {
+      "id": "g027",
+      "before": "pass",
+      "current": "partial",
+      "reason": "Correct 4–36 V in both; after also labels the supply range as Rail-to-rail output swing.",
+      "same_context": true
+    },
+    {
+      "id": "g031",
+      "before": "partial",
+      "current": "partial",
+      "reason": "Recognizes current/power monitoring, but does not correctly state both shunt drop and bus voltage as the measured quantities.",
+      "same_context": true
+    },
+    {
+      "id": "g033",
+      "before": "fail",
+      "current": "fail",
+      "reason": "OPA188's offset voltage is mistaken for supply voltage despite both device documents reaching context.",
+      "same_context": true
+    },
+    {
+      "id": "g052",
+      "before": "pass",
+      "current": "pass",
+      "reason": "2 MHz gain bandwidth.",
+      "same_context": true
+    },
+    {
+      "id": "g053",
+      "before": "pass",
+      "current": "pass",
+      "reason": "Maximum quiescent current 510 µA.",
+      "same_context": true
+    },
+    {
+      "id": "g054",
+      "before": "partial",
+      "current": "pass",
+      "reason": "Both state 0.03 µV/°C; before adds incorrectly classified ±25 µV typical offset voltage.",
+      "same_context": true
+    },
+    {
+      "id": "g055",
+      "before": "pass",
+      "current": "pass",
+      "reason": "8.8 nV/√Hz.",
+      "same_context": true
+    },
+    {
+      "id": "g056",
+      "before": "partial",
+      "current": "partial",
+      "reason": "Intended resolution digits appear, but decimal formatting is corrupted in the public answers.",
+      "same_context": true
+    },
+    {
+      "id": "g057",
+      "before": "fail",
+      "current": "fail",
+      "reason": "Gives resolution in °C; does not answer the result width of 16 bits.",
+      "same_context": true
+    },
+    {
+      "id": "g089",
+      "before": "pass",
+      "current": "pass",
+      "reason": "PSRR 142 dB and CMRR 146 dB.",
+      "same_context": true
+    }
+  ],
+  "exact_advanced": [
+    {
+      "id": "g039",
+      "grade": "pass",
+      "reason": "10-bit MCP3008"
+    },
+    {
+      "id": "g040",
+      "grade": "pass",
+      "reason": "8 single-ended or 4 pseudo-differential pairs"
+    },
+    {
+      "id": "g041",
+      "grade": "pass",
+      "reason": "18 bits"
+    },
+    {
+      "id": "g042",
+      "grade": "pass",
+      "reason": "2.048 V internal reference"
+    },
+    {
+      "id": "g045",
+      "grade": "fail",
+      "reason": "Public answer declines; raw response '256K' omits bit unit and citations."
+    },
+    {
+      "id": "g046",
+      "grade": "fail",
+      "reason": "Answers unrelated read boundary/supply range instead of 64-byte write page."
+    },
+    {
+      "id": "g063",
+      "grade": "fail",
+      "reason": "Public answer declines. Raw 2.5–5.5 V is supported by exact source, lacks [n], and contradicts golden label 1.7–5.5 V."
+    },
+    {
+      "id": "g067",
+      "grade": "pass",
+      "reason": "±2.048 V differential, equivalent 4.096 V span"
+    },
+    {
+      "id": "g081",
+      "grade": "fail",
+      "reason": "Public answer declines; raw body had both resolution numbers, but without valid citations."
+    },
+    {
+      "id": "g086",
+      "grade": "fail",
+      "reason": "Public answer declines after uncited raw evidence."
+    },
+    {
+      "id": "g090",
+      "grade": "pass",
+      "reason": "SOT-23-6 package"
+    },
+    {
+      "id": "g092",
+      "grade": "pass",
+      "reason": "Explicit yes, with 8 single-ended/4 pseudo-differential evidence"
+    },
+    {
+      "id": "g096",
+      "grade": "fail",
+      "reason": "Gives +125 °C operating temperature instead of refusing altitude question."
+    },
+    {
+      "id": "g098",
+      "grade": "pass",
+      "reason": "Declines to give a CPU core count for the EEPROM based on the indexed page."
+    }
+  ],
+  "gold_source_conflict": {
+    "id": "g063",
+    "gold": "1.7–5.5 V",
+    "manufacturer": "2.5–5.5 V",
+    "original_page": 1,
+    "published_score_against_gold": "fail",
+    "published_score_against_pdf": "fail",
+    "raw_model_value_matches_pdf": true
+  },
+  "citation_gate_evidence": {
+    "provisional-current": {
+      "g017": {
+        "raw_citations": [],
+        "max_valid_citation": 8,
+        "valid_citations": [],
+        "raw_answer": "The operating power-supply range of the TMP117 is 1.7V to 5.5V"
+      }
+    },
+    "exact-advanced": {
+      "g045": {
+        "raw_citations": [],
+        "max_valid_citation": 8,
+        "valid_citations": [],
+        "raw_answer": "The memory capacity of the 24LC256 is 256K"
+      },
+      "g063": {
+        "raw_citations": [],
+        "max_valid_citation": 8,
+        "valid_citations": [],
+        "raw_answer": "24LC256 的电源电压范围是 2.5V-5.5V。"
+      },
+      "g081": {
+        "raw_citations": [],
+        "max_valid_citation": 8,
+        "valid_citations": [],
+        "raw_answer": "根据提供的资料，MCP3008 和 MCP3421 的分辨率对比如下：\n1. MCP3008 分辨率\n*   型号：MCP3008\n*   测量对象：A/D 转换器\n*   试验条件：$-40^\\circ \\text{C}$ 至 $+125^\\circ \\text{C}$\n*   分辨率：10 位 (10-bit)\n*   典型值：$-40^\\circ \\text{C}$ 至 $+125^\\circ \\text{C}$ 下，DNL 和 INL 均为 $\\pm 1$ LSB。\n2. MCP3421 分辨率\n*   型号：MCP3421\n*   试验条件：$2.7\\text{V}$ 至 $5.5\\text{V}$\n*   分辨率：18 位 (18-bit)\n*   典型值：$2.048\\"
+      },
+      "g086": {
+        "raw_citations": [],
+        "max_valid_citation": 7,
+        "valid_citations": [],
+        "raw_answer": "该 MCP3421 器件实现高准确度的主要特征包括：\n1.  差分输入：支持差分输入操作。\n2.  高精度参考电压：内置高精度 2.048V 参考电压，输入电压范围为 $\\pm 2.048V$（差分电压为 4.096V）。\n3.  可编程增益放大器 (PGA)：可在转换前选择 PGA 增益（1, 2, 4 或 8），以减小输入信号幅度并提高分辨率。\n4.  自校准功能：每个转换期间均进行内部偏移量和增益的自校准。\n5.  低电流消费特性：\n*   连续模式：典型电流为 145 $\\mu$A，当 $V_{DD} = 3V$ 时。\n*   一冲模式：典型电流为 39 $\\mu$A，当 $V_{DD} = 3V$ 且使用 1 SPS 时。\n6.  工作电压范围：支持 2.7V 至 5.5V 的单电源"
+      }
+    }
+  }
+}

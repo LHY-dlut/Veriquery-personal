@@ -19,7 +19,7 @@
 | BSO301SP 在 TA=25°C 下的连续漏极电流 | 原第 1 页分别列 `TA=25°C → -14.9 A`、`TA=70°C → -11.9 A`。MinerU 原始格已经把条件连成 `TA=25°CTA=70°C`，把值连成 `-14.9-11.9`。入库记录带着同一合并串，Resolver 回答条件冲突 | 最早的配对信息损失发生在 MinerU 原始表格 |
 | BSO301SP 的导通电阻最大值 | 原第 2 页两行分别为 `VGS=-4.5 V, ID=-12.1 A → 12 mΩ` 和 `VGS=-10 V, ID=-14.9 A → 8 mΩ`。两问均答对并引用同页不同表行。关闭 Rerank 后，第一题仍为 12 mΩ | 这两行的解析、分块和参数选值是通过样例 |
 
-相关实现可从 [合并数值列的规则](../ingestion/table_struct.py#L1016)、[语义提名与门控](../agents/workflow_nodes.py#L399) 追查。
+相关实现可从 [合并数值列的规则](https://github.com/LHY-dlut/Veriquery-personal/blob/b0d9f2551b45a6ce4321614c81b17b95d3ee273a/ingestion/table_struct.py#L1016)、[语义提名与门控](../agents/workflow_nodes.py#L399) 追查。
 
 ## 切块、重排与上下文的额外对照
 

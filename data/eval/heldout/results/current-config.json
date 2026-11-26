@@ -1,0 +1,14 @@
+{
+  "switches": {
+    "RAG_FOCUS_TABLE_EVIDENCE": true,
+    "RAG_BALANCED_COMPARISON": true,
+    "RAG_VERIFIED_PASSAGES": true,
+    "RAG_CONDITION_EVIDENCE": true,
+    "RAG_EXACT_GAIN_EVIDENCE": true,
+    "RAG_CITATION_REPAIR": true
+  },
+  "model": "qwen3.5",
+  "embedding": "bge-m3",
+  "reranker": "bge-reranker-v2-m3",
+  "question_sha256": "e9d58070d7c42342604a655e70f198383aba98fd6838a85941c9de03c0eeba35"
+}

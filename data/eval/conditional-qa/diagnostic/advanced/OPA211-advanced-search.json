@@ -1,0 +1,26 @@
+[
+  {
+    "chunk_id": "3e721399_p1_c0",
+    "page": 1,
+    "source": "pdf",
+    "text": "OPAx211 1.1-nv/√Hz Noise, Low Power, Precision Operational Amplifiers 1 Features • Low voltage noise: 1.1 nV/√Hz at 1 kHz Input voltage noise: 80 nV<sub>PP</sub> (0.1 to 10 Hz) • THD + N: –136 dB (G = 1, ƒ = 1 kHz) • Offset voltage: 125 μV (maximum) Offset voltage drift: 0.35 $\\mu \\mathsf { V } / \\mathsf { ^ { \\circ } C }$ (typical) Low supply current: 3.6 mA/Ch (typical) • Unity-gain stable Gain bandwidth product: • Slew rate: 27 V/μs • 16-Bit settling: 700 ns • Wide supply range: • Rail-to-rai"
+  },
+  {
+    "chunk_id": "3e721399_p2_c9",
+    "page": 2,
+    "source": "pdf",
+    "text": "2 5$ <u>to ±18 V,</u> $R _ { \\mathrm { L } } = 1 0$ <u>kΩ connected to midsupply, and</u> $V _ { \\mathsf { C M } } = V _ { \\mathsf { O U T } }$ <u>= midsupply (unless otherwise noted)</u> 【表格】 PARAMETER [跨2列合并] | | TEST CONDITIONS [跨2列合并] | | MIN | TYP | MAX | UNIT FREQUENCY RESPONSE [跨8列合并] | | | | | | | GBW | Gain-bandwidth product | G = 100 [跨2列合并] | | 80 [跨3列合并] | | | MHz GBW | Gain-bandwidth product | G = 1 [跨2列合并] | | 45 [跨3列合并] | | | MHz SR | Slew rate | | | 27 [跨3列合并] | | | V/μs $t_S$ | Settling time | $V_S$ =±15 V,G=-1,10-V step, $C_L$ =100 pF | 0.01% | 400 [跨3列合并] | | | ns $t_S$ | Settling time | $V_S$ =±15 V,G=-1,10-V step, $C_L$ =100 pF | 0.0015%(16-bit) | 700 [跨3列合并] | | | ns | Overload recovery time | G=-10 [跨2列合并] | | 500 [跨3列合并] | | | ns THD+N | Total harmonic distortion + noise | G=1,f=1 kHz, $V_O$ =3 $V_{RMS}$ , $R_L$ =600 Ω [跨2列合并] | | 0.000015% [跨3列合并] | | | THD+N | Total harmonic distortion + noise | G=1,f=1 kHz, $V_O$ =3 $V_{RMS}$ , $R_L$ =600 Ω [跨2列合并] | | -136 [跨3列合并] | | | dB OUTPUT [跨8列合并] | | | | | | | $V_{OUT}$ | Voltage output | $R_L$ =10 kΩ, $A_{OL}$ ≥114 dB, $T_A$ =-40°C to +125°C [跨2列合并] | | (V-) + 0.2 [跨2列合并] | | (V+) - 0.2 | V $V_{OUT}$ | Voltage output | $R_L$ =600 Ω, $A_{OL}$ ≥110 dB [跨2列合并] | | (V-) + 0.6 [跨2列合并] | | (V+) - 0.6 | V $V_{OUT}$ | Voltage output | $I_O$ <15 mA, $A_{OL}$ ≥110 dB, $T_A$ =-40°C to +125°C [跨2列合并] | | (V-) + 0.6 [跨2列合并] | | (V+) - 0.6 | V $I_{SC}$ | Short-circuit current | | | +30/-45 [跨3列合并] | | | mA $C_{LOAD}$ | Capacitive load drive | | | See Typical Characteristics [跨3列合并] | | | pF $Z_O$ | Open-loop output impedance | f=1 MHz [跨2列合并] | | 5 [跨3列合并] | | | Ω SHUTDOWN [跨8列合并] | | | | | | | $V_{Shutdown}$ | Shutdown pin input $voltage^{(1)}$ | Device disabled (shutdown) [跨2列合并] | | (V+) - 0.35 [跨3列合并] | | | V $V_{Shutdown}$ | Shutdown pin input $voltage^{(1)}$ | Device enabled [跨2列合并] | | (V+) - 3 [跨3列合并] | | | V | Shutdown pin leakage current | | | 1 [跨3列合并] | | | μA | $Turn-on time^{(2)}$ | | | 2 [跨3列合并] | | | μs | $Turn-off time^{(2)}$ | | | 3 [跨3列合并] | | | μs | Shutdown current | Shutdown (disabled) [跨2列合并] | | 1 [跨2列合并] | | 20 | μA POWER SUPPLY [跨8列合并] | | | | | | | $I_Q$ | Quiescent current (per channel) | $I_{OUT}$ =0 A [跨2列合并] | | 3.6 [跨2列合并] | | 4.5 | mA $I_Q$ | Quiescent current (per channel) | $I_{OUT}$ =0 A, $T_A$ =-40°C to +125°C [跨2列合并] | | 6 [跨3列合并] | | | mA"
+  },
+  {
+    "chunk_id": "3e721399_p2_tbl16",
+    "page": 2,
+    "source": "table_text",
+    "text": "GBW | Gain-bandwidth product | G = 100 [跨2列合并] |  | 80 [跨3列合并] |  |  | MHz"
+  },
+  {
+    "chunk_id": "3e721399_p2_tbl17",
+    "page": 2,
+    "source": "table_text",
+    "text": "GBW | Gain-bandwidth product | G = 1 [跨2列合并] |  | 45 [跨3列合并] |  |  | MHz"
+  }
+]

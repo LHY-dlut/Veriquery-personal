@@ -1,0 +1,218 @@
+[
+  {
+    "sample_id": "h03-original-r1",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "16 位总线读取与最高 11 位温度数据均正确，[1]直接覆盖全题，[3]佐证两个字节和有效位宽。",
+    "excerpt": "11 most significant bits"
+  },
+  {
+    "sample_id": "h03-original-r2",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "16 位总线读取与最高 11 位温度数据均正确，[1]直接覆盖全题，[3]佐证两个字节和有效位宽。",
+    "excerpt": "11 most significant bits"
+  },
+  {
+    "sample_id": "h03-original-r3",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "16 位总线读取与最高 11 位温度数据均正确，[1]直接覆盖全题，[3]佐证两个字节和有效位宽。",
+    "excerpt": "11 most significant bits"
+  },
+  {
+    "sample_id": "h03-short-r1",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "16 位总线读宽和有效最高 11 位完整，[1]支持两项。",
+    "excerpt": "all 16 bits on the bus"
+  },
+  {
+    "sample_id": "h03-short-r2",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "16 位总线读宽和有效最高 11 位完整，[1]支持两项。",
+    "excerpt": "all 16 bits on the bus"
+  },
+  {
+    "sample_id": "h03-short-r3",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "16 位总线读宽和有效最高 11 位完整，[1]支持两项。",
+    "excerpt": "all 16 bits on the bus"
+  },
+  {
+    "sample_id": "h04-original-r1",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "38°C 先答 ±0.2°C，又在说明中写 ±0.1°C，相互冲突。 原始正文到 256 tokens 时停在半句，服务返回 stop，记录疑似预算限制。",
+    "excerpt": "误差幅度为 ±0.2°C"
+  },
+  {
+    "sample_id": "h04-original-r2",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "38°C 先报 0.3°C，后又用 MAX 减 MIN 得到 0.2°C，均未作为最大误差幅度给对。 原始正文到 256 tokens 时停在半句，服务返回 stop，记录疑似预算限制。",
+    "excerpt": "误差幅度为 0.3°C"
+  },
+  {
+    "sample_id": "h04-original-r3",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "38°C 标为 ±0.2°C，同时引用不对应本温区的 [5]；后面陈述正确上下限但主答复冲突。 原始正文到 256 tokens 时停在半句，服务返回 stop，记录疑似预算限制。",
+    "excerpt": "误差幅度为 ±0.2°C"
+  },
+  {
+    "sample_id": "h04-short-r1",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "两组上下限引用正确，但把区间全宽 0.2/0.6 °C 当成最大误差幅度，两项答案均错。",
+    "excerpt": "最大温度误差幅度为 0.6 °C"
+  },
+  {
+    "sample_id": "h04-short-r2",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "两组上下限引用正确，但把区间全宽 0.2/0.6 °C 当成最大误差幅度，两项答案均错。",
+    "excerpt": "最大温度误差幅度为 0.6 °C"
+  },
+  {
+    "sample_id": "h04-short-r3",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "两组上下限引用正确，但把区间全宽 0.2/0.6 °C 当成最大误差幅度，两项答案均错。",
+    "excerpt": "最大温度误差幅度为 0.6 °C"
+  },
+  {
+    "sample_id": "h05-original-r1",
+    "semantic": true,
+    "strict": false,
+    "raw_semantic": true,
+    "raw_strict": false,
+    "reason": "完成正在进行的转换后关断、关断中可访问寄存器两项都正确。[1]把最大转换时间后的可读性附于D0清零后启动的新转换，回答中的this conversion回指D0置一时正进行的转换，附加断言工况移位，严格不通过。清洗删除末尾重复[1]，归属错误已存在于原始正文。",
+    "excerpt": "The results of this conversion are available to read after the max conversion time"
+  },
+  {
+    "sample_id": "h05-original-r2",
+    "semantic": true,
+    "strict": false,
+    "raw_semantic": true,
+    "raw_strict": false,
+    "reason": "完成正在进行的转换后关断、关断中可访问寄存器两项都正确。[1]把最大转换时间后的可读性附于D0清零后启动的新转换，回答中的this conversion回指D0置一时正进行的转换，附加断言工况移位，严格不通过。清洗删除末尾重复[1]，归属错误已存在于原始正文。",
+    "excerpt": "The results of this conversion are available to read after the max conversion time"
+  },
+  {
+    "sample_id": "h05-original-r3",
+    "semantic": true,
+    "strict": false,
+    "raw_semantic": true,
+    "raw_strict": false,
+    "reason": "完成正在进行的转换后关断、关断中可访问寄存器两项都正确。[1]把最大转换时间后的可读性附于D0清零后启动的新转换，回答中的this conversion回指D0置一时正进行的转换，附加断言工况移位，严格不通过。清洗删除末尾重复[1]，归属错误已存在于原始正文。",
+    "excerpt": "The results of this conversion are available to read after the max conversion time"
+  },
+  {
+    "sample_id": "h05-short-r1",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "明确先完成后关断，并在关断中仍可通过I2C访问。[1]支持两项。",
+    "excerpt": "finish before shutdown occurs"
+  },
+  {
+    "sample_id": "h05-short-r2",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "明确先完成后关断，并在关断中仍可通过I2C访问。[1]支持两项。",
+    "excerpt": "finish before shutdown occurs"
+  },
+  {
+    "sample_id": "h05-short-r3",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "明确先完成后关断，并在关断中仍可通过I2C访问。[1]支持两项。 清洗删除末尾的重复[1]，保留的独立[1]位于两个相邻结论中间，来源及对应关系明确，按紧邻共同来源规则继续通过。",
+    "excerpt": "conversion finishes before shutdown"
+  },
+  {
+    "sample_id": "h07-original-r1",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "两款器件的工作范围和5 V适用性均正确，两份引用分别支持。实际输入中已含程序核对的适用结论。",
+    "excerpt": "2.7 V 至 3.3 V"
+  },
+  {
+    "sample_id": "h07-original-r2",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "两款器件的工作范围和5 V适用性均正确，两份引用分别支持。实际输入中已含程序核对的适用结论。",
+    "excerpt": "2.7 V 至 3.3 V"
+  },
+  {
+    "sample_id": "h07-original-r3",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "两款器件的工作范围和5 V适用性均正确，两份引用分别支持。实际输入中已含程序核对的适用结论。",
+    "excerpt": "2.7 V 至 3.3 V"
+  },
+  {
+    "sample_id": "h07-short-r1",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "给出两组范围和仅LM75B可用的5 V结论，型号、单位、引用[1]和[2]对应正确。",
+    "excerpt": "2.7 V 至 3.3 V"
+  },
+  {
+    "sample_id": "h07-short-r2",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "给出两组范围和仅LM75B可用的5 V结论，型号、单位、引用[1]和[2]对应正确。",
+    "excerpt": "2.7 V 至 3.3 V"
+  },
+  {
+    "sample_id": "h07-short-r3",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "给出两组范围和仅LM75B可用的5 V结论，型号、单位、引用[1]和[2]对应正确。",
+    "excerpt": "2.7 V 至 3.3 V"
+  }
+]

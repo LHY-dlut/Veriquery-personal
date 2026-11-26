@@ -55,7 +55,7 @@ Data Flow:
                                                               ↓
     User query → search() tokenize → synonym expand → BM25 score → sort → results
                                                               ↓
-                              HybridRetriever._bm25_retrieve() → RRF fusion
+                              HybridRetriever.retrieve_lexical() → RRF fusion
 
 Dependencies:
     - rank_bm25: BM25Okapi implementation (pip install rank-bm25)
@@ -111,7 +111,7 @@ class BM25Store:
     architecture. Handles document addition, tokenization, BM25 indexing,
     keyword search, synonym expansion, and index persistence.
 
-    Called by HybridRetriever._bm25_retrieve(); results are normalized and
+    Called by HybridRetriever.retrieve_lexical(); results are normalized and
     fused with VectorStore and TableStore via RRF.
 
     Core Data Structures (index-correlated lists):

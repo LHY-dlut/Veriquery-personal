@@ -1,0 +1,44 @@
+[
+  {
+    "part": "MCP4725",
+    "page": 1,
+    "original_page": 1,
+    "type": "image",
+    "bbox_norm": [
+      0.13,
+      0.648,
+      0.486,
+      0.909
+    ],
+    "clip_pdf_points": [
+      79.56,
+      513.216,
+      297.432,
+      719.928
+    ],
+    "source_image_bytes": 74109,
+    "mean_gray_error_128": 5.74835205078125,
+    "stem": "MCP4725-p1-image8"
+  },
+  {
+    "part": "MCP4725",
+    "page": 2,
+    "original_page": 15,
+    "type": "chart",
+    "bbox_norm": [
+      0.543,
+      0.094,
+      0.898,
+      0.378
+    ],
+    "clip_pdf_points": [
+      332.31600000000003,
+      74.448,
+      549.576,
+      299.376
+    ],
+    "source_image_bytes": 79044,
+    "mean_gray_error_128": 4.59661865234375,
+    "stem": "MCP4725-p2-chart16"
+  }
+]

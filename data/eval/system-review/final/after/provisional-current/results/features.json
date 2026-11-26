@@ -1,0 +1,1184 @@
+{
+  "health": {
+    "http": 200,
+    "body": {
+      "status": "healthy",
+      "version": "3.1.0",
+      "timestamp": "2026-11-26T14:08:03.131262",
+      "uptime": "10s",
+      "services": {
+        "api": "online",
+        "config": "loaded",
+        "storage": "writable",
+        "vector_store": "available",
+        "llm": "configured"
+      }
+    }
+  },
+  "documents_list": {
+    "http": 200,
+    "body": {
+      "success": true,
+      "documents": [
+        {
+          "document_id": "904ca696",
+          "filename": "diag-ads1115.pdf",
+          "status": "ready",
+          "page_count": 3,
+          "file_size": 1113533,
+          "upload_time": "2026-11-26T10:54:28.455219",
+          "error_message": "",
+          "warnings": [
+            "visual_pipeline_skipped"
+          ],
+          "chunk_count": 91,
+          "table_count": 5,
+          "circuit_count": 0,
+          "image_count": 4,
+          "processed_time": "2026-11-26T10:54:39.610399",
+          "progress": 100,
+          "stage": "completed",
+          "stage_detail": "正在嵌入第 16/16 批",
+          "parser": "mineru",
+          "parser_tier": "standard",
+          "verified_table_rows": 22
+        },
+        {
+          "document_id": "8871fb69",
+          "filename": "diag-ina226.pdf",
+          "status": "ready",
+          "page_count": 2,
+          "file_size": 491119,
+          "upload_time": "2026-11-26T10:54:39.779618",
+          "error_message": "",
+          "warnings": [
+            "visual_pipeline_skipped"
+          ],
+          "chunk_count": 57,
+          "table_count": 3,
+          "circuit_count": 0,
+          "image_count": 1,
+          "processed_time": "2026-11-26T10:54:44.810040",
+          "progress": 100,
+          "stage": "completed",
+          "stage_detail": "正在嵌入第 10/10 批",
+          "parser": "mineru",
+          "parser_tier": "standard",
+          "verified_table_rows": 25
+        },
+        {
+          "document_id": "fe7dc65c",
+          "filename": "diag-opa188.pdf",
+          "status": "ready",
+          "page_count": 3,
+          "file_size": 78506,
+          "upload_time": "2026-11-26T10:54:44.976412",
+          "error_message": "",
+          "warnings": [
+            "visual_pipeline_skipped"
+          ],
+          "chunk_count": 119,
+          "table_count": 3,
+          "circuit_count": 0,
+          "image_count": 0,
+          "processed_time": "2026-11-26T10:57:43.503010",
+          "progress": 100,
+          "stage": "completed",
+          "stage_detail": "正在嵌入第 30/30 批",
+          "parser": "mineru",
+          "parser_tier": "standard",
+          "verified_table_rows": 22
+        },
+        {
+          "document_id": "a6fb4dd8",
+          "filename": "diag-tmp117.pdf",
+          "status": "ready",
+          "page_count": 3,
+          "file_size": 532790,
+          "upload_time": "2026-11-26T10:57:44.239180",
+          "error_message": "",
+          "warnings": [
+            "visual_pipeline_skipped"
+          ],
+          "chunk_count": 75,
+          "table_count": 3,
+          "circuit_count": 0,
+          "image_count": 0,
+          "processed_time": "2026-11-26T10:58:00.388743",
+          "progress": 100,
+          "stage": "completed",
+          "stage_detail": "正在嵌入第 13/13 批",
+          "parser": "mineru",
+          "parser_tier": "standard",
+          "verified_table_rows": 10
+        },
+        {
+          "document_id": "e5470b5a",
+          "filename": "opa211-pages-1-9.pdf",
+          "status": "ready",
+          "page_count": 2,
+          "file_size": 201181,
+          "upload_time": "2026-11-26T11:36:19.664619",
+          "error_message": "",
+          "warnings": [
+            "visual_pipeline_skipped"
+          ],
+          "chunk_count": 47,
+          "table_count": 2,
+          "circuit_count": 0,
+          "image_count": 0,
+          "processed_time": "2026-11-26T11:40:12.370941",
+          "progress": 100,
+          "stage": "completed",
+          "stage_detail": "正在嵌入第 6/6 批",
+          "parser": "mineru",
+          "parser_tier": "standard",
+          "verified_table_rows": 0
+        }
+      ],
+      "total": 5
+    }
+  },
+  "document_info": {
+    "http": 200,
+    "body": {
+      "document_id": "fe7dc65c",
+      "filename": "diag-opa188.pdf",
+      "status": "ready",
+      "page_count": 3,
+      "file_size": 78506,
+      "upload_time": "2026-11-26T10:54:44.976412",
+      "error_message": "",
+      "warnings": [
+        "visual_pipeline_skipped"
+      ],
+      "chunk_count": 119,
+      "table_count": 3,
+      "circuit_count": 0,
+      "image_count": 0,
+      "processed_time": "2026-11-26T10:57:43.503010",
+      "progress": 100,
+      "stage": "completed",
+      "stage_detail": "正在嵌入第 30/30 批",
+      "parser": "mineru",
+      "parser_tier": "standard",
+      "verified_table_rows": 22
+    }
+  },
+  "document_search": {
+    "http": 200,
+    "body": {
+      "success": true,
+      "devices": [
+        {
+          "name": "diag-opa188",
+          "part_number": "diag-opa188",
+          "document_id": "fe7dc65c",
+          "filename": "diag-opa188.pdf",
+          "status": "ready"
+        }
+      ],
+      "message": ""
+    }
+  },
+  "page_image": {
+    "http": 200,
+    "body": {
+      "bytes": 259819,
+      "png": true,
+      "content_type": "image/png"
+    }
+  },
+  "pinout": {
+    "http": 200,
+    "body": {
+      "success": true,
+      "chip_name": "NE555",
+      "package": "DIP-8",
+      "pin_count": 8,
+      "pins": [
+        {
+          "pin": 1,
+          "name": "GND",
+          "pin_type": "ground",
+          "functions": [
+            "接地"
+          ],
+          "alternate_functions": [],
+          "electrical": {},
+          "description": "接地"
+        },
+        {
+          "pin": 2,
+          "name": "TRIG",
+          "pin_type": "input",
+          "functions": [
+            "触发"
+          ],
+          "alternate_functions": [],
+          "electrical": {},
+          "description": "触发输入"
+        },
+        {
+          "pin": 3,
+          "name": "OUT",
+          "pin_type": "output",
+          "functions": [
+            "输出"
+          ],
+          "alternate_functions": [],
+          "electrical": {},
+          "description": "输出"
+        },
+        {
+          "pin": 4,
+          "name": "RESET",
+          "pin_type": "input",
+          "functions": [
+            "复位"
+          ],
+          "alternate_functions": [],
+          "electrical": {},
+          "description": "复位（低电平有效）"
+        },
+        {
+          "pin": 5,
+          "name": "CV",
+          "pin_type": "io",
+          "functions": [
+            "控制电压"
+          ],
+          "alternate_functions": [],
+          "electrical": {},
+          "description": "控制电压"
+        },
+        {
+          "pin": 6,
+          "name": "THR",
+          "pin_type": "input",
+          "functions": [
+            "阈值"
+          ],
+          "alternate_functions": [],
+          "electrical": {},
+          "description": "阈值输入"
+        },
+        {
+          "pin": 7,
+          "name": "DIS",
+          "pin_type": "output",
+          "functions": [
+            "放电"
+          ],
+          "alternate_functions": [],
+          "electrical": {},
+          "description": "放电"
+        },
+        {
+          "pin": 8,
+          "name": "VCC",
+          "pin_type": "power",
+          "functions": [
+            "电源"
+          ],
+          "alternate_functions": [],
+          "electrical": {},
+          "description": "电源正极"
+        }
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 708.0 540.0\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\" style=\"overflow:visible;display:block;\" class=\"pinout-svg\"><defs><style>\n.chip-title{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Arial,sans-serif;font-size:30px;font-weight:700;text-anchor:middle;fill:#1e293b;}\n.chip-body{fill:#f8fafc;stroke:#334155;stroke-width:2.5;filter:drop-shadow(0 3px 6px rgba(0,0,0,.10));}\n.pin-g{cursor:pointer;}\n.pin-g:hover .pin-r{filter:brightness(1.12);stroke-width:2.5;}\n.pin-r{stroke-width:1.8;transition:all .15s;}\n.pnum{font-family:\"SF Mono\",\"Monaco\",\"Fira Code\",monospace;font-size:17px;font-weight:600;text-anchor:middle;dominant-baseline:central;pointer-events:none;}\n.pname{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Arial,sans-serif;font-size:20px;font-weight:700;text-anchor:middle;dominant-baseline:central;pointer-events:none;}\n.leg-label{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Arial,sans-serif;font-size:18px;fill:#1e293b;font-weight:500;dominant-baseline:central;}\n</style></defs><text x=\"354.0\" y=\"36\" class=\"chip-title\">NE555</text><rect x=\"274.0\" y=\"58.0\" width=\"160.0\" height=\"308.0\" class=\"chip-body\" rx=\"5\" ry=\"5\"/><circle cx=\"354.0\" cy=\"72\" r=\"11\" fill=\"#d1d5db\" stroke=\"#9ca3af\" stroke-width=\"1.5\"/><g class=\"pin-g\" data-pin=\"1\">\n  <title>Pin 1: GND | Type: PinType.GROUND | Functions: 接地</title>\n  <rect x=\"30.0\" y=\"70.0\" width=\"240.0\" height=\"62.0\" fill=\"#374151\" stroke=\"#1f2937\" class=\"pin-r\" rx=\"5\" ry=\"5\" onclick=\"window.dispatchEvent(new CustomEvent('pinClick',{detail:{&quot;number&quot;: 1, &quot;name&quot;: &quot;GND&quot;, &quot;type&quot;: &quot;ground&quot;, &quot;functions&quot;: [&quot;接地&quot;]}}))\"/>\n  <text x=\"150.0\" y=\"89.8\" class=\"pnum\" fill=\"#ffffff\">1</text>\n  <text x=\"150.0\" y=\"113.4\" class=\"pname\" fill=\"#ffffff\">GND</text>\n</g><g class=\"pin-g\" data-pin=\"2\">\n  <title>Pin 2: TRIG | Type: PinType.INPUT | Functions: 触发</title>\n  <rect x=\"30.0\" y=\"142.0\" width=\"240.0\" height=\"62.0\" fill=\"#2ECC71\" stroke=\"#27AE60\" class=\"pin-r\" rx=\"5\" ry=\"5\" onclick=\"window.dispatchEvent(new CustomEvent('pinClick',{detail:{&quot;number&quot;: 2, &quot;name&quot;: &quot;TRIG&quot;, &quot;type&quot;: &quot;input&quot;, &quot;functions&quot;: [&quot;触发&quot;]}}))\"/>\n  <text x=\"150.0\" y=\"161.8\" class=\"pnum\" fill=\"#0f172a\">2</text>\n  <text x=\"150.0\" y=\"185.4\" class=\"pname\" fill=\"#0f172a\">TRIG</text>\n</g><g class=\"pin-g\" data-pin=\"3\">\n  <title>Pin 3: OUT | Type: PinType.OUTPUT | Functions: 输出</title>\n  <rect x=\"30.0\" y=\"214.0\" width=\"240.0\" height=\"62.0\" fill=\"#E74C3C\" stroke=\"#C0392B\" class=\"pin-r\" rx=\"5\" ry=\"5\" onclick=\"window.dispatchEvent(new CustomEvent('pinClick',{detail:{&quot;number&quot;: 3, &quot;name&quot;: &quot;OUT&quot;, &quot;type&quot;: &quot;output&quot;, &quot;functions&quot;: [&quot;输出&quot;]}}))\"/>\n  <text x=\"150.0\" y=\"233.8\" class=\"pnum\" fill=\"#0f172a\">3</text>\n  <text x=\"150.0\" y=\"257.4\" class=\"pname\" fill=\"#0f172a\">OUT</text>\n</g><g class=\"pin-g\" data-pin=\"4\">\n  <title>Pin 4: RESET | Type: PinType.INPUT | Functions: 复位</title>\n  <rect x=\"30.0\" y=\"286.0\" width=\"240.0\" height=\"62.0\" fill=\"#2ECC71\" stroke=\"#27AE60\" class=\"pin-r\" rx=\"5\" ry=\"5\" onclick=\"window.dispatchEvent(new CustomEvent('pinClick',{detail:{&quot;number&quot;: 4, &quot;name&quot;: &quot;RESET&quot;, &quot;type&quot;: &quot;input&quot;, &quot;functions&quot;: [&quot;复位&quot;]}}))\"/>\n  <text x=\"150.0\" y=\"305.8\" class=\"pnum\" fill=\"#0f172a\">4</text>\n  <text x=\"150.0\" y=\"329.4\" class=\"pname\" fill=\"#0f172a\">RESET</text>\n</g><g class=\"pin-g\" data-pin=\"8\">\n  <title>Pin 8: VCC | Type: PinType.POWER | Functions: 电源</title>\n  <rect x=\"438.0\" y=\"70.0\" width=\"240.0\" height=\"62.0\" fill=\"#FF6B6B\" stroke=\"#C0392B\" class=\"pin-r\" rx=\"5\" ry=\"5\" onclick=\"window.dispatchEvent(new CustomEvent('pinClick',{detail:{&quot;number&quot;: 8, &quot;name&quot;: &quot;VCC&quot;, &quot;type&quot;: &quot;power&quot;, &quot;functions&quot;: [&quot;电源&quot;]}}))\"/>\n  <text x=\"558.0\" y=\"89.8\" class=\"pnum\" fill=\"#0f172a\">8</text>\n  <text x=\"558.0\" y=\"113.4\" class=\"pname\" fill=\"#0f172a\">VCC</text>\n</g><g class=\"pin-g\" data-pin=\"7\">\n  <title>Pin 7: DIS | Type: PinType.OUTPUT | Functions: 放电</title>\n  <rect x=\"438.0\" y=\"142.0\" width=\"240.0\" height=\"62.0\" fill=\"#E74C3C\" stroke=\"#C0392B\" class=\"pin-r\" rx=\"5\" ry=\"5\" onclick=\"window.dispatchEvent(new CustomEvent('pinClick',{detail:{&quot;number&quot;: 7, &quot;name&quot;: &quot;DIS&quot;, &quot;type&quot;: &quot;output&quot;, &quot;functions&quot;: [&quot;放电&quot;]}}))\"/>\n  <text x=\"558.0\" y=\"161.8\" class=\"pnum\" fill=\"#0f172a\">7</text>\n  <text x=\"558.0\" y=\"185.4\" class=\"pname\" fill=\"#0f172a\">DIS</text>\n</g><g class=\"pin-g\" data-pin=\"6\">\n  <title>Pin 6: THR | Type: PinType.INPUT | Functions: 阈值</title>\n  <rect x=\"438.0\" y=\"214.0\" width=\"240.0\" height=\"62.0\" fill=\"#2ECC71\" stroke=\"#27AE60\" class=\"pin-r\" rx=\"5\" ry=\"5\" onclick=\"window.dispatchEvent(new CustomEvent('pinClick',{detail:{&quot;number&quot;: 6, &quot;name&quot;: &quot;THR&quot;, &quot;type&quot;: &quot;input&quot;, &quot;functions&quot;: [&quot;阈值&quot;]}}))\"/>\n  <text x=\"558.0\" y=\"233.8\" class=\"pnum\" fill=\"#0f172a\">6</text>\n  <text x=\"558.0\" y=\"257.4\" class=\"pname\" fill=\"#0f172a\">THR</text>\n</g><g class=\"pin-g\" data-pin=\"5\">\n  <title>Pin 5: CV | Type: PinType.IO | Functions: 控制电压</title>\n  <rect x=\"438.0\" y=\"286.0\" width=\"240.0\" height=\"62.0\" fill=\"#3498DB\" stroke=\"#2980B9\" class=\"pin-r\" rx=\"5\" ry=\"5\" onclick=\"window.dispatchEvent(new CustomEvent('pinClick',{detail:{&quot;number&quot;: 5, &quot;name&quot;: &quot;CV&quot;, &quot;type&quot;: &quot;io&quot;, &quot;functions&quot;: [&quot;控制电压&quot;]}}))\"/>\n  <text x=\"558.0\" y=\"305.8\" class=\"pnum\" fill=\"#0f172a\">5</text>\n  <text x=\"558.0\" y=\"329.4\" class=\"pname\" fill=\"#0f172a\">CV</text>\n</g><g transform=\"translate(-46.0,410.0)\"><rect x=\"0\" y=\"6\" width=\"22\" height=\"20\" fill=\"#FF6B6B\" stroke=\"#C0392B\" rx=\"4\"/><text x=\"30\" y=\"19.0\" class=\"leg-label\">电源 (VCC/VDD)</text><rect x=\"200\" y=\"6\" width=\"22\" height=\"20\" fill=\"#374151\" stroke=\"#1f2937\" rx=\"4\"/><text x=\"230\" y=\"19.0\" class=\"leg-label\">接地 (GND/VSS)</text><rect x=\"400\" y=\"6\" width=\"22\" height=\"20\" fill=\"#3498DB\" stroke=\"#2980B9\" rx=\"4\"/><text x=\"430\" y=\"19.0\" class=\"leg-label\">通用I/O</text><rect x=\"600\" y=\"6\" width=\"22\" height=\"20\" fill=\"#1ABC9C\" stroke=\"#16A085\" rx=\"4\"/><text x=\"630\" y=\"19.0\" class=\"leg-label\">GPIO双向</text><rect x=\"0\" y=\"40\" width=\"22\" height=\"20\" fill=\"#2ECC71\" stroke=\"#27AE60\" rx=\"4\"/><text x=\"30\" y=\"53.0\" class=\"leg-label\">输入引脚</text><rect x=\"200\" y=\"40\" width=\"22\" height=\"20\" fill=\"#E74C3C\" stroke=\"#C0392B\" rx=\"4\"/><text x=\"230\" y=\"53.0\" class=\"leg-label\">输出引脚</text><rect x=\"400\" y=\"40\" width=\"22\" height=\"20\" fill=\"#9B59B6\" stroke=\"#8E44AD\" rx=\"4\"/><text x=\"430\" y=\"53.0\" class=\"leg-label\">模拟引脚</text><rect x=\"600\" y=\"40\" width=\"22\" height=\"20\" fill=\"#F39C12\" stroke=\"#D68910\" rx=\"4\"/><text x=\"630\" y=\"53.0\" class=\"leg-label\">特殊功能</text><rect x=\"0\" y=\"74\" width=\"22\" height=\"20\" fill=\"#BDC3C7\" stroke=\"#95A5A6\" rx=\"4\"/><text x=\"30\" y=\"87.0\" class=\"leg-label\">未连接</text></g></svg>",
+      "citations": [
+        {
+          "file": "标准引脚库 - NE555",
+          "page": 1,
+          "text_snippet": "NE555 标准引脚定义 (8引脚, DIP8)",
+          "confidence": 1.0,
+          "source": "standard_library"
+        }
+      ],
+      "available_packages": [
+        "DIP8"
+      ]
+    }
+  },
+  "dedicated_compare": {
+    "http": 200,
+    "body": {
+      "success": true,
+      "devices": [
+        {
+          "part_number": "OPA188"
+        },
+        {
+          "part_number": "OPA211"
+        }
+      ],
+      "comparison_matrix": {
+        "chips": [
+          "OPA188",
+          "OPA211"
+        ],
+        "parameters": [
+          "VOL"
+        ],
+        "data": {
+          "OPA188": {
+            "VOL": {
+              "value": 0.2,
+              "display": "0.2 V",
+              "unit": "V",
+              "source": "table",
+              "confidence": 0.85,
+              "condition": "",
+              "test_conditions": {}
+            }
+          },
+          "OPA211": {
+            "VOL": {
+              "value": 0.2,
+              "display": "0.2 V",
+              "unit": "V",
+              "source": "table",
+              "confidence": 0.85,
+              "condition": "",
+              "test_conditions": {}
+            }
+          }
+        }
+      },
+      "scoring_result": {
+        "devices": [
+          {
+            "device_name": "OPA188",
+            "overall_score": 21.406500069999996,
+            "reliability_score": 0.71355,
+            "dimension_scores": {
+              "performance": 50.0,
+              "power": 50.0,
+              "reliability": 50.0,
+              "usability": 50.0
+            },
+            "parameter_scores": {
+              "output_voltage_low": 0.5,
+              "temperature_range": 0.5,
+              "package_size": 0.5,
+              "ttl_compatible": 0.5
+            },
+            "parameter_reliabilities": {
+              "output_voltage_low": 0.765,
+              "temperature_range": 0.255,
+              "package_size": 0.255,
+              "ttl_compatible": 0.765
+            },
+            "advantages": [
+              "output_voltage_low表现优秀",
+              "temperature_range表现优秀",
+              "package_size控制良好",
+              "ttl_compatible表现优秀"
+            ],
+            "disadvantages": [],
+            "esp_distance": 0.09999999999999998,
+            "rank": 1
+          },
+          {
+            "device_name": "OPA211",
+            "overall_score": 21.406500069999996,
+            "reliability_score": 0.71355,
+            "dimension_scores": {
+              "performance": 50.0,
+              "power": 50.0,
+              "reliability": 50.0,
+              "usability": 50.0
+            },
+            "parameter_scores": {
+              "output_voltage_low": 0.5,
+              "temperature_range": 0.5,
+              "package_size": 0.5,
+              "ttl_compatible": 0.5
+            },
+            "parameter_reliabilities": {
+              "output_voltage_low": 0.765,
+              "temperature_range": 0.255,
+              "package_size": 0.255,
+              "ttl_compatible": 0.765
+            },
+            "advantages": [
+              "output_voltage_low表现优秀",
+              "temperature_range表现优秀",
+              "package_size控制良好",
+              "ttl_compatible表现优秀"
+            ],
+            "disadvantages": [],
+            "esp_distance": 0.09999999999999998,
+            "rank": 2
+          }
+        ],
+        "recommendation": "基于三层架构评分体系（CCM + Z-A-FoM + B-SPOTIS），推荐选择 **OPA188**，综合得分 21.4 分，数据可靠度 中等。主要优势：output_voltage_low表现优秀, temperature_range表现优秀, package_size控制良好。备选方案：OPA211（21.4分）。",
+        "methodology": "CCM + Z-A-FoM + B-SPOTIS",
+        "combined_weights": {
+          "output_voltage_low": 0.25,
+          "temperature_range": 0.25,
+          "package_size": 0.25,
+          "ttl_compatible": 0.25
+        },
+        "entropy_weights": {
+          "output_voltage_low": 0.25,
+          "temperature_range": 0.25,
+          "package_size": 0.25,
+          "ttl_compatible": 0.25
+        },
+        "parameter_weights": {
+          "output_voltage_low": 0.25,
+          "temperature_range": 0.25,
+          "package_size": 0.25,
+          "ttl_compatible": 0.25
+        }
+      },
+      "radar_data": {
+        "dimensions": [
+          "性能",
+          "功耗",
+          "可靠性",
+          "易用性"
+        ],
+        "devices": [
+          {
+            "name": "OPA188",
+            "values": [
+              50.0,
+              50.0,
+              50.0,
+              50.0
+            ]
+          },
+          {
+            "name": "OPA211",
+            "values": [
+              50.0,
+              50.0,
+              50.0,
+              50.0
+            ]
+          }
+        ]
+      },
+      "summary": "## 设备对比分析\n**对比设备**: OPA188, OPA211\n\n### 参数对比\n| 参数 | OPA188 | OPA211 |\n|---|---|---|\n| **供电电压** | - | - |\n| **输出高电平** | - | - |\n| **输出低电平** | 0.2 V | 0.2 V |\n| **输入高电平** | - | - |\n| **输入低电平** | - | - |\n| **输出高电流** | - | - |\n| **输出低电流** | - | - |\n| **传播延迟** | - | - |\n\n### 分析结果\n基于三层架构评分体系（CCM + Z-A-FoM + B-SPOTIS），推荐选择 **OPA188**，综合得分 21.4 分，数据可靠度 中等。主要优势：output_voltage_low表现优秀, temperature_range表现优秀, package_size控制良好。备选方案：OPA211（21.4分）。\n\n**评分排名**:\n- OPA188: 21.41\n- OPA211: 21.41\n",
+      "processing_time": 1.2744140625
+    }
+  },
+  "erc": {
+    "http": 200,
+    "body": {
+      "success": true,
+      "message": "⚠️ 四层ERC检查：基本兼容但存在警告（信号完整性风险），置信度=83.33%",
+      "errors": [],
+      "warnings": [
+        {
+          "title": "归一化噪声免疫系数（RNI）",
+          "type": "ERC-L1-N001",
+          "description": "RNI=0.159 (不足)"
+        },
+        {
+          "title": "反射系数分析",
+          "type": "ERC-L2-R001",
+          "description": "源端Γ=0.333, 负载端Γ=1.000, 最劣|Γ|=1.000"
+        }
+      ],
+      "info": [
+        {
+          "title": "高电平兼容性",
+          "type": "ERC-L1-V001",
+          "description": "VOH(4.5V) > VIH(2.0V), 余量=2.500V"
+        },
+        {
+          "title": "低电平兼容性",
+          "type": "ERC-L1-V002",
+          "description": "VOL(0.1V) < VIL(0.8V), 余量=0.700V"
+        },
+        {
+          "title": "高电平驱动能力",
+          "type": "ERC-L1-I001",
+          "description": "|IOH|(4.000mA) >= |IIH|(0.100µA), 余量=4.000mA"
+        },
+        {
+          "title": "低电平驱动能力",
+          "type": "ERC-L1-I002",
+          "description": "IOL(4.000mA) >= |IIL|(0.100µA), 余量=4.000mA"
+        },
+        {
+          "title": "扇出能力评估",
+          "type": "ERC-L1-I003",
+          "description": "扇出=40000.0 (高电平扇出=40000.0, 低电平扇出=40000.0)"
+        },
+        {
+          "title": "临界传输线长度计算",
+          "type": "ERC-L2-T001",
+          "description": "走线长度=5.00cm, 临界长度=25.00cm, 通过"
+        },
+        {
+          "title": "接口协议兼容性检查",
+          "type": "ERC-L3-I001",
+          "description": "驱动端接口=GPIO, 接收端接口=GPIO"
+        },
+        {
+          "title": "端口属性冲突检测",
+          "type": "ERC-L3-P001",
+          "description": "端口属性无冲突"
+        },
+        {
+          "title": "温度漂移检测",
+          "type": "ERC-L4-T001",
+          "description": "温度=25.0°C, 高电平容限=[2.500, 2.500]V, 低电平容限=[0.700, 0.700]V"
+        },
+        {
+          "title": "工艺退化基准库查询",
+          "type": "ERC-L4-P001",
+          "description": "退化因子=0.900 (置信区间: [0.855, 0.945]), 高电平余量=2.050V(原始2.500V), 低电平余量=0.690V(原始0.700V), 风险等级=MEDIUM, 通过"
+        }
+      ],
+      "summary": "⚠️ 四层ERC检查：基本兼容但存在警告（信号完整性风险），置信度=83.33%",
+      "erc_result": {
+        "overall_compatible": true,
+        "overall_confidence": 0.8333333333333334,
+        "summary": "⚠️ 四层ERC检查：基本兼容但存在警告（信号完整性风险），置信度=83.33%",
+        "suggestions": [
+          "建议添加端接电阻以改善信号完整性"
+        ],
+        "layer1_result": {
+          "layer": "layer1_static",
+          "layer_name": "静态稳定性检测",
+          "passed": true,
+          "severity": "info",
+          "results": [
+            {
+              "rule_id": "ERC-L1-V001",
+              "rule_name": "高电平兼容性",
+              "passed": true,
+              "severity": "info",
+              "message": "VOH(4.5V) > VIH(2.0V), 余量=2.500V",
+              "actual_values": {
+                "VOH": 4.5,
+                "VIH": 2.0
+              },
+              "expected_condition": "VOH >= VIH",
+              "margin": 2.5,
+              "suggestion": ""
+            },
+            {
+              "rule_id": "ERC-L1-V002",
+              "rule_name": "低电平兼容性",
+              "passed": true,
+              "severity": "info",
+              "message": "VOL(0.1V) < VIL(0.8V), 余量=0.700V",
+              "actual_values": {
+                "VOL": 0.1,
+                "VIL": 0.8
+              },
+              "expected_condition": "VOL <= VIL",
+              "margin": 0.7000000000000001,
+              "suggestion": ""
+            },
+            {
+              "rule_id": "ERC-L1-N001",
+              "rule_name": "归一化噪声免疫系数（RNI）",
+              "passed": false,
+              "severity": "warning",
+              "message": "RNI=0.159 (不足)",
+              "actual_values": {
+                "RNI": 0.1590909090909091,
+                "high_margin": 2.5,
+                "low_margin": 0.7000000000000001
+              },
+              "expected_condition": "RNI >= 0.2 (推荐>=0.3)",
+              "margin": -0.04090909090909092,
+              "suggestion": ""
+            },
+            {
+              "rule_id": "ERC-L1-I001",
+              "rule_name": "高电平驱动能力",
+              "passed": true,
+              "severity": "info",
+              "message": "|IOH|(4.000mA) >= |IIH|(0.100µA), 余量=4.000mA",
+              "actual_values": {
+                "IOH": -0.004,
+                "IIH": 1.0000000000000001e-07
+              },
+              "expected_condition": "|IOH| >= |IIH|",
+              "margin": 0.0039999,
+              "suggestion": ""
+            },
+            {
+              "rule_id": "ERC-L1-I002",
+              "rule_name": "低电平驱动能力",
+              "passed": true,
+              "severity": "info",
+              "message": "IOL(4.000mA) >= |IIL|(0.100µA), 余量=4.000mA",
+              "actual_values": {
+                "IOL": 0.004,
+                "IIL": -1.0000000000000001e-07
+              },
+              "expected_condition": "IOL >= |IIL|",
+              "margin": 0.0039999,
+              "suggestion": ""
+            },
+            {
+              "rule_id": "ERC-L1-I003",
+              "rule_name": "扇出能力评估",
+              "passed": true,
+              "severity": "info",
+              "message": "扇出=40000.0 (高电平扇出=40000.0, 低电平扇出=40000.0)",
+              "actual_values": {
+                "fanout": 40000.0,
+                "high_fanout": 40000.0,
+                "low_fanout": 40000.0
+              },
+              "expected_condition": "Fanout >= 1",
+              "margin": 39999.0,
+              "suggestion": ""
+            }
+          ],
+          "summary": "✅ 静态稳定性检测通过：SN74HC04与SN74HCT04电气参数兼容",
+          "metadata": {
+            "driver_chip": "SN74HC04",
+            "receiver_chip": "SN74HCT04",
+            "errors_count": 0,
+            "warnings_count": 1
+          }
+        },
+        "layer2_result": {
+          "layer": "layer2_reflection",
+          "layer_name": "准物理反射预警",
+          "passed": false,
+          "severity": "warning",
+          "results": [
+            {
+              "rule_id": "ERC-L2-T001",
+              "rule_name": "临界传输线长度计算",
+              "passed": true,
+              "severity": "info",
+              "message": "走线长度=5.00cm, 临界长度=25.00cm, 通过",
+              "actual_values": {
+                "trace_length": 5.0,
+                "critical_length": 25.0
+              },
+              "expected_condition": "trace_length < critical_length",
+              "margin": 20.0,
+              "suggestion": ""
+            },
+            {
+              "rule_id": "ERC-L2-R001",
+              "rule_name": "反射系数分析",
+              "passed": false,
+              "severity": "warning",
+              "message": "源端Γ=0.333, 负载端Γ=1.000, 最劣|Γ|=1.000",
+              "actual_values": {
+                "gamma_source": 0.3333333333333333,
+                "gamma_load": 0.99990000499975,
+                "worst_gamma": 0.99990000499975
+              },
+              "expected_condition": "|Γ| < 0.15",
+              "margin": -0.8499000049997499,
+              "suggestion": ""
+            }
+          ],
+          "summary": "⚠️ 准物理反射预警失败：SN74HC04与SN74HCT04存在信号完整性风险\n- 源端Γ=0.333, 负载端Γ=1.000, 最劣|Γ|=1.000",
+          "metadata": {
+            "driver_chip": "SN74HC04",
+            "receiver_chip": "SN74HCT04",
+            "trace_length": 5.0,
+            "trace_impedance": 50.0,
+            "warnings_count": 1
+          }
+        },
+        "layer3_result": {
+          "layer": "layer3_topology",
+          "layer_name": "拓扑冲突仲裁",
+          "passed": true,
+          "severity": "info",
+          "results": [
+            {
+              "rule_id": "ERC-L3-I001",
+              "rule_name": "接口协议兼容性检查",
+              "passed": true,
+              "severity": "info",
+              "message": "驱动端接口=GPIO, 接收端接口=GPIO",
+              "actual_values": {
+                "driver_interface": "GPIO",
+                "receiver_interface": "GPIO",
+                "driver_voltage": 5.0,
+                "receiver_voltage": 5.0
+              },
+              "expected_condition": "接口契约兼容且电压域匹配",
+              "margin": null,
+              "suggestion": ""
+            },
+            {
+              "rule_id": "ERC-L3-P001",
+              "rule_name": "端口属性冲突检测",
+              "passed": true,
+              "severity": "info",
+              "message": "端口属性无冲突",
+              "actual_values": {
+                "driver_direction": "output",
+                "receiver_direction": "input",
+                "driver_pull": null,
+                "receiver_pull": null
+              },
+              "expected_condition": "端口属性无冲突",
+              "margin": null,
+              "suggestion": ""
+            }
+          ],
+          "summary": "✅ 拓扑冲突仲裁通过：SN74HC04与SN74HCT04接口契约兼容",
+          "metadata": {
+            "driver_chip": "SN74HC04",
+            "receiver_chip": "SN74HCT04",
+            "topology_info": {
+              "driver_interface": "GPIO",
+              "receiver_interface": "GPIO",
+              "driver_voltage": 5.0,
+              "receiver_voltage": 5.0
+            },
+            "errors_count": 0,
+            "warnings_count": 0
+          }
+        },
+        "layer4_result": {
+          "layer": "layer4_environment",
+          "layer_name": "极端环境退化评估",
+          "passed": true,
+          "severity": "info",
+          "results": [
+            {
+              "rule_id": "ERC-L4-T001",
+              "rule_name": "温度漂移检测",
+              "passed": true,
+              "severity": "info",
+              "message": "温度=25.0°C, 高电平容限=[2.500, 2.500]V, 低电平容限=[0.700, 0.700]V",
+              "actual_values": {
+                "temperature": 25.0,
+                "high_margin_lo": 2.5,
+                "high_margin_hi": 2.5,
+                "low_margin_lo": 0.7000000000000001,
+                "low_margin_hi": 0.7000000000000001
+              },
+              "expected_condition": "温度漂移后噪声容限为正",
+              "margin": 0.7000000000000001,
+              "suggestion": ""
+            },
+            {
+              "rule_id": "ERC-L4-P001",
+              "rule_name": "工艺退化基准库查询",
+              "passed": true,
+              "severity": "info",
+              "message": "退化因子=0.900 (置信区间: [0.855, 0.945]), 高电平余量=2.050V(原始2.500V), 低电平余量=0.690V(原始0.700V), 风险等级=MEDIUM, 通过",
+              "actual_values": {
+                "degradation_factor": 0.9,
+                "high_margin_fresh": 2.5,
+                "low_margin_fresh": 0.7000000000000001,
+                "high_margin": 2.05,
+                "low_margin": 0.6900000000000001,
+                "confidence_interval": [
+                  0.855,
+                  0.9450000000000001
+                ],
+                "risk_level": "MEDIUM",
+                "estimated_lifetime": 5000.0,
+                "driver_process": "CMOS",
+                "driver_package": "DIP",
+                "receiver_process": "CMOS",
+                "receiver_package": "DIP"
+              },
+              "expected_condition": "工艺退化在可接受范围内",
+              "margin": 0.5900000000000001,
+              "suggestion": "工作条件良好，建议定期维护"
+            }
+          ],
+          "summary": "✅ 极端环境退化评估通过：SN74HC04与SN74HCT04在极端环境下稳定",
+          "metadata": {
+            "driver_chip": "SN74HC04",
+            "receiver_chip": "SN74HCT04",
+            "temperature": 25.0,
+            "warnings_count": 0
+          }
+        }
+      },
+      "driver_parameters": {
+        "VOH": {
+          "value": 4.5,
+          "unit": "V",
+          "source": "knowledge_graph",
+          "confidence": 0.8
+        },
+        "VOL": {
+          "value": 0.1,
+          "unit": "V",
+          "source": "knowledge_graph",
+          "confidence": 0.8
+        },
+        "IOH": {
+          "value": -4.0,
+          "unit": "mA",
+          "source": "knowledge_graph",
+          "confidence": 0.8
+        },
+        "IOL": {
+          "value": 4.0,
+          "unit": "mA",
+          "source": "knowledge_graph",
+          "confidence": 0.8
+        }
+      },
+      "receiver_parameters": {
+        "VIH": {
+          "value": 2.0,
+          "unit": "V",
+          "source": "knowledge_graph",
+          "confidence": 0.8
+        },
+        "VIL": {
+          "value": 0.8,
+          "unit": "V",
+          "source": "knowledge_graph",
+          "confidence": 0.8
+        },
+        "IIH": {
+          "value": 0.1,
+          "unit": "µA",
+          "source": "knowledge_graph",
+          "confidence": 0.8
+        },
+        "IIL": {
+          "value": -0.1,
+          "unit": "µA",
+          "source": "knowledge_graph",
+          "confidence": 0.8
+        }
+      },
+      "driver_data_sources": {
+        "VOH": "knowledge_graph",
+        "VOL": "knowledge_graph",
+        "IOH": "knowledge_graph",
+        "IOL": "knowledge_graph"
+      },
+      "receiver_data_sources": {
+        "VIH": "knowledge_graph",
+        "VIL": "knowledge_graph",
+        "IIH": "knowledge_graph",
+        "IIL": "knowledge_graph"
+      },
+      "processing_time": 0.004480600357055664,
+      "overall_compatible": true,
+      "overall_confidence": 0.8333333333333334,
+      "suggestions": [
+        "建议添加端接电阻以改善信号完整性"
+      ]
+    }
+  },
+  "stream": {
+    "http": 200,
+    "body": [
+      {
+        "type": "start",
+        "data": {
+          "query": "Compare the maximum supply voltage of the OPA211 and OPA188.",
+          "session_id": "37462dd1-110e-43"
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "【opa211-pages-1-",
+          "index": 0,
+          "total": 5,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "9.pdf】\n[1] 18 V,",
+          "index": 1,
+          "total": 5,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": " 4.5 V to 36 V\n\n",
+          "index": 2,
+          "total": 5,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "【diag-opa188.pdf",
+          "index": 3,
+          "total": 5,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "】\n[2] 到 [3]",
+          "index": 4,
+          "total": 5,
+          "is_complete": true
+        }
+      },
+      {
+        "type": "complete",
+        "data": {
+          "response": "【opa211-pages-1-9.pdf】\n[1] 18 V, 4.5 V to 36 V\n\n【diag-opa188.pdf】\n[2] 到 [3]",
+          "citations": [
+            {
+              "file": "opa211-pages-1-9.pdf",
+              "page": 1,
+              "text_snippet": "Wide supply range: – ±2.25 to ±18 V, 4.5 V to 36 V Rail-to-rail output Output current: 30 mA • SON-8 (3 mm × 3 mm), VSSOP-8, and SOIC-8 2 Applications • [U",
+              "section": ""
+            },
+            {
+              "file": "diag-opa188.pdf",
+              "page": 1,
+              "text_snippet": "single or dual supplies can be used in the range from 4 V to 36 V (±2 V to ±18 V). The single version is available in the MicroSIZE SOT-23-5, MSOP-8, and S",
+              "section": ""
+            },
+            {
+              "file": "diag-opa188.pdf",
+              "page": 3,
+              "text_snippet": "7.6 Electrical Characteristics: Low-Voltage Operation 1000-hour life test at 125°C demonstrated randomly distributed variation in the range of measurement limits—approximately $4 \\; \\mu \\mathsf { V } .$ 【表格】 PARAMETER [跨2列合并] | | CONDITIONS | MIN | TYP | MAX | UNIT OFFSET VOLTAGE [跨7列合并] | | | | | | $V_{OS}$ | Input offset voltage | | ±6 [跨2列合并] | | ±25 | μV $V_{OS}$ | Input offset voltage | $T_A = -40°C to +125°C$ | ±0.03 [跨2列合并] | | ±0.085 | μV/°C PSRR | Power-supply rejection ratio | $V_S = 4",
+              "section": ""
+            }
+          ],
+          "processing_time": 2.7746031284332275,
+          "session_id": "37462dd1-110e-43",
+          "success": true,
+          "trace": {
+            "intent": "qa",
+            "retrieved": [
+              {
+                "chunk_id": "e5470b5a_p1_c1",
+                "document_id": "e5470b5a",
+                "page": 1,
+                "text": " bandwidth product: – 80 MHz (G = 100) – 45 MHz (G = 1) • Slew rate: 27 V/μs • 16-Bit settling: 700 ns • Wide supply range: – ±2.25 to ±18 V, 4.5 V to 36 V Rail-to-rail output Output current: 30 mA • SON-8 (3 mm × 3 mm), VSSOP-8, and SOIC-8 2 Applications • [Ultrasound scanner](http://www.ti.com/solution/ultrasound-scanner) [Semiconductor test](http://www.ti.com/solution/semiconductor-test) • [X-ray systems](http://www.ti.com/solution/x-ray-systems) • [Lab and field instrumentation](http://www.t",
+                "score": 0.014066088013350964,
+                "sources": [
+                  "vector",
+                  "bm25"
+                ],
+                "focused_row": false,
+                "rerank_position": null,
+                "pdf_column_evidence": null
+              },
+              {
+                "chunk_id": "fe7dc65c_p1_c3",
+                "document_id": "fe7dc65c",
+                "page": 1,
+                "text": "This miniature, highprecision, low-quiescent current amplifier offers high input impedance and rail-to-rail output swing within 15 mV of the rails. The input common-mode range includes the negative rail. Either single or dual supplies can be used in the range from 4 V to 36 V (±2 V to ±18 V). The single version is available in the MicroSIZE SOT-23-5, MSOP-8, and SO-8 packages. All versions are specified for operation from –40°C to +125°C.",
+                "score": 0.9616876244544983,
+                "sources": [
+                  "vector",
+                  "bm25"
+                ],
+                "focused_row": false,
+                "rerank_position": null,
+                "pdf_column_evidence": null
+              },
+              {
+                "chunk_id": "e5470b5a_p1_c5",
+                "document_id": "e5470b5a",
+                "page": 1,
+                "text": "This ac performance, combined with only 125 μV of offset and 0.35 $\\mu \\mathrm { V } / \\dot { \\mathrm { ^ { o } C } }$ of drift over temperature, makes the OPAx211 series a great choice for driving high-precision 16-bit analog-to-digital converters (ADCs) or buffering the output of high-resolution digital-to-analog converters (DACs). The OPAx211 series is specified over a wide dualpower supply range of ±2.25 to ±18 V, or for singlesupply operation from 4.5 to 36 V.",
+                "score": 0.9644646644592285,
+                "sources": [
+                  "vector",
+                  "bm25"
+                ],
+                "focused_row": false,
+                "rerank_position": null,
+                "pdf_column_evidence": null
+              },
+              {
+                "chunk_id": "fe7dc65c_p3_c15",
+                "document_id": "fe7dc65c",
+                "page": 3,
+                "text": "7.6 Electrical Characteristics: Low-Voltage Operation 1000-hour life test at 125°C demonstrated randomly distributed variation in the range of measurement limits—approximately $4 \\; \\mu \\mathsf { V } .$ 【表格】 PARAMETER [跨2列合并] | | CONDITIONS | MIN | TYP | MAX | UNIT OFFSET VOLTAGE [跨7列合并] | | | | | | $V_{OS}$ | Input offset voltage | | ±6 [跨2列合并] | | ±25 | μV $V_{OS}$ | Input offset voltage | $T_A = -40°C to +125°C$ | ±0.03 [跨2列合并] | | ±0.085 | μV/°C PSRR | Power-supply rejection ratio | $V_S = 4",
+                "score": 0.14299163222312927,
+                "sources": [
+                  "vector",
+                  "bm25"
+                ],
+                "focused_row": false,
+                "rerank_position": null,
+                "pdf_column_evidence": null
+              }
+            ],
+            "context": "【opa211-pages-1-9.pdf】\n[1] opa211-pages-1-9.pdf 第1页\nWide supply range: – ±2.25 to ±18 V, 4.5 V to 36 V Rail-to-rail output Output current: 30 mA • SON-8 (3 mm × 3 mm), VSSOP-8, and SOIC-8 2 Applications • [U\n\n[2] opa211-pages-1-9.pdf 第1页\nThis ac performance, combined with only 125 μV of offset and 0.35 $\\mu \\mathrm { V } / \\dot { \\mathrm { ^ { o } C } }$ of drift over temperature, makes the OPAx211 series a great choice for driving high-precision 16-bit analog-to-digital converters (ADCs) or buffering the output of high-resolution digital-to-analog converters (DACs). The OPAx211 series is specified over a wide dualpower supply range of ±2.25 to ±18 V, or for singlesupply operation from 4.5 to 36 V.\n\n【diag-opa188.pdf】\n[1] diag-opa188.pdf 第1页\nsingle or dual supplies can be used in the range from 4 V to 36 V (±2 V to ±18 V). The single version is available in the MicroSIZE SOT-23-5, MSOP-8, and S\n\n[2] diag-opa188.pdf 第3页\n7.6 Electrical Characteristics: Low-Voltage Operation 1000-hour life test at 125°C demonstrated randomly distributed variation in the range of measurement limits—approximately $4 \\; \\mu \\mathsf { V } .$ 【表格】 PARAMETER [跨2列合并] | | CONDITIONS | MIN | TYP | MAX | UNIT OFFSET VOLTAGE [跨7列合并] | | | | | | $V_{OS}$ | Input offset voltage | | ±6 [跨2列合并] | | ±25 | μV $V_{OS}$ | Input offset voltage | $T_A = -40°C to +125°C$ | ±0.03 [跨2列合并] | | ±0.085 | μV/°C PSRR | Power-supply rejection ratio | $V_S = 4",
+            "context_evidence": [
+              {
+                "file": "opa211-pages-1-9.pdf",
+                "page": 1,
+                "text_snippet": "Wide supply range: – ±2.25 to ±18 V, 4.5 V to 36 V Rail-to-rail output Output current: 30 mA • SON-8 (3 mm × 3 mm), VSSOP-8, and SOIC-8 2 Applications • [U",
+                "section": "",
+                "document_id": "e5470b5a",
+                "chunk_id": "e5470b5a_p1_c1",
+                "focused_row": false,
+                "citation_literal": null
+              },
+              {
+                "file": "opa211-pages-1-9.pdf",
+                "page": 1,
+                "text_snippet": "This ac performance, combined with only 125 μV of offset and 0.35 $\\mu \\mathrm { V } / \\dot { \\mathrm { ^ { o } C } }$ of drift over temperature, makes the OPAx211 series a great choice for driving high-precision 16-bit analog-to-digital converters (ADCs) or buffering the output of high-resolution digital-to-analog converters (DACs). The OPAx211 series is specified over a wide dualpower supply range of ±2.25 to ±18 V, or for singlesupply operation from 4.5 to 36 V.",
+                "section": "",
+                "document_id": "e5470b5a",
+                "chunk_id": "e5470b5a_p1_c5",
+                "focused_row": false,
+                "citation_literal": null
+              },
+              {
+                "file": "diag-opa188.pdf",
+                "page": 1,
+                "text_snippet": "single or dual supplies can be used in the range from 4 V to 36 V (±2 V to ±18 V). The single version is available in the MicroSIZE SOT-23-5, MSOP-8, and S",
+                "section": "",
+                "document_id": "fe7dc65c",
+                "chunk_id": "fe7dc65c_p1_c3",
+                "focused_row": false,
+                "citation_literal": null
+              },
+              {
+                "file": "diag-opa188.pdf",
+                "page": 3,
+                "text_snippet": "7.6 Electrical Characteristics: Low-Voltage Operation 1000-hour life test at 125°C demonstrated randomly distributed variation in the range of measurement limits—approximately $4 \\; \\mu \\mathsf { V } .$ 【表格】 PARAMETER [跨2列合并] | | CONDITIONS | MIN | TYP | MAX | UNIT OFFSET VOLTAGE [跨7列合并] | | | | | | $V_{OS}$ | Input offset voltage | | ±6 [跨2列合并] | | ±25 | μV $V_{OS}$ | Input offset voltage | $T_A = -40°C to +125°C$ | ±0.03 [跨2列合并] | | ±0.085 | μV/°C PSRR | Power-supply rejection ratio | $V_S = 4",
+                "section": "",
+                "document_id": "fe7dc65c",
+                "chunk_id": "fe7dc65c_p3_c15",
+                "focused_row": false,
+                "citation_literal": null
+              }
+            ],
+            "model_answer": null,
+            "comparison_documents": [
+              "e5470b5a",
+              "fe7dc65c"
+            ],
+            "comparison_query": "operating supply voltage range single supply dual supply",
+            "comparison_calls": [
+              {
+                "document_id": "e5470b5a",
+                "query": "What is this device's operating supply voltage range for single and dual supplies?",
+                "context": "[1] opa211-pages-1-9.pdf 第1页\nWide supply range: – ±2.25 to ±18 V, 4.5 V to 36 V Rail-to-rail output Output current: 30 mA • SON-8 (3 mm × 3 mm), VSSOP-8, and SOIC-8 2 Applications • [U\n\n[2] opa211-pages-1-9.pdf 第1页\nThis ac performance, combined with only 125 μV of offset and 0.35 $\\mu \\mathrm { V } / \\dot { \\mathrm { ^ { o } C } }$ of drift over temperature, makes the OPAx211 series a great choice for driving high-precision 16-bit analog-to-digital converters (ADCs) or buffering the output of high-resolution digital-to-analog converters (DACs). The OPAx211 series is specified over a wide dualpower supply range of ±2.25 to ±18 V, or for singlesupply operation from 4.5 to 36 V.",
+                "draft": "[1] 18 V, 4.5 V to 36 V",
+                "citation_repair": null,
+                "final_response": "[1] 18 V, 4.5 V to 36 V"
+              },
+              {
+                "document_id": "fe7dc65c",
+                "query": "What is this device's operating supply voltage range for single and dual supplies?",
+                "context": "[1] diag-opa188.pdf 第1页\nsingle or dual supplies can be used in the range from 4 V to 36 V (±2 V to ±18 V). The single version is available in the MicroSIZE SOT-23-5, MSOP-8, and S\n\n[2] diag-opa188.pdf 第3页\n7.6 Electrical Characteristics: Low-Voltage Operation 1000-hour life test at 125°C demonstrated randomly distributed variation in the range of measurement limits—approximately $4 \\; \\mu \\mathsf { V } .$ 【表格】 PARAMETER [跨2列合并] | | CONDITIONS | MIN | TYP | MAX | UNIT OFFSET VOLTAGE [跨7列合并] | | | | | | $V_{OS}$ | Input offset voltage | | ±6 [跨2列合并] | | ±25 | μV $V_{OS}$ | Input offset voltage | $T_A = -40°C to +125°C$ | ±0.03 [跨2列合并] | | ±0.085 | μV/°C PSRR | Power-supply rejection ratio | $V_S = 4",
+                "draft": "4.00 到 36.00 V (±2.00 到 ±18.00 V)",
+                "citation_repair": "[1] 到 [2]",
+                "final_response": "[1] 到 [2]"
+              }
+            ],
+            "citation_repair": null,
+            "citation_literal_verified": false
+          }
+        }
+      }
+    ]
+  },
+  "circuit_search_empty": {
+    "http": 200,
+    "body": {
+      "success": true,
+      "circuits": [],
+      "total_count": 0,
+      "search_time": 0.004784822463989258,
+      "cached": false
+    }
+  },
+  "missing_circuit_id": {
+    "http": 404,
+    "body": {
+      "success": false,
+      "error": "电路ID不存在: review-missing-circuit",
+      "error_code": "HTTP_404",
+      "timestamp": "2026-11-26T14:08:07.862501"
+    }
+  },
+  "image_path_allowed": {
+    "http": 200,
+    "body": {
+      "bytes": 259819,
+      "png": true,
+      "content_type": "image/png"
+    }
+  },
+  "image_path_outside": {
+    "http": 404,
+    "body": {
+      "success": false,
+      "error": "图像不可用",
+      "error_code": "HTTP_404",
+      "timestamp": "2026-11-26T14:08:07.903233"
+    }
+  },
+  "fresh_upload": {
+    "document_id": "64316e40",
+    "filename": "review-disposable-fixture.pdf",
+    "status": "ready",
+    "page_count": 1,
+    "file_size": 898,
+    "upload_time": "2026-11-26T14:08:10.587122",
+    "error_message": "",
+    "warnings": [
+      "visual_pipeline_skipped"
+    ],
+    "chunk_count": 1,
+    "table_count": 0,
+    "circuit_count": 0,
+    "image_count": 0,
+    "processed_time": "2026-11-26T14:08:52.304666",
+    "progress": 100,
+    "stage": "completed",
+    "stage_detail": "正在嵌入第 1/1 批",
+    "parser": "mineru",
+    "parser_tier": "advanced",
+    "verified_table_rows": 0,
+    "ingestion_seconds": 42.131,
+    "longest_status_request_seconds": 0.398,
+    "status_poll_timeouts": 0
+  },
+  "fresh_page": {
+    "http": 200,
+    "body": {
+      "bytes": 19703,
+      "png": true,
+      "content_type": "image/png"
+    }
+  },
+  "delete_only_disposable": {
+    "http": 200,
+    "body": {
+      "success": true,
+      "document_id": "64316e40",
+      "cleanup": {
+        "status": "background"
+      },
+      "message": "文档已删除，关联数据清理正在后台执行"
+    }
+  },
+  "deleted_info": {
+    "http": 404,
+    "body": {
+      "success": false,
+      "error": "文档不存在",
+      "error_code": "HTTP_404",
+      "timestamp": "2026-11-26T14:08:52.822729"
+    }
+  }
+}

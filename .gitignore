@@ -135,6 +135,7 @@ data/tables.db
 
 # Experiment backup (moved out of project)
 experiment_backup/
+data/eval/
 
 # Logs
 logs/*

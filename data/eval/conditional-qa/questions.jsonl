@@ -1,0 +1,4 @@
+{"id":"g015","part":"OPA211","query":"What is the gain bandwidth product of the OPA211?","required":"45 MHz at G=1 and 80 MHz at G=100"}
+{"id":"g017","part":"TMP117","query":"What is the operating power-supply range of the TMP117?","required":"1.7–5.5 V from −55 to 70 °C and 1.8–5.5 V from −55 to 150 °C"}
+{"id":"control-gain","part":"OPA211","query":"What is the gain bandwidth product of the OPA211 at G=1?","required":"45 MHz at G=1"}
+{"id":"control-resolution","part":"TMP117","query":"What is the TMP117 temperature resolution?","required":"0.0078 °C"}

@@ -1,0 +1,56 @@
+{
+  "n02": {
+    "session": "6fe6b90b-a5f0-4b",
+    "branches": 1,
+    "llm_calls": 2,
+    "context_sources": 8,
+    "ui_matches_api": true,
+    "rrf_scores_recomputed": true,
+    "rerank_index_order_verified": true
+  },
+  "n03": {
+    "session": "baa280e5-b1cc-43",
+    "branches": 1,
+    "llm_calls": 1,
+    "context_sources": 8,
+    "ui_matches_api": true,
+    "rrf_scores_recomputed": true,
+    "rerank_index_order_verified": true
+  },
+  "n04": {
+    "session": "f5165601-9196-4d",
+    "branches": 1,
+    "llm_calls": 1,
+    "context_sources": 8,
+    "ui_matches_api": true,
+    "rrf_scores_recomputed": true,
+    "rerank_index_order_verified": true
+  },
+  "n06": {
+    "session": "933e9c5d-d12b-41",
+    "branches": 1,
+    "llm_calls": 1,
+    "context_sources": 8,
+    "ui_matches_api": true,
+    "rrf_scores_recomputed": true,
+    "rerank_index_order_verified": true
+  },
+  "n07": {
+    "session": "368d7695-85d4-40",
+    "branches": 1,
+    "llm_calls": 1,
+    "context_sources": 8,
+    "ui_matches_api": true,
+    "rrf_scores_recomputed": true,
+    "rerank_index_order_verified": true
+  },
+  "n10": {
+    "session": "abba54a2-bf26-4d",
+    "branches": 2,
+    "llm_calls": 1,
+    "context_sources": 4,
+    "ui_matches_api": true,
+    "rrf_scores_recomputed": true,
+    "rerank_index_order_verified": true
+  }
+}

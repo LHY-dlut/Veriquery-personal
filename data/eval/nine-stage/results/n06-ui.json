@@ -1,0 +1,317 @@
+{
+  "id": "n06",
+  "selected": [
+    "386a2473"
+  ],
+  "request": {
+    "body": {
+      "query": "Using the TPS63020 oscillator-frequency row, how wide is the full MIN-to-MAX span in MHz, and how far can an endpoint deviate from TYP in MHz? Show both calculations.",
+      "document_ids": [
+        "386a2473"
+      ]
+    },
+    "route": "http://127.0.0.1:8221/api/v1/chat/stream",
+    "http_status": 200,
+    "events": [
+      {
+        "type": "start",
+        "data": {
+          "query": "Using the TPS63020 oscillator-frequency row, how wide is the full MIN-to-MAX span in MHz, and how far can an endpoint deviate from TYP in MHz? Show both calculations.",
+          "session_id": "933e9c5d-d12b-41"
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "根据提供的资料，针对 TPS63",
+          "index": 0,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "020 的振荡频率（f）行，",
+          "index": 1,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "计算如下：\n1. 计算振荡频率的",
+          "index": 2,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "满量程范围（MIN 到 MAX）：",
+          "index": 3,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "\n*   资料编号：[1]\n",
+          "index": 4,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "*   数据：\n*   MIN:",
+          "index": 5,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": " 2200 kHz\n*   MA",
+          "index": 6,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "X: 2600 kHz\n*   ",
+          "index": 7,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "计算：\n$$ \\text{Ran",
+          "index": 8,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "ge} = 2600 \\text",
+          "index": 9,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "{ kHz} - 2200 \\t",
+          "index": 10,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "ext{ kHz} = 400 ",
+          "index": 11,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "\\text{ kHz} $$\n",
+          "index": 12,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "$$ 400 \\text{ kH",
+          "index": 13,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "z} = 0.4 \\text{ ",
+          "index": 14,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "MHz} $$\n2. 计算端点偏",
+          "index": 15,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "离典型值（TYP）的最大允许偏差：",
+          "index": 16,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "\n*   TYP: 2400 k",
+          "index": 17,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "Hz\n*   下限偏差：$220",
+          "index": 18,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "0 \\text{ kHz} - ",
+          "index": 19,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "2400 \\text{ kHz}",
+          "index": 20,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": " = -200 \\text{ k",
+          "index": 21,
+          "total": 23,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "Hz}$",
+          "index": 22,
+          "total": 23,
+          "is_complete": true
+        }
+      },
+      {
+        "type": "complete",
+        "data": {
+          "response": "根据提供的资料，针对 TPS63020 的振荡频率（f）行，计算如下：\n1. 计算振荡频率的满量程范围（MIN 到 MAX）：\n*   资料编号：[1]\n*   数据：\n*   MIN: 2200 kHz\n*   MAX: 2600 kHz\n*   计算：\n$$ \\text{Range} = 2600 \\text{ kHz} - 2200 \\text{ kHz} = 400 \\text{ kHz} $$\n$$ 400 \\text{ kHz} = 0.4 \\text{ MHz} $$\n2. 计算端点偏离典型值（TYP）的最大允许偏差：\n*   TYP: 2400 kHz\n*   下限偏差：$2200 \\text{ kHz} - 2400 \\text{ kHz} = -200 \\text{ kHz}$",
+          "citations": [
+            {
+              "file": "TPS63020.pdf",
+              "page": 1,
+              "text_snippet": "PARAMETER [跨3列合并] |  |  | TEST CONDITIONS | MIN | TYP | MAX | UNIT\nDC/DC STAGE [跨8列合并] |  |  |  |  |  |  | \n$V_{IN}$ | Input voltage [跨2列合并] |  |  | 1.8 |  | 5.5 | V\n$V_{IN}$ | Minimum input voltage for start-up [跨2列合并] |  | 0°C ≤ $T_A$ ≤ 85°C | 1.5 | 1.8 | 1.9 | V\n$V_{IN}$ | Minimum input voltage for start-up [跨2列合并] |  |  | 1.5 | 1.8 | 2.0 | V\n$V_{OUT}$ | TPS63020 output voltage [跨2列合并] |  |  | 1.2 |  | 5.5 | V\n$V_{OUT}$ | Duty cycle in step down conversion [跨2列合并] |  |  | 20% |  |  | \n$V_{FB\\_PWM}$ | TPS63020 feedback voltage [跨2列合并] |  | PS/SYNC = $V_{IN}$ | 495 | 500 | 505 | mV\n$V_{FB\\_PWM}$ | TPS63021 output voltage [跨2列合并] |  | PS/SYNC = $V_{IN}$ | 3.267 | 3.3 | 3.333 | V\n$V_{FB\\_PS}$ | TPS63020 feedback voltage / TPS63021 output voltage regulation in PS mode [跨2列合并] |  | PS/SYNC = GND; referenced to $V_{FB\\_PWM}$ | 0.6% |  | 5% | \n | Maximum line regulation [跨2列合并] |  |  |  | 0.5% |  | \n | Maximum load regulation [跨2列合并] |  |  |  | 0.5% |  | \nf | Oscillator frequency [跨2列合并] |  |  | 2200 | 2400 | 2600 | kHz\n | Frequency range for synchronization [跨2列合并] |  |  | 2200 | 2400 | 2600 | kHz\n$I_{SW}$ | Average switch current limit [跨2列合并] |  | $V_{IN}=V_{INA}=3.6 V, T_A=25°C$ | 3500 | 4000 | 4500 | mA\n | High side switch on resistance [跨2列合并] |  | $V_{IN}=V_{INA}=3.6 V$ |  | 50 |  | mΩ\n | Low side switch on resistance [跨2列合并] |  | $V_{IN}=V_{INA}=3.6 V$ |  | 50 |  | mΩ…",
+              "section": "PARAMETER [跨3列合并] | TEST CONDITIONS | MIN | TYP | MAX | UNIT"
+            }
+          ],
+          "processing_time": 5.723652124404907,
+          "session_id": "933e9c5d-d12b-41",
+          "success": true
+        }
+      }
+    ]
+  },
+  "ui_history_entry": {
+    "role": "assistant",
+    "content": "根据提供的资料，针对 TPS63020 的振荡频率（f）行，计算如下：\n1. 计算振荡频率的满量程范围（MIN 到 MAX）：\n*   资料编号：[1]\n*   数据：\n*   MIN: 2200 kHz\n*   MAX: 2600 kHz\n*   计算：\n$$ \\text{Range} = 2600 \\text{ kHz} - 2200 \\text{ kHz} = 400 \\text{ kHz} $$\n$$ 400 \\text{ kHz} = 0.4 \\text{ MHz} $$\n2. 计算端点偏离典型值（TYP）的最大允许偏差：\n*   TYP: 2400 kHz\n*   下限偏差：$2200 \\text{ kHz} - 2400 \\text{ kHz} = -200 \\text{ kHz}$",
+    "sources": [
+      "TPS63020.pdf"
+    ],
+    "citations": [
+      {
+        "file": "TPS63020.pdf",
+        "page": 1,
+        "text_snippet": "PARAMETER [跨3列合并] |  |  | TEST CONDITIONS | MIN | TYP | MAX | UNIT\nDC/DC STAGE [跨8列合并] |  |  |  |  |  |  | \n$V_{IN}$ | Input voltage [跨2列合并] |  |  | 1.8 |  | 5.5 | V\n$V_{IN}$ | Minimum input voltage for start-up [跨2列合并] |  | 0°C ≤ $T_A$ ≤ 85°C | 1.5 | 1.8 | 1.9 | V\n$V_{IN}$ | Minimum input voltage for start-up [跨2列合并] |  |  | 1.5 | 1.8 | 2.0 | V\n$V_{OUT}$ | TPS63020 output voltage [跨2列合并] |  |  | 1.2 |  | 5.5 | V\n$V_{OUT}$ | Duty cycle in step down conversion [跨2列合并] |  |  | 20% |  |  | \n$V_{FB\\_PWM}$ | TPS63020 feedback voltage [跨2列合并] |  | PS/SYNC = $V_{IN}$ | 495 | 500 | 505 | mV\n$V_{FB\\_PWM}$ | TPS63021 output voltage [跨2列合并] |  | PS/SYNC = $V_{IN}$ | 3.267 | 3.3 | 3.333 | V\n$V_{FB\\_PS}$ | TPS63020 feedback voltage / TPS63021 output voltage regulation in PS mode [跨2列合并] |  | PS/SYNC = GND; referenced to $V_{FB\\_PWM}$ | 0.6% |  | 5% | \n | Maximum line regulation [跨2列合并] |  |  |  | 0.5% |  | \n | Maximum load regulation [跨2列合并] |  |  |  | 0.5% |  | \nf | Oscillator frequency [跨2列合并] |  |  | 2200 | 2400 | 2600 | kHz\n | Frequency range for synchronization [跨2列合并] |  |  | 2200 | 2400 | 2600 | kHz\n$I_{SW}$ | Average switch current limit [跨2列合并] |  | $V_{IN}=V_{INA}=3.6 V, T_A=25°C$ | 3500 | 4000 | 4500 | mA\n | High side switch on resistance [跨2列合并] |  | $V_{IN}=V_{INA}=3.6 V$ |  | 50 |  | mΩ\n | Low side switch on resistance [跨2列合并] |  | $V_{IN}=V_{INA}=3.6 V$ |  | 50 |  | mΩ…",
+        "section": "PARAMETER [跨3列合并] | TEST CONDITIONS | MIN | TYP | MAX | UNIT"
+      }
+    ],
+    "message_meta": {
+      "show_citations": true,
+      "badges": [
+        "引用 1",
+        "耗时 5.7s"
+      ]
+    },
+    "timestamp": "20:46:35",
+    "processing_time": 5.723652124404907
+  },
+  "rendered_html": "<div class=\"chat-message chat-message-assistant\">\n    <div class=\"chat-avatar\">🤖</div>\n    <div class=\"chat-content\">\n        <div class=\"chat-bubble chat-bubble-assistant\"><div class=\"chat-text\">根据提供的资料，针对 TPS63020 的振荡频率（f）行，计算如下：<br>1. 计算振荡频率的满量程范围（MIN 到 MAX）：<br>*   资料编号：[1]<br>*   数据：<br>*   MIN: 2200 kHz<br>*   MAX: 2600 kHz<br>*   计算：<br>$$ \\text{Range} = 2600 \\text{ kHz} - 2200 \\text{ kHz} = 400 \\text{ kHz} $$<br>$$ 400 \\text{ kHz} = 0.4 \\text{ MHz} $$<br>2. 计算端点偏离典型值（TYP）的最大允许偏差：<br>*   TYP: 2400 kHz<br>*   下限偏差：$2200 \\text{ kHz} - 2400 \\text{ kHz} = -200 \\text{ kHz}$</div></div>\n        <div class=\"chat-citations\"><div class=\"chat-citations-title\">📚 信息来源</div><div class=\"chat-citation-item\">📄 TPS63020.pdf · 第 1 页 <a href=\"http://127.0.0.1:8221/api/v1/documents/386a2473/pages/1/image\" target=\"_blank\" rel=\"noopener\">📷 查看截图</a></div></div>\n        <div class=\"chat-meta\"><span class=\"chat-meta-badge\">引用 1</span><span class=\"chat-meta-badge\">耗时 5.7s</span></div>\n        <div class=\"chat-timestamp\">20:46:35</div>\n    </div>\n</div>",
+  "rendered_text": "根据提供的资料，针对 TPS63020 的振荡频率（f）行，计算如下：\n1. 计算振荡频率的满量程范围（MIN 到 MAX）：\n*   资料编号：[1]\n*   数据：\n*   MIN: 2200 kHz\n*   MAX: 2600 kHz\n*   计算：\n$$ \\text{Range} = 2600 \\text{ kHz} - 2200 \\text{ kHz} = 400 \\text{ kHz} $$\n$$ 400 \\text{ kHz} = 0.4 \\text{ MHz} $$\n2. 计算端点偏离典型值（TYP）的最大允许偏差：\n*   TYP: 2400 kHz\n*   下限偏差：$2200 \\text{ kHz} - 2400 \\text{ kHz} = -200 \\text{ kHz}$",
+  "schema": {
+    "properties": {
+      "query": {
+        "type": "string",
+        "maxLength": 2000,
+        "minLength": 1,
+        "title": "Query",
+        "description": "用户查询内容"
+      },
+      "document_ids": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array",
+        "title": "Document Ids",
+        "description": "选中的文档ID列表"
+      },
+      "session_id": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Session Id",
+        "description": "会话ID，不传则自动生成"
+      },
+      "trace": {
+        "type": "boolean",
+        "title": "Trace",
+        "default": false
+      }
+    },
+    "type": "object",
+    "required": [
+      "query"
+    ],
+    "title": "ChatRequest",
+    "description": "Request model for chat queries."
+  }
+}

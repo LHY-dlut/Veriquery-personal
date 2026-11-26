@@ -1,0 +1,106 @@
+{
+  "cases": [
+    "n02",
+    "n03",
+    "n04",
+    "n06",
+    "n07",
+    "n10"
+  ],
+  "arms": {
+    "before": {
+      "n": 18,
+      "semantic": 0,
+      "strict": 0,
+      "cases": {
+        "n02": {
+          "n": 3,
+          "semantic": 0,
+          "strict": 0
+        },
+        "n03": {
+          "n": 3,
+          "semantic": 0,
+          "strict": 0
+        },
+        "n04": {
+          "n": 3,
+          "semantic": 0,
+          "strict": 0
+        },
+        "n06": {
+          "n": 3,
+          "semantic": 0,
+          "strict": 0
+        },
+        "n07": {
+          "n": 3,
+          "semantic": 0,
+          "strict": 0
+        },
+        "n10": {
+          "n": 3,
+          "semantic": 0,
+          "strict": 0
+        }
+      },
+      "median_api_seconds": 5.4245,
+      "upstream_calls": 20,
+      "finish": {
+        "stop": 20
+      },
+      "at_cap": 9
+    },
+    "after": {
+      "n": 18,
+      "semantic": 0,
+      "strict": 0,
+      "cases": {
+        "n02": {
+          "n": 3,
+          "semantic": 0,
+          "strict": 0
+        },
+        "n03": {
+          "n": 3,
+          "semantic": 0,
+          "strict": 0
+        },
+        "n04": {
+          "n": 3,
+          "semantic": 0,
+          "strict": 0
+        },
+        "n06": {
+          "n": 3,
+          "semantic": 0,
+          "strict": 0
+        },
+        "n07": {
+          "n": 3,
+          "semantic": 0,
+          "strict": 0
+        },
+        "n10": {
+          "n": 3,
+          "semantic": 0,
+          "strict": 0
+        }
+      },
+      "median_api_seconds": 5.4725,
+      "upstream_calls": 23,
+      "finish": {
+        "stop": 23
+      },
+      "at_cap": 14
+    }
+  },
+  "paired": {
+    "semantic": {
+      "both_fail": 18
+    },
+    "strict": {
+      "both_fail": 18
+    }
+  }
+}

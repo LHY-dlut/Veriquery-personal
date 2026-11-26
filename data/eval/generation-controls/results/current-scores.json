@@ -1,0 +1,218 @@
+[
+  {
+    "sample_id": "h03-original-r1",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "把总线读宽写成11位，并把11个位都放进一个高字节。",
+    "excerpt": "读取位数：11 位"
+  },
+  {
+    "sample_id": "h03-original-r2",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "把有效数据位数当作总线要读的位数，结论要求只读11位。",
+    "excerpt": "读取位数：11 位"
+  },
+  {
+    "sample_id": "h03-original-r3",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "总线读宽仍答成11位。",
+    "excerpt": "控制器需要读取 11 位"
+  },
+  {
+    "sample_id": "h03-short-r1",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "16位总线读宽、最高11位有效、低5位忽略，引用[1]支持全部要点。",
+    "excerpt": "控制器应读取 16 位"
+  },
+  {
+    "sample_id": "h03-short-r2",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "两处正文合起来明确16位、最高11位及低5位，用[1]支持。",
+    "excerpt": "Only 11 MSBs contain temperature data"
+  },
+  {
+    "sample_id": "h03-short-r3",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "开头说总线应读16位，末句又指导控制器读11位，主答复互相冲突。",
+    "excerpt": "因此，控制器应读取 11 位"
+  },
+  {
+    "sample_id": "h04-original-r1",
+    "semantic": true,
+    "strict": false,
+    "raw_semantic": true,
+    "raw_strict": false,
+    "reason": "两组温度与误差正确，但声称[1]也列出这两个误差限，[1]内容没有对应数据。",
+    "excerpt": "[1] 中显示为 +0.3 °C"
+  },
+  {
+    "sample_id": "h04-original-r2",
+    "semantic": true,
+    "strict": false,
+    "raw_semantic": true,
+    "raw_strict": false,
+    "reason": "两组最大误差正确，另外编造了空TYP列的典型值。",
+    "excerpt": "典型温度误差幅度：-0.3 °C"
+  },
+  {
+    "sample_id": "h04-original-r3",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "数值0.1、0.3正确，误差幅度未给单位；温度条件上的°C只能定位工况。",
+    "excerpt": "44 °C：[0.3]"
+  },
+  {
+    "sample_id": "h04-short-r1",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "两组数值与误差单位准确，区间与[1]、[2]分别对应。方括号小数承载的是数值。",
+    "excerpt": "[0.3] °C"
+  },
+  {
+    "sample_id": "h04-short-r2",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "区间、两组误差幅度与单位准确，分别引用[1]、[2]。",
+    "excerpt": "+0.3 °C（依据 [2]）"
+  },
+  {
+    "sample_id": "h04-short-r3",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "引用和两组区间对应正确，且给出38°C及44°C的结果和单位。",
+    "excerpt": "最大温度误差幅度为 +0.3 °C"
+  },
+  {
+    "sample_id": "h05-original-r1",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "明确本次转换完成后关断，关断期间寄存器仍可经I2C访问，两项均有[1]。",
+    "excerpt": "该转换完成后，器件关闭"
+  },
+  {
+    "sample_id": "h05-original-r2",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "给出了先完成后关断和关断期间继续访问，以[1]支持。",
+    "excerpt": "该转换完成并随后关闭"
+  },
+  {
+    "sample_id": "h05-original-r3",
+    "semantic": true,
+    "strict": false,
+    "raw_semantic": true,
+    "raw_strict": false,
+    "reason": "所问两项正确。额外声称启动转换时关断状态被清除且所有寄存器可访问；[1]写的是清除D0会退出关断并启动新转换，访问保证针对关断期间，未给这条额外的通用启动行为。",
+    "excerpt": "在启动转换时，关闭状态被清除"
+  },
+  {
+    "sample_id": "h05-short-r1",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "中文结论仅说转换结束，但答复实际逐字列出[1]的英文依据，明确本次转换先完成后关断，并明确I2C可访问；全答复可判定先后关系。",
+    "excerpt": "lets the conversion finish before shutdown"
+  },
+  {
+    "sample_id": "h05-short-r2",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "明确关断时转换已完成，关断期间寄存器仍可访问，[1]支撑。",
+    "excerpt": "该转换在关闭时已完成"
+  },
+  {
+    "sample_id": "h05-short-r3",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "“转换完成后立即停止”保留完成在先的顺序，后句明确I2C和寄存器可访问，[1]支撑。",
+    "excerpt": "在转换完成后立即停止"
+  },
+  {
+    "sample_id": "h07-original-r1",
+    "semantic": true,
+    "strict": true,
+    "raw_semantic": true,
+    "raw_strict": true,
+    "reason": "结论正确，紧随的编号依据给全两组工作范围，[1]、[2]支持。",
+    "excerpt": "5.0 V 超出范围"
+  },
+  {
+    "sample_id": "h07-original-r2",
+    "semantic": true,
+    "strict": false,
+    "raw_semantic": true,
+    "raw_strict": false,
+    "reason": "两个范围与适用结论齐全，另将未编号的程序核对当成第五个来源。",
+    "excerpt": "[5] 程序按工作范围核对"
+  },
+  {
+    "sample_id": "h07-original-r3",
+    "semantic": true,
+    "strict": false,
+    "raw_semantic": true,
+    "raw_strict": false,
+    "reason": "所问结论与范围正确；使用越界[5]，且把[3]中的无关温度片段解释为1至5°C的温度范围。",
+    "excerpt": "温度范围：1°C 至 5°C"
+  },
+  {
+    "sample_id": "h07-short-r1",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "仅判别哪个能用，漏掉两个工作范围，用[n]占位。",
+    "excerpt": "LM75B 在 5.0 V 电源下正常工作：[n]"
+  },
+  {
+    "sample_id": "h07-short-r2",
+    "semantic": true,
+    "strict": false,
+    "raw_semantic": true,
+    "raw_strict": false,
+    "reason": "范围与适用结论正确，所有编号都是[n]占位。",
+    "excerpt": "证据编号：[n]"
+  },
+  {
+    "sample_id": "h07-short-r3",
+    "semantic": false,
+    "strict": false,
+    "raw_semantic": false,
+    "raw_strict": false,
+    "reason": "范围抄对，却声称5 V对两款器件均在工作范围内。",
+    "excerpt": "均满足各自数据手册规定的供电范围"
+  }
+]

@@ -10,6 +10,8 @@
 
 Use the [AutoDL deployment guide](docs/AUTODL_SETUP.md) for the configuration, startup commands, and verification steps for `Veriquery-personal`. The original project overview follows for feature reference.
 
+The personal deployment uses Qwen3.5-0.8B for document QA. The [evaluation ledger](docs/PROJECT_EVIDENCE_LEDGER.md) records denominators and evidence for each change. The [request trace audit](docs/QA_NINE_STAGE_TRACE.md) follows six questions from the document selector to the displayed answer. Follow the outstanding work in [GitHub Issues](https://github.com/LHY-dlut/Veriquery-personal/issues).
+
 <p align="center">
   <a href="README_zh.md"><img src="https://img.shields.io/badge/文档-中文版-blue.svg" alt="中文文档"></a>
 </p>

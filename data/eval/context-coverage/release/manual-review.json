@@ -1,0 +1,22 @@
+{
+  "rubric": "Reuse the frozen heldout rubric. Require every requested fact, conditions, units and supporting references for answerable questions. A refusal passes when the answer gives no unsupported mode or length.",
+  "cases": [
+    {"id":"h01","baseline":"correct","candidate":"partial","joint-only":"correct","note":"Candidate omits two's complement although its cited passage contains it."},
+    {"id":"h02","baseline":"partial","candidate":"incorrect","joint-only":"partial","note":"Only candidate sends both the row mapping 10 to 4 and the consecutive-fault definition. The model instead computes 8 from the code in the candidate."},
+    {"id":"h03","baseline":"incorrect","candidate":"incorrect","joint-only":"incorrect","note":"All three send the complete source distinction and tell the controller to read 11 rather than 16 bits."},
+    {"id":"h04","baseline":"incorrect","candidate":"correct","joint-only":"partial","note":"The baseline assigns the wrong 44 °C limit. Both candidate magnitudes and their supporting table rows are present. Joint-only adds unsupported typical values."},
+    {"id":"h05","baseline":"correct","candidate":"correct","joint-only":"incorrect","note":"Baseline and candidate say the conversion completes before shutdown, and affirm continued access. The joint-only conclusion contradicts its own explanation and denies access."},
+    {"id":"h06","baseline":"correct","candidate":"correct","joint-only":"correct","note":"Each response identifies the upper byte and most significant sign bit."},
+    {"id":"h07","baseline":"incorrect","candidate":"correct","joint-only":"partial","note":"Both joint arms have the two ranges and the verified 5 V interval check in a single generation input. Candidate states both ranges and the verdict. Joint-only states the correct verdict with references but omits the requested ranges."},
+    {"id":"h08","baseline":"incorrect","candidate":"correct","joint-only":"correct","note":"Both joint arms independently cite the two labelled operands and compute the exact factor 32. The old path misses the explicit LM75B step."},
+    {"id":"h09","baseline":"correct_refusal","candidate":"incorrect","joint-only":"correct_refusal","note":"Candidate erroneously maps an I2C register pointer to SPI Mode 0. The original context is byte-identical in baseline and joint-only. An earlier baseline execution also invents an SPI mode, so the data do not establish a change in the underlying refusal rate."},
+    {"id":"h10","baseline":"correct_refusal","candidate":"correct_refusal","joint-only":"correct_refusal","note":"All three report the lack of a USB cable limit without specifying a length."},
+    {"id":"h11","baseline":"incorrect","candidate":"incorrect","joint-only":"incorrect","note":"Candidate includes the +4 V absolute rating at initial rank 9 in the actual model context. The caveat that an absolute rating does not imply permitted operation is still absent. Candidate refuses."}
+  ],
+  "full_evidence": {
+    "baseline_answer_stage": ["h01","h03","h04","h05","h06","h07"],
+    "candidate_answer_stage": ["h01","h02","h03","h04","h05","h06","h07","h08"],
+    "joint_only_answer_stage": ["h01","h03","h04","h05","h06","h07","h08"],
+    "note": "Answer stage includes the source available to the deterministic calculator on h08. For h07 the baseline contains the two ranges across separate model calls. The joint arms provide both ranges in the same call."
+  }
+}

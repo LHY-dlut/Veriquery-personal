@@ -50,9 +50,9 @@ class UnifiedAgentWorkflow:
         4. 提供异步执行入口(ainvoke)
     """
 
-    def __init__(self, settings=None):
+    def __init__(self, settings=None, retriever=None):
         self.settings = settings or get_settings()
-        self.agent_nodes = create_unified_agent_nodes(settings)
+        self.agent_nodes = create_unified_agent_nodes(self.settings, retriever=retriever)
         self.graph = self._build_unified_graph()
         logger.info("Agent工作流引擎初始化完成")
 
@@ -168,6 +168,6 @@ class UnifiedAgentWorkflow:
             }
 
 
-def create_workflow(settings=None) -> UnifiedAgentWorkflow:
+def create_workflow(settings=None, retriever=None) -> UnifiedAgentWorkflow:
     """创建Agent工作流引擎实例的工厂函数。"""
-    return UnifiedAgentWorkflow(settings)
+    return UnifiedAgentWorkflow(settings, retriever=retriever)

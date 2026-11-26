@@ -1,0 +1,654 @@
+{
+  "source_revision": "885cbb4dacb633cc703cecad450c6be35a7b3668",
+  "status": {
+    "match": 11,
+    "hash_mismatch": 17,
+    "unavailable": 9
+  },
+  "matched_parts": [
+    "24LC256",
+    "LM75B",
+    "MCP3008",
+    "MCP3421",
+    "MCP4725",
+    "MCP9700",
+    "MF10",
+    "OPA2993",
+    "SN65HVD230",
+    "TJA1051",
+    "TPS63020"
+  ],
+  "exact_scope_questions": [
+    "g001",
+    "g016",
+    "g022",
+    "g032",
+    "g039",
+    "g040",
+    "g041",
+    "g042",
+    "g043",
+    "g044",
+    "g045",
+    "g046",
+    "g050",
+    "g051",
+    "g058",
+    "g063",
+    "g064",
+    "g067",
+    "g081",
+    "g085",
+    "g086",
+    "g088",
+    "g090",
+    "g091",
+    "g092",
+    "g093",
+    "g096",
+    "g098",
+    "g100"
+  ],
+  "results": [
+    {
+      "filename": "24LC256.pdf",
+      "parts": [
+        "24LC256"
+      ],
+      "expected_sha256": "37280f68ad38b83241cacfc3f470dcb9b2e787586beca22520f37d1c03a006db",
+      "attempts": [
+        {
+          "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/24AA256-24LC256-24FC256-256K-I2C-Serial-EEPROM-DS20001203.pdf",
+          "http_status": 200,
+          "actual_sha256": "37280f68ad38b83241cacfc3f470dcb9b2e787586beca22520f37d1c03a006db",
+          "bytes": 727562,
+          "status": "match"
+        }
+      ],
+      "status": "match"
+    },
+    {
+      "filename": "ADS1115.pdf",
+      "parts": [
+        "ADS1115"
+      ],
+      "expected_sha256": "5fe00cf9509daba7ca311cd0a461debc563dd57598c5de3bf9c31903dc2238da",
+      "attempts": [
+        {
+          "local": "data\\eval\\unmatched\\ADS1115_eefff4d412ce2dcd7e659f47238edc9b2fa02e5971f2625af730502033701834.pdf",
+          "actual_sha256": "eefff4d412ce2dcd7e659f47238edc9b2fa02e5971f2625af730502033701834",
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "ADS131M04.pdf",
+      "parts": [
+        "ADS131M04"
+      ],
+      "expected_sha256": "487bfd27103d0bacbe3c5136b7613045230ad38354e9f20a0f879c70dba90909",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/ads131m04.pdf",
+          "http_status": 200,
+          "actual_sha256": "cc5bfca62f8b1b0dbd956d786943616cd28414ccce6c15cc9e503e669cb89d71",
+          "bytes": 3605075,
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "INA226.pdf",
+      "parts": [
+        "INA226"
+      ],
+      "expected_sha256": "d3f22dfcf3a096b1f131302153a4c4ebdb39ba18f7a114b0554c8ae11c3abc3f",
+      "attempts": [
+        {
+          "local": "data\\eval\\unmatched\\INA226_c9b67f886d4a5241a5e070723f7b61867409eeb27eed768b9cdd9cb17e03ca2d.pdf",
+          "actual_sha256": "c9b67f886d4a5241a5e070723f7b61867409eeb27eed768b9cdd9cb17e03ca2d",
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "LD1117.pdf",
+      "parts": [
+        "LD1117"
+      ],
+      "expected_sha256": "4fd8415a20d932fdc1de5be99e1aa5d2af1546f05c0a785a047ff93420364348",
+      "attempts": [
+        {
+          "url": "https://www.st.com/resource/en/datasheet/ld1117.pdf",
+          "status": "timeout"
+        }
+      ],
+      "status": "unavailable"
+    },
+    {
+      "filename": "LM2596.pdf",
+      "parts": [
+        "LM2596"
+      ],
+      "expected_sha256": "c4cd25b7f4de7b1c98f117c47de28ae5e596a84fc54b1f6d24f9f5adde6fe8ae",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/lm2596.pdf",
+          "http_status": 200,
+          "actual_sha256": "2eec90879908cf711b84d4f0c5d534c3cd12c576d25254b7019247435af4ab0f",
+          "bytes": 5095029,
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "LM4040.pdf",
+      "parts": [
+        "LM4040"
+      ],
+      "expected_sha256": "e7e6a64dc4ccb54db367a1412228abe4fdd34b43945740cb9967468843db2da0",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/lm4040.pdf",
+          "http_status": 200,
+          "actual_sha256": "f43b6b6d3ecd51c8c90b70a7c4630c7e3140822b0073953ed2459df81b251c1c",
+          "bytes": 1882717,
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "LM75B.pdf",
+      "parts": [
+        "LM75B"
+      ],
+      "expected_sha256": "b0a93950c14a02d1849f7aa37d0a795be01bb44fb8f54af99925b06af39cdde3",
+      "attempts": [
+        {
+          "url": "https://www.nxp.com/docs/en/data-sheet/LM75B.pdf",
+          "http_status": 200,
+          "actual_sha256": "b0a93950c14a02d1849f7aa37d0a795be01bb44fb8f54af99925b06af39cdde3",
+          "bytes": 539694,
+          "status": "match"
+        }
+      ],
+      "status": "match"
+    },
+    {
+      "filename": "MCP3008.pdf",
+      "parts": [
+        "MCP3008"
+      ],
+      "expected_sha256": "26a503d76279cc10e40cfc36e80bb87fd33d0de80093d1bdcc4dc29435b10f72",
+      "attempts": [
+        {
+          "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP3004-MCP3008-Data-Sheet-DS20001295.pdf",
+          "http_status": 200,
+          "actual_sha256": "26a503d76279cc10e40cfc36e80bb87fd33d0de80093d1bdcc4dc29435b10f72",
+          "bytes": 1021574,
+          "status": "match"
+        }
+      ],
+      "status": "match"
+    },
+    {
+      "filename": "MCP3421.pdf",
+      "parts": [
+        "MCP3421"
+      ],
+      "expected_sha256": "5249b67ed71256bcd6588a665a4e854955d3f2b17e7e57d8beb0ae7436d668ff",
+      "attempts": [
+        {
+          "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/22003e.pdf",
+          "http_status": 200,
+          "actual_sha256": "5249b67ed71256bcd6588a665a4e854955d3f2b17e7e57d8beb0ae7436d668ff",
+          "bytes": 739843,
+          "status": "match"
+        }
+      ],
+      "status": "match"
+    },
+    {
+      "filename": "MCP4725.pdf",
+      "parts": [
+        "MCP4725"
+      ],
+      "expected_sha256": "dfb2e61548e5f4d8010d20e51e9a07c99a8d3f8b20f95112b55e4613298f2fe1",
+      "attempts": [
+        {
+          "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP4725-Data-Sheet-20002039E.pdf",
+          "http_status": 200,
+          "actual_sha256": "dfb2e61548e5f4d8010d20e51e9a07c99a8d3f8b20f95112b55e4613298f2fe1",
+          "bytes": 1804005,
+          "status": "match"
+        }
+      ],
+      "status": "match"
+    },
+    {
+      "filename": "MCP9700.pdf",
+      "parts": [
+        "MCP9700"
+      ],
+      "expected_sha256": "5b0e0efe173d5fdaf72c31e697591b0b1cacbd440ec6ba95d742fd587c7aff33",
+      "attempts": [
+        {
+          "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf",
+          "http_status": 200,
+          "actual_sha256": "5b0e0efe173d5fdaf72c31e697591b0b1cacbd440ec6ba95d742fd587c7aff33",
+          "bytes": 599186,
+          "status": "match"
+        }
+      ],
+      "status": "match"
+    },
+    {
+      "filename": "MF10.pdf",
+      "parts": [
+        "MF10"
+      ],
+      "expected_sha256": "0e837564aa0bc5e6b3f78bd95e3fa45b0bf7c8554989e4f76d9d86b3c876079d",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/mf10-n.pdf",
+          "http_status": 200,
+          "actual_sha256": "0e837564aa0bc5e6b3f78bd95e3fa45b0bf7c8554989e4f76d9d86b3c876079d",
+          "bytes": 1868018,
+          "status": "match"
+        }
+      ],
+      "status": "match"
+    },
+    {
+      "filename": "NCP1117.pdf",
+      "parts": [
+        "NCP1117"
+      ],
+      "expected_sha256": "53a9ed65395cba10a4f7e88e05dfa81bd63ba8e9efc4897f41079dc09ae48613",
+      "attempts": [
+        {
+          "url": "https://www.onsemi.com/pdf/datasheet/ncp1117-d.pdf",
+          "http_status": 200,
+          "actual_sha256": "f903e441cc999d825abd4586417ef04506dd5019fd57c5aa8bb5a4edc16b36b0",
+          "bytes": 1750668,
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "OPA188.pdf",
+      "parts": [
+        "OPA188"
+      ],
+      "expected_sha256": "44772d833141cc80cb95180202d2970038b7542e379b5cc852b4961c59233f20",
+      "attempts": [
+        {
+          "local": "data\\eval\\unmatched\\OPA188_e64408490807f759b6cc8bb212954c70712a7a0263c5e688baa9bacfd62407df.pdf",
+          "actual_sha256": "e64408490807f759b6cc8bb212954c70712a7a0263c5e688baa9bacfd62407df",
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "OPA211.pdf",
+      "parts": [
+        "OPA211"
+      ],
+      "expected_sha256": "91579dba067c071742d056acdd2f5ea3c5baa7a5efa19a32ddfd6a6facc08bcf",
+      "attempts": [
+        {
+          "local": "data\\eval\\unmatched\\OPA211_2415597a36a2108b8c03c6170f5080957d0c2cdab99c691723ad8e3db12e991f.pdf",
+          "actual_sha256": "2415597a36a2108b8c03c6170f5080957d0c2cdab99c691723ad8e3db12e991f",
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "OPA2188.pdf",
+      "parts": [
+        "OPA2188"
+      ],
+      "expected_sha256": "4c18dc2598c4bef739f07a882eedb03e0b1cfb0f49a5761c2ce6eac257599d36",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/opa2188.pdf",
+          "http_status": 200,
+          "actual_sha256": "725088c5934f54c67ff4a1c2daa6b8de5dffbc1afa66a63b4011d3793870064c",
+          "bytes": 1097814,
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "OPA2591.pdf",
+      "parts": [
+        "OPA2591"
+      ],
+      "expected_sha256": "18a0d8ccab88006bad777d75dfa9df41b562cf772969c1001ef734d5d6f956c5",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/opa2591.pdf",
+          "http_status": 200,
+          "actual_sha256": "827309a37ff4847f27ac898aaee2dbc1287934481e784ec9364297b5b3822b81",
+          "bytes": 3016156,
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "OPA2993.pdf",
+      "parts": [
+        "OPA2993"
+      ],
+      "expected_sha256": "e9dcbc00080cba1e45a0e2c8485fe0cbced11f4811e335b897862410861834db",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/opa2993.pdf",
+          "http_status": 200,
+          "actual_sha256": "e9dcbc00080cba1e45a0e2c8485fe0cbced11f4811e335b897862410861834db",
+          "bytes": 1556402,
+          "status": "match"
+        }
+      ],
+      "status": "match"
+    },
+    {
+      "filename": "OPA620.pdf",
+      "parts": [
+        "OPA620"
+      ],
+      "expected_sha256": "cee51afeffc843d408eb7af93621885efb10ff1b4a1d27ecfe91b2162d1e8345",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/opa620.pdf",
+          "http_status": 200,
+          "actual_sha256": "25d64dad417c4cdeb72eb5493ccfc109bda0f346245d8b59da9b5fcdd3b8421a",
+          "bytes": 1907166,
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "REF5025.pdf",
+      "parts": [
+        "REF5025"
+      ],
+      "expected_sha256": "eed5016c9f658e49079830e21bdea65bd9a49f9c3bd5a98ac61752cc29000d57",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/ref50.pdf",
+          "http_status": 200,
+          "actual_sha256": "33b13191ad54693f9a4f52e226b354757ad092d2cec6b2c31dba2fecb710d0c6",
+          "bytes": 5082555,
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "SN65HVD230.pdf",
+      "parts": [
+        "SN65HVD230"
+      ],
+      "expected_sha256": "e98fc0c59168c035d7958111924dae7e21e46ab45bdfd6400aef048299d6d716",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/sn65hvd230.pdf",
+          "http_status": 200,
+          "actual_sha256": "e98fc0c59168c035d7958111924dae7e21e46ab45bdfd6400aef048299d6d716",
+          "bytes": 812033,
+          "status": "match"
+        }
+      ],
+      "status": "match"
+    },
+    {
+      "filename": "SN75176B.pdf",
+      "parts": [
+        "SN75176B"
+      ],
+      "expected_sha256": "e0e000fcd9746f67e0cad13466176f826163b53f03852c1e7963c2b4f347288b",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/sn75176b.pdf",
+          "http_status": 200,
+          "actual_sha256": "6967824b2ea2d9761faae26e37526c82a55a0389fd28e891406f76693238ae70",
+          "bytes": 1157884,
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "STM32C031C4.pdf",
+      "parts": [
+        "STM32C031C4"
+      ],
+      "expected_sha256": "896fc5601df00779e650ff8e9d52ac8f800ce14d404d19f976383ae205053f47",
+      "attempts": [
+        {
+          "url": "https://www.st.com/resource/en/datasheet/stm32c031c4.pdf",
+          "status": "timeout"
+        }
+      ],
+      "status": "unavailable"
+    },
+    {
+      "filename": "STM32C5A3ZG.pdf",
+      "parts": [
+        "STM32C5A3ZG"
+      ],
+      "expected_sha256": "a523bb3c04adf0e97ae44cdc29ecc75bd557e95b28376399a5ffb11d0e89dc08",
+      "attempts": [
+        {
+          "url": "https://www.st.com/resource/en/datasheet/stm32c5a3zg.pdf",
+          "status": "timeout"
+        }
+      ],
+      "status": "unavailable"
+    },
+    {
+      "filename": "STM32F072RB.pdf",
+      "parts": [
+        "STM32F072RB"
+      ],
+      "expected_sha256": "b01391f094699aeb6a4d952b587c06d13a81a0d300161342efa0534f6695ef08",
+      "attempts": [
+        {
+          "url": "https://www.st.com/resource/en/datasheet/stm32f072rb.pdf",
+          "status": "timeout"
+        }
+      ],
+      "status": "unavailable"
+    },
+    {
+      "filename": "STM32F103RB.pdf",
+      "parts": [
+        "STM32F103RB"
+      ],
+      "expected_sha256": "1e54ce18e6c34c5b4a78986f26e245e143748c721009fc9af5953795c30686bc",
+      "attempts": [
+        {
+          "url": "https://www.st.com/resource/en/datasheet/stm32f103rb.pdf",
+          "status": "timeout"
+        }
+      ],
+      "status": "unavailable"
+    },
+    {
+      "filename": "STM32G071C8.pdf",
+      "parts": [
+        "STM32G071C8"
+      ],
+      "expected_sha256": "a83ee1377da65257fe5e7d09a2da8027ecff1bce0594a2176b18cddca47fa7cc",
+      "attempts": [
+        {
+          "url": "https://www.st.com/resource/en/datasheet/stm32g071c8.pdf",
+          "status": "timeout"
+        }
+      ],
+      "status": "unavailable"
+    },
+    {
+      "filename": "STM32G474RE.pdf",
+      "parts": [
+        "STM32G474RE"
+      ],
+      "expected_sha256": "b018e20dbe34b63a43e49365518b186ef0e0e8e899deeabc1c9f53a3a10c1add",
+      "attempts": [
+        {
+          "url": "https://www.st.com/resource/en/datasheet/stm32g474re.pdf",
+          "status": "timeout"
+        }
+      ],
+      "status": "unavailable"
+    },
+    {
+      "filename": "STM32H743ZI.pdf",
+      "parts": [
+        "STM32H743ZI"
+      ],
+      "expected_sha256": "f6e620179006c8c4d497b477ba065edc89c6dd9ac24d9debb3362910651f42ee",
+      "attempts": [
+        {
+          "url": "https://www.st.com/resource/en/datasheet/stm32h743zi.pdf",
+          "status": "timeout"
+        }
+      ],
+      "status": "unavailable"
+    },
+    {
+      "filename": "STM32L476RG.pdf",
+      "parts": [
+        "STM32L476RG"
+      ],
+      "expected_sha256": "a45a857e3aa75ac166dd532c76d76d5dd8377b9c5bf6f15c03c9cf85aeec0f65",
+      "attempts": [
+        {
+          "url": "https://www.st.com/resource/en/datasheet/stm32l476rg.pdf",
+          "status": "timeout"
+        }
+      ],
+      "status": "unavailable"
+    },
+    {
+      "filename": "THVD1450.pdf",
+      "parts": [
+        "THVD1450"
+      ],
+      "expected_sha256": "c8d27b57c6cd2018d5a38d65fcc030f7cd47f2221232e26b05dc8671095693ca",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/thvd1450.pdf",
+          "http_status": 200,
+          "actual_sha256": "58ecc4cc07dd1d3206c2e67ffa734ad21a6d3a9e3c8c307068e6385bd79ee897",
+          "bytes": 2012884,
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "TJA1051.pdf",
+      "parts": [
+        "TJA1051"
+      ],
+      "expected_sha256": "6637cd500dda3c1c951ce29bed7fe909f11f9a3bef64b096dbb486827add9f11",
+      "attempts": [
+        {
+          "url": "https://www.nxp.com/docs/en/data-sheet/TJA1051.pdf",
+          "http_status": 200,
+          "actual_sha256": "6637cd500dda3c1c951ce29bed7fe909f11f9a3bef64b096dbb486827add9f11",
+          "bytes": 209490,
+          "status": "match"
+        }
+      ],
+      "status": "match"
+    },
+    {
+      "filename": "TLV886.pdf",
+      "parts": [
+        "TLV886"
+      ],
+      "expected_sha256": "45292def526e6083ec0a246e8119638b216e3c783aa12f73ac606abdb38d5f65",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/tlv886.pdf",
+          "http_status": 200,
+          "actual_sha256": "7f5b9685f506613bfff72f7756b93b94a725fff41b1f4e68a185bcf524f4c994",
+          "bytes": 3043528,
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "TLV9061.pdf",
+      "parts": [
+        "TLV9061",
+        "TLV9062"
+      ],
+      "expected_sha256": "081a6fcbc3e8d46adb9a26455357891aae4bae71bf791cff97dba278bdaf7e31",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/tlv9061.pdf",
+          "http_status": 200,
+          "actual_sha256": "a77c6dbdedda34c1ecf26e4a5abd38a98903054b49fff9cd24d005897eabedaa",
+          "bytes": 8130782,
+          "status": "hash_mismatch"
+        },
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/tlv9062.pdf",
+          "http_status": 200,
+          "actual_sha256": "a77c6dbdedda34c1ecf26e4a5abd38a98903054b49fff9cd24d005897eabedaa",
+          "bytes": 8130782,
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "TMP117.pdf",
+      "parts": [
+        "TMP117"
+      ],
+      "expected_sha256": "f8da020789b98d7b8e1e5adca40287da45655296c64461037f8fc1dee1945d6b",
+      "attempts": [
+        {
+          "local": "data\\eval\\unmatched\\TMP117_78212e91e478035a91165397a8de8a90bfc776759dc445243c033537f0c4b789.pdf",
+          "actual_sha256": "78212e91e478035a91165397a8de8a90bfc776759dc445243c033537f0c4b789",
+          "status": "hash_mismatch"
+        }
+      ],
+      "status": "hash_mismatch"
+    },
+    {
+      "filename": "TPS63020.pdf",
+      "parts": [
+        "TPS63020"
+      ],
+      "expected_sha256": "d117773bb7370fd79377bc70ce987eec3469ea5979547a09df52fca5f95b2e69",
+      "attempts": [
+        {
+          "url": "https://www.ti.com/lit/ds/symlink/tps63020.pdf",
+          "http_status": 200,
+          "actual_sha256": "d117773bb7370fd79377bc70ce987eec3469ea5979547a09df52fca5f95b2e69",
+          "bytes": 1855244,
+          "status": "match"
+        }
+      ],
+      "status": "match"
+    }
+  ]
+}

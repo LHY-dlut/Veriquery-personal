@@ -1,0 +1,129 @@
+{
+  "rubric": "Correct requested fact, unit and condition, without misleading additional claims. A valid abstention on an unanswerable case is correct.",
+  "answers": [
+    {
+      "case": "ads-typ",
+      "baseline": "fail",
+      "focused": "pass",
+      "assessment": "0.5µA power-down → 150µA operating, selected row has TA=25°C"
+    },
+    {
+      "case": "ads-max",
+      "baseline": "pass",
+      "focused": "pass",
+      "assessment": "Both report 200µA, final focused response uses selected MAX field and original row"
+    },
+    {
+      "case": "ads-shutdown",
+      "baseline": "pass",
+      "focused": "pass",
+      "assessment": "Both report 0.5µA in the specified condition"
+    },
+    {
+      "case": "ads-rates",
+      "baseline": "partial",
+      "focused": "pass",
+      "assessment": "Baseline lists options but invents 8 SPS as TYP; focused profile uses ordinary context here and lists all eight"
+    },
+    {
+      "case": "ads-rate-typ",
+      "baseline": "pass",
+      "focused": "pass",
+      "assessment": "Baseline refuses; focused response cites option list and explicitly says no TYP"
+    },
+    {
+      "case": "ads-inputs",
+      "baseline": "fail",
+      "focused": "fail",
+      "assessment": "Both read 2 differential as 2 single-ended; source states 4 SE"
+    },
+    {
+      "case": "tmp-resolution",
+      "baseline": "partial",
+      "focused": "partial",
+      "assessment": "Both use a malformed rendering of the resolution and unrelated accuracy/condition evidence"
+    },
+    {
+      "case": "tmp-shutdown",
+      "baseline": "pass",
+      "focused": "fail",
+      "assessment": "0.15µA was correct; rerun gave 0.5µA with the same unverified-column context; focused row selection did not activate"
+    },
+    {
+      "case": "tmp-hex",
+      "baseline": "fail",
+      "focused": "pass",
+      "assessment": "FF0 → F380; exact -25°C row carries BINARY/HEX labels despite RRF dedup"
+    },
+    {
+      "case": "ina-shunt-lsb",
+      "baseline": "pass",
+      "focused": "pass",
+      "assessment": "2.5µV in both; focused cites shunt LSB row directly"
+    },
+    {
+      "case": "ina-bus-lsb",
+      "baseline": "fail",
+      "focused": "pass",
+      "assessment": "0–36V input range → 1.25mV per LSB, only matching channel row sent"
+    },
+    {
+      "case": "ina-current",
+      "baseline": "pass",
+      "focused": "pass",
+      "assessment": "330µA supply current in both"
+    },
+    {
+      "case": "ina-wrong-doc",
+      "baseline": "fail",
+      "focused": "pass",
+      "assessment": "Baseline attributes INA226 values to TMP117; focused run explicitly declines with the identical context; not an effect of focused ranking"
+    },
+    {
+      "case": "opa-slew",
+      "baseline": "pass",
+      "focused": "pass",
+      "assessment": "0.8 V/µs at G=+1 in both; generic context used"
+    }
+  ],
+  "summary": {
+    "baseline": {
+      "all": {
+        "fail": 5,
+        "pass": 7,
+        "partial": 2
+      },
+      "matched_seven": {
+        "fail": 3,
+        "pass": 4
+      },
+      "mrr_at_8": 0.7778,
+      "median_context_chars_on_seven": 3556,
+      "http_p50_seconds": 2.938,
+      "http_p95_seconds": 5.311
+    },
+    "focused": {
+      "all": {
+        "pass": 11,
+        "fail": 2,
+        "partial": 1
+      },
+      "matched_seven": {
+        "pass": 7
+      },
+      "mrr_at_8": 0.9444,
+      "median_context_chars_on_seven": 97,
+      "http_p50_seconds": 1.748,
+      "http_p95_seconds": 5.146
+    }
+  },
+  "advanced": {
+    "page": 6,
+    "mode": "advanced",
+    "three_answered_correctly": [
+      "ads-typ",
+      "ads-max",
+      "ads-shutdown"
+    ]
+  }
+}

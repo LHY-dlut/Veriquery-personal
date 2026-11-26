@@ -1,0 +1,23 @@
+{
+  "ui/app.py": {
+    "exceptions": []
+  },
+  "ui/pages/1_Documents.py": {
+    "exceptions": []
+  },
+  "ui/pages/2_Chat.py": {
+    "exceptions": []
+  },
+  "ui/pages/3_Pinout.py": {
+    "exceptions": []
+  },
+  "ui/pages/4_ERC.py": {
+    "exceptions": []
+  },
+  "ui/pages/5_Compare.py": {
+    "exceptions": []
+  },
+  "ui/pages/6_Circuit.py": {
+    "exceptions": []
+  }
+}

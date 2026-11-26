@@ -56,6 +56,56 @@ _PROXY_BYPASS: Dict[str, Optional[str]] = {"http": None, "https": None}
 
 #: 需要保留正文的块类型（页眉/页脚/页码不进正文，避免检索噪声）
 _TEXT_BLOCK_TYPES = ("text", "paragraph_title", "list", "list_item")
+_FORMULA_CAPTION = re.compile(r"^(?:(?:equation|eq\.?|公式|式)\s*[(（]?\d|[(（]\s*\d+[.)）])", re.I)
+_DEFINITION_LEAD = re.compile(r"^(?:where\b|with\s*:|其中|式中)", re.I)
+_DEFINITION_ENTRY = re.compile(
+    r"^(?:\$?[\\\w{}^_+.-]+\$?\s*(?:[:：]|\b(?:is|denotes|represents)\b|表示)"
+    r"|.{1,70}?(?:=|&\s*=).{0,8}\\(?:text|mathrm)\s*\{[A-Za-z]{2})", re.I,
+)
+
+
+def _formula_spans(blocks, offsets):
+    """Locate intact formula passages, including nearby context and variable descriptions."""
+    def block_type(index):
+        return blocks[index]["type"].lower() if index in offsets else ""
+
+    spans = []
+    for index in offsets:
+        if block_type(index) != "equation":
+            continue
+        if spans and offsets[index][0] < spans[-1][1]:
+            continue  # Equation-typed definitions already belong to their formula.
+        start = index
+        if (block_type(start - 1) == "paragraph_title"
+                and _FORMULA_CAPTION.match(blocks[start - 1]["content"].strip())):
+            start -= 1
+        if block_type(start - 1) in ("text", "list", "list_item"):
+            start -= 1
+        if block_type(start - 1) == "paragraph_title":
+            start -= 1
+
+        end = index
+        if block_type(end + 1) in _TEXT_BLOCK_TYPES:
+            following = blocks[end + 1]["content"].strip()
+            if _DEFINITION_LEAD.match(following):
+                end += 1
+                # A standalone "Where:" introduces the next block. Subsequent
+                # blocks need a definition shape to avoid swallowing ordinary prose.
+                if (following.rstrip(":：").strip().casefold() in {"where", "with", "其中", "式中"}
+                        and block_type(end + 1) in ("equation", "list", "list_item", "text")):
+                    end += 1
+                while (block_type(end + 1) in ("list", "list_item")
+                       or (block_type(end + 1) in ("text", "equation")
+                           and _DEFINITION_ENTRY.match(blocks[end + 1]["content"].strip()))):
+                    end += 1
+            elif _FORMULA_CAPTION.match(following):
+                if block_type(end + 1) != "paragraph_title":
+                    end += 1
+        lo, hi = offsets[start][0], offsets[end][1]
+        if spans and lo < spans[-1][1]:
+            lo = offsets[index][0]
+        spans.append((lo, hi))
+    return spans
 
 
 class MinerUError(Exception):
@@ -226,6 +276,7 @@ class MinerUPage:
     blocks: List[Dict[str, Any]] = field(default_factory=list)
     images: List[MinerUImageBlock] = field(default_factory=list)
     tables: List[MinerUTableBlock] = field(default_factory=list)
+    formula_spans: List[Tuple[int, int]] = field(default_factory=list)
 
     def to_dict(self, include_binary: bool = False) -> Dict[str, Any]:
         """转为普通字典。
@@ -243,6 +294,7 @@ class MinerUPage:
             "height": self.height,
             "text": self.text,
             "full_text": self.full_text,
+            "formula_spans": self.formula_spans,
             "blocks": self.blocks,
             "images": [img.to_dict(include_binary=include_binary) for img in self.images],
             "tables": [tbl.to_dict() for tbl in self.tables],
@@ -320,22 +372,59 @@ class _TableHTMLParser(HTMLParser):
         self.rows: List[List[str]] = []
         self._row: Optional[List[str]] = None
         self._cell: Optional[List[str]] = None
+        self._carried: Dict[int, Tuple[str, int]] = {}
+        self._occupied: Dict[int, str] = {}
+        self._column = 0
+        self._colspan = self._rowspan = 1
+
+    @staticmethod
+    def _span(attrs, name):
+        try:
+            return max(1, min(int(attrs.get(name) or 1), 1000))
+        except (ValueError, TypeError):
+            return 1
 
     def handle_starttag(self, tag: str, attrs: Any) -> None:
-        tag = tag.lower()
-        if tag == "tr":
+        if tag == "table":
+            self._carried.clear()
+        elif tag == "tr":
             self._row = []
+            self._column = 0
+            self._occupied = {column: text for column, (text, _) in self._carried.items()}
+            self._carried = {
+                column: (text, remaining - 1)
+                for column, (text, remaining) in self._carried.items()
+                if remaining > 1
+            }
         elif tag in ("td", "th") and self._row is not None:
             self._cell = []
+            attrs = dict(attrs)
+            self._colspan = self._span(attrs, "colspan")
+            self._rowspan = self._span(attrs, "rowspan")
+        elif tag == "br" and self._cell is not None:
+            self._cell.append(" / ")
 
     def handle_endtag(self, tag: str) -> None:
-        tag = tag.lower()
         if tag in ("td", "th") and self._row is not None and self._cell is not None:
-            self._row.append(_collapse_ws("".join(self._cell)))
+            while self._column in self._occupied:
+                self._column += 1
+            text = _collapse_ws("".join(self._cell))
+            # Preserve horizontal merges explicitly. A merged value has no
+            # independent MIN/TYP/MAX labels for the covered columns.
+            if text and self._colspan > 1:
+                text = f"{text} [跨{self._colspan}列合并]"
+            for offset in range(self._colspan):
+                column = self._column + offset
+                value = text if offset == 0 else ""
+                self._occupied[column] = value
+                if self._rowspan > 1:
+                    self._carried[column] = (value, self._rowspan - 1)
+            self._column += self._colspan
             self._cell = None
         elif tag == "tr" and self._row is not None:
-            if any(c for c in self._row):
-                self.rows.append(self._row)
+            row = [self._occupied.get(i, "") for i in range(max(self._occupied, default=-1) + 1)]
+            if any(row):
+                self.rows.append(row)
             self._row = None
 
     def handle_data(self, data: str) -> None:
@@ -390,7 +479,7 @@ def _parse_markdown_table(markdown: str) -> List[List[str]]:
         stripped = line.strip()
         if not stripped.startswith("|"):
             continue
-        cells = [c.strip() for c in stripped.strip("|").split("|")]
+        cells = [c.strip() for c in stripped[1:].removesuffix("|").split("|")]
         # 跳过 |---|---| 分隔行
         if all(re.fullmatch(r":?-{2,}:?", c or "") for c in cells if c != ""):
             continue
@@ -1083,6 +1172,8 @@ class MinerUClient:
 
             body_parts: List[str] = []
             full_parts: List[str] = []
+            offsets = {}
+            body_length = 0
 
             for block_idx, block in enumerate(blocks):
                 if not isinstance(block, dict):
@@ -1094,8 +1185,11 @@ class MinerUClient:
 
                 if isinstance(content, str) and content.strip():
                     full_parts.append(content.strip())
-                    if btype in _TEXT_BLOCK_TYPES:
+                    if btype in _TEXT_BLOCK_TYPES or btype == "equation":
+                        start = body_length + (2 if body_parts else 0)
                         body_parts.append(content.strip())
+                        body_length = start + len(body_parts[-1])
+                        offsets[block_idx] = (start, body_length)
 
                 if btype == "image":
                     image_block = self._decode_image_block(
@@ -1132,6 +1226,7 @@ class MinerUClient:
                     all_tables.append(table_block)
 
             page.text = "\n\n".join(body_parts)
+            page.formula_spans = _formula_spans(blocks, offsets)
             page.full_text = "\n\n".join(full_parts)
             pages.append(page)
 
@@ -1331,6 +1426,7 @@ def parse_document_for_pages(
                 "page_number": page_number,
                 "text": page.get("text", ""),
                 "full_text": page.get("full_text", ""),
+                "formula_spans": page.get("formula_spans", []),
                 "tables": tables_out,
                 "images": images_out,
                 "metadata": {

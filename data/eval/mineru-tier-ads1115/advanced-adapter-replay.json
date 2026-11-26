@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ads-tier-replay_p3_tbl2",
+    "content": "$I_{VDD}$ | Supply current | Power-down | $T_A=25°C$ |  | 0.5 | 2 | μA",
+    "metadata": {
+      "document_id": "ads-tier-replay",
+      "filename": "diag-ads1115.pdf",
+      "page": 3,
+      "source": "table_text",
+      "section": "表 1 第 3 行",
+      "table_header": "PARAMETER [跨2列合并] |  | TEST CONDITIONS [跨2列合并] |  | MIN | TYP | MAX | UNIT"
+    }
+  },
+  {
+    "id": "ads-tier-replay_p3_tbl4",
+    "content": "$I_{VDD}$ | Supply current | Operating | $T_A=25°C$ |  | 150 | 200 | μA",
+    "metadata": {
+      "document_id": "ads-tier-replay",
+      "filename": "diag-ads1115.pdf",
+      "page": 3,
+      "source": "table_text",
+      "section": "表 1 第 5 行",
+      "table_header": "PARAMETER [跨2列合并] |  | TEST CONDITIONS [跨2列合并] |  | MIN | TYP | MAX | UNIT"
+    }
+  }
+]

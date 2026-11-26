@@ -1,0 +1,97 @@
+{
+  "file": "data\\eval\\unmatched\\ADS1115_eefff4d412ce2dcd7e659f47238edc9b2fa02e5971f2625af730502033701834.pdf",
+  "sha256": "eefff4d412ce2dcd7e659f47238edc9b2fa02e5971f2625af730502033701834",
+  "page_count": 57,
+  "pages": [
+    {
+      "page": 5,
+      "clip": [
+        52,
+        116,
+        558,
+        333
+      ],
+      "text": "and minimum specifications apply from TA   40 C to  125 C; typical specifications are at TA  25 C\n          PARAMETER                 TEST CONDITIONS             MIN       TYP     MAX    UNIT\n\nANALOG INPUT\n                               FSR = ±6.144V(1)                                    10\n          Common-mode input       FSR = ±4.096V(1), FSR = ±2.048V                        6\n                                                                          MΩ\n            impedance              FSR = ±1.024V                                       3\n\n                               FSR = ±0.512V, FSR = ±0.256V                        100\n                               FSR = ±6.144V(1)                                    22\n                               FSR = ±4.096V(1)                                    15\n                                                                          MΩ\n                Differential input impedance  FSR = ±2.048V                                             4.9\n\n                               FSR = ±1.024V                                             2.4\n\n                               FSR = ±0.512V, ±0.256V                             710              kΩ\n\nSYSTEM PERFORMANCE\n\n              Resolution (no missing codes)                                        16                                    Bits\n\nDR         Data rate                                                                     8, 16, 32, 64, 128, 250, 475, 860      SPS\n\n            Data rate variation                All data rates                       –10%                10%\n\n        O  t    t      i                                           S  N   i  P   f                       ti",
+      "coordinates": [
+        {
+          "word": "MIN",
+          "x0": 389.06,
+          "x1": 403.72,
+          "y0": 122.02
+        },
+        {
+          "word": "TYP",
+          "x0": 438.03,
+          "x1": 453.59,
+          "y0": 122.02
+        },
+        {
+          "word": "MAX",
+          "x0": 485.5,
+          "x1": 503.27,
+          "y0": 122.02
+        },
+        {
+          "word": "475,",
+          "x0": 457.34,
+          "x1": 472.91,
+          "y0": 303.37
+        },
+        {
+          "word": "860",
+          "x0": 475.13,
+          "x1": 488.48,
+          "y0": 303.37
+        },
+        {
+          "word": "SPS",
+          "x0": 522.37,
+          "x1": 538.38,
+          "y0": 303.37
+        }
+      ]
+    },
+    {
+      "page": 6,
+      "clip": [
+        52,
+        110,
+        558,
+        194
+      ],
+      "text": "          PARAMETER                 TEST CONDITIONS             MIN       TYP     MAX    UNIT\n\nPOWER-SUPPLY\n                                                     TA = 25°C                              0.5          2\n                                    Power-down\n                                                                                                   5\nIVDD         Supply current                                                                         µA\n                                                     TA = 25°C                        150        200\n                                          Operating\n                                                                                                 300",
+      "coordinates": [
+        {
+          "word": "MIN",
+          "x0": 389.06,
+          "x1": 403.72,
+          "y0": 113.01
+        },
+        {
+          "word": "TYP",
+          "x0": 438.03,
+          "x1": 453.59,
+          "y0": 113.01
+        },
+        {
+          "word": "MAX",
+          "x0": 485.5,
+          "x1": 503.27,
+          "y0": 113.01
+        },
+        {
+          "word": "150",
+          "x0": 440.23,
+          "x1": 453.58,
+          "y0": 168.81
+        },
+        {
+          "word": "200",
+          "x0": 489.92,
+          "x1": 503.26,
+          "y0": 168.81
+        }
+      ]
+    }
+  ]
+}

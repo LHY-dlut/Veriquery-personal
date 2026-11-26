@@ -263,7 +263,7 @@ class ServiceContainer:
         if self._veriquery_graph is None:
             try:
                 from agents.workflow_graph import create_workflow
-                self._veriquery_graph = create_workflow(self.settings)
+                self._veriquery_graph = create_workflow(self.settings, retriever=self.retriever)
             except Exception as e:
                 logger.error(f"Agent workflow init failed: {e}")
                 raise RuntimeError(f"Agent工作流图必须正常工作: {e}")

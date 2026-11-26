@@ -1,0 +1,12 @@
+[
+  {
+    "id": "tmp-hex",
+    "context": "[1] TMP117 温度寄存器表\nTemperature (°C) | BINARY | HEX\n-25 | 1111 0011 1000 0000 | F380",
+    "answer": "根据资料 [1]，在 -25°C 工况下，TMP117 温度寄存器的二进制值为 1111 0011 1000 0000。\n[1]"
+  },
+  {
+    "id": "ads-inputs",
+    "context": "[1] ADS1115 数据手册\nthat allows two differential or four single-ended input measurements",
+    "answer": "ADS1115 支持两个单端（single-ended）输入通道。"
+  }
+]

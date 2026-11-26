@@ -47,7 +47,7 @@ Data Flow:
     User query "NE5532 supply voltage range?"
         │
         ├──→ _vector_retrieve(query, top_k*2)  → List[RetrievedChunk] (source="vector")
-        ├──→ _bm25_retrieve(query, top_k*2)    → List[RetrievedChunk] (source="bm25")
+        ├──→ retrieve_lexical(query, top_k*2)  → List[RetrievedChunk] (source="bm25")
         └──→ _table_retrieve(query, top_k)     → List[RetrievedChunk] (source="table")
         │
         ▼ (asyncio.gather, return_exceptions=True)
@@ -55,8 +55,7 @@ Data Flow:
         _rrf_fusion(all_results, k=60)
         │   ├── Group by source → Sort within groups → Compute RRF scores
         │   ├── Multi-source hits accumulate RRF scores (consensus bonus)
-        │   ├── Deduplicate by document_id + text[:100] hash
-        │   ├── Per-document limit (5 normal, 8 cross-source)
+        │   ├── Deduplicate identical text on a document page
         │   └── Normalize final scores to [0, 1]
         │
         ▼
@@ -64,7 +63,7 @@ Data Flow:
         │   └── Call Xinference Rerank API (bge-reranker) to refine ranks
         │
         ▼
-        List[RetrievedChunk] (source="hybrid", with rerank_scores)
+        Apply per-document limit → List[RetrievedChunk] (source="hybrid")
 
 Configuration (from core/config.py Settings):
     VECTOR_WEIGHT: Vector retrieval weight, default 0.5
@@ -81,10 +80,12 @@ Configuration (from core/config.py Settings):
 import logging
 from typing import List, Dict, Any, Optional
 import asyncio
+import math
 import requests
 
 from core.config import get_settings
 from core.schema import RetrievedChunk
+from retrieval.table_evidence import TableEvidenceQuery, matching_store_rows, table_row_key
 
 logger = logging.getLogger(__name__)
 
@@ -165,7 +166,10 @@ class HybridRetriever:
                 self.vector_store = None
 
             try:
-                self.bm25_store = bm25_store or BM25Store(settings=self.settings)
+                self.bm25_store = bm25_store or BM25Store(
+                    settings=self.settings,
+                    persist_path=str(self.settings.DATA_DIR / "bm25_index.pkl"),
+                )
             except Exception as e:
                 logger.error(f"BM25 store init failed: {e}", exc_info=True)
                 self.bm25_store = None
@@ -198,47 +202,48 @@ class HybridRetriever:
         filters: Optional[Dict[str, Any]] = None,
         document_ids: Optional[List[str]] = None,
         max_per_doc: Optional[int] = None,
+        lexical_query: Optional[str] = None,
+        focus_tables: bool = False,
     ) -> List[RetrievedChunk]:
         """Unified hybrid retrieval interface.
 
         Three-phase architecture:
             Phase 1: Concurrently execute all available retrieval paths.
-            Phase 2: RRF fusion + dedup + per-doc limiting + normalization.
-            Phase 3: API Rerank refinement on top candidates.
+            Phase 2: RRF fusion and deduplication.
+            Phase 3: API Rerank, then per-document and output limits.
 
         Args:
             query: Query text, e.g. "NE5532的供电电压范围是多少？".
             top_k: Maximum number of results to return. Defaults to 50.
-                   Vector and BM25 paths retrieve top_k*2 candidates
-                   (RRF fusion reduces count via dedup/limiting).
+                   Vector and BM25 have a wider candidate window.
             include_tables: Whether to include table retrieval. Defaults to True.
             filters: Optional filter dict (document_id, source, etc.).
             document_ids: Optional document ID list to scope retrieval.
                           Merged into filters internally.
+            max_per_doc: Override the final number of results per document.
+            lexical_query: Optional augmented query for BM25 and table search.
+            focus_tables: Reserve complete rows matching explicit query conditions.
 
         Returns:
             Fused and reranked List[RetrievedChunk] with source="hybrid".
             Returns empty list if all paths return no results.
         """
         try:
+            if top_k <= 0:
+                return []
             merged_filters = dict(filters or {})
             if document_ids:
                 merged_filters["document_ids"] = [str(d) for d in document_ids]
-            # 按页过滤(封面/首页标题类问题需要定位到第 1 页)
-            page_filter = filters.get("page") if filters else None
-            if page_filter is not None:
-                merged_filters["page"] = page_filter
-
+            candidate_count = max(top_k * 2, 60)
+            keyword_query = lexical_query or query
             tasks = []
 
             if self.vector_store:
-                tasks.append(self._vector_retrieve(query, top_k * 2, merged_filters))
-
+                tasks.append(self._vector_retrieve(query, candidate_count, merged_filters))
             if self.bm25_store:
-                tasks.append(self._bm25_retrieve(query, top_k * 2, merged_filters))
-
+                tasks.append(self.retrieve_lexical(keyword_query, candidate_count, merged_filters))
             if include_tables and self.table_store:
-                tasks.append(self._table_retrieve(query, top_k, merged_filters))
+                tasks.append(self._table_retrieve(keyword_query, top_k, merged_filters))
 
             if not tasks:
                 raise RuntimeError("No retrieval components available")
@@ -254,6 +259,8 @@ class HybridRetriever:
                     logger.warning(error_msg)
                     retrieval_errors.append(error_msg)
                 elif result:
+                    logger.debug("Retrieved %s candidates: %s", result[0].source,
+                                 [chunk.chunk_id for chunk in result])
                     all_results.extend(result)
 
             if retrieval_errors:
@@ -263,26 +270,52 @@ class HybridRetriever:
                 logger.info("All retrieval paths returned no results")
                 return []
 
-            # 1. RRF 融合 (粗排)
-            fused_results = self._rrf_fusion(all_results, max_per_doc_override=max_per_doc)
-            
-            # 2. 取前 N 个候选者（例如 top_k * 2，至少 20 个）用于 Rerank
-            rerank_candidate_count = max(top_k * 2, 20)
-            candidates_for_rerank = fused_results[:rerank_candidate_count]
-            
-            # 3. Rerank 精排 (Xinference API 调用)
-            if candidates_for_rerank:
-                final_results = self._rerank_candidates(query, candidates_for_rerank, top_n=top_k)
+            focus = TableEvidenceQuery.from_text(keyword_query) if focus_tables else None
+            if focus:
+                recovered = matching_store_rows(all_results, focus)
+                original_headers = {table_row_key(chunk): chunk.metadata["table_header"] for chunk in recovered}
+                all_results.extend(recovered)
+            fused = self._rrf_fusion(all_results)
+            if focus:
+                for chunk in fused:
+                    metadata = chunk.metadata
+                    original_header = original_headers.get(table_row_key(chunk))
+                    if metadata.get("source") != "table_text" and original_header is None:
+                        continue
+                    header = original_header or metadata.get("table_header") or ""
+                    if focus.matches(chunk.text, header):
+                        metadata["table_header"] = header
+                        metadata["focused_row"] = True
+                        metadata["focused_text"] = focus.model_text(chunk.text, header)
+                        if literal := focus.literal_value(chunk.text, header):
+                            metadata["citation_literal"] = literal
+                matched = [chunk for chunk in fused if chunk.metadata.get("focused_row")]
+                others = [chunk for chunk in fused if not chunk.metadata.get("focused_row")]
+                candidates = (matched[:12] + others)[:candidate_count]
             else:
-                final_results = []
-
-            return final_results
+                candidates = fused[:candidate_count]
+            logger.debug("RRF candidate order: %s", [chunk.chunk_id for chunk in candidates])
+            ranked = await asyncio.to_thread(
+                self._rerank_candidates, query, candidates, len(candidates)
+            )
+            logger.debug("Rerank candidate order: %s", [chunk.chunk_id for chunk in ranked])
+            if focus:
+                for rank, chunk in enumerate(ranked, 1):
+                    chunk.metadata["rerank_position"] = rank
+                ranked.sort(key=lambda chunk: not chunk.metadata.get("focused_row", False))
+            return self._limit_results(ranked, top_k, max_per_doc)
 
         except Exception as e:
             logger.error(f"Hybrid retrieval failed: {e}")
             raise
 
-    def _rerank_candidates(self, query: str, candidates: List[RetrievedChunk], top_n: int) -> List[RetrievedChunk]:
+    async def rank_passages(self, query: str, candidates: List[RetrievedChunk]) -> List[RetrievedChunk]:
+        """Rank an existing candidate set for a secondary question without changing scores."""
+        return await asyncio.to_thread(self._rerank_candidates, query, candidates, len(candidates), False)
+
+    def _rerank_candidates(
+        self, query: str, candidates: List[RetrievedChunk], top_n: int, update_scores: bool = True,
+    ) -> List[RetrievedChunk]:
         """Refines candidate chunks using Xinference Rerank API.
 
         Sends the query and candidate texts to the Rerank model (e.g., bge-reranker-v2-m3)
@@ -309,7 +342,13 @@ class HybridRetriever:
         payload = {
             "model": self.rerank_model,
             "query": query,
-            "documents": [c.text for c in candidates]
+            "documents": [
+                "\n".join(filter(None, (c.metadata.get("table_header"),
+                                        c.metadata.get("focused_text") or c.text)))
+                if c.metadata.get("focused_row") else c.text
+                for c in candidates
+            ],
+            "top_n": top_n,
         }
 
         try:
@@ -318,31 +357,25 @@ class HybridRetriever:
             response.raise_for_status()
             rerank_data = response.json()
 
-            # Xinference Rerank 返回结构通常包含 results 列表
-            results = rerank_data.get("results", [])
-            
-            reranked_chunks = []
-            for item in results:
-                idx = item["index"]
-                score = item["relevance_score"]
-                
-                chunk = candidates[idx]
-                # 用 Rerank 分数覆盖原分数，并将原 RRF 分数存入 metadata 备查
-                chunk.metadata["rrf_score"] = chunk.metadata.get("rrf_score", 0)
-                chunk.score = float(score)
-                chunk.metadata["rerank_score"] = float(score)
-                reranked_chunks.append(chunk)
-                
-            # 按照 Rerank 后的新分数降序排列
-            reranked_chunks.sort(key=lambda x: x.score, reverse=True)
-            
-            if not reranked_chunks:
-                # HTTP 200 但 results 为空/无效:不能把已有 RRF 候选丢掉
-                logger.warning("Rerank 返回空结果，降级保留 RRF 候选")
+            scores = {
+                item["index"]: float(item["relevance_score"])
+                for item in rerank_data.get("results", [])
+                if type(item.get("index")) is int and 0 <= item["index"] < len(candidates)
+            }
+            scores = {index: score for index, score in scores.items() if math.isfinite(score)}
+            if not scores:
+                logger.warning("Rerank returned no valid scores, keeping RRF order")
                 return candidates[:top_n]
 
-            logger.info(f"Rerank finished. Returning top {top_n} results.")
-            return reranked_chunks[:top_n]
+            ranked = []
+            for index in sorted(scores, key=scores.get, reverse=True):
+                chunk = candidates[index]
+                if update_scores:
+                    chunk.score = scores[index]
+                    chunk.metadata["rerank_score"] = chunk.score
+                ranked.append(chunk)
+            ranked.extend(chunk for index, chunk in enumerate(candidates) if index not in scores)
+            return ranked[:top_n]
 
         except Exception as e:
             logger.error(f"Rerank API 调用失败，降级使用 RRF 结果: {e}")
@@ -383,15 +416,20 @@ class HybridRetriever:
                 if supported_filters:
                     filter_dict = supported_filters
 
+            exclude_source = (filters or {}).get("exclude_source")
+            # Chroma 0.4.24's $ne omits legacy records with no source field.
+            # Fetch a wider window before dropping old synthetic records.
             vector_results = await self.vector_store.search(
                 query_embedding=query_embedding,
-                top_k=top_k,
+                top_k=top_k * 2 if exclude_source else top_k,
                 filter_dict=filter_dict,
             )
 
             results = []
             for result in vector_results:
                 metadata = result.metadata or {}
+                if exclude_source and metadata.get("source") == exclude_source:
+                    continue
 
                 results.append(
                     RetrievedChunk(
@@ -408,13 +446,13 @@ class HybridRetriever:
                     )
                 )
 
-            return results
+            return results[:top_k]
 
         except Exception as e:
             logger.error(f"Vector retrieval failed: {e}")
             raise
 
-    async def _bm25_retrieve(
+    async def retrieve_lexical(
         self, query: str, top_k: int, filters: Optional[Dict[str, Any]] = None
     ) -> List[RetrievedChunk]:
         """Sparse retrieval via BM25 keyword matching.
@@ -433,34 +471,28 @@ class HybridRetriever:
         Returns:
             List[RetrievedChunk] with source="bm25". Scores normalized to [0, 1].
         """
+        if not self.bm25_store:
+            return []
         try:
-            filter_func = None
-            document_ids = None
-            source_filter = None
+            filters = filters or {}
+            selected_ids = filters.get("document_ids")
+            if not selected_ids and filters.get("document_id"):
+                selected_ids = [filters["document_id"]]
+            selected_ids = set(map(str, selected_ids or []))
+            page = filters.get("page")
+            source = filters.get("source")
+            exclude_source = filters.get("exclude_source")
 
-            if filters:
-                if "document_ids" in filters and isinstance(filters["document_ids"], list):
-                    document_ids = set(str(d) for d in filters["document_ids"])
-                elif "document_id" in filters:
-                    document_ids = {str(filters["document_id"])}
+            def matches(doc_id, metadata):
+                metadata = metadata or {}
+                return (
+                    (not selected_ids or str(metadata.get("document_id") or doc_id) in selected_ids)
+                    and (page is None or str(metadata.get("page")) == str(page))
+                    and (source is None or metadata.get("source") == source)
+                    and (exclude_source is None or metadata.get("source") != exclude_source)
+                )
 
-                if "source" in filters:
-                    source_filter = filters["source"]
-
-                if document_ids or source_filter:
-                    def _filter_fn(doc_id, metadata):
-                        if document_ids:
-                            meta_doc_id = metadata.get("document_id", "") if metadata else ""
-                            if meta_doc_id not in document_ids and doc_id not in document_ids:
-                                return False
-                        if source_filter:
-                            if metadata.get("source", "") != source_filter:
-                                return False
-                        return True
-
-                    filter_func = _filter_fn
-
-            bm25_results = self.bm25_store.search(query, top_k=top_k, filter_func=filter_func)
+            bm25_results = self.bm25_store.search(query, top_k=top_k, filter_func=matches)
 
             if not bm25_results:
                 return []
@@ -551,7 +583,7 @@ class HybridRetriever:
         """Format 2D table data into pipe-delimited text for LLM consumption.
 
         Each row is joined with " | " separators (simplified Markdown table).
-        Empty cells and empty rows are filtered out to reduce noise.
+        Empty cells retain their positions, including MIN/TYP/MAX columns.
 
         Args:
             table_data: 2D string list, e.g. [["Param", "Min", "Typ", "Max"],
@@ -563,17 +595,12 @@ class HybridRetriever:
         if not table_data:
             return ""
 
-        text_lines = []
-        for row in table_data:
-            if row:
-                line = " | ".join(str(cell) for cell in row if cell)
-                if line.strip():
-                    text_lines.append(line)
+        return "\n".join(
+            " | ".join("" if cell is None else str(cell) for cell in row)
+            for row in table_data if any(cell is not None and str(cell).strip() for cell in row)
+        )
 
-        return "\n".join(text_lines)
-
-    def _rrf_fusion(self, results: List[RetrievedChunk], k: int = 60,
-                     max_per_doc_override: Optional[int] = None) -> List[RetrievedChunk]:
+    def _rrf_fusion(self, results: List[RetrievedChunk], k: int = 60) -> List[RetrievedChunk]:
         """Reciprocal Rank Fusion of multi-source retrieval results.
 
         RRF formula (Cormack et al., SIGIR 2009):
@@ -587,9 +614,8 @@ class HybridRetriever:
             2. Sort within each group by score (descending) to determine ranks.
             3. Compute RRF scores: weight × 1/(k + rank + 1).
             4. Accumulate scores for chunks hit by multiple sources.
-            5. Deduplicate by document_id + text[:100] content hash.
-            6. Per-document result limiting (5 normal, 8 cross-source).
-            7. Normalize final scores to [0, 1].
+            5. Deduplicate identical text on the same document page.
+            6. Normalize final scores to [0, 1].
 
         Multi-source consensus: when the same chunk is returned by multiple
         retrieval paths, its RRF scores accumulate, giving it a significant
@@ -643,7 +669,7 @@ class HybridRetriever:
 
         for result_id, score_data in rrf_scores.items():
             result = score_data["result"]
-            content_hash = f"{result.document_id}_{result.text[:100]}"
+            content_hash = (result.document_id, result.page, " ".join(result.text.split()))
 
             if content_hash not in seen_hashes:
                 seen_hashes[content_hash] = result_id
@@ -660,46 +686,37 @@ class HybridRetriever:
 
         sorted_results = sorted(rrf_scores.values(), key=lambda x: x["score"], reverse=True)
 
-        base_max_per_doc = getattr(self.settings, "MAX_RESULTS_PER_DOC", 5)
-        base_max_per_doc_cross = getattr(self.settings, "MAX_RESULTS_PER_DOC_CROSS_SOURCE", 8)
-        if max_per_doc_override is not None:
-            # 参数类查询需要看同一文档里的多行参数表,默认每文档 5 条会提前截断
-            max_per_doc = int(max_per_doc_override)
-            max_per_doc_cross = max(max_per_doc, base_max_per_doc_cross)
-        else:
-            max_per_doc = base_max_per_doc
-            max_per_doc_cross = base_max_per_doc_cross
-
-        final_items = []
-        seen_documents = {}
-
+        peak = sorted_results[0]["score"]
         for item in sorted_results:
             result = item["result"]
-            doc_id = result.document_id
-            sources = item["sources"]
-            doc_count = seen_documents.get(doc_id, 0)
-
-            if doc_count < max_per_doc:
-                final_items.append(item)
-                seen_documents[doc_id] = doc_count + 1
-            elif len(sources) > 1 and doc_count < max_per_doc_cross:
-                final_items.append(item)
-                seen_documents[doc_id] = doc_count + 1
-
-        for item in final_items:
-            result = item["result"]
             result.source = "hybrid"
-            result.metadata["fusion_sources"] = item["sources"]
-            result.metadata["rrf_score"] = item["score"]
-            result.metadata["fusion_rank"] = item["rank"]
+            result.metadata = {
+                **result.metadata,
+                "fusion_sources": item["sources"],
+                "rrf_score": item["score"],
+                "fusion_rank": item["rank"],
+            }
+            if peak > 0:
+                result.score = item["score"] / peak
 
-        if final_items:
-            max_score = final_items[0]["score"]
-            if max_score > 0:
-                for item in final_items:
-                    item["result"].score = item["score"] / max_score
+        return [item["result"] for item in sorted_results]
 
-        return [item["result"] for item in final_items]
+    def _limit_results(self, ranked, top_k, max_per_doc):
+        """Apply the presentation cap after all candidates have been reranked."""
+        base_cap = max_per_doc if max_per_doc is not None else getattr(self.settings, "MAX_RESULTS_PER_DOC", 5)
+        cross_cap = max(base_cap, getattr(self.settings, "MAX_RESULTS_PER_DOC_CROSS_SOURCE", 8))
+        by_document = {}
+        final = []
+        for result in ranked:
+            count = by_document.get(result.document_id, 0)
+            from_multiple_sources = len(result.metadata["fusion_sources"]) > 1
+            cap = cross_cap if from_multiple_sources else base_cap
+            if count < cap:
+                final.append(result)
+                by_document[result.document_id] = count + 1
+                if len(final) >= top_k:
+                    break
+        return final
 
     def _get_query_embedding(self, query: str):
         """Generate query embedding vector via EmbeddingManager.

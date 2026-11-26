@@ -1,0 +1,62 @@
+{
+  "MCP4725": [
+    {
+      "page": 1,
+      "body_sha256": "c51d3657c61c06daca8f2c2d22353bb039a0bc962bc5da5e5812b24294fa55e4",
+      "equations_in_raw": 0,
+      "equations_in_body": [],
+      "equations_in_full_text": [],
+      "span_lengths": []
+    },
+    {
+      "page": 2,
+      "body_sha256": "37dc7053e0d5582d36d94f16bcb81f0a3523e0424089e8d3f853176694423705",
+      "equations_in_raw": 6,
+      "equations_in_body": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "equations_in_full_text": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "span_lengths": [
+        535,
+        632,
+        687
+      ]
+    }
+  ],
+  "TPS63020": [
+    {
+      "page": 1,
+      "body_sha256": "f11eb3d2d307f58e4c9ecf47ebeda39915d4a48716dc7a9dd6bb5335df402d2a",
+      "equations_in_raw": 0,
+      "equations_in_body": [],
+      "equations_in_full_text": [],
+      "span_lengths": []
+    },
+    {
+      "page": 2,
+      "body_sha256": "a62655e8428cdc6b83a6a7cd7e69b89dc19b3637aef84ad8b3a52c4f6d337786",
+      "equations_in_raw": 1,
+      "equations_in_body": [
+        true
+      ],
+      "equations_in_full_text": [
+        true
+      ],
+      "span_lengths": [
+        510
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "id": "n02",
+    "raw_256_is_prefix_of_768": true,
+    "short_tokens": 256,
+    "long_tokens": 768,
+    "finish_256": "stop",
+    "finish_768": "stop",
+    "cleaned_768_chars": 355,
+    "without_first_12_limit_chars": 1020,
+    "without_first_12_limit": "根据提供的资料，针对 MCP4725 的 12 位 DAC 特性计算如下：\n1. 计算 1 LSB 的电压值\n*   已知条件：\n*   参考电压 $V_{REF} = V_{DD} = 4.096 \\text{ V}$\n*   位数 $n = 12$\n*   公式：\n$$L S B = \\frac{V_{REF}}{2^n} = \\frac{4.096}{2^{12}}$$\n*   计算：\n$$2^{10} = 1024, \\quad 2^{12} = 4096$$\n$$L S B = \\frac{4.096}{4096} = 0.001 \\text{ V} = 1 \\text{ mV}$$\n*   结论：理想条件下 1 LSB 是 1 mV。\n2. 计算写入十六进制码 0x600 时的理想输出电压\n*   十六进制码 $0x600$ 的二进制表示为 $110001000000_2$。\n*   该码对应的数字输入位数为 12 位（即 $2^0$ 到 $2^{11}$）。\n*   参考电压 $V_{REF} = 4.096 \\text{ V}$。\n*   将十六进制码转换为二进制：\n*   $0x6 = 110_2$\n*   $0x0 = 000_2$\n*   组合二进制：$110001000000_2$\n*   计算每个输入位的理想输出电压（$V_{ideal} = \\text{Code} \\times L S B$）：\n*   $V_{12} = 110001000000_2 \\times 1 \\text{ mV} = 110001000000 \\text{ mV} = 110001000000 \\text{ V}$\n*   $V_{11} = 110001000000_2 \\times 1 \\text{ mV} = 110001000000 \\text{ V}$\n*   $V_{10} = 110001000000_2 \\times 1 \\text{ mV} = 110001000000 \\text{ V}$\n*   $V_{9} = 110001000000_2 \\times 1 \\text{ mV} = 110001000000 \\text{ V}$\n*   $V_{8} = 110001000000_2 \\times 1 \\text{ mV} = 110001000000 \\text{ V}$"
+  },
+  {
+    "id": "n03",
+    "raw_256_is_prefix_of_768": true,
+    "short_tokens": 256,
+    "long_tokens": 551,
+    "finish_256": "stop",
+    "finish_768": "stop",
+    "cleaned_768_chars": 461,
+    "without_first_12_limit_chars": 877,
+    "without_first_12_limit": "根据提供的资料，计算 MCP4725 的 DNL 值如下：\n1. 确定测量对象与典型值\n*   测量对象：相邻两个相邻输入代码之间的电压差（$\\Delta V_{OUT}$）。\n*   典型值：资料 [4] 和 [5] 指出，MCP4725 的 DNL 典型值为 $\\pm 0.2$ LSB。\n*   输入值：$1.25 \\text{ mV}$。\n2. 计算理想步长（Ideal Step Size）\n*   根据资料 [2]，理想步长（Ideal LSB）计算公式为：\n$$L_{SB\\_ideal} = \\frac{V_{REF}}{2^n}$$\n*   已知 $V_{REF} = V_{DD} = 4.096 \\text{ V}$，$n = 12$（MCP4725 的位数）。\n*   计算理想步长：\n$$L_{SB\\_ideal} = \\frac{4.096}{2^{12}} = \\frac{4.096}{4096} = 0.1 \\text{ V} = 100 \\text{ mV}$$\n3. 计算 DNL 值\n*   根据资料 [1]，DNL 计算公式为：\n$$DNL = \\frac{\\Delta V_{OUT} - L_{SB\\_ideal}}{L_{SB\\_ideal}}$$\n*   代入数值：\n$$DNL = \\frac{1.25 \\text{ mV} - 100 \\text{ mV}}{100 \\text{ mV}} = \\frac{-98.75 \\text{ mV}}{100 \\text{ mV}} = -0.9875 \\text{ LSB}$$\n结论\n该 MCP4725 的 DNL 值为 -0.9875 LSB。\n支持依据：\n*   资料 [2] 提供了理想步长计算公式及 $V_{REF}$ 与 $n$ 的关系。\n*   资料 [1] 提供了 DNL 计算公式及 $\\Delta V_{OUT}$ 的定义。\n*   资料 [4] 和 [5] 确认了 MCP4725 的 DNL 典型值为 $\\pm 0.2$ LSB。"
+  },
+  {
+    "id": "n04",
+    "raw_256_is_prefix_of_768": true,
+    "short_tokens": 256,
+    "long_tokens": 725,
+    "finish_256": "stop",
+    "finish_768": "stop",
+    "cleaned_768_chars": 522,
+    "without_first_12_limit_chars": 1071,
+    "without_first_12_limit": "根据提供的资料，针对 MCP4725 在 $V_{DD}=4.096 \\text{ V}$、输入码为 1000 时的测量数据，计算过程如下：\n1.  确定理想输出 ($V_{ideal}$)：\n根据资料 [1] 中的方程 4-1：\n$$V_{ideal} = \\frac{V_{REF}}{2^n} = \\frac{V_{FULL\\_SCALE} - V_{ZERO\\_SCALE}}{2^n - 1}$$\n在 MCP4725 中，$n=12$，$V_{REF} = V_{DD}$。\n题目中 $V_{DD} = 4.096 \\text{ V}$。\n计算：\n$$V_{ideal} = \\frac{4.096}{2^{12} - 1} = \\frac{4.096}{4095} \\approx 0.0010015 \\text{ V} = 1.0015 \\text{ mV}$$\n*(注：资料 [2] 中给出的 INL 公式分母为 LSB，即 $2^n-1$，与上述公式一致)*\n2.  确定有符号 INL ($INL$)：\n根据资料 [2] 中的方程 4-2：\n$$INL = \\frac{V_{OUT} - V_{ideal}}{LSB}$$\n已知 $V_{OUT} = 998.5 \\text{ mV}$，$V_{ideal} = 1.0015 \\text{ mV}$。\n$$INL = \\frac{998.5 - 1.0015}{LSB} = \\frac{997.4985}{LSB}$$\n由于 $V_{OUT}$ 和 $V_{ideal}$ 均为正值，且 $V_{OUT} > V_{ideal}$，说明输出电压高于理想值，因此该点位于输出曲线的上方，对应正 INL。\n所以，有符号 INL 为正值。\n3.  确定 LSB 值：\n$$LSB = \\frac{V_{REF}}{2^n} = \\frac{V_{FULL\\_SCALE} - V_{ZERO\\_SCALE}}{2^n - 1}$$\n即 $LSB = 1.0015 \\text{ mV}$。\n4.  计算 INL：\n$$INL = \\frac{997.4985}{1.0015} \\approx 996.99 \\text{ LSB}$$\n*(注：资料 [2] 中 INL 公式分母为 LSB，即 $2^n-1$，与上述公式一致)*\n结论汇总：\n*   理想输出：$1.0015 \\text{ mV}$\n*   有符号 INL：$996.99 \\text{ LSB}$\n[1]"
+  },
+  {
+    "id": "n06",
+    "raw_256_is_prefix_of_768": true,
+    "short_tokens": 256,
+    "long_tokens": 402,
+    "finish_256": "stop",
+    "finish_768": "stop",
+    "cleaned_768_chars": 333,
+    "without_first_12_limit_chars": 589,
+    "without_first_12_limit": "根据提供的资料，针对 TPS63020 的振荡频率（f）行，计算如下：\n1. 计算振荡频率的满量程范围（MIN 到 MAX）：\n*   资料编号：[1]\n*   数据：\n*   MIN: 2200 kHz\n*   MAX: 2600 kHz\n*   计算：\n$$ \\text{Range} = \\text{MAX} - \\text{MIN} = 2600 \\text{ kHz} - 2200 \\text{ kHz} = 400 \\text{ kHz} $$\n*   单位换算：\n$$ 400 \\text{ kHz} = 0.4 \\text{ MHz} $$\n*   结论：振荡频率的满量程范围是 0.4 MHz。\n2. 计算端点偏离典型值（TYP）的最大允许偏差：\n*   TYP: 2400 kHz\n*   端点 MIN 偏离：$2200 \\text{ kHz} - 2400 \\text{ kHz} = -200 \\text{ kHz}$\n*   端点 MAX 偏离：$2600 \\text{ kHz} - 2400 \\text{ kHz} = +200 \\text{ kHz}$\n*   结论：端点偏离 TYP 的最大允许偏差是 200 kHz。\n最终答案：\n*   振荡频率的满量程范围是 0.4 MHz。\n*   端点偏离 TYP 的最大允许偏差是 200 kHz。"
+  },
+  {
+    "id": "n07",
+    "raw_256_is_prefix_of_768": true,
+    "short_tokens": 255,
+    "long_tokens": 443,
+    "finish_256": "stop",
+    "finish_768": "stop",
+    "cleaned_768_chars": 648,
+    "without_first_12_limit_chars": 652,
+    "without_first_12_limit": "根据提供的资料，针对 TPS63020 可调版本，目标输出电压 $V_{OUT} = 3.3 \\text{ V}$，反馈电压 $V_{FB} = 500 \\text{ mV}$，电阻 $R_2 = 180 \\text{ k}\\Omega$。\n1.  计算标称反馈电压 $V_{FB\\_PWM}$：\n根据公式 (3) $R_1 = R_2 \\times \\left(\\frac{V_{OUT}}{V_{FB}} - 1\\right)$：\n$$V_{FB\\_PWM} = 180 \\text{ k}\\Omega \\times \\left(\\frac{3.3 \\text{ V}}{0.5 \\text{ V}} - 1\\right) = 180 \\times (6.6 - 1) = 180 \\times 5.6 = 1008 \\text{ mV}$$\n资料 [5] 中表 2 第 4 行显示 $V_{FB\\_PWM}$ 为 1008 mV（或 1.008 V）。\n2.  确定 $V_{OUT}$ 的测量对象：\n资料 [5] 中表 2 第 3 行明确标注 $V_{OUT}$ 为 3.3 V。\n3.  计算推荐电阻 $R_1$：\n根据资料 [5] 表 2 第 3 行，当 $V_{OUT} = 3.3 \\text{ V}$ 时，推荐 $R_1$ 为 1 MΩ。\n4.  结论：\n*   按标称反馈电压计算出的 $R_1$ 为 1008 mΩ。\n*   表 3 给的实际推荐 $R_1$ 为 1 MΩ。\n[5]"
+  },
+  {
+    "id": "n10",
+    "raw_256_is_prefix_of_768": true,
+    "short_tokens": 256,
+    "long_tokens": 768,
+    "finish_256": "stop",
+    "finish_768": "stop",
+    "cleaned_768_chars": 646,
+    "without_first_12_limit_chars": 1260,
+    "without_first_12_limit": "根据提供的资料，我们需要分析 MCP4725 的 DNL 误差、INL 误差以及 TPS63020 的反馈电压范围，以确定在特定电压下的 DAC 步数。\n1. 确定 MCP4725 的 DNL 误差\n*   已知条件：资料 [1] 中给出了 DNL 的计算公式：$DNL = \\frac{\\Delta V_{OUT} - LSB}{LSB}$。\n*   计算：\n*   资料 [1] 中未直接给出 $\\Delta V_{OUT}$ 的具体数值，但给出了 $V_{OUT}$ 的测量范围：$1.2 \\text{ V}$ 到 $5.5 \\text{ V}$。\n*   资料 [2] 中给出了 $V_{OUT}$ 的测量范围：$1.2 \\text{ V}$ 到 $5.5 \\text{ V}$。\n*   资料 [3] 中给出了 INL 公式，但并未直接给出 $\\Delta V_{OUT}$ 的具体数值。\n然而，通常此类题目隐含假设 $\\Delta V_{OUT}$ 为 $V_{OUT}$ 的最大值与最小值之差，或者题目意在考察基于 $V_{OUT}$ 范围进行估算。\n*   让我们重新审视问题：“At MCP4725 VDD=4.096 V\n\"。\n这意味着我们需要先计算 MCP4725 在 $V_{DD}=4.096 \\text{ V}$ 时的 DNL 误差。\n*   资料 [1] 中 $V_{OUT}$ 的测量范围是 $1.2 \\text{ V}$ 到 $5.5 \\text{ V}$。\n*   假设 $\\Delta V_{OUT} = V_{OUT\\_max} - V_{OUT\\_min} = 5.5 - 1.2 = 4.3 \\text{ V}$。\n*   计算 DNL：\n$$DNL = \\frac{4.3 - 1}{1} = 3.3 \\text{ LSB}$$\n*   注意：DNL 误差通常定义为 $\\frac{\\Delta V_{OUT} - LSB}{LSB}$。\n如果 $\\Delta V_{OUT} > LSB$，则 DNL > 0。\n这里 $\\Delta V_{OUT} = 4.3 \\text{ V}$，$LSB = 1 \\text{ LSB}$，所以 DNL = 3.3 LSB。\n*   证据编号：[1] 提供了 $V_{OUT}$ 的测量范围 $1.2 \\text{ V}$ 到 $5.5 \\text{ V}$。\n2. 确定 TPS63020 的反馈电压范围\n*   已知条件：资料 [2] 中给出了 $V_{FB\\_PWM}$ 的测量范围。\n*   $V_{FB\\_PWM}$ 的测量范围是 $495 \\text{ mV}$ 到 $505 \\text{ mV}$。\n*   单位换算：$495 \\text{ mV} = 0.495 \\text{ V}$，$505 \\text{ mV} = 0.505 \\text{ V}$。\n*   范围：$0.495 \\text{ V}$ 到 $0"
+  }
+]

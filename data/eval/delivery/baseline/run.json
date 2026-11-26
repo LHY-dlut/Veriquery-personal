@@ -1,0 +1,147 @@
+{
+  "label": "baseline",
+  "corpus": {
+    "ADS1115": {
+      "path": "/root/autodl-tmp/veriquery-diagnosis-20261126/diag-ads1115.pdf",
+      "sha256": "ca8b3fa49f87d33e08489a6d3e0fba5d71ccda17d36bec0cbd50187376cb6d19",
+      "original_pages": [
+        1,
+        5,
+        6
+      ]
+    },
+    "INA226": {
+      "path": "/root/autodl-tmp/veriquery-audit-20261126/diag-ina226.pdf",
+      "sha256": "610e5a26c6497a0512ccf00742d37f7c4baf08adba4d86293fe924dcdffd6dc2",
+      "original_pages": [
+        1,
+        5
+      ]
+    },
+    "OPA188": {
+      "path": "/root/autodl-tmp/veriquery-audit-20261126/diag-opa188.pdf",
+      "sha256": "975ae18b2b7b84d263cd1a85520bbeeeb50068ab2b5c002470175c7b3a124a6d",
+      "original_pages": [
+        1,
+        5,
+        6
+      ]
+    },
+    "TMP117": {
+      "path": "/root/autodl-tmp/veriquery-audit-20261126/diag-tmp117.pdf",
+      "sha256": "2a0a459cfadef2bcd48ccc6b29af48cd8ce07ce6ad6259ac7cb415f2024ce4ac",
+      "original_pages": [
+        1,
+        6,
+        13
+      ]
+    }
+  },
+  "questions_sha256": "cc1567d089e8f82ade0360307bf6a6d48f8715e0a3afc8a48ff6190359a5fead",
+  "documents": {
+    "ADS1115": {
+      "document_id": "52d43b57",
+      "filename": "diag-ads1115.pdf",
+      "status": "ready",
+      "page_count": 3,
+      "file_size": 1113533,
+      "upload_time": "2026-11-26T10:50:05.465275",
+      "error_message": "",
+      "warnings": [
+        "visual_pipeline_skipped"
+      ],
+      "chunk_count": 89,
+      "table_count": 5,
+      "circuit_count": 0,
+      "image_count": 4,
+      "processed_time": "2026-11-26T10:50:22.078680",
+      "progress": 100,
+      "stage": "completed",
+      "stage_detail": "正在嵌入第 15/15 批",
+      "parser": "mineru",
+      "parser_tier": "standard",
+      "verified_table_rows": 0,
+      "ingestion_seconds": 17.661,
+      "longest_status_request_seconds": 1.62,
+      "status_poll_timeouts": 0
+    },
+    "INA226": {
+      "document_id": "95fefd52",
+      "filename": "diag-ina226.pdf",
+      "status": "ready",
+      "page_count": 2,
+      "file_size": 491119,
+      "upload_time": "2026-11-26T10:50:23.115358",
+      "error_message": "",
+      "warnings": [
+        "visual_pipeline_skipped"
+      ],
+      "chunk_count": 55,
+      "table_count": 3,
+      "circuit_count": 0,
+      "image_count": 1,
+      "processed_time": "2026-11-26T10:50:28.563631",
+      "progress": 100,
+      "stage": "completed",
+      "stage_detail": "正在嵌入第 10/10 批",
+      "parser": "mineru",
+      "parser_tier": "standard",
+      "verified_table_rows": 0,
+      "ingestion_seconds": 5.637,
+      "longest_status_request_seconds": 0.207,
+      "status_poll_timeouts": 0
+    },
+    "OPA188": {
+      "document_id": "eb599b42",
+      "filename": "diag-opa188.pdf",
+      "status": "ready",
+      "page_count": 3,
+      "file_size": 78506,
+      "upload_time": "2026-11-26T10:50:28.750739",
+      "error_message": "",
+      "warnings": [
+        "visual_pipeline_skipped"
+      ],
+      "chunk_count": 117,
+      "table_count": 3,
+      "circuit_count": 0,
+      "image_count": 0,
+      "processed_time": "2026-11-26T10:53:27.434957",
+      "progress": 100,
+      "stage": "completed",
+      "stage_detail": "正在嵌入第 30/30 批",
+      "parser": "mineru",
+      "parser_tier": "standard",
+      "verified_table_rows": 0,
+      "ingestion_seconds": 179.439,
+      "longest_status_request_seconds": 0.13,
+      "status_poll_timeouts": 0
+    },
+    "TMP117": {
+      "document_id": "d538d1e4",
+      "filename": "diag-tmp117.pdf",
+      "status": "ready",
+      "page_count": 3,
+      "file_size": 532790,
+      "upload_time": "2026-11-26T10:53:28.189999",
+      "error_message": "",
+      "warnings": [
+        "visual_pipeline_skipped"
+      ],
+      "chunk_count": 73,
+      "table_count": 3,
+      "circuit_count": 0,
+      "image_count": 0,
+      "processed_time": "2026-11-26T10:53:44.812691",
+      "progress": 100,
+      "stage": "completed",
+      "stage_detail": "正在嵌入第 13/13 批",
+      "parser": "mineru",
+      "parser_tier": "standard",
+      "verified_table_rows": 0,
+      "ingestion_seconds": 17.213,
+      "longest_status_request_seconds": 0.089,
+      "status_poll_timeouts": 0
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "chunk_id": "6bfe5d92_p1_c2",
+    "page": 1,
+    "source": "pdf",
+    "text": "5 - \\mu A ,$ 1-Hz conversion cycle – 150-nA shutdown current • Supply range: – 1.7 V to 5.5 V from $- 5 5 \\; ^ { \\circ } \\mathbf { C }$ to $7 0 \\; ^ { \\circ } \\mathbf { C }$ – 1.8 V to 5.5 V from $- 5 5 \\; ^ { \\circ } \\mathbf { C }$ to $1 5 0 \\; ^ { \\circ } \\mathbf { C }$ • 16-bit resolution: $0 ."
+  },
+  {
+    "chunk_id": "6bfe5d92_p1_c5",
+    "page": 1,
+    "source": "pdf",
+    "text": "The TMP117 has in interface that is I<sup>2</sup>C- and SMBus™-compatible, programmable alert functionality, and the device can support up to four devices on a single bus. Integrated EEPROM is included for device programming with an additional 48-bits memory available for general use. The low power consumption of the TMP117 minimizes the impact of self-heating on measurement accuracy. The TMP117 operates from 1.7 V to 5.5 V and typically consumes 3.5 μA."
+  },
+  {
+    "chunk_id": "6bfe5d92_p1_c6",
+    "page": 1,
+    "source": "pdf",
+    "text": "The TMP117 operates from 1.7 V to 5.5 V and typically consumes 3.5 μA. For non-medical applications, the TMP117 can serve as a single chip digital alternative to a Platinum RTD. The TMP117 has an accuracy comparable to a Class AA RTD, while only using a fraction of the power of the power typically needed for a PT100 RTD. The TMP117 simplifies the design effort by removing many of the complexities of RTDs such as precision references, matched traces, complicated algorithms, and calibration."
+  },
+  {
+    "chunk_id": "6bfe5d92_p2_c8",
+    "page": 2,
+    "source": "pdf",
+    "text": "6.5 Electrical Characteristics Over free-air temperature range and $V+=1.7\\vee \\mathrm{t}\\circ 5.5\\mathrm{V}$ for $\\mathsf{T}_{\\mathsf{A}} = -55\\;^{\\circ}\\mathsf{C}$ to ${ \\bf \\nabla } 7 0 \\; ^ { \\circ } { \\bf C } ,$ or $V + = 1 . 8 V$ to 5.5 V for $\\mathsf{T}_{\\mathsf{A}} = -55\\;^{\\circ}\\mathsf{C}$ to $1 5 0 \\; ^ { \\circ } \\mathbf { C }$ <u>(unless otherwise noted)</u>; Typical specifications are at $\\mathsf{T}_{\\mathsf{A}} = 25\\ ^{\\circ}\\mathsf{C}$ and $V + = 3 ."
+  }
+]

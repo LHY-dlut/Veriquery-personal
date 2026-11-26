@@ -1,0 +1,359 @@
+{
+  "id": "n10",
+  "selected": [
+    "c06748dc",
+    "386a2473"
+  ],
+  "request": {
+    "body": {
+      "query": "At MCP4725 VDD=4.096 V, how many ideal DAC steps span the difference between TPS63020's minimum and maximum feedback voltage when PS/SYNC=VIN? State the feedback endpoints, DAC step size and resulting step count.",
+      "document_ids": [
+        "c06748dc",
+        "386a2473"
+      ]
+    },
+    "route": "http://127.0.0.1:8221/api/v1/chat/stream",
+    "http_status": 200,
+    "events": [
+      {
+        "type": "start",
+        "data": {
+          "query": "At MCP4725 VDD=4.096 V, how many ideal DAC steps span the difference between TPS63020's minimum and maximum feedback voltage when PS/SYNC=VIN? State the feedback endpoints, DAC step size and resulting step count.",
+          "session_id": "abba54a2-bf26-4d"
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "根据提供的资料，我们需要分析 M",
+          "index": 0,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "CP4725 的 DNL 误差、",
+          "index": 1,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "INL 误差以及 TPS6302",
+          "index": 2,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "0 的反馈电压范围，以确定在特定",
+          "index": 3,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "电压下的 DAC 步数。\n1.",
+          "index": 4,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": " 确定 MCP4725 的 DN",
+          "index": 5,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "L 误差\n*   已知条件：",
+          "index": 6,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "资料 [1] 中给出了 DNL ",
+          "index": 7,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "的计算公式：$DNL = \\fr",
+          "index": 8,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "ac{\\Delta V_{OUT",
+          "index": 9,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "} - LSB}{LSB}$。\n",
+          "index": 10,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "*   计算：\n*   资料 [",
+          "index": 11,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "1] 中未直接给出 $\\Delt",
+          "index": 12,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "a V_{OUT}$ 的具体数值，",
+          "index": 13,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "但给出了 $V_{OUT}$ 的",
+          "index": 14,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "测量范围：$1.2$ V 到 $",
+          "index": 15,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "5.5$ V。\n*   资料 [",
+          "index": 16,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "2] 中给出了 $V_{OUT}",
+          "index": 17,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "$ 的测量范围：$1.2$ V ",
+          "index": 18,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "到 $5.5$ V。\n*   假",
+          "index": 19,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "设 $\\Delta V_{OUT",
+          "index": 20,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "}$ 为 $V_{OUT}$ 的",
+          "index": 21,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "最大值与最小值之差（即 $5.",
+          "index": 22,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "5 - 1.2 = 4.3$ V",
+          "index": 23,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "），或者更严谨地，DNL 误差通",
+          "index": 24,
+          "total": 26,
+          "is_complete": false
+        }
+      },
+      {
+        "type": "chunk",
+        "data": {
+          "chunk": "常定义为实际输出",
+          "index": 25,
+          "total": 26,
+          "is_complete": true
+        }
+      },
+      {
+        "type": "complete",
+        "data": {
+          "response": "根据提供的资料，我们需要分析 MCP4725 的 DNL 误差、INL 误差以及 TPS63020 的反馈电压范围，以确定在特定电压下的 DAC 步数。\n1. 确定 MCP4725 的 DNL 误差\n*   已知条件：资料 [1] 中给出了 DNL 的计算公式：$DNL = \\frac{\\Delta V_{OUT} - LSB}{LSB}$。\n*   计算：\n*   资料 [1] 中未直接给出 $\\Delta V_{OUT}$ 的具体数值，但给出了 $V_{OUT}$ 的测量范围：$1.2$ V 到 $5.5$ V。\n*   资料 [2] 中给出了 $V_{OUT}$ 的测量范围：$1.2$ V 到 $5.5$ V。\n*   假设 $\\Delta V_{OUT}$ 为 $V_{OUT}$ 的最大值与最小值之差（即 $5.5 - 1.2 = 4.3$ V），或者更严谨地，DNL 误差通常定义为实际输出",
+          "citations": [
+            {
+              "file": "MCP4725.pdf",
+              "page": 2,
+              "text_snippet": "4.4 Differential Nonlinearity (DNL)\n\nDifferential nonlinearity error (Figure 4-2) is the measure of step size between codes in actual transfer function. The ideal step size between codes is 1 LSB. A DNL error of zero would imply that every code is exactly 1 LSB wide. If the DNL error is less than 1 LSB, the DAC guarantees monotonic output and no missing codes. The DNL error between any two adjacent codes is calculated as follows:\n\nEQUATION 4-3:\n\nD N L = \\frac {\\Delta V _ {O U T} - L S B}{L S B}…",
+              "section": ""
+            },
+            {
+              "file": "TPS63020.pdf",
+              "page": 1,
+              "text_snippet": "PARAMETER [跨3列合并] |  |  | TEST CONDITIONS | MIN | TYP | MAX | UNIT\nDC/DC STAGE [跨8列合并] |  |  |  |  |  |  | \n$V_{IN}$ | Input voltage [跨2列合并] |  |  | 1.8 |  | 5.5 | V\n$V_{IN}$ | Minimum input voltage for start-up [跨2列合并] |  | 0°C ≤ $T_A$ ≤ 85°C | 1.5 | 1.8 | 1.9 | V\n$V_{IN}$ | Minimum input voltage for start-up [跨2列合并] |  |  | 1.5 | 1.8 | 2.0 | V\n$V_{OUT}$ | TPS63020 output voltage [跨2列合并] |  |  | 1.2 |  | 5.5 | V\n$V_{OUT}$ | Duty cycle in step down conversion [跨2列合并] |  |  | 20% |  |  |…",
+              "section": "PARAMETER [跨3列合并] | TEST CONDITIONS | MIN | TYP | MAX | UNIT"
+            }
+          ],
+          "processing_time": 6.5462646484375,
+          "session_id": "abba54a2-bf26-4d",
+          "success": true
+        }
+      }
+    ]
+  },
+  "ui_history_entry": {
+    "role": "assistant",
+    "content": "根据提供的资料，我们需要分析 MCP4725 的 DNL 误差、INL 误差以及 TPS63020 的反馈电压范围，以确定在特定电压下的 DAC 步数。\n1. 确定 MCP4725 的 DNL 误差\n*   已知条件：资料 [1] 中给出了 DNL 的计算公式：$DNL = \\frac{\\Delta V_{OUT} - LSB}{LSB}$。\n*   计算：\n*   资料 [1] 中未直接给出 $\\Delta V_{OUT}$ 的具体数值，但给出了 $V_{OUT}$ 的测量范围：$1.2$ V 到 $5.5$ V。\n*   资料 [2] 中给出了 $V_{OUT}$ 的测量范围：$1.2$ V 到 $5.5$ V。\n*   假设 $\\Delta V_{OUT}$ 为 $V_{OUT}$ 的最大值与最小值之差（即 $5.5 - 1.2 = 4.3$ V），或者更严谨地，DNL 误差通常定义为实际输出",
+    "sources": [
+      "MCP4725.pdf",
+      "TPS63020.pdf"
+    ],
+    "citations": [
+      {
+        "file": "MCP4725.pdf",
+        "page": 2,
+        "text_snippet": "4.4 Differential Nonlinearity (DNL)\n\nDifferential nonlinearity error (Figure 4-2) is the measure of step size between codes in actual transfer function. The ideal step size between codes is 1 LSB. A DNL error of zero would imply that every code is exactly 1 LSB wide. If the DNL error is less than 1 LSB, the DAC guarantees monotonic output and no missing codes. The DNL error between any two adjacent codes is calculated as follows:\n\nEQUATION 4-3:\n\nD N L = \\frac {\\Delta V _ {O U T} - L S B}{L S B}…",
+        "section": ""
+      },
+      {
+        "file": "TPS63020.pdf",
+        "page": 1,
+        "text_snippet": "PARAMETER [跨3列合并] |  |  | TEST CONDITIONS | MIN | TYP | MAX | UNIT\nDC/DC STAGE [跨8列合并] |  |  |  |  |  |  | \n$V_{IN}$ | Input voltage [跨2列合并] |  |  | 1.8 |  | 5.5 | V\n$V_{IN}$ | Minimum input voltage for start-up [跨2列合并] |  | 0°C ≤ $T_A$ ≤ 85°C | 1.5 | 1.8 | 1.9 | V\n$V_{IN}$ | Minimum input voltage for start-up [跨2列合并] |  |  | 1.5 | 1.8 | 2.0 | V\n$V_{OUT}$ | TPS63020 output voltage [跨2列合并] |  |  | 1.2 |  | 5.5 | V\n$V_{OUT}$ | Duty cycle in step down conversion [跨2列合并] |  |  | 20% |  |  |…",
+        "section": "PARAMETER [跨3列合并] | TEST CONDITIONS | MIN | TYP | MAX | UNIT"
+      }
+    ],
+    "message_meta": {
+      "show_citations": true,
+      "badges": [
+        "引用 2",
+        "耗时 6.5s"
+      ]
+    },
+    "timestamp": "20:46:06",
+    "processing_time": 6.5462646484375
+  },
+  "rendered_html": "<div class=\"chat-message chat-message-assistant\">\n    <div class=\"chat-avatar\">🤖</div>\n    <div class=\"chat-content\">\n        <div class=\"chat-bubble chat-bubble-assistant\"><div class=\"chat-text\">根据提供的资料，我们需要分析 MCP4725 的 DNL 误差、INL 误差以及 TPS63020 的反馈电压范围，以确定在特定电压下的 DAC 步数。<br>1. 确定 MCP4725 的 DNL 误差<br>*   已知条件：资料 [1] 中给出了 DNL 的计算公式：$DNL = \\frac{\\Delta V_{OUT} - LSB}{LSB}$。<br>*   计算：<br>*   资料 [1] 中未直接给出 $\\Delta V_{OUT}$ 的具体数值，但给出了 $V_{OUT}$ 的测量范围：$1.2$ V 到 $5.5$ V。<br>*   资料 [2] 中给出了 $V_{OUT}$ 的测量范围：$1.2$ V 到 $5.5$ V。<br>*   假设 $\\Delta V_{OUT}$ 为 $V_{OUT}$ 的最大值与最小值之差（即 $5.5 - 1.2 = 4.3$ V），或者更严谨地，DNL 误差通常定义为实际输出</div></div>\n        <div class=\"chat-citations\"><div class=\"chat-citations-title\">📚 信息来源</div><div class=\"chat-citation-item\">📄 MCP4725.pdf · 第 2 页 <a href=\"http://127.0.0.1:8221/api/v1/documents/c06748dc/pages/2/image\" target=\"_blank\" rel=\"noopener\">📷 查看截图</a></div><div class=\"chat-citation-item\">📄 TPS63020.pdf · 第 1 页 <a href=\"http://127.0.0.1:8221/api/v1/documents/386a2473/pages/1/image\" target=\"_blank\" rel=\"noopener\">📷 查看截图</a></div></div>\n        <div class=\"chat-meta\"><span class=\"chat-meta-badge\">引用 2</span><span class=\"chat-meta-badge\">耗时 6.5s</span></div>\n        <div class=\"chat-timestamp\">20:46:06</div>\n    </div>\n</div>",
+  "rendered_text": "根据提供的资料，我们需要分析 MCP4725 的 DNL 误差、INL 误差以及 TPS63020 的反馈电压范围，以确定在特定电压下的 DAC 步数。\n1. 确定 MCP4725 的 DNL 误差\n*   已知条件：资料 [1] 中给出了 DNL 的计算公式：$DNL = \\frac{\\Delta V_{OUT} - LSB}{LSB}$。\n*   计算：\n*   资料 [1] 中未直接给出 $\\Delta V_{OUT}$ 的具体数值，但给出了 $V_{OUT}$ 的测量范围：$1.2$ V 到 $5.5$ V。\n*   资料 [2] 中给出了 $V_{OUT}$ 的测量范围：$1.2$ V 到 $5.5$ V。\n*   假设 $\\Delta V_{OUT}$ 为 $V_{OUT}$ 的最大值与最小值之差（即 $5.5 - 1.2 = 4.3$ V），或者更严谨地，DNL 误差通常定义为实际输出",
+  "schema": {
+    "properties": {
+      "query": {
+        "type": "string",
+        "maxLength": 2000,
+        "minLength": 1,
+        "title": "Query",
+        "description": "用户查询内容"
+      },
+      "document_ids": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array",
+        "title": "Document Ids",
+        "description": "选中的文档ID列表"
+      },
+      "session_id": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Session Id",
+        "description": "会话ID，不传则自动生成"
+      },
+      "trace": {
+        "type": "boolean",
+        "title": "Trace",
+        "default": false
+      }
+    },
+    "type": "object",
+    "required": [
+      "query"
+    ],
+    "title": "ChatRequest",
+    "description": "Request model for chat queries."
+  }
+}

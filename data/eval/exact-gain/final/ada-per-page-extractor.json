@@ -1,0 +1,17 @@
+{
+  "1": {
+    "excerpt": "Gain bandwidth product (G = 100): 18 MHz",
+    "reason": null,
+    "chunk_id": "93981b40_p1_tbl7"
+  },
+  "2": {
+    "excerpt": "Gain bandwidth product (G = 100): 16 MHz",
+    "reason": null,
+    "chunk_id": "93981b40_p2_tbl44"
+  },
+  "None": {
+    "excerpt": "",
+    "reason": "conflicting_gain_evidence",
+    "chunk_id": null
+  }
+}

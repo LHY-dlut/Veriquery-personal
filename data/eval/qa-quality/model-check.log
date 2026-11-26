@@ -1,0 +1,16 @@
+Launch model name: bge-m3 with kwargs: {}
+Launching model:   0%|           | 0.0%Launching model:  82%|████████▏  | 82.0%Launching model: 100%|██████████ | 100.0%Launching model: 100%|██████████ | 100.0%
+Model uid: bge-m3
+Launch model name: bge-reranker-v2-m3 with kwargs: {}
+Launching model:   0%|           | 0.0%Launching model:  82%|████████▏  | 82.0%Launching model: 100%|██████████ | 100.0%Launching model: 100%|██████████ | 100.0%
+Model uid: bge-reranker-v2-m3
+Launch model name: qwen3.5 with kwargs: {'context_length': 4096}
+Launching model:   0%|           | 0.0%Launching model:  82%|████████▏  | 82.0%Launching model: 100%|██████████ | 100.0%Launching model: 100%|██████████ | 100.0%
+Model uid: qwen3.5
+EMBEDDING_MODEL=bge-m3  POST /v1/embeddings
+RERANK_MODEL=bge-reranker-v2-m3  POST /v1/rerank
+XINFERENCE_LLM_MODEL=qwen3.5  POST /v1/chat/completions
+PASS /models: expected model UIDs are visible
+PASS bge-m3 /embeddings: two distinct 1024-dimensional vectors
+PASS bge-reranker-v2-m3 /rerank: relevant document ranked first
+PASS qwen3.5 /chat/completions: returned the expected voltage in final content

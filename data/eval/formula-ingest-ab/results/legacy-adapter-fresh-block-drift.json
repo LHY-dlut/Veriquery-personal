@@ -1,0 +1,20 @@
+{
+  "method": "Load the original ingestion source files from the verified before snapshot; adapt after-run structured JSON and chunk with the original code. Compare stored before and replayed (page, source, text) triples with multiplicity; no vector rebuild or model calls.",
+  "code_sha256": {
+    "api/routers/documents.py": "854c236d397276a60b624a20fc09df10f992d162bb64dc2112119a25ef090534",
+    "ingestion/document_processor.py": "465f3da9c706789ca8bd91adfa36fea210ad6c0cd7bd52e3e2637895f3bba7f7",
+    "ingestion/mineru_client.py": "9980c4c25eec54430bb8ae86a52e83217f7a4deb923d4f9e19697b6693170d22"
+  },
+  "parts": {
+    "MCP4725": {
+      "stored_before_chunks": 11,
+      "legacy_adapter_on_candidate_raw_chunks": 11,
+      "page_source_text_equal_as_multiset": true
+    },
+    "TPS63020": {
+      "stored_before_chunks": 53,
+      "legacy_adapter_on_candidate_raw_chunks": 53,
+      "page_source_text_equal_as_multiset": true
+    }
+  }
+}

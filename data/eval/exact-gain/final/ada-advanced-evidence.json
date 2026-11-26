@@ -1,0 +1,38 @@
+[
+  {
+    "chunk_id": "93981b40_p1_c1",
+    "text": ", $R_L$ = 2 kΩ, $A_V$ = -1 | | 48 | | V/μs Slew Rate | SR | $V_{OUT}$ = ±10 V, $R_L$ = 2 kΩ, $A_V$ = -5 | | 44 | | V/μs Gain Bandwidth Product | GBP | $A_V$ = 100 | | 18 | | MHz Unity-Gain Crossover | UGC | $A_V$ = 1 | | 12.4 | | MHz -3 dB Bandwidth | -3 dB | $A_V$ = 1 | | 16 | | MHz Phase Margin | ΦM | ADA4625-1 | | 88 | | Degrees Phase Margin | ΦM | ADA4625-2 | | 75 | | Degrees Channel Separation | CS | $V_{IN}$ = 15 V p-p, f = 1 kHz, $R_L$ = 2 kΩ, $A_V$ = 100 | | 108 | | dB Channel Separation",
+    "page": 1,
+    "source": "pdf"
+  },
+  {
+    "chunk_id": "93981b40_p1_tbl7",
+    "text": "Gain Bandwidth Product | GBP | $A_V$ = 100 |  | 18 |  | MHz",
+    "page": 1,
+    "source": "table_text"
+  },
+  {
+    "chunk_id": "93981b40_p1_tbl8",
+    "text": "Unity-Gain Crossover | UGC | $A_V$ = 1 |  | 12.4 |  | MHz",
+    "page": 1,
+    "source": "table_text"
+  },
+  {
+    "chunk_id": "93981b40_p2_c6",
+    "text": "SPECIFICATIONS 【表格】 Parameter | Symbol | Test Conditions/Comments | Min | Typ | Max | Unit DYNAMIC PERFORMANCE [跨7列合并] | | | | | | Slew Rate | SR | $V_{OUT}$ =0.5 V to 4.5 V, $R_L$ =2 kΩ, $A_V$ =-1 | 32 | | | V/μs Slew Rate | SR | $V_{OUT}$ =0.5 V to 4.5 V, $R_L$ =2 kΩ, $A_V$ =-5 | 27 | | | V/μs Gain Bandwidth Product | GBP | $A_V$ =100 | 16 | | | MHz Unity-Gain Crossover | UGC | $A_V$ =1 | 11.2 | | | MHz -3 dB Bandwidth | -3 dB | $A_V$ =1 | 16 | | | MHz Phase Margin | ΦM | ADA4625-1 | 86 | | | ",
+    "page": 2,
+    "source": "pdf"
+  },
+  {
+    "chunk_id": "93981b40_p2_tbl44",
+    "text": "Gain Bandwidth Product | GBP | $A_V$ =100 | 16 |  |  | MHz",
+    "page": 2,
+    "source": "table_text"
+  },
+  {
+    "chunk_id": "93981b40_p2_tbl45",
+    "text": "Unity-Gain Crossover | UGC | $A_V$ =1 | 11.2 |  |  | MHz",
+    "page": 2,
+    "source": "table_text"
+  }
+]

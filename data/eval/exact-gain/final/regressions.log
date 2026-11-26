@@ -1,0 +1,61 @@
+/root/autodl-tmp/Veriquery-personal/.venv/lib/python3.12/site-packages/fitz/__init__.py:17: FutureWarning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+  warnings.warn(
+test_advanced_latex_temperature_and_chinese_question_match_same_row (__main__.TestRagPipeline.test_advanced_latex_temperature_and_chinese_question_match_same_row) ... ok
+test_ambiguous_specs_keep_generation_and_missing_altitude_does_not_guess (__main__.TestRagPipeline.test_ambiguous_specs_keep_generation_and_missing_altitude_does_not_guess) ... Rerank returned no valid scores, keeping RRF order
+Rerank returned no valid scores, keeping RRF order
+ok
+test_answer_cleanup_preserves_device_names_and_math_decimals (__main__.TestRagPipeline.test_answer_cleanup_preserves_device_names_and_math_decimals) ... ok
+test_bad_sqlite_source_is_preserved_after_failed_recovery (__main__.TestRagPipeline.test_bad_sqlite_source_is_preserved_after_failed_recovery) ... Health check exception: /tmp/tmprwmc4rgb/unreadable.db, error: file is not a database
+Database may be corrupted: /tmp/tmprwmc4rgb/unreadable.db
+Attempting database repair: /tmp/tmprwmc4rgb/unreadable.db
+.dump recovery method failed: file is not a database
+SQLite source preserved after failed recovery: /tmp/tmprwmc4rgb/unreadable.db
+Database initialization failed: Table store requires maintenance: /tmp/tmprwmc4rgb/unreadable.db
+ok
+test_bare_literal_can_only_cite_exact_named_supply_range_column (__main__.TestRagPipeline.test_bare_literal_can_only_cite_exact_named_supply_range_column) ... Rerank returned no valid scores, keeping RRF order
+Rerank returned no valid scores, keeping RRF order
+Rerank returned no valid scores, keeping RRF order
+ok
+test_broad_conditional_gain_rejects_composite_queries_and_longer_lists (__main__.TestRagPipeline.test_broad_conditional_gain_rejects_composite_queries_and_longer_lists) ... ok
+test_chat_keeps_shunt_and_bus_evidence_and_returns_cited_row (__main__.TestRagPipeline.test_chat_keeps_shunt_and_bus_evidence_and_returns_cited_row) ... ok
+test_chat_quotes_both_gain_conditions_and_preserves_the_source (__main__.TestRagPipeline.test_chat_quotes_both_gain_conditions_and_preserves_the_source) ... Rerank returned no valid scores, keeping RRF order
+Rerank returned no valid scores, keeping RRF order
+ok
+test_chat_recovers_supply_range_from_document_scoped_bm25 (__main__.TestRagPipeline.test_chat_recovers_supply_range_from_document_scoped_bm25) ... ok
+test_chat_requires_one_consistent_value_at_the_requested_gain (__main__.TestRagPipeline.test_chat_requires_one_consistent_value_at_the_requested_gain) ... Rerank returned no valid scores, keeping RRF order
+Rerank returned no valid scores, keeping RRF order
+ok
+test_chat_returns_only_the_requested_gain_row (__main__.TestRagPipeline.test_chat_returns_only_the_requested_gain_row) ... Rerank returned no valid scores, keeping RRF order
+Rerank returned no valid scores, keeping RRF order
+ok
+test_comparison_asks_each_device_and_remaps_its_citations (__main__.TestRagPipeline.test_comparison_asks_each_device_and_remaps_its_citations) ... Rerank returned no valid scores, keeping RRF order
+Rerank returned no valid scores, keeping RRF order
+ok
+test_comparison_can_quote_supported_ranges_when_model_misreads_them (__main__.TestRagPipeline.test_comparison_can_quote_supported_ranges_when_model_misreads_them) ... Rerank returned no valid scores, keeping RRF order
+Rerank returned no valid scores, keeping RRF order
+ok
+test_conditional_gain_reads_complete_advanced_table_rows (__main__.TestRagPipeline.test_conditional_gain_reads_complete_advanced_table_rows) ... ok
+test_conditional_supply_requires_full_conditions_and_named_device (__main__.TestRagPipeline.test_conditional_supply_requires_full_conditions_and_named_device) ... ok
+test_exact_gain_canonicalizes_units_and_rejects_other_constraints (__main__.TestRagPipeline.test_exact_gain_canonicalizes_units_and_rejects_other_constraints) ... ok
+test_exact_operating_row_displaces_conflicting_power_down_excerpt (__main__.TestRagPipeline.test_exact_operating_row_displaces_conflicting_power_down_excerpt) ... ok
+test_hex_row_is_selected_with_its_header_and_original_citation (__main__.TestRagPipeline.test_hex_row_is_selected_with_its_header_and_original_citation) ... Rerank returned no valid scores, keeping RRF order
+ok
+test_html_and_chunking_preserve_enumeration_and_ambiguous_cell (__main__.TestRagPipeline.test_html_and_chunking_preserve_enumeration_and_ambiguous_cell) ... ok
+test_image_path_is_bound_to_its_storage_directory (__main__.TestRagPipeline.test_image_path_is_bound_to_its_storage_directory) ... ok
+test_pdf_geometry_requires_matching_condition_and_distinct_columns (__main__.TestRagPipeline.test_pdf_geometry_requires_matching_condition_and_distinct_columns) ... ok
+test_persisted_bm25_and_table_lookup_survive_rerank_failure (__main__.TestRagPipeline.test_persisted_bm25_and_table_lookup_survive_rerank_failure) ... Rerank API 调用失败，降级使用 RRF 结果: reranker offline
+ok
+test_preserves_shared_parameter_with_different_conditions (__main__.TestRagPipeline.test_preserves_shared_parameter_with_different_conditions) ... Rerank returned no valid scores, keeping RRF order
+ok
+test_rank_42_register_row_can_reach_model_context (__main__.TestRagPipeline.test_rank_42_register_row_can_reach_model_context) ... ok
+test_uncited_answer_gets_one_retry_without_fabricating_reference (__main__.TestRagPipeline.test_uncited_answer_gets_one_retry_without_fabricating_reference) ... Rerank returned no valid scores, keeping RRF order
+Rerank returned no valid scores, keeping RRF order
+ok
+test_verified_excerpt_preserves_named_scope_and_raw_source (__main__.TestRagPipeline.test_verified_excerpt_preserves_named_scope_and_raw_source) ... Rerank returned no valid scores, keeping RRF order
+ok
+test_verified_passage_leaves_unsupported_notation_to_generation (__main__.TestRagPipeline.test_verified_passage_leaves_unsupported_notation_to_generation) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 1.168s
+
+OK

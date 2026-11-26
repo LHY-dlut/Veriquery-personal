@@ -2,10 +2,14 @@
 
 本机部署工作目录为 `D:\Project\veriquery\Veriquery-personal`。在 AutoDL 上从上传后的同名项目目录启动。应用和服务配置使用 [`.env.example`](../.env.example)，实际凭据填入服务器端 `.env`。首轮以文本和表格为主，PDF 与 Golden 题库单独准备。
 
+当前文本与表格的配对运行、失败用例和重启检查见 [落地记录与评测证据](VERIQUERY_DELIVERY_AND_EVALUATION.md)。`MINERU_VERIFY_TABLE_COLUMNS=true` 会在新入库时对合并规格列补充 PDF 坐标证据。
+
+当前应用默认请求 MinerU Advanced，并优先使用匹配明确工况和表列的短证据行。服务能力、档位验收及同索引回放见 [规格表证据的召回、排序与选取](RANKED_TABLE_EVIDENCE.md)。
+
 | 本地验证 | 结果 |
 |---|---|
 | 当前 68 个 Python 源文件语法编译 | `PASS` |
-| 从项目目录执行 `python -B -X utf8 scripts/test_param_pipeline.py` | `PASS`，T01–T25 共 25/25 |
+| 旧版参数选值测试 | 首次部署时 25/25。当前聊天链路使用下文的证据回归脚本 |
 | `.env.example` 解析，LLM、MinerU 及 Judge 的认证隔离 | `PASS`，使用合成凭据做进程内检查 |
 | Xinference 配置预览和 API 检查 | `PASS`，API 使用模拟响应 |
 | 本机导入 FastAPI 应用 | `BLOCKED`，系统 Python 缺 `langgraph`，同环境也缺 Chroma |
@@ -29,7 +33,7 @@ python -m pip check
 python -c 'import sqlite3, chromadb, langgraph; print(sqlite3.sqlite_version)'
 cp -n .env.example .env
 export NO_PROXY=localhost,127.0.0.1
-python scripts/test_param_pipeline.py
+python scripts/test_rag_pipeline.py
 ```
 
 依赖尚未在目标镜像上解析锁定。`numpy<2` 对应旧 Chroma 的 `np.float_` 兼容问题。Qwen3.5 的实际推理版本在 Xinference 环境单独选型。应用里的 CLIP/本地视觉回退仍可能使用本地 Transformers。应用用下文的模块入口启动。 [Chroma 0.4.24 源码](https://github.com/chroma-core/chroma/blob/0.4.24/chromadb/api/types.py) · [NumPy 2 迁移说明](https://numpy.org/doc/2.0/numpy_2_0_migration_guide.html#main-namespace) · [Qwen3.5 模型卡](https://huggingface.co/Qwen/Qwen3.5-0.8B)
@@ -85,13 +89,13 @@ python scripts/check_xinference.py --stage visual-embedding --check \
 
 单卡分时可依次用 `--stage embedding`、`--stage rerank` 和 `--stage llm` 单独验收，三个模型均常驻时用默认的 `--check` 一次验完。文本阶段核对 UID、两条 BGE-M3 向量的有效性、Rerank 的相对排序和 LLM 的实际正文。Caption 获得非空响应以后还要人工确认描述与图相符。图文向量阶段分别验证文本与图片，只有用项目实际图片请求格式得到有区分度的向量，才开启 `VL_IMAGE_ENCODING_AVAILABLE`。未上机之前，配置预览和模拟响应不能作为真实模型验收。
 
-**MinerU 协议是本次部署最需要先处理的事项。** `ingestion/mineru_client.py` 走 `/v1/uploads`、`/v1/parse/jobs` 和 `/v1/files/{file_id}/content`。官方 4.1 起以 `/v1/tasks` 替代旧 Jobs，旧路径返回 404，结果下载契约也变了。要继续用此客户端，先用版本对应的 OpenAPI 验证兼容旧契约的服务，再设置 `USE_MINERU_PARSE=true`。若目标用新版，就单独适配 `MinerUClient`，保留后端 `PageContent` 接口，再联调。解析失败会回退 PyMuPDF，故上传完成后要核对实际解析器及 `ParamRecord`。首轮保持 `.env.example` 的视觉后台开关关闭，PyMuPDF 回退仍可能调用本地 CLIP。 [MinerU 4.1 官方迁移说明](https://github.com/opendatalab/MinerU/blob/master/docs/zh/reference/migration_4_1.md)
+**先核对 MinerU 接口和实际档位。** `ingestion/mineru_client.py` 使用 `/v1/uploads`、`/v1/parse/jobs` 和 `/v1/files/{file_id}/content`，当前验收使用 4.0.12。服务用 `mineru-kit api-server --tier standard` 启动，在 `/v1/tiers` 确认 Advanced 可用，应用用 `MINERU_TIER=advanced` 提交任务。默认解析超时为 1800 秒。档位不符或解析失败会报告错误，只有打开 `MINERU_ALLOW_LOCAL_FALLBACK=true` 才回退 PyMuPDF。上传就绪后核对 `parser_tier=advanced`。使用 4.1 的 Tasks API 需要另行适配客户端。 [MinerU 4.1 官方迁移说明](https://github.com/opendatalab/MinerU/blob/master/docs/zh/reference/migration_4_1.md)
 
 兼容 MinerU 服务起来后，可先独立验证解析，不经过 FastAPI 上传。脚本会读取指定 PDF，`--json` 保存此次解析对照报告。
 
 ```bash
 mkdir -p reports
-python scripts/eval_mineru_vs_fitz.py /path/to/OPA211.pdf --tier flash --json reports/opa211-parse.json
+python scripts/eval_mineru_vs_fitz.py /path/to/OPA211.pdf --tier advanced --json reports/opa211-parse.json
 ```
 
 ## 3. 一份 PDF 走完整应用链路
@@ -105,7 +109,9 @@ API_URL=http://127.0.0.1:8000 .venv/bin/python -m streamlit run ui/app.py --serv
 
 1. 用公开 OPA211 PDF 记录来源、修订版、页数与 `sha256sum`。先通过 `POST /api/v1/documents/upload` 上传，保存真实 `document_id`，再请求 `GET /api/v1/documents/{document_id}`。核对解析器、原表条件、分块和三个索引中的记录。`ready` 说明核心路径已写状态，仍要检查实际数据。 [TI OPA211 PDF](https://www.ti.com/lit/ds/symlink/opa211.pdf)
 2. 先提一个易人工核对的正文问题，例如 OPAx211 系列包含哪些型号。再选一个页、表、条件和列都能人工验证的参数题。保留 `/api/v1/chat/` 的 `query`、`document_ids`、`success`、`response` 和 `citations`。用同一个 ID 从 UI 重走，记录正确证据在哪个候选位置。
-3. 保存一份逐阶段记录，串起 PDF 页 → MinerU block → `PageContent` → `ParamRecord`/chunk → 索引中同 ID 的记录 → 各路召回与 RRF/Rerank → 答案和引用。`scripts/trace_query.py --docs` 读取 `document_id`，用于节点级诊断。最终以 HTTP 路径的独立结果复核。
+3. 保存一份逐阶段记录，串起 PDF 页 → MinerU 表格块和正文 → `PageContent` → 表行和正文 chunk → 各路召回 → RRF 候选 → Rerank → 编号上下文 → 答案和引用。运行 `python scripts/trace_query.py "问题" --docs DOCUMENT_ID` 查看各阶段，最终以 HTTP 结果复核。
+
+升级时可继续查询已入库文档。聊天会跳过旧的合成参数记录。需要使用新版合并格和表头信息的 PDF，保留旧数据作为对照，将 PDF 导入独立验收环境后重测。优先核对 INA226 的 shunt/bus LSB、ADS1115 的数据率档位、TMP117 的 `F380`，并复测 OPA211 和 BSO301SP 的工况题。
 4. 用 T24 和同一份 OPA211 样本回归 `at G=100` 工况提取与 80 MHz 的引用。Chat 自建 BM25 实例默认没有载入文档入库写入的 BM25，也应通过可复现召回来检查。先保存实际结果，再逐个定位处理。 [AutoDL 实测记录](AUTODL_ENVIRONMENT.md#文本问答验收)
 
 文本链路有证据后，再部署 Qwen3.5-2B 做图片 Caption，确认图 ID、页码和原图。如果开启 `USE_XINFERENCE_VL_EMBEDDING`，先验单独的文字编码服务和实际模型 UID，在 `VL_IMAGE_ENCODING_AVAILABLE=false` 下用 Caption 测回读，再单独验证图片向量能力。引脚、器件比较和 ERC 使用各自的 API 和定向样例。

@@ -1,5 +1,7 @@
 # Veriquery 全流程问题与追溯证据
 
+此报告记录改造前的实测基线。当前问答已经移除 Resolver。新版追踪与回归入口见 [AutoDL 部署手册](AUTODL_SETUP.md)。
+
 实测日期为 2026-11-26，北京时间。工作目录为 `D:\Project\veriquery\Veriquery-personal`。本报告汇总本轮三份新文档、此前两份诊断样本和 OPA211 部署验证中的已知问题。运行复现、代码静态风险和未覆盖项目分别标明。
 
 ## 1. 本轮做了什么
@@ -47,9 +49,9 @@
 
 ### B. 表格到参数记录
 
-5. **合并格解码会填错 Min/Typ/Max。** TMP117 `d319889a_p2_pr44` 写成 `pmin=0.15, ptyp为空, pmax=0.5`。此前 ADS1115 电流题为 `min=150, typ为空, max=200`。OPA188 的 `5d087fb5_p2_pr41` 把 0.8 写在 `pmax`，低压页 `5d087fb5_p3_pr137` 又保存为 `ptyp=0.8`。值本身仍在，列语义已经变错。 [合并值格规则](../ingestion/table_struct.py#L1016)
+5. **合并格解码会填错 Min/Typ/Max。** TMP117 `d319889a_p2_pr44` 写成 `pmin=0.15, ptyp为空, pmax=0.5`。此前 ADS1115 电流题为 `min=150, typ为空, max=200`。OPA188 的 `5d087fb5_p2_pr41` 把 0.8 写在 `pmax`，低压页 `5d087fb5_p3_pr137` 又保存为 `ptyp=0.8`。值本身仍在，列语义已经变错。 [合并值格规则](https://github.com/LHY-dlut/Veriquery-personal/blob/b0d9f2551b45a6ce4321614c81b17b95d3ee273a/ingestion/table_struct.py#L1016)
 6. **枚举和表头被当成参数数值。** 既有 ADS1115 数据率一行的合法档位被写成 `min=250, typ=475, max=860`，端到端答出了原文没有的典型 475 SPS。本轮 `8fda09af_p2_pr10` 从 `THERMAL METRIC | INA226 | UNIT` 生成了 `pmax=INA226`，被电源电流题选中。另一个实例 `d319889a_p3_pr89` 将 `TEMPERATURE REGISTER VALUE (0.0078125 °C RESOLUTION)` 表头文本写进数值字段。需要在记录提交前验证值类型和行属性。
-7. **表级默认工况没有进入相应记录。** OPA188 原第 5 页表头的高压工作与 `TA=25°C` 是表级默认工况。正确失调电压记录 `5d087fb5_p2_pr14` 已保留 `ptyp=±6, pmax=±25`，`conditions_raw` 为空。它进入 RRF 第 13、Rerank 第 17。实际输出选择的是带温区的 `μV/°C` 行并报冲突。需要将表级默认工况与行内覆盖关系一起保留，并区分电压和漂移量纲。 [参数记录构造](../ingestion/table_struct.py#L907) · [MinerU 表适配](../ingestion/document_processor.py#L1038)
+7. **表级默认工况没有进入相应记录。** OPA188 原第 5 页表头的高压工作与 `TA=25°C` 是表级默认工况。正确失调电压记录 `5d087fb5_p2_pr14` 已保留 `ptyp=±6, pmax=±25`，`conditions_raw` 为空。它进入 RRF 第 13、Rerank 第 17。实际输出选择的是带温区的 `μV/°C` 行并报冲突。需要将表级默认工况与行内覆盖关系一起保留，并区分电压和漂移量纲。 [参数记录构造](https://github.com/LHY-dlut/Veriquery-personal/blob/b0d9f2551b45a6ce4321614c81b17b95d3ee273a/ingestion/table_struct.py#L907) · [MinerU 表适配](../ingestion/document_processor.py#L1038)
 
 ### C. 切块、向量与混合检索
 

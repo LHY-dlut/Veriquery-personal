@@ -127,20 +127,15 @@ class Settings(BaseSettings):
         )
     )
 
-    # ==================== Resolver semantic fallback ====================
-    PARAM_SEMANTIC_FALLBACK_ENABLED: bool = Field(
-        default=True,
-        description=(
-            "When the query carries a param signal but no controlled alias "
-            "matches any record identity, nominate the top param_record by "
-            "retrieval score (vendor-agnostic semantic signal) and answer "
-            "with a low-confidence annotation instead of refusing."
-        )
-    )
-    PARAM_SEMANTIC_FALLBACK_MIN_SCORE: float = Field(
-        default=0.5,
-        description="Minimum rerank score for a nominated param_record to be trusted."
-    )
+    EVAL_TRACE_ENABLED: bool = False
+    RAG_FOCUS_TABLE_EVIDENCE: bool = True
+    RAG_BALANCED_COMPARISON: bool = True
+    RAG_CITATION_REPAIR: bool = True
+    RAG_VERIFIED_PASSAGES: bool = True
+    RAG_CONDITION_EVIDENCE: bool = True
+    RAG_EXACT_GAIN_EVIDENCE: bool = True
+    RAG_EVIDENCE_COVERAGE: bool = False
+    RAG_JOINT_COMPARISON: bool = True
 
     # ==================== VL Embedding (visual retrieval, phase 2) ====================
     VL_EMBEDDING_MODEL: str = Field(
@@ -166,8 +161,8 @@ class Settings(BaseSettings):
 
     # ==================== MinerU 解析（GPU1 服务，可选） ====================
     USE_MINERU_PARSE: bool = Field(
-        default=False,
-        description="Use the MinerU API for PDF parsing instead of local PyMuPDF/Camelot. Keeps the local branch as fallback.",
+        default=True,
+        description="Use MinerU for PDF parsing. Set false to select local PyMuPDF/Camelot.",
     )
     MINERU_API_BASE: str = Field(
         default="http://127.0.0.1:8001",
@@ -175,12 +170,20 @@ class Settings(BaseSettings):
     )
     MINERU_API_KEY: str = Field(default="", description="Optional MinerU API token")
     MINERU_TIER: str = Field(
-        default="flash",
+        default="advanced",
         description="MinerU parse tier: flash | basic | standard | advanced",
     )
     MINERU_TIMEOUT: int = Field(
-        default=600,
+        default=1800,
         description="MinerU parse job timeout in seconds",
+    )
+    MINERU_ALLOW_LOCAL_FALLBACK: bool = Field(
+        default=False,
+        description="Allow PyMuPDF fallback when an explicit MinerU job fails",
+    )
+    MINERU_VERIFY_TABLE_COLUMNS: bool = Field(
+        default=True,
+        description="Verify collapsed MIN/TYP/MAX cells against native PDF word geometry",
     )
     MINERU_OUTPUT_FORMATS: str = Field(
         default="markdown,middle_json,structured_content",

@@ -1,0 +1,161 @@
+[
+  {
+    "tier": "flash",
+    "page_range": "3",
+    "status": "success",
+    "actual": {
+      "tier": "flash",
+      "parse_mode": "txt"
+    },
+    "job_id": "job_642dffc006d087ccbe03de74",
+    "duration_ms": 2046,
+    "time": 2.678,
+    "table_blocks": [
+      {
+        "block": 5,
+        "bbox": [
+          0.092,
+          0.14,
+          0.908,
+          0.299
+        ],
+        "sha256": "0a52c238851650a2ff63fd24e23271593956b604569faa93db00f298084012ea",
+        "rows": [
+          "<tr><td colspan=\"2\">PARAMETER</td><td colspan=\"2\">TEST CONDITIONS</td><td>MIN TYP MAX</td><td>UNIT</td></tr>",
+          "<tr><td rowspan=\"4\">I<sub>VDD</sub></td><td rowspan=\"4\">Supply current</td><td rowspan=\"2\">Power-down</td><td>T<sub>A</sub> = 25°C</td><td>0.5 2</td><td rowspan=\"4\">µA</td></tr>",
+          "<tr><td rowspan=\"2\">Operating</td><td>T<sub>A</sub> = 25°C</td><td>150 200</td></tr>"
+        ]
+      },
+      {
+        "block": 7,
+        "bbox": [
+          0.092,
+          0.403,
+          0.908,
+          0.645
+        ],
+        "sha256": "0fd1540ea3f45b6237ca4299a8dd8e9b6d0d374aa4997a5cf31e1b159245d9ee",
+        "rows": []
+      }
+    ]
+  },
+  {
+    "tier": "basic",
+    "page_range": "3",
+    "status": "success",
+    "actual": {
+      "tier": "basic",
+      "parse_mode": "txt"
+    },
+    "job_id": "job_df08212a4b1a184c814d42d3",
+    "duration_ms": 6758,
+    "time": 8.563,
+    "table_blocks": [
+      {
+        "block": 3,
+        "bbox": [
+          0.091,
+          0.138,
+          0.907,
+          0.299
+        ],
+        "sha256": "0a52c238851650a2ff63fd24e23271593956b604569faa93db00f298084012ea",
+        "rows": [
+          "<tr><td colspan=\"2\">PARAMETER</td><td colspan=\"2\">TEST CONDITIONS</td><td>MIN TYP MAX</td><td>UNIT</td></tr>",
+          "<tr><td rowspan=\"4\">I<sub>VDD</sub></td><td rowspan=\"4\">Supply current</td><td rowspan=\"2\">Power-down</td><td>T<sub>A</sub> = 25°C</td><td>0.5 2</td><td rowspan=\"4\">µA</td></tr>",
+          "<tr><td rowspan=\"2\">Operating</td><td>T<sub>A</sub> = 25°C</td><td>150 200</td></tr>"
+        ]
+      },
+      {
+        "block": 6,
+        "bbox": [
+          0.091,
+          0.401,
+          0.907,
+          0.644
+        ],
+        "sha256": "0fd1540ea3f45b6237ca4299a8dd8e9b6d0d374aa4997a5cf31e1b159245d9ee",
+        "rows": []
+      }
+    ]
+  },
+  {
+    "tier": "standard",
+    "page_range": "3",
+    "status": "success",
+    "actual": {
+      "tier": "standard",
+      "parse_mode": "txt"
+    },
+    "job_id": "job_ac235da3150acfc405cbf90f",
+    "duration_ms": 2960,
+    "time": 4.984,
+    "table_blocks": [
+      {
+        "block": 3,
+        "bbox": [
+          0.091,
+          0.138,
+          0.907,
+          0.299
+        ],
+        "sha256": "0a52c238851650a2ff63fd24e23271593956b604569faa93db00f298084012ea",
+        "rows": [
+          "<tr><td colspan=\"2\">PARAMETER</td><td colspan=\"2\">TEST CONDITIONS</td><td>MIN TYP MAX</td><td>UNIT</td></tr>",
+          "<tr><td rowspan=\"4\">I<sub>VDD</sub></td><td rowspan=\"4\">Supply current</td><td rowspan=\"2\">Power-down</td><td>T<sub>A</sub> = 25°C</td><td>0.5 2</td><td rowspan=\"4\">µA</td></tr>",
+          "<tr><td rowspan=\"2\">Operating</td><td>T<sub>A</sub> = 25°C</td><td>150 200</td></tr>"
+        ]
+      },
+      {
+        "block": 6,
+        "bbox": [
+          0.091,
+          0.401,
+          0.907,
+          0.644
+        ],
+        "sha256": "0fd1540ea3f45b6237ca4299a8dd8e9b6d0d374aa4997a5cf31e1b159245d9ee",
+        "rows": []
+      }
+    ]
+  },
+  {
+    "tier": "advanced",
+    "page_range": "3",
+    "status": "success",
+    "actual": {
+      "tier": "advanced",
+      "parse_mode": "txt"
+    },
+    "job_id": "job_d849c4f0608d60d5576639bd",
+    "duration_ms": 394550,
+    "time": 402.011,
+    "table_blocks": [
+      {
+        "block": 8,
+        "bbox": [
+          0.089,
+          0.139,
+          0.91,
+          0.3
+        ],
+        "sha256": "d2ae6c1b65809f95d9ad1280b23437fd8a0bd43048b683a82f4800458ffdab26",
+        "rows": [
+          "<tr><td colspan=\"2\">PARAMETER</td><td colspan=\"2\">TEST CONDITIONS</td><td>MIN</td><td>TYP</td><td>MAX</td><td>UNIT</td></tr>",
+          "<tr><td rowspan=\"2\">Operating</td><td> $T_A=25°C$ </td><td></td><td>150</td><td>200</td></tr>"
+        ]
+      },
+      {
+        "block": 11,
+        "bbox": [
+          0.089,
+          0.402,
+          0.91,
+          0.646
+        ],
+        "sha256": "eb8a0d766f21fa5367fdb627a814fa0fb8c4784df4cb96fc37bd5fd702b8a8d9",
+        "rows": []
+      }
+    ]
+  }
+]
