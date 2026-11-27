@@ -58,7 +58,7 @@ class Settings(BaseSettings):
     LLM_QUANTIZE: bool = Field(default=True, description="Quantize LLM")
     LLM_QUANTIZATION_BITS: int = Field(default=4, description="LLM quantization bits (4/8)")
     LLM_TEMPERATURE: float = Field(default=0.3, description="LLM temperature")
-    LLM_MAX_TOKENS: int = Field(default=256, description="LLM max output tokens")
+    LLM_MAX_TOKENS: int = Field(default=256, ge=1, le=2048, description="LLM max output tokens")
 
     VLM_MODEL: str = Field(
         default="Qwen/Qwen3.5-2B",

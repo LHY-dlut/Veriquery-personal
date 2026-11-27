@@ -1,0 +1,1565 @@
+{
+  "k": 8,
+  "summary": {
+    "before": {
+      "sessions": 30,
+      "scope": 30,
+      "strict": 11,
+      "targets": 68,
+      "hit_queries": 30,
+      "retrieved_targets": 68,
+      "context_targets": 68,
+      "complete_context_queries": 30,
+      "retained_targets": 68
+    },
+    "after": {
+      "sessions": 30,
+      "scope": 30,
+      "strict": 25,
+      "targets": 68,
+      "hit_queries": 30,
+      "retrieved_targets": 68,
+      "context_targets": 68,
+      "complete_context_queries": 30,
+      "retained_targets": 68
+    }
+  },
+  "sessions": [
+    {
+      "arm": "before",
+      "question": "n02",
+      "repeat": 1,
+      "session": "4ad2c34f-35c1-4789-a7a9-da925c2646b2",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "ideal-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c9"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "before",
+      "question": "n03",
+      "repeat": 1,
+      "session": "f1b6fa1f-e47e-4c60-804f-72e2b9b98289",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "dnl-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c10"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "n04",
+      "repeat": 1,
+      "session": "922a2ec9-d46b-4504-8280-813d418576b3",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "ideal-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c9"
+          ]
+        },
+        "inl-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c9"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "before",
+      "question": "n06",
+      "repeat": 1,
+      "session": "dbd89fc6-fcfd-4268-902d-871ed1b0cade",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "frequency": {
+          "first_rank": 1,
+          "context_chunks": [
+            "table_b4ba1647"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "before",
+      "question": "n07",
+      "repeat": 1,
+      "session": "79cd80f2-c88f-42f2-8d9a-8842f3b69fd7",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "divider": {
+          "first_rank": 1,
+          "context_chunks": [
+            "386a2473_p2_c12"
+          ]
+        },
+        "nominal": {
+          "first_rank": 1,
+          "context_chunks": [
+            "386a2473_p2_c12"
+          ]
+        },
+        "recommended": {
+          "first_rank": 3,
+          "context_chunks": [
+            "table_d078997f"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "n10",
+      "repeat": 1,
+      "session": "3a0fc4ca-3a47-4ff7-9436-cff91855d21e",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 5,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 5,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 5,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "feedback": {
+          "first_rank": 2,
+          "context_chunks": [
+            "386a2473_p1_tbl7"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "before",
+      "question": "u01",
+      "repeat": 1,
+      "session": "9538794c-c19c-4b39-b1cb-2a3aee4d73e1",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "va-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "09499c3c_p3_c14"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "before",
+      "question": "u02",
+      "repeat": 1,
+      "session": "8b335340-634a-4e27-b995-f9b8b94f75dc",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "ti-code-range": {
+          "first_rank": 1,
+          "context_chunks": [
+            "09499c3c_p3_c14"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "u03",
+      "repeat": 1,
+      "session": "bbfd4ca0-854d-41dc-b4bf-4248ef23c3f6",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-7311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "u04",
+      "repeat": 1,
+      "session": "305ed292-1ca6-4b47-b21d-3de6ebd50040",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-7311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "s1",
+      "repeat": 1,
+      "session": "4705e433-3270-4927-962e-4144bc4a95fe",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-6311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "s2",
+      "repeat": 1,
+      "session": "b0a12f75-9a9e-4a2a-990b-cfaedd9596a4",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-5311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "v1",
+      "repeat": 1,
+      "session": "5329cacd-1213-4208-ac54-a9a895e6d547",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "adi-law": {
+          "first_rank": 4,
+          "context_chunks": [
+            "509aa1ae_p2_c11"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "before",
+      "question": "v2",
+      "repeat": 1,
+      "session": "09f70e51-7a08-4507-9c7e-36ffc26f684f",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "adi-code-range": {
+          "first_rank": 5,
+          "context_chunks": [
+            "509aa1ae_p2_c11"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "v3",
+      "repeat": 1,
+      "session": "a989c329-e517-42b0-a125-47c161c6a8e6",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "adi-law": {
+          "first_rank": 3,
+          "context_chunks": [
+            "509aa1ae_p2_c11"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "n02",
+      "repeat": 2,
+      "session": "4276325d-cda3-411d-ac87-87dfdc9729f6",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "ideal-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c9"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "before",
+      "question": "n03",
+      "repeat": 2,
+      "session": "6c3cc2d1-9678-4c4a-b337-e863f8496c73",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "dnl-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c10"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "n04",
+      "repeat": 2,
+      "session": "4af13823-9f6c-43d9-88e0-2cebd5965b09",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "ideal-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c9"
+          ]
+        },
+        "inl-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c9"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "before",
+      "question": "n06",
+      "repeat": 2,
+      "session": "bed098a9-6bd6-48f8-8cbe-ef910c676938",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "frequency": {
+          "first_rank": 1,
+          "context_chunks": [
+            "table_b4ba1647"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "n07",
+      "repeat": 2,
+      "session": "e8c25e22-bf7f-4aca-9b7b-0e75839c3fed",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "divider": {
+          "first_rank": 1,
+          "context_chunks": [
+            "386a2473_p2_c12"
+          ]
+        },
+        "nominal": {
+          "first_rank": 1,
+          "context_chunks": [
+            "386a2473_p2_c12"
+          ]
+        },
+        "recommended": {
+          "first_rank": 3,
+          "context_chunks": [
+            "table_d078997f"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "n10",
+      "repeat": 2,
+      "session": "fd65bc5c-58c1-4e61-9556-d46bc0d2b9e5",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 5,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 5,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 5,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "feedback": {
+          "first_rank": 2,
+          "context_chunks": [
+            "386a2473_p1_tbl7"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "before",
+      "question": "u01",
+      "repeat": 2,
+      "session": "eee5b89c-00ec-4ad6-bcaf-c31c7a02d4da",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "va-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "09499c3c_p3_c14"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "before",
+      "question": "u02",
+      "repeat": 2,
+      "session": "25f5d359-77d3-435f-8071-4ec11431c336",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "ti-code-range": {
+          "first_rank": 1,
+          "context_chunks": [
+            "09499c3c_p3_c14"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "u03",
+      "repeat": 2,
+      "session": "f1b78a8f-733a-469a-9072-d718dff84a09",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-7311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "u04",
+      "repeat": 2,
+      "session": "cd0ec82b-2908-4e8e-ba10-ad2bd70c356f",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-7311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "s1",
+      "repeat": 2,
+      "session": "3fa7e32b-363a-429d-98b1-4c28fa7c4cc6",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-6311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "s2",
+      "repeat": 2,
+      "session": "67d2933b-ee11-4fe1-970c-78207c324288",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-5311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "v1",
+      "repeat": 2,
+      "session": "e0142ad7-8f48-433a-a879-6bb68dad97c6",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "adi-law": {
+          "first_rank": 4,
+          "context_chunks": [
+            "509aa1ae_p2_c11"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "before",
+      "question": "v2",
+      "repeat": 2,
+      "session": "0b47426f-0b66-43b6-b10a-a571f963830d",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "adi-code-range": {
+          "first_rank": 5,
+          "context_chunks": [
+            "509aa1ae_p2_c11"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "before",
+      "question": "v3",
+      "repeat": 2,
+      "session": "6d45d948-7d84-4fb2-80a8-c9336216f599",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "adi-law": {
+          "first_rank": 3,
+          "context_chunks": [
+            "509aa1ae_p2_c11"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "after",
+      "question": "n02",
+      "repeat": 1,
+      "session": "bfc11606-d8f5-45bd-bb17-5e013822347d",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "ideal-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c9"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "n03",
+      "repeat": 1,
+      "session": "1787bd39-8319-40ca-a286-bf0aa69fb4f1",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "dnl-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c10"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "after",
+      "question": "n04",
+      "repeat": 1,
+      "session": "bb03cfa3-b71f-4afd-85cb-0b19f8b4e44a",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "ideal-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c9"
+          ]
+        },
+        "inl-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c9"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "n06",
+      "repeat": 1,
+      "session": "6718161f-1162-423b-8656-fa0fda8f7289",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "frequency": {
+          "first_rank": 1,
+          "context_chunks": [
+            "table_b4ba1647"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "n07",
+      "repeat": 1,
+      "session": "355673e0-b2e3-4312-a0bc-589e5719836c",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "divider": {
+          "first_rank": 1,
+          "context_chunks": [
+            "386a2473_p2_c12"
+          ]
+        },
+        "nominal": {
+          "first_rank": 1,
+          "context_chunks": [
+            "386a2473_p2_c12"
+          ]
+        },
+        "recommended": {
+          "first_rank": 3,
+          "context_chunks": [
+            "table_d078997f"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "after",
+      "question": "n10",
+      "repeat": 1,
+      "session": "e3c4a243-007b-4791-ae9d-ae8c203ea234",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 5,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 5,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 5,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "feedback": {
+          "first_rank": 2,
+          "context_chunks": [
+            "386a2473_p1_tbl7"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "u01",
+      "repeat": 1,
+      "session": "2a8a2b62-33c4-45cd-a04f-1f8a30db1f9c",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "va-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "09499c3c_p3_c14"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "u02",
+      "repeat": 1,
+      "session": "f3526d4e-7745-4aeb-9354-bd68454a9e76",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "ti-code-range": {
+          "first_rank": 1,
+          "context_chunks": [
+            "09499c3c_p3_c14"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "u03",
+      "repeat": 1,
+      "session": "d8f9e1f8-7dd0-4b7c-8425-49867fc8ab3c",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-7311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "u04",
+      "repeat": 1,
+      "session": "aa0aaa72-b076-4005-98ee-9fda67028163",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-7311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "s1",
+      "repeat": 1,
+      "session": "4e53dfc5-6489-4e0e-b33a-8a5884b00e5e",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-6311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "s2",
+      "repeat": 1,
+      "session": "f84316ac-aa60-4ff0-88c6-b753fcff006c",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-5311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "v1",
+      "repeat": 1,
+      "session": "5aa8020d-4c9a-43e7-99f5-d5b025756f4f",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "adi-law": {
+          "first_rank": 4,
+          "context_chunks": [
+            "509aa1ae_p2_c11"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "v2",
+      "repeat": 1,
+      "session": "584086ad-f819-4101-bc6a-763e57bad76a",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "adi-code-range": {
+          "first_rank": 5,
+          "context_chunks": [
+            "509aa1ae_p2_c11"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "v3",
+      "repeat": 1,
+      "session": "5380f2f3-90bc-431e-95f4-a2bf95a69a91",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "adi-law": {
+          "first_rank": 3,
+          "context_chunks": [
+            "509aa1ae_p2_c11"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "n02",
+      "repeat": 2,
+      "session": "60c776d5-c579-49a2-b585-64030fd3801e",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "ideal-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c9"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "n03",
+      "repeat": 2,
+      "session": "f3dabe06-d3be-43a5-84ba-6f9c35eaa2a1",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "dnl-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c10"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "after",
+      "question": "n04",
+      "repeat": 2,
+      "session": "1b4c32ac-fba2-4a19-ac00-a6fbb130d5ee",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 1,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "ideal-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c9"
+          ]
+        },
+        "inl-law": {
+          "first_rank": 2,
+          "context_chunks": [
+            "c06748dc_p2_c9"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "n06",
+      "repeat": 2,
+      "session": "5c2fd913-0b8e-4085-a736-5e2b5d63bc3f",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "frequency": {
+          "first_rank": 1,
+          "context_chunks": [
+            "table_b4ba1647"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "after",
+      "question": "n07",
+      "repeat": 2,
+      "session": "60028dd7-1eb5-45da-b788-af545013d9a9",
+      "scope_ok": true,
+      "route": "generated",
+      "model_calls": 1,
+      "facts": {
+        "divider": {
+          "first_rank": 1,
+          "context_chunks": [
+            "386a2473_p2_c12"
+          ]
+        },
+        "nominal": {
+          "first_rank": 1,
+          "context_chunks": [
+            "386a2473_p2_c12"
+          ]
+        },
+        "recommended": {
+          "first_rank": 3,
+          "context_chunks": [
+            "table_d078997f"
+          ]
+        }
+      },
+      "strict": 0
+    },
+    {
+      "arm": "after",
+      "question": "n10",
+      "repeat": 2,
+      "session": "dd65d1c9-b221-4a1a-a7b1-364ce911bf2a",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "lsb-law": {
+          "first_rank": 5,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "reference": {
+          "first_rank": 5,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "resolution": {
+          "first_rank": 5,
+          "context_chunks": [
+            "c06748dc_p2_c8"
+          ]
+        },
+        "feedback": {
+          "first_rank": 2,
+          "context_chunks": [
+            "386a2473_p1_tbl7"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "u01",
+      "repeat": 2,
+      "session": "8ef55605-6b48-4cb3-998c-aa05f9259b53",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "va-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "09499c3c_p3_c14"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "u02",
+      "repeat": 2,
+      "session": "6cb771b4-dd3b-41ae-8c7f-3c96f918abdb",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "ti-code-range": {
+          "first_rank": 1,
+          "context_chunks": [
+            "09499c3c_p3_c14"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "u03",
+      "repeat": 2,
+      "session": "1d29c7dd-de29-41fb-a86d-231179ed57aa",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-7311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "u04",
+      "repeat": 2,
+      "session": "7ae09305-7bd4-4045-a6b7-a0f3c3143f87",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-7311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "s1",
+      "repeat": 2,
+      "session": "918ad777-b87e-41aa-bf6d-6bb9894d4120",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-6311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "s2",
+      "repeat": 2,
+      "session": "763f5fd5-edca-4f0c-a1ff-f85f514932a3",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "family-law": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        },
+        "bits-5311": {
+          "first_rank": 1,
+          "context_chunks": [
+            "2d0d08f1_p2_c8"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "v1",
+      "repeat": 2,
+      "session": "be7d12b1-d50a-49af-8fa9-cc7fd6a80fc2",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "adi-law": {
+          "first_rank": 4,
+          "context_chunks": [
+            "509aa1ae_p2_c11"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "v2",
+      "repeat": 2,
+      "session": "e37fed27-c6e9-45d1-afbe-b2fea9bdb70d",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "adi-code-range": {
+          "first_rank": 5,
+          "context_chunks": [
+            "509aa1ae_p2_c11"
+          ]
+        }
+      },
+      "strict": 1
+    },
+    {
+      "arm": "after",
+      "question": "v3",
+      "repeat": 2,
+      "session": "1febaecb-1353-480d-af16-94db8f186f0f",
+      "scope_ok": true,
+      "route": "verified_dac_calculation",
+      "model_calls": 0,
+      "facts": {
+        "adi-law": {
+          "first_rank": 3,
+          "context_chunks": [
+            "509aa1ae_p2_c11"
+          ]
+        }
+      },
+      "strict": 1
+    }
+  ]
+}

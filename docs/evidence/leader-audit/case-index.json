@@ -1,0 +1,2266 @@
+{
+  "n02": {
+    "session": "e3608df6-c7ac-4753-9bd8-6454e9f842ec",
+    "answer_mode": "verified_dac_calculation",
+    "model_calls": [],
+    "graph_api_match": true,
+    "facts": {
+      "lsb-law": {
+        "stage_hits": {
+          "5ac33aec8c3f": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.7001477543813559
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9569214582443237
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9569214582443237
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9569214582443237
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": 0.9569214582443237
+          }
+        ],
+        "context": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ]
+      },
+      "reference": {
+        "stage_hits": {
+          "5ac33aec8c3f": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.7001477543813559
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9569214582443237
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9569214582443237
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9569214582443237
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": 0.9569214582443237
+          }
+        ],
+        "context": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ]
+      },
+      "resolution": {
+        "stage_hits": {
+          "5ac33aec8c3f": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.7001477543813559
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9569214582443237
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9569214582443237
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9569214582443237
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": 0.9569214582443237
+          }
+        ],
+        "context": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ]
+      },
+      "ideal-law": {
+        "stage_hits": {
+          "5ac33aec8c3f": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 7,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.5134220337358241
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.604360101878236
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 5,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.9406808462431674
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 5,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.9406808462431674
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.8080928325653076
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.8080928325653076
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.8080928325653076
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c9",
+            "score": 0.8080928325653076
+          }
+        ],
+        "context": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c9",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c9",
+            "score": null
+          }
+        ]
+      }
+    },
+    "branches": {
+      "5ac33aec8c3f": {
+        "candidate_counts": {
+          "_vector_retrieve_output": 11,
+          "retrieve_lexical_output": 8,
+          "_table_retrieve_output": 0,
+          "_rrf_fusion_output": 11,
+          "_rerank_candidates_input": 11,
+          "_rerank_candidates_output": 11,
+          "_limit_results_output": 11,
+          "retrieve_output": 11
+        },
+        "raw_counts": {
+          "ChromaDBVectorStore_raw": 11,
+          "BM25Store_raw": 8,
+          "TableStore_raw": 0
+        }
+      }
+    }
+  },
+  "n03": {
+    "session": "33a9d727-66ff-4c60-9349-5a7ab747641b",
+    "answer_mode": "generated",
+    "model_calls": [
+      {
+        "tokens": {
+          "prompt_tokens": 1433,
+          "completion_tokens": 496,
+          "total_tokens": 1929
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "graph_api_match": true,
+    "facts": {
+      "lsb-law": {
+        "stage_hits": {
+          "b013574bc5ad": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.7139240299310058
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.500233578933195
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.794000506401062
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.794000506401062
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.794000506401062
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": 0.794000506401062
+          }
+        ],
+        "context": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ]
+      },
+      "reference": {
+        "stage_hits": {
+          "b013574bc5ad": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.7139240299310058
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.500233578933195
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.794000506401062
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.794000506401062
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.794000506401062
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": 0.794000506401062
+          }
+        ],
+        "context": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ]
+      },
+      "resolution": {
+        "stage_hits": {
+          "b013574bc5ad": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.7139240299310058
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.500233578933195
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.794000506401062
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.794000506401062
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.794000506401062
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": 0.794000506401062
+          }
+        ],
+        "context": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ]
+      },
+      "dnl-law": {
+        "stage_hits": {
+          "b013574bc5ad": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c10",
+                "score": 0.6934032362147143
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c10",
+                "score": 1.0
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c10",
+                "score": 0.997134670487106
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c10",
+                "score": 0.997134670487106
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c10",
+                "score": 0.9654644727706909
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c10",
+                "score": 0.9654644727706909
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c10",
+                "score": 0.9654644727706909
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c10",
+            "score": 0.9654644727706909
+          }
+        ],
+        "context": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c10",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c10",
+            "score": null
+          }
+        ]
+      }
+    },
+    "branches": {
+      "b013574bc5ad": {
+        "candidate_counts": {
+          "_vector_retrieve_output": 11,
+          "retrieve_lexical_output": 11,
+          "_table_retrieve_output": 0,
+          "_rrf_fusion_output": 11,
+          "_rerank_candidates_input": 11,
+          "_rerank_candidates_output": 11,
+          "_limit_results_output": 11,
+          "retrieve_output": 11
+        },
+        "raw_counts": {
+          "ChromaDBVectorStore_raw": 11,
+          "BM25Store_raw": 11,
+          "TableStore_raw": 0
+        }
+      }
+    }
+  },
+  "n04": {
+    "session": "c7da743a-a8d5-4cde-900e-976b326406c4",
+    "answer_mode": "verified_dac_calculation",
+    "model_calls": [],
+    "graph_api_match": true,
+    "facts": {
+      "lsb-law": {
+        "stage_hits": {
+          "3ea9643652c4": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.6694613174191113
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.6074055026556393
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.860823392868042
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.860823392868042
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.860823392868042
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": 0.860823392868042
+          }
+        ],
+        "context": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ]
+      },
+      "reference": {
+        "stage_hits": {
+          "3ea9643652c4": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.6694613174191113
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.6074055026556393
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.860823392868042
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.860823392868042
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.860823392868042
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": 0.860823392868042
+          }
+        ],
+        "context": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ]
+      },
+      "resolution": {
+        "stage_hits": {
+          "3ea9643652c4": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.6694613174191113
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.6074055026556393
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.860823392868042
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.860823392868042
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.860823392868042
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": 0.860823392868042
+          }
+        ],
+        "context": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ]
+      },
+      "ideal-law": {
+        "stage_hits": {
+          "3ea9643652c4": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.6287231882347354
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 1.0
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.997134670487106
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.997134670487106
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.8409984707832336
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.8409984707832336
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.8409984707832336
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c9",
+            "score": 0.8409984707832336
+          }
+        ],
+        "context": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c9",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c9",
+            "score": null
+          }
+        ]
+      },
+      "inl-law": {
+        "stage_hits": {
+          "3ea9643652c4": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.6287231882347354
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 1,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 1.0
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.997134670487106
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.997134670487106
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.8409984707832336
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.8409984707832336
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c9",
+                "score": 0.8409984707832336
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c9",
+            "score": 0.8409984707832336
+          }
+        ],
+        "context": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c9",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 2,
+            "chunk_id": "3d3c99b3_p2_c9",
+            "score": null
+          }
+        ]
+      }
+    },
+    "branches": {
+      "3ea9643652c4": {
+        "candidate_counts": {
+          "_vector_retrieve_output": 11,
+          "retrieve_lexical_output": 8,
+          "_table_retrieve_output": 0,
+          "_rrf_fusion_output": 11,
+          "_rerank_candidates_input": 11,
+          "_rerank_candidates_output": 11,
+          "_limit_results_output": 11,
+          "retrieve_output": 11
+        },
+        "raw_counts": {
+          "ChromaDBVectorStore_raw": 11,
+          "BM25Store_raw": 8,
+          "TableStore_raw": 0
+        }
+      }
+    },
+    "ui": {
+      "session": "2663099e-dbc1-49",
+      "citations": 2,
+      "expanded_sources": 2
+    }
+  },
+  "n06": {
+    "session": "27faadb0-341b-4a2a-9e46-d9419357d177",
+    "answer_mode": "generated",
+    "model_calls": [
+      {
+        "tokens": {
+          "prompt_tokens": 2033,
+          "completion_tokens": 359,
+          "total_tokens": 2392
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "graph_api_match": true,
+    "facts": {
+      "frequency": {
+        "stage_hits": {
+          "5325b7adb97d": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 9,
+                "chunk_id": "fc04aab8_p1_tbl12",
+                "score": 0.5138680029664917
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 2,
+                "chunk_id": "fc04aab8_p1_tbl12",
+                "score": 0.6022653783037121
+              }
+            ],
+            "_table_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "table_b25da5f4",
+                "score": 0.0
+              }
+            ],
+            "_rrf_fusion_output": [
+              {
+                "rank": 4,
+                "chunk_id": "fc04aab8_p1_tbl12",
+                "score": 0.9433657872517923
+              },
+              {
+                "rank": 54,
+                "chunk_id": "table_b25da5f4",
+                "score": 0.17994376757263356
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 4,
+                "chunk_id": "fc04aab8_p1_tbl12",
+                "score": 0.9433657872517923
+              },
+              {
+                "rank": 54,
+                "chunk_id": "table_b25da5f4",
+                "score": 0.17994376757263356
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 1,
+                "chunk_id": "table_b25da5f4",
+                "score": 0.7854295372962952
+              },
+              {
+                "rank": 9,
+                "chunk_id": "fc04aab8_p1_tbl12",
+                "score": 0.020214702934026718
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 1,
+                "chunk_id": "table_b25da5f4",
+                "score": 0.7854295372962952
+              },
+              {
+                "rank": 9,
+                "chunk_id": "fc04aab8_p1_tbl12",
+                "score": 0.020214702934026718
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "table_b25da5f4",
+                "score": 0.7854295372962952
+              },
+              {
+                "rank": 9,
+                "chunk_id": "fc04aab8_p1_tbl12",
+                "score": 0.020214702934026718
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 1,
+            "chunk_id": "table_b25da5f4",
+            "score": 0.7854295372962952
+          }
+        ],
+        "context": [
+          {
+            "rank": 1,
+            "chunk_id": "table_b25da5f4",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "table_b25da5f4",
+            "score": null
+          }
+        ]
+      }
+    },
+    "branches": {
+      "5325b7adb97d": {
+        "candidate_counts": {
+          "_vector_retrieve_output": 53,
+          "retrieve_lexical_output": 14,
+          "_table_retrieve_output": 1,
+          "_rrf_fusion_output": 54,
+          "_rerank_candidates_input": 54,
+          "_rerank_candidates_output": 54,
+          "_limit_results_output": 12,
+          "retrieve_output": 12
+        },
+        "raw_counts": {
+          "ChromaDBVectorStore_raw": 53,
+          "BM25Store_raw": 14,
+          "TableStore_raw": 1
+        }
+      }
+    },
+    "ui": {
+      "session": "a085eadc-47f5-46",
+      "citations": 2,
+      "expanded_sources": 2
+    }
+  },
+  "n07": {
+    "session": "981e5d41-922b-4035-b648-d2bca28816be",
+    "answer_mode": "generated",
+    "model_calls": [
+      {
+        "tokens": {
+          "prompt_tokens": 1686,
+          "completion_tokens": 456,
+          "total_tokens": 2142
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "graph_api_match": true,
+    "facts": {
+      "divider": {
+        "stage_hits": {
+          "18fb99ea7721": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 0.7469705284674061
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 3,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 0.4961270690833113
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 0.9784276485443115
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 0.9784276485443115
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 0.9784276485443115
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 1,
+            "chunk_id": "fc04aab8_p2_c12",
+            "score": 0.9784276485443115
+          }
+        ],
+        "context": [
+          {
+            "rank": 1,
+            "chunk_id": "fc04aab8_p2_c12",
+            "score": null
+          }
+        ],
+        "citations": []
+      },
+      "nominal": {
+        "stage_hits": {
+          "18fb99ea7721": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 0.7469705284674061
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 3,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 0.4961270690833113
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 1.0
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 0.9784276485443115
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 0.9784276485443115
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p2_c12",
+                "score": 0.9784276485443115
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 1,
+            "chunk_id": "fc04aab8_p2_c12",
+            "score": 0.9784276485443115
+          }
+        ],
+        "context": [
+          {
+            "rank": 1,
+            "chunk_id": "fc04aab8_p2_c12",
+            "score": null
+          }
+        ],
+        "citations": []
+      },
+      "recommended": {
+        "stage_hits": {
+          "18fb99ea7721": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 22,
+                "chunk_id": "fc04aab8_p2_c13",
+                "score": 0.553427215535463
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 2,
+                "chunk_id": "fc04aab8_p2_c13",
+                "score": 0.9069733566406559
+              }
+            ],
+            "_table_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "table_79f2736d",
+                "score": 0.0
+              }
+            ],
+            "_rrf_fusion_output": [
+              {
+                "rank": 10,
+                "chunk_id": "fc04aab8_p2_c13",
+                "score": 0.8538747713903115
+              },
+              {
+                "rank": 54,
+                "chunk_id": "table_79f2736d",
+                "score": 0.17880794701986757
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 10,
+                "chunk_id": "fc04aab8_p2_c13",
+                "score": 0.8538747713903115
+              },
+              {
+                "rank": 54,
+                "chunk_id": "table_79f2736d",
+                "score": 0.17880794701986757
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 3,
+                "chunk_id": "table_79f2736d",
+                "score": 0.9237372875213623
+              },
+              {
+                "rank": 10,
+                "chunk_id": "fc04aab8_p2_c13",
+                "score": 0.6578525304794312
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 3,
+                "chunk_id": "table_79f2736d",
+                "score": 0.9237372875213623
+              },
+              {
+                "rank": 10,
+                "chunk_id": "fc04aab8_p2_c13",
+                "score": 0.6578525304794312
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 3,
+                "chunk_id": "table_79f2736d",
+                "score": 0.9237372875213623
+              },
+              {
+                "rank": 10,
+                "chunk_id": "fc04aab8_p2_c13",
+                "score": 0.6578525304794312
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 3,
+            "chunk_id": "table_79f2736d",
+            "score": 0.9237372875213623
+          }
+        ],
+        "context": [
+          {
+            "rank": 3,
+            "chunk_id": "table_79f2736d",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 2,
+            "chunk_id": "table_79f2736d",
+            "score": null
+          }
+        ]
+      }
+    },
+    "branches": {
+      "18fb99ea7721": {
+        "candidate_counts": {
+          "_vector_retrieve_output": 53,
+          "retrieve_lexical_output": 11,
+          "_table_retrieve_output": 3,
+          "_rrf_fusion_output": 56,
+          "_rerank_candidates_input": 56,
+          "_rerank_candidates_output": 56,
+          "_limit_results_output": 12,
+          "retrieve_output": 12
+        },
+        "raw_counts": {
+          "ChromaDBVectorStore_raw": 53,
+          "BM25Store_raw": 11,
+          "TableStore_raw": 3
+        }
+      }
+    },
+    "ui": {
+      "session": "d299eb5d-7cdb-47",
+      "citations": 3,
+      "expanded_sources": 3
+    }
+  },
+  "n10": {
+    "session": "af5f94ad-1177-4b1b-bb80-d923f3da5402",
+    "answer_mode": "verified_dac_calculation",
+    "model_calls": [],
+    "graph_api_match": true,
+    "facts": {
+      "lsb-law": {
+        "stage_hits": {
+          "3680940779ec": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 3,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.5930919527047417
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.5060822335125538
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9746844974548959
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9746844974548959
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 3,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.07729574292898178
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 3,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.07729574292898178
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 3,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.07729574292898178
+              }
+            ]
+          },
+          "cbd2956bed88": {
+            "_vector_retrieve_output": [],
+            "retrieve_lexical_output": [],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [],
+            "_rerank_candidates_input": [],
+            "_rerank_candidates_output": [],
+            "_limit_results_output": [],
+            "retrieve_output": []
+          }
+        },
+        "top8": [
+          {
+            "rank": 5,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": 0.07729574292898178
+          }
+        ],
+        "context": [
+          {
+            "rank": 5,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ]
+      },
+      "reference": {
+        "stage_hits": {
+          "3680940779ec": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 3,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.5930919527047417
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.5060822335125538
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9746844974548959
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9746844974548959
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 3,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.07729574292898178
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 3,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.07729574292898178
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 3,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.07729574292898178
+              }
+            ]
+          },
+          "cbd2956bed88": {
+            "_vector_retrieve_output": [],
+            "retrieve_lexical_output": [],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [],
+            "_rerank_candidates_input": [],
+            "_rerank_candidates_output": [],
+            "_limit_results_output": [],
+            "retrieve_output": []
+          }
+        },
+        "top8": [
+          {
+            "rank": 5,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": 0.07729574292898178
+          }
+        ],
+        "context": [
+          {
+            "rank": 5,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ]
+      },
+      "resolution": {
+        "stage_hits": {
+          "3680940779ec": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 3,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.5930919527047417
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.5060822335125538
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9746844974548959
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 2,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.9746844974548959
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 3,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.07729574292898178
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 3,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.07729574292898178
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 3,
+                "chunk_id": "3d3c99b3_p2_c8",
+                "score": 0.07729574292898178
+              }
+            ]
+          },
+          "cbd2956bed88": {
+            "_vector_retrieve_output": [],
+            "retrieve_lexical_output": [],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [],
+            "_rerank_candidates_input": [],
+            "_rerank_candidates_output": [],
+            "_limit_results_output": [],
+            "retrieve_output": []
+          }
+        },
+        "top8": [
+          {
+            "rank": 5,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": 0.07729574292898178
+          }
+        ],
+        "context": [
+          {
+            "rank": 5,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "3d3c99b3_p2_c8",
+            "score": null
+          }
+        ]
+      },
+      "feedback": {
+        "stage_hits": {
+          "3680940779ec": {
+            "_vector_retrieve_output": [],
+            "retrieve_lexical_output": [],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [],
+            "_rerank_candidates_input": [],
+            "_rerank_candidates_output": [],
+            "_limit_results_output": [],
+            "retrieve_output": []
+          },
+          "cbd2956bed88": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "fc04aab8_p1_tbl7",
+                "score": 0.6198097333256893
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 3,
+                "chunk_id": "fc04aab8_p1_tbl7",
+                "score": 0.8011620592625242
+              }
+            ],
+            "_table_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "table_b25da5f4",
+                "score": 0.0
+              }
+            ],
+            "_rrf_fusion_output": [
+              {
+                "rank": 2,
+                "chunk_id": "fc04aab8_p1_tbl7",
+                "score": 0.9963814389101746
+              },
+              {
+                "rank": 54,
+                "chunk_id": "table_b25da5f4",
+                "score": 0.17816091954022992
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 2,
+                "chunk_id": "fc04aab8_p1_tbl7",
+                "score": 0.9963814389101746
+              },
+              {
+                "rank": 54,
+                "chunk_id": "table_b25da5f4",
+                "score": 0.17816091954022992
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 1,
+                "chunk_id": "table_b25da5f4",
+                "score": 0.7786223888397217
+              },
+              {
+                "rank": 4,
+                "chunk_id": "fc04aab8_p1_tbl7",
+                "score": 0.09573683887720108
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 1,
+                "chunk_id": "table_b25da5f4",
+                "score": 0.7786223888397217
+              },
+              {
+                "rank": 4,
+                "chunk_id": "fc04aab8_p1_tbl7",
+                "score": 0.09573683887720108
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "table_b25da5f4",
+                "score": 0.7786223888397217
+              },
+              {
+                "rank": 4,
+                "chunk_id": "fc04aab8_p1_tbl7",
+                "score": 0.09573683887720108
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 2,
+            "chunk_id": "table_b25da5f4",
+            "score": 0.7786223888397217
+          }
+        ],
+        "context": [
+          {
+            "rank": 8,
+            "chunk_id": "fc04aab8_p1_tbl7",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 2,
+            "chunk_id": "fc04aab8_p1_tbl7",
+            "score": null
+          }
+        ]
+      }
+    },
+    "branches": {
+      "3680940779ec": {
+        "candidate_counts": {
+          "_vector_retrieve_output": 11,
+          "retrieve_lexical_output": 9,
+          "_table_retrieve_output": 0,
+          "_rrf_fusion_output": 11,
+          "_rerank_candidates_input": 11,
+          "_rerank_candidates_output": 11,
+          "_limit_results_output": 6,
+          "retrieve_output": 6
+        },
+        "raw_counts": {
+          "ChromaDBVectorStore_raw": 11,
+          "BM25Store_raw": 9,
+          "TableStore_raw": 0
+        }
+      },
+      "cbd2956bed88": {
+        "candidate_counts": {
+          "_vector_retrieve_output": 53,
+          "retrieve_lexical_output": 30,
+          "_table_retrieve_output": 3,
+          "_rrf_fusion_output": 56,
+          "_rerank_candidates_input": 56,
+          "_rerank_candidates_output": 56,
+          "_limit_results_output": 6,
+          "retrieve_output": 6
+        },
+        "raw_counts": {
+          "ChromaDBVectorStore_raw": 53,
+          "BM25Store_raw": 30,
+          "TableStore_raw": 3
+        }
+      }
+    },
+    "ui": {
+      "session": "95878e90-dd19-43",
+      "citations": 2,
+      "expanded_sources": 2
+    }
+  },
+  "v1": {
+    "session": "608cd870-5fa6-4372-aff6-384d17721658",
+    "answer_mode": "verified_dac_calculation",
+    "model_calls": [],
+    "graph_api_match": true,
+    "facts": {
+      "adi-law": {
+        "stage_hits": {
+          "76d1ea23f8c5": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 3,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.6601848530809309
+              }
+            ],
+            "retrieve_lexical_output": [],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 8,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.5733691120510604
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 8,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.5733691120510604
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 4,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.45907512307167053
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 4,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.45907512307167053
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 4,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.45907512307167053
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 4,
+            "chunk_id": "2f7740db_p2_c11",
+            "score": 0.45907512307167053
+          }
+        ],
+        "context": [
+          {
+            "rank": 4,
+            "chunk_id": "2f7740db_p2_c11",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "2f7740db_p2_c11",
+            "score": null
+          }
+        ]
+      }
+    },
+    "branches": {
+      "76d1ea23f8c5": {
+        "candidate_counts": {
+          "_vector_retrieve_output": 19,
+          "retrieve_lexical_output": 7,
+          "_table_retrieve_output": 0,
+          "_rrf_fusion_output": 19,
+          "_rerank_candidates_input": 19,
+          "_rerank_candidates_output": 19,
+          "_limit_results_output": 12,
+          "retrieve_output": 12
+        },
+        "raw_counts": {
+          "ChromaDBVectorStore_raw": 19,
+          "BM25Store_raw": 7,
+          "TableStore_raw": 0
+        }
+      }
+    }
+  },
+  "v2": {
+    "session": "4f1d5786-b8be-4126-ab64-b32f0d90491e",
+    "answer_mode": "verified_dac_calculation",
+    "model_calls": [],
+    "graph_api_match": true,
+    "facts": {
+      "adi-code-range": {
+        "stage_hits": {
+          "611b308b561c": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 6,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.5914100832882304
+              }
+            ],
+            "retrieve_lexical_output": [
+              {
+                "rank": 1,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 1.0
+              }
+            ],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 4,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.9802763006105624
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 4,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.9802763006105624
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 5,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.060526542365550995
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 5,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.060526542365550995
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 5,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.060526542365550995
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 5,
+            "chunk_id": "2f7740db_p2_c11",
+            "score": 0.060526542365550995
+          }
+        ],
+        "context": [
+          {
+            "rank": 5,
+            "chunk_id": "2f7740db_p2_c11",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "2f7740db_p2_c11",
+            "score": null
+          }
+        ]
+      }
+    },
+    "branches": {
+      "611b308b561c": {
+        "candidate_counts": {
+          "_vector_retrieve_output": 19,
+          "retrieve_lexical_output": 15,
+          "_table_retrieve_output": 0,
+          "_rrf_fusion_output": 19,
+          "_rerank_candidates_input": 19,
+          "_rerank_candidates_output": 19,
+          "_limit_results_output": 12,
+          "retrieve_output": 12
+        },
+        "raw_counts": {
+          "ChromaDBVectorStore_raw": 19,
+          "BM25Store_raw": 15,
+          "TableStore_raw": 0
+        }
+      }
+    }
+  },
+  "v3": {
+    "session": "046548f6-90a7-4fb1-9774-a20d6c4d82b9",
+    "answer_mode": "verified_dac_calculation",
+    "model_calls": [],
+    "graph_api_match": true,
+    "facts": {
+      "adi-law": {
+        "stage_hits": {
+          "1186ecc76cc0": {
+            "_vector_retrieve_output": [
+              {
+                "rank": 1,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.6380797151582028
+              }
+            ],
+            "retrieve_lexical_output": [],
+            "_table_retrieve_output": [],
+            "_rrf_fusion_output": [
+              {
+                "rank": 8,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.5938697318007663
+              }
+            ],
+            "_rerank_candidates_input": [
+              {
+                "rank": 8,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.5938697318007663
+              }
+            ],
+            "_rerank_candidates_output": [
+              {
+                "rank": 3,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.6880837678909302
+              }
+            ],
+            "_limit_results_output": [
+              {
+                "rank": 3,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.6880837678909302
+              }
+            ],
+            "retrieve_output": [
+              {
+                "rank": 3,
+                "chunk_id": "2f7740db_p2_c11",
+                "score": 0.6880837678909302
+              }
+            ]
+          }
+        },
+        "top8": [
+          {
+            "rank": 3,
+            "chunk_id": "2f7740db_p2_c11",
+            "score": 0.6880837678909302
+          }
+        ],
+        "context": [
+          {
+            "rank": 3,
+            "chunk_id": "2f7740db_p2_c11",
+            "score": null
+          }
+        ],
+        "citations": [
+          {
+            "rank": 1,
+            "chunk_id": "2f7740db_p2_c11",
+            "score": null
+          }
+        ]
+      }
+    },
+    "branches": {
+      "1186ecc76cc0": {
+        "candidate_counts": {
+          "_vector_retrieve_output": 19,
+          "retrieve_lexical_output": 7,
+          "_table_retrieve_output": 0,
+          "_rrf_fusion_output": 19,
+          "_rerank_candidates_input": 19,
+          "_rerank_candidates_output": 19,
+          "_limit_results_output": 12,
+          "retrieve_output": 12
+        },
+        "raw_counts": {
+          "ChromaDBVectorStore_raw": 19,
+          "BM25Store_raw": 7,
+          "TableStore_raw": 0
+        }
+      }
+    }
+  }
+}

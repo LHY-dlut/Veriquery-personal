@@ -1,0 +1,27 @@
+﻿fact,question,parsed,indexed,dense,bm25,table,union,rrf8,rerank1,rerank8,context,unambiguous_context,selected_field,evidence
+eep-clk,e01,1,1,1,1,1,1,1,1,1,1,1,0,24LC256 original p4; cases/e01.json; field-ranks.json:eep-clk; target row kept in index; inspect numbered messages and rank receipt
+eep-read,e02,1,1,1,1,1,1,1,1,1,1,0,1,24LC256 original p3; cases/e02.json; field-ranks.json:eep-read; target row visible without column labels
+eep-write,e02,1,1,1,1,1,1,1,0,1,1,0,1,24LC256 original p3; cases/e02.json; field-ranks.json:eep-write; target row visible without column labels
+eep-standby,e03,1,1,1,1,1,1,1,1,1,1,0,1,24LC256 original p3; cases/e03.json; field-ranks.json:eep-standby; target row visible without column labels
+adc-16-lo,a01,1,1,1,1,1,1,1,1,1,1,1,1,MCP3421 original p3; cases/a01.json; field-ranks.json:adc-16-lo; target row kept in index; inspect numbered messages and rank receipt
+adc-16-hi,a01,1,1,1,1,1,1,1,1,1,1,1,1,MCP3421 original p3; cases/a01.json; field-ranks.json:adc-16-hi; target row kept in index; inspect numbered messages and rank receipt
+adc-18,a02,1,1,1,1,1,1,1,1,1,1,1,1,MCP3421 original p3; cases/a02.json; field-ranks.json:adc-18; target row kept in index; inspect numbered messages and rank receipt
+adc-idda,a03,1,1,1,0,1,1,1,1,1,1,1,1,MCP3421 original p4; cases/a03.json; field-ranks.json:adc-idda; target row kept in index; inspect numbered messages and rank receipt
+adc-idds,a03,1,1,1,0,1,1,1,1,1,1,1,1,MCP3421 original p4; cases/a03.json; field-ranks.json:adc-idds; target row kept in index; inspect numbered messages and rank receipt
+tmp-9700-slope,t01,1,1,1,1,1,1,1,1,1,1,1,0,MCP9700 original p4; cases/t01.json; field-ranks.json:tmp-9700-slope; target row kept in index; inspect numbered messages and rank receipt
+tmp-9701-slope,t01,1,1,1,1,1,1,1,1,1,1,1,0,MCP9700 original p4; cases/t01.json; field-ranks.json:tmp-9701-slope; target row kept in index; inspect numbered messages and rank receipt
+tmp-9700-zero,t02,1,1,1,1,1,1,1,0,1,0,0,0,MCP9700 original p3; cases/t02.json; field-ranks.json:tmp-9700-zero; target row kept in index; inspect numbered messages and rank receipt
+tmp-9701-zero,t02,1,1,1,1,1,1,1,1,1,1,1,1,MCP9700 original p4; cases/t02.json; field-ranks.json:tmp-9701-zero; target row kept in index; inspect numbered messages and rank receipt
+tmp-i,t03,1,1,1,1,1,1,1,1,1,1,0,0,MCP9700 original p3; cases/t03.json; field-ranks.json:tmp-i; target row visible without column labels
+opa-fu,o01,0,0,1,1,1,1,1,0,1,1,0,1,OPA2993 original p7; cases/o01.json; field-ranks.json:opa-fu; column identified only as a multi-column span in parser and index
+opa-gbw,o01,0,0,1,1,1,1,1,1,1,1,0,1,OPA2993 original p7; cases/o01.json; field-ranks.json:opa-gbw; column identified only as a multi-column span in parser and index
+opa-sr,o02,0,0,1,1,1,1,1,1,1,1,0,0,OPA2993 original p7; cases/o02.json; field-ranks.json:opa-sr; column identified only as a multi-column span in parser and index
+opa-sr-max,o02,0,0,1,1,1,1,1,1,1,1,0,0,OPA2993 original p7; cases/o02.json; field-ranks.json:opa-sr-max; column identified only as a multi-column span in parser and index
+opa-ts1,o03,0,0,1,1,1,1,1,0,1,1,0,0,OPA2993 original p7; cases/o03.json; field-ranks.json:opa-ts1; column identified only as a multi-column span in parser and index
+opa-ts2,o03,0,0,1,1,1,1,1,1,1,1,0,0,OPA2993 original p7; cases/o03.json; field-ranks.json:opa-ts2; column identified only as a multi-column span in parser and index
+can-std-typ,c01,1,1,1,1,1,1,1,1,1,1,1,0,SN65HVD230 original p7; cases/c01.json; field-ranks.json:can-std-typ; target row kept in index; inspect numbered messages and rank receipt
+can-std-max,c01,1,1,1,1,1,1,1,1,1,1,1,1,SN65HVD230 original p7; cases/c01.json; field-ranks.json:can-std-max; target row kept in index; inspect numbered messages and rank receipt
+can-slp-max,c02,1,1,1,1,1,1,1,1,1,1,1,0,SN65HVD230 original p7; cases/c02.json; field-ranks.json:can-slp-max; target row kept in index; inspect numbered messages and rank receipt
+can-dom-max,c03,1,1,1,1,1,1,1,1,1,1,1,0,SN65HVD230 original p7; cases/c03.json; field-ranks.json:can-dom-max; target row kept in index; inspect numbered messages and rank receipt
+can-vcc-min,c04,0,0,1,0,1,1,0,0,0,0,0,0,SN65HVD230 original p6; cases/c04.json; field-ranks.json:can-vcc-min; column identified only as a multi-column span in parser and index
+can-vcc-max,c04,1,1,1,0,1,1,0,0,0,0,0,0,SN65HVD230 original p6; cases/c04.json; field-ranks.json:can-vcc-max; target row kept in index; inspect numbered messages and rank receipt

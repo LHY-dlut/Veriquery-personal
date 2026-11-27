@@ -1,0 +1,80 @@
+{
+  "parsed": {
+    "passed": 19,
+    "total": 26
+  },
+  "indexed": {
+    "passed": 19,
+    "total": 26
+  },
+  "dense": {
+    "passed": 26,
+    "total": 26
+  },
+  "bm25": {
+    "passed": 22,
+    "total": 26
+  },
+  "table": {
+    "passed": 26,
+    "total": 26
+  },
+  "union": {
+    "passed": 26,
+    "total": 26
+  },
+  "rrf8": {
+    "passed": 24,
+    "total": 26
+  },
+  "rerank1": {
+    "passed": 20,
+    "total": 26
+  },
+  "rerank8": {
+    "passed": 24,
+    "total": 26
+  },
+  "context": {
+    "passed": 23,
+    "total": 26
+  },
+  "unambiguous_context": {
+    "passed": 13,
+    "total": 26
+  },
+  "selected_field": {
+    "passed": 12,
+    "total": 26
+  },
+  "strict": {
+    "passed": 4,
+    "total": 16
+  },
+  "among_preserved_fields": {
+    "union": {
+      "passed": 19,
+      "total": 19
+    },
+    "rrf8": {
+      "passed": 18,
+      "total": 19
+    },
+    "rerank1": {
+      "passed": 16,
+      "total": 19
+    },
+    "rerank8": {
+      "passed": 18,
+      "total": 19
+    },
+    "context": {
+      "passed": 17,
+      "total": 19
+    },
+    "unambiguous_context": {
+      "passed": 13,
+      "total": 19
+    }
+  }
+}

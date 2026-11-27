@@ -1,0 +1,206 @@
+{
+  "facts": {
+    "lsb-law": {
+      "document": "MCP4725",
+      "page": 2,
+      "quotes": [
+        "L S B _ {I d e a l} = \\frac {V _ {R E F}}{2 ^ {n}}"
+      ]
+    },
+    "reference": {
+      "document": "MCP4725",
+      "page": 2,
+      "quotes": [
+        "\\text {The reference voltage} = V _ {D D}"
+      ]
+    },
+    "resolution": {
+      "document": "MCP4725",
+      "page": 2,
+      "quotes": [
+        "n = 1 2 \\text {for MCP4725}"
+      ]
+    },
+    "ideal-law": {
+      "document": "MCP4725",
+      "page": 2,
+      "quotes": [
+        "\\mathrm{V} _ {\\text {Ideal}} & = & \\text {Code*LSB}"
+      ]
+    },
+    "inl-law": {
+      "document": "MCP4725",
+      "page": 2,
+      "quotes": [
+        "I N L = \\frac {\\left(V _ {O U T} - V _ {I d e a l}\\right)}{L S B}"
+      ]
+    },
+    "dnl-law": {
+      "document": "MCP4725",
+      "page": 2,
+      "quotes": [
+        "D N L = \\frac {\\Delta V _ {O U T} - L S B}{L S B}"
+      ]
+    },
+    "frequency": {
+      "document": "TPS63020",
+      "page": 1,
+      "quotes": [
+        "MIN | TYP | MAX | UNIT",
+        "Oscillator frequency [跨2列合并] |  |  | 2200 | 2400 | 2600 | kHz"
+      ]
+    },
+    "feedback": {
+      "document": "TPS63020",
+      "page": 1,
+      "quotes": [
+        "MIN | TYP | MAX | UNIT",
+        "TPS63020 feedback voltage [跨2列合并] |  | PS/SYNC = $V_{IN}$ | 495 | 500 | 505 | mV"
+      ]
+    },
+    "divider": {
+      "document": "TPS63020",
+      "page": 2,
+      "quotes": [
+        "R 1 = R 2 \\times \\left(\\frac {V _ {\\text {OUT}}}{V _ {\\text {FB}}} - 1\\right)"
+      ]
+    },
+    "nominal": {
+      "document": "TPS63020",
+      "page": 2,
+      "quotes": [
+        "feedback voltage is 500 mV nominal"
+      ]
+    },
+    "recommended": {
+      "document": "TPS63020",
+      "page": 2,
+      "quotes": [
+        "$V_{OUT}$ | R1 | R2",
+        "3.3 V | 1 MΩ | 180 kΩ"
+      ]
+    },
+    "va-law": {
+      "document": "DAC081S101",
+      "page": 3,
+      "quotes": [
+        "V _ {\\text {OUT}} = V _ {\\mathrm{A}} \\times (\\mathrm{D} / 2 5 6)"
+      ]
+    },
+    "ti-code-range": {
+      "document": "DAC081S101",
+      "page": 3,
+      "quotes": [
+        "DAC register and can take on any value between 0 and 255"
+      ]
+    },
+    "family-law": {
+      "document": "DAC7311",
+      "page": 2,
+      "quotes": [
+        "V _ {\\text {OUT}} = A V _ {\\mathrm{DD}} \\times \\frac {\\mathrm{D}}{2 ^ {\\mathrm{n}}}"
+      ]
+    },
+    "bits-7311": {
+      "document": "DAC7311",
+      "page": 2,
+      "quotes": [
+        "12 (DAC7311)"
+      ]
+    },
+    "bits-6311": {
+      "document": "DAC7311",
+      "page": 2,
+      "quotes": [
+        "10 (DAC6311)"
+      ]
+    },
+    "bits-5311": {
+      "document": "DAC7311",
+      "page": 2,
+      "quotes": [
+        "8 (DAC5311)"
+      ]
+    },
+    "adi-law": {
+      "document": "AD5300",
+      "page": 2,
+      "quotes": [
+        "V _ {O U T} = V _ {D D} \\times \\left(\\frac {D}{2 5 6}\\right)"
+      ]
+    },
+    "adi-code-range": {
+      "document": "AD5300",
+      "page": 2,
+      "quotes": [
+        "D can range from 0 to 255"
+      ]
+    }
+  },
+  "cases": {
+    "n02": [
+      "lsb-law",
+      "reference",
+      "resolution",
+      "ideal-law"
+    ],
+    "n03": [
+      "lsb-law",
+      "reference",
+      "resolution",
+      "dnl-law"
+    ],
+    "n04": [
+      "lsb-law",
+      "reference",
+      "resolution",
+      "ideal-law",
+      "inl-law"
+    ],
+    "n06": [
+      "frequency"
+    ],
+    "n07": [
+      "divider",
+      "nominal",
+      "recommended"
+    ],
+    "n10": [
+      "lsb-law",
+      "reference",
+      "resolution",
+      "feedback"
+    ],
+    "u01": [
+      "va-law"
+    ],
+    "u02": [
+      "ti-code-range"
+    ],
+    "u03": [
+      "family-law",
+      "bits-7311"
+    ],
+    "u04": [
+      "family-law",
+      "bits-7311"
+    ],
+    "s1": [
+      "family-law",
+      "bits-6311"
+    ],
+    "s2": [
+      "family-law",
+      "bits-5311"
+    ],
+    "v1": [
+      "adi-law"
+    ],
+    "v2": [
+      "adi-code-range"
+    ],
+    "v3": [
+      "adi-law"
+    ]
+  }
+}

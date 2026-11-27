@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Regression tests for evidence retrieval and HTTP responses without model servers."""
 import asyncio
+import gzip
 import json
 import sys
 import tempfile
@@ -16,7 +17,8 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
 from api.dependencies import ServiceContainer, get_service_container
-from api.routers.chat import router
+from api.routers.chat import _deduplicate_sentences, router
+from agents.workflow_nodes import TextAnalysisNodes
 from api.routers.circuit import _resolve_image_path
 from api.routers.documents import _build_chunks_from_pages
 from core.config import Settings
@@ -27,6 +29,7 @@ from ingestion.mineru_client import MinerUClient, _parse_table_content
 from ingestion.spec_column_evidence import annotate_spec_columns
 from retrieval.bm25_store import BM25Store
 from retrieval.hybrid_retriever import HybridRetriever
+from retrieval.dac_calculation import calculate_dac
 from retrieval.verified_passages import find_condition_excerpt, find_verified_excerpt
 from retrieval.table_evidence import TableEvidenceQuery
 from retrieval.table_store import TableStore
@@ -56,6 +59,89 @@ class VectorSearch:
 
 
 class TestRagPipeline(unittest.TestCase):
+    def test_dac_math_uses_supplied_code_units_and_source_definitions(self):
+        directory = Path(__file__).resolve().parents[1] / "data/eval/nine-stage/results"
+        case = json.loads((directory / "n04-chain.json").read_text(encoding="utf8"))
+        evidence = case["evidence"]
+        doc_ids = {item["document_id"] for item in evidence}
+        def calculate(query):
+            return calculate_dac(query, evidence, case["context"], doc_ids)
+
+        query = "MCP4725 VDD=2048 mV，输入码为 0x40，实测 VOUT=31.75 mV，理想输出和有符号 INL 是多少？"
+        answer, refs = calculate(query)
+        self.assertIn("32 mV", answer)
+        self.assertIn("-0.5 LSB", answer)
+        self.assertGreaterEqual(len(refs), 2)
+        self.assertIn("无法表示", calculate(query.replace("0x40", "0x1000"))[0])
+        self.assertIsNone(calculate(query.replace("MCP4725", "ABC1234")))
+        self.assertIsNone(calculate(query.replace("VDD=", "VDD=5 V 或 VDD=")))
+        self.assertIsNone(calculate_dac(query, evidence, "", doc_ids))
+
+    def test_family_member_binding_is_local_and_ambiguity_defers(self):
+        row = "VOUT=VA*(D/2^n)\nresolution in bits: 7 (AB123), 11 (AB456)"
+        def calculate(text, query):
+            item = {"text_snippet": text, "file": "series.pdf", "document_id": "doc"}
+            return calculate_dac(query, [item], text, {"doc"})
+
+        question = "AB456 ideal output voltage for code 0x200?"
+        self.assertIn("1/4 × VA", calculate(row, question)[0])
+        self.assertIsNone(calculate(row.replace("11 (AB456)", "11 (AB456), 9 (AB456)"), question))
+        self.assertIsNone(calculate(row, question.replace("AB456", "AB457")))
+        self.assertIsNone(calculate(row.replace("D/2^n)", "D/2^n)+1"), question))
+        self.assertIsNone(calculate(row, question + " Compare to 0x100."))
+        self.assertIsNone(calculate(row, "AB456 code 0x200 is loaded. What is the supply current?"))
+        self.assertIn("0–2047", calculate(row, "AB456: is data code 0x800 valid?")[0])
+
+    def test_chat_citation_contract_preserves_same_page_identity_and_legacy_records(self):
+        from api.routers.chat import _extract_results_from_state
+        rows = [{"document_id": "a", "chunk_id": k, "page": 2, "file": "part.pdf", "text_snippet": k}
+                for k in ("formula", "conditions")]
+        result = _extract_results_from_state({"citations": rows + [{"file":"old.pdf", "page":1}]})
+        self.assertEqual([c.chunk_id for c in result.citations], ["formula", "conditions", None])
+        self.assertEqual([c.document_id for c in result.citations], ["a", "a", None])
+
+    def test_feedback_row_requires_matching_device_mode_and_labelled_values(self):
+        from retrieval.dac_calculation import _feedback_row
+        header = "PARAMETER | TEST CONDITIONS | MAX | MIN | UNIT"
+        source = "ABC123 feedback voltage | A/B = V_IN | 520 | 480 | mV"
+        def find(row, mode="VIN"):
+            return _feedback_row("feedback voltage at A/B=" + mode,
+                                 [(4, {"text_snippet": header + "\n" + row})], "ABC123")
+
+        self.assertEqual(find(source)[:4], (480, 520, "mV", 4))
+        self.assertIsNone(find(source, "GND"))
+        self.assertIsNone(find(source.replace("ABC123", "DEF456")))
+        self.assertIsNone(find(source.replace("520 | 480", "480 | 520")))
+
+    def test_long_answer_retains_both_frequency_conclusions(self):
+        path = Path(__file__).resolve().parents[1] / "data/eval/formula-ingest-ab/results/budget-check.jsonl"
+        rows = map(json.loads, path.read_text(encoding="utf8").splitlines())
+        record = next(row for row in rows if row["id"] == "n06" and row["limit"] == 768)
+        cleaned = LLMClient(self.settings)._clean_answer(record["raw"])
+        for answer in (cleaned, _deduplicate_sentences(cleaned)[0]):
+            self.assertIn("满量程范围是 0.4 MHz", answer)
+            self.assertIn("最大允许偏差是 200 kHz", answer)
+            self.assertIn("[1]", answer)
+
+    def test_cross_document_context_retains_formula_definitions_and_labelled_row(self):
+        directory = Path(__file__).resolve().parents[1] / "data/eval/nine-stage/results"
+        case = json.loads((directory / "n10-chain.json").read_text(encoding="utf8"))
+        with gzip.open(directory / "events.jsonl.gz", "rt", encoding="utf8") as stream:
+            event = next(row for row in map(json.loads, stream)
+                         if row["session"] == case["session"] and row["stage"] == "graph_output")
+        candidates = [SimpleNamespace(chunk_id=row["id"], document_id=row["doc"], page=row["page"],
+                                      text=row["text"], metadata=row["metadata"],
+                                      filename=row["metadata"].get("filename", ""))
+                      for row in event["results"]]
+        context, evidence = TextAnalysisNodes(self.settings)._build_evidence_context(
+            case["entry"]["query"], candidates, comparison=True, joint=True)
+        self.assertLessEqual(len(context), 4200)
+        formula = next(row for row in candidates if row.chunk_id == "c06748dc_p2_c8")
+        feedback = next(row for row in candidates if row.chunk_id == "386a2473_p1_tbl7")
+        self.assertIn(formula.text, context)
+        self.assertIn("MIN | TYP | MAX | UNIT\n" + feedback.text, context)
+        self.assertTrue({formula.chunk_id, feedback.chunk_id} <= {item["chunk_id"] for item in evidence})
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)

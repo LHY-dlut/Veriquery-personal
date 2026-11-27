@@ -27,6 +27,16 @@ import requests
 logger = logging.getLogger(__name__)
 
 
+def deduplicate_answer_lines(text: str) -> str:
+    """Collapse consecutive exact repeats without splitting numbers or citations."""
+    lines = []
+    for line in text.splitlines():
+        line = line.strip()
+        if line and (not lines or line != lines[-1]):
+            lines.append(line)
+    return "\n".join(lines)
+
+
 class LLMClient:
     """Xinference-backed LLM client with RAG answer generation.
 
@@ -60,10 +70,8 @@ class LLMClient:
 
         Args:
             prompt: Input text for the model.
-            max_new_tokens: Max tokens to generate (hard cap at 256, same
-                as the local implementation; raised to 1024 for verbatim
-                transcription requests, which need room for line-by-line
-                output).
+            max_new_tokens: Requested output tokens, bounded by the configured
+                answer budget or the separate transcription budget.
             temperature: Sampling temperature (hard cap at 0.7, same as
                 the local implementation).
             transcription: Whether this is a verbatim-transcription request.
@@ -74,7 +82,7 @@ class LLMClient:
         Raises:
             RuntimeError: If the API fails after retry.
         """
-        token_cap = 1024 if transcription else 256
+        token_cap = 1024 if transcription else self.settings.LLM_MAX_TOKENS
         payload = {
             "model": self.model_uid,
             "messages": [{"role": "user", "content": prompt}],
@@ -234,7 +242,7 @@ class LLMClient:
             4. Strip Markdown/HTML formatting
             5. Remove boilerplate prefixes
             6. Decode HTML entities
-            7. Deduplicate sentences via 20-char prefix hash
+            7. Collapse consecutive duplicate lines
             8. Fallback to safe cleaning if aggressive cleaning removes too much content
         """
         raw_answer = answer
@@ -275,11 +283,6 @@ class LLMClient:
             '', answer, flags=re.IGNORECASE | re.MULTILINE,
         )
 
-        for stop_word in ["\n\n\n"]:
-            if stop_word in answer:
-                idx = answer.find(stop_word)
-                answer = answer[:idx]
-
         for stop_word in ["assistant:", "user:", "system:"]:
             lower = answer.lower()
             idx = lower.find(stop_word)
@@ -291,12 +294,6 @@ class LLMClient:
             after = answer[idx_assistant:idx_assistant + 12].lower()
             if after in ("assistant", "assistant\n", "assistant "):
                 answer = answer[:idx_assistant]
-
-        for marker in ["###", "【答案】"]:
-            lower = answer.lower()
-            idx = lower.find(marker.lower())
-            if idx > 30:
-                answer = answer[:idx]
 
         answer = re.sub(r'^(?:Wait|Oh\s+wait|Let\s+me\s+think|I\s+need\s+to)[,.]?\s+', '', answer, flags=re.IGNORECASE)
         # 只剥离列表编号(1. / 2) / 1、),绝不能删掉数值前的负号或数字本身:
@@ -325,7 +322,6 @@ class LLMClient:
             lambda value: f"{value[1]}.{''.join(value[2].split())}",
             math[0],
         ), answer)
-        answer = re.sub(r'(\d+)\.[ \t]+(\d+)', r'\1.\2', answer)
 
         html_entities = {
             "&lt;": "<",
@@ -337,27 +333,7 @@ class LLMClient:
         for entity, char in html_entities.items():
             answer = answer.replace(entity, char)
 
-        # 句子切分:英文句点会切开小数("12.0 A" → "12." + "0 A"),
-        # 导致数值片段被后续长度过滤丢弃。句点仅在前后都不是数字时切分。
-        sentences = re.split(r'(?<=[。！？!?])|(?<!\d)\.(?!\d)|\n', answer)
-        seen = set()
-        unique_sentences = []
-
-        for sent in sentences:
-            sent_stripped = sent.strip()
-            if sent_stripped and len(sent_stripped) > 1:
-                sent_normalized = re.sub(r'\s+', '', sent_stripped.lower())
-                if len(sent_normalized) > 1:
-                    # 去重 hash 取前 40 字符:过短(如 20)会把
-                    # "…最大值为 12.0 A" 与 "…最大值为 12.6 A" 误判为重复
-                    similarity_hash = sent_normalized[:40]
-                    if similarity_hash not in seen:
-                        seen.add(similarity_hash)
-                        unique_sentences.append(sent_stripped)
-
-        answer = '\n'.join(unique_sentences[:12])
-        answer = re.sub(r"\n\s*\n", "\n", answer)
-        cleaned = answer.strip()
+        cleaned = deduplicate_answer_lines(answer)
 
         if len(cleaned) < 10 and raw_answer and len(raw_answer.strip()) > 10:
             has_thinking_prefix = bool(re.match(
@@ -370,7 +346,7 @@ class LLMClient:
             else:
                 logger.warning(f"_clean_answer 清理后过短({len(cleaned)} chars), 使用安全降级清理")
                 safe = raw_answer
-                for sw in ["assistant", "user:", "system:", "\n\n\n"]:
+                for sw in ["assistant", "user:", "system:"]:
                     if sw in safe.lower():
                         idx = safe.lower().find(sw)
                         if idx > 3:

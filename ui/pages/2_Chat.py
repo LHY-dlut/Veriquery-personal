@@ -491,33 +491,27 @@ def build_message_html(role: str, content: str,
 
     cit_html = ""
     if citations and role == "assistant" and message_meta and message_meta.get("show_citations", False):
-        seen_citations = set()
-        unique_citations = []
-        for c in citations:
-            raw_file = c.get("file", c.get("document", "未知文档"))
-            page = c.get("page", 1)
-            dedup_key = f"{raw_file}_{page}"
-            if dedup_key not in seen_citations:
-                seen_citations.add(dedup_key)
-                unique_citations.append(c)
-
         cit_html = '<div class="chat-citations"><div class="chat-citations-title">📚 信息来源</div>'
-        for c in unique_citations:
+        for number, c in enumerate(citations, 1):
             raw_file = c.get("file", c.get("document", "未知文档"))
             fname = html.escape(raw_file)
             page = c.get("page", 1)
 
             page_img_url = ""
-            if documents:
-                for d in documents:
-                    did = d.get("document_id", d.get("id", ""))
-                    if d.get("filename") == raw_file and did:
-                        page_img_url = get_page_image_url(did, page)
-                        break
+            did = c.get("document_id")
+            if not did and documents:
+                matches = [d for d in documents if d.get("filename") == raw_file]
+                if len(matches) == 1:
+                    did = matches[0].get("document_id") or matches[0].get("id")
+            if did:
+                page_img_url = get_page_image_url(did, page)
 
-            cit_html += f'<div class="chat-citation-item">📄 {fname} · 第 {page} 页'
+            cit_html += f'<div class="chat-citation-item">[{number}] {fname} · 第 {html.escape(str(page))} 页'
             if page_img_url:
-                cit_html += f' <a href="{page_img_url}" target="_blank" rel="noopener">📷 查看截图</a>'
+                cit_html += f' <a href="{html.escape(page_img_url, quote=True)}" target="_blank" rel="noopener">📷 查看截图</a>'
+            if c.get("text_snippet"):
+                excerpt = html.escape(c["text_snippet"]).replace("\n", "<br>")
+                cit_html += f'<details><summary>引用原文</summary>{excerpt}</details>'
             cit_html += '</div>'
 
         cit_html += '</div>'

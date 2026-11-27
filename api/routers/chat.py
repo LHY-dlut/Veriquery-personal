@@ -20,6 +20,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
 from core import AgentState
+from core.llm_client import deduplicate_answer_lines
 from api.dependencies import get_service_container, ServiceContainer
 
 logger = logging.getLogger(__name__)
@@ -43,6 +44,8 @@ class CitationInfo(BaseModel):
     page: int = Field(..., description="页码")
     text_snippet: str = Field(default="", description="文本片段")
     section: Optional[str] = Field(default=None, description="章节标题")
+    document_id: Optional[str] = None
+    chunk_id: Optional[str] = None
 
 
 class ChatResponse(BaseModel):
@@ -87,7 +90,9 @@ def _extract_results_from_state(result_state: AgentState) -> AgentResult:
             file=c.get("file", "未知文档"),
             page=c.get("page", 1),
             text_snippet=c.get("text_snippet", ""),
-            section=c.get("section")
+            section=c.get("section"),
+            document_id=c.get("document_id"),
+            chunk_id=c.get("chunk_id"),
         )
         for c in raw_citations
     ]
@@ -263,7 +268,7 @@ def _clean_role_markers(response_text: str) -> Tuple[str, List[str]]:
         quality_issues.append("回答过短")
     elif "assistant" in response_text.lower() or "user:" in response_text.lower():
         quality_issues.append("包含角色标记泄漏")
-        for stop_word in ["assistant", "user:", "system:", "\n\n\n"]:
+        for stop_word in ["assistant", "user:", "system:"]:
             idx = response_text.lower().find(stop_word)
             if idx > 0:
                 response_text = response_text[:idx].strip()
@@ -272,7 +277,7 @@ def _clean_role_markers(response_text: str) -> Tuple[str, List[str]]:
 
 
 def _deduplicate_sentences(response_text: str) -> Tuple[str, List[str]]:
-    """Deduplicate repetitive sentences using similarity-hash prefix matching.
+    """Detect extensive repetition using the same line boundaries as the model client.
 
     Args:
         response_text: Response text to deduplicate.
@@ -281,21 +286,7 @@ def _deduplicate_sentences(response_text: str) -> Tuple[str, List[str]]:
         Tuple of (deduped_text, quality_issues).
     """
     quality_issues = []
-    sentences = _re.split(r'(?<=[。！？.!?])|\n', response_text)
-    seen = set()
-    unique_sentences = []
-
-    for sent in sentences:
-        sent_stripped = sent.strip()
-        if len(sent_stripped) > 6:
-            sent_normalized = _re.sub(r'\s+', '', sent_stripped.lower())
-            if len(sent_normalized) > 4:
-                similarity_hash = sent_normalized[:20] if len(sent_normalized) > 20 else sent_normalized
-                if similarity_hash not in seen:
-                    seen.add(similarity_hash)
-                    unique_sentences.append(sent_stripped)
-
-    deduped_response = '\n'.join(unique_sentences[:15])
+    deduped_response = deduplicate_answer_lines(response_text)
 
     original_len = len(response_text.replace(' ', ''))
     deduped_len = len(deduped_response.replace(' ', ''))

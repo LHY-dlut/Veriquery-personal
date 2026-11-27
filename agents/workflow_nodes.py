@@ -28,6 +28,7 @@ from typing import Dict, List, Any, Optional, Tuple
 
 from core.config import get_settings
 from knowledge.pinout_library import CommonPinoutLibrary
+from retrieval.dac_calculation import calculate_dac
 from retrieval.evidence_coverage import (
     clauses, comparable_temperature_steps, quantity_anchors, temperature_step_passages, temperature_step_query,
 )
@@ -406,11 +407,12 @@ class TextAnalysisNodes:
 
         if joint and docs:
             excerpt_limit = min(excerpt_limit, max(200, budget // len(docs) - 100))
+        formula_limit = budget // len(docs) if docs else 0
 
         for result in results:
             metadata = result.metadata or {}
             if (metadata.get("source") == "param_record"
-                    or joint and doc_counts.get(result.document_id, 0) >= min(per_doc_limit, 2)):
+                    or joint and doc_counts.get(result.document_id, 0) >= per_doc_limit):
                 continue
             content = (result.text or "").strip()
             if not content:
@@ -432,7 +434,10 @@ class TextAnalysisNodes:
             if column_header and model_text == content:
                 label += f"\n表头 | {column_header}"
 
-            limit = min(budget - len(label) - 3, excerpt_limit)
+            # A formula and its variable definitions are one ingestion unit.
+            # Preserve a complete unit when it fits its document's budget share.
+            keep_formula = metadata.get("formula") and len(model_text) <= formula_limit
+            limit = min(budget - len(label) - 3, len(model_text) if keep_formula else excerpt_limit)
             if limit <= 0:
                 break
             if len(model_text) > limit:
@@ -447,7 +452,8 @@ class TextAnalysisNodes:
                 content = model_text
 
             entry = f"{label}\n{model_text}"
-            if joint and len(docs) > 1 and doc_counts.get(result.document_id, 0) and budget < 500:
+            if (joint and docs.difference(doc_counts) and doc_counts.get(result.document_id, 0)
+                    and budget - len(entry) < 500):
                 continue
             snippets.append(entry)
             citations.append({
@@ -603,6 +609,15 @@ class TextAnalysisNodes:
         context, evidence = self._build_evidence_context(
             query, results, comparison=joint or bool(state.get("comparison_subquery")), joint=joint,
         )
+        calculation = None if transcription else calculate_dac(query, evidence, context, selected_documents)
+        if calculation:
+            answer, indices = calculation
+            cited = [evidence[i] for i in indices]
+            result = {**state, "final_response": answer, "citations": cited}
+            if trace:
+                result.update(answer_mode="verified_dac_calculation", evaluation_context=context,
+                              context_evidence=evidence)
+            return result
         if joint and state.get("comparison_supply"):
             calculation = self._supply_comparison_calculation(query, results, evidence)
             if calculation:
@@ -626,7 +641,7 @@ class TextAnalysisNodes:
                 self.llm_client.generate_answer,
                 query=query,
                 context=context,
-                max_new_tokens=1024 if transcription else 256,
+                max_new_tokens=1024 if transcription else self.settings.LLM_MAX_TOKENS,
                 temperature=0.1,
                 transcription=transcription,
                 comparison=bool(state.get("comparison_subquery")),
